@@ -1,0 +1,110 @@
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C_TN_3216
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C_TN_3216
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found D_SMB
+Add Component: Footprint Not Found D_SMB
+Add Component: Footprint Not Found LED0805GRN
+Add Component: Footprint Not Found LED0805GRN
+Add Component: Footprint Not Found D_SMB
+Add Component: Footprint Not Found HDR_M_1X2
+Add Component: Footprint Not Found Micro USB 2.0 SMT Type B Horizontal 5 Contacts
+Add Component: Footprint Not Found HDR_F_1X6
+Add Component: Footprint Not Found Micro USB 2.0 SMT Type B Horizontal 5 Contacts
+Add Component: Footprint Not Found SDMICRO_AT
+Add Component: Footprint Not Found HDR_F_1X6
+Add Component: Footprint Not Found HDR_F_1X2
+Add Component: Footprint Not Found HDR_M_1X7
+Add Component: Footprint Not Found SOT-23
+Add Component: Footprint Not Found SOT-23
+Add Component: Footprint Not Found R0805
+Add Component: Footprint Not Found R0805
+Add Component: Footprint Not Found R0805
+Add Component: Footprint Not Found R0805
+Add Component: Footprint Not Found R0805
+Add Component: Footprint Not Found R0805
+Add Component: Footprint Not Found R0805
+Add Component: Footprint Not Found R0805
+Add Component: Footprint Not Found R0805
+Add Component: Footprint Not Found R0805
+Add Component: Footprint Not Found R0805
+Add Component: Footprint Not Found R0805
+Add Component: Footprint Not Found R0805
+Add Component: Footprint Not Found SWPBS_SPST_6X3X5
+Add Component: Footprint Not Found SWPBS_SPST_6X3X5
+Add Component: Footprint Not Found SWPBS_SPST_6X3X5
+Add Component: Footprint Not Found XCVR_ESP32-S3-WROOM-1-N16R8
+Add Component: Footprint Not Found SOT-23
+Add Component: Footprint Not Found SOT-23
+Add Component: Footprint Not Found SO_16
+Add Component: Footprint Not Found SOT-223
+Add Component: Footprint Not Found XTL_4_3225
+Added Net: Name=3V3
+Added Net: Name=BOOT_KEY
+Added Net: Name=DTR
+Added Net: Name=DVP_HREF/HSYNC
+Added Net: Name=DVP_PCLK
+Added Net: Name=DVP_VSYNC
+Added Net: Name=EN_KEY
+Added Net: Name=GND
+Added Net: Name=I2C_SCL
+Added Net: Name=I2C_SDA
+Added Net: Name=KEY0
+Added Net: Name=LED0
+Added Net: Name=LED1
+Added Net: Name=NetC?_1
+Added Net: Name=NetC?_2
+Add Net: Net with name "NetC?_2" already exists
+Added Net: Name=NetD?_1
+Add Net: Net with name "NetD?_1" already exists
+Add Net: Net with name "NetD?_1" already exists
+Add Net: Net with name "NetD?_1" already exists
+Add Net: Net with name "NetD?_1" already exists
+Added Net: Name=NetJ?_1
+Added Net: Name=NetR?_1
+Add Net: Net with name "NetR?_1" already exists
+Added Net: Name=PWRKEY
+Added Net: Name=RESET_N
+Added Net: Name=RTS
+Added Net: Name=RX_MCU
+Added Net: Name=SD_HOST_CLK
+Added Net: Name=SD_HOST_CMD
+Added Net: Name=SD_HOST_DATA0
+Added Net: Name=SD_HOST_DATA1
+Added Net: Name=SD_HOST_DATA2
+Added Net: Name=SD_HOST_DATA3
+Added Net: Name=SPI_CLK
+Added Net: Name=SPI_CS
+Added Net: Name=SPI_DIN
+Added Net: Name=SPI_DOUT
+Added Net: Name=TX_MCU
+Added Net: Name=U0_RX
+Added Net: Name=U0_TX
+Added Net: Name=USB_DN
+Added Net: Name=USB_DP
+Added Net: Name=USB_TO_SERIAL_DN
+Added Net: Name=USB_TO_SERIAL_DP
+Added Net: Name=VCC
+Added Net: Name=VDD1V5
+Added Net: Name=VDD2V8
+Added Net: Name=XMCLK
+Added Class: Name=Sheet1
+Added Rule: Name=Schematic Supply Nets
+Added Rule: Name=Schematic Supply Nets_1
+Added Rule: Name=Schematic Supply Nets_2
+Added Rule: Name=Schematic Supply Nets_3
+Added Rule: Name=Schematic Supply Nets_4

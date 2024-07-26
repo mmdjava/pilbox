@@ -1,0 +1,159 @@
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C_TN_3216
+Add Component: Footprint Not Found C_TN_3216
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found C0805
+Add Component: Footprint Not Found D_SMB
+Add Component: Footprint Not Found LED0805GRN
+Add Component: Footprint Not Found LED0805GRN
+Add Component: Footprint Not Found D_SMB
+Add Component: Footprint Not Found D_SMB
+Add Component: Footprint Not Found Micro USB 2.0 SMT Type B Horizontal 5 Contacts
+Add Component: Footprint Not Found Micro USB 2.0 SMT Type B Horizontal 5 Contacts
+Add Component: Footprint Not Found HDR_M_1X2
+Add Component: Footprint Not Found SDMICRO_AT
+Add Component: Footprint Not Found HDR_F_1X6
+Add Component: Footprint Not Found HDR_F_1X6
+Add Component: Footprint Not Found HDR_F_1X2
+Add Component: Footprint Not Found HDR_M_1X7
+Add Component: Footprint Not Found SOT-23
+Add Component: Footprint Not Found SOT-23
+Add Component: Footprint Not Found R0805
+Add Component: Footprint Not Found R0805
+Add Component: Footprint Not Found R0805
+Add Component: Footprint Not Found R0805
+Add Component: Footprint Not Found R0805
+Add Component: Footprint Not Found R0805
+Add Component: Footprint Not Found R0805
+Add Component: Footprint Not Found R0805
+Add Component: Footprint Not Found R0805
+Add Component: Footprint Not Found R0805
+Add Component: Footprint Not Found R0805
+Add Component: Footprint Not Found R0805
+Add Component: Footprint Not Found R0805
+Add Component: Footprint Not Found SWPBS_SPST_6X3X5
+Add Component: Footprint Not Found SWPBS_SPST_6X3X5
+Add Component: Footprint Not Found SWPBS_SPST_6X3X5
+Add Component: Footprint Not Found SOT-23
+Add Component: Footprint Not Found XCVR_ESP32-S3-WROOM-1-N16R8
+Add Component: Footprint Not Found SOT-23
+Add Component: Footprint Not Found SO_16
+Add Component: Footprint Not Found SOT-223
+Add Component: Footprint Not Found XTL_4_3225
+Added Net: Name=3V3
+Added Net: Name=BOOT_KEY
+Added Net: Name=DTR
+Added Net: Name=DVP_HREF/HSYNC
+Added Net: Name=DVP_PCLK
+Added Net: Name=DVP_VSYNC
+Added Net: Name=EN_KEY
+Added Net: Name=GND
+Added Net: Name=I2C_SCL
+Added Net: Name=I2C_SDA
+Added Net: Name=KEY0
+Added Net: Name=LED0
+Added Net: Name=LED1
+Added Net: Name=NetC16_1
+Added Net: Name=NetC17_2
+Added Net: Name=NetC18_2
+Added Net: Name=NetD1_1
+Added Net: Name=NetD2_1
+Added Net: Name=NetD3_1
+Added Net: Name=NetD4_1
+Added Net: Name=NetD5_1
+Added Net: Name=NetJ6_1
+Added Net: Name=NetR12_1
+Added Net: Name=NetR13_1
+Added Net: Name=PWRKEY
+Added Net: Name=RESET_N
+Added Net: Name=RTS
+Added Net: Name=RX_MCU
+Added Net: Name=SD_HOST_CLK
+Added Net: Name=SD_HOST_CMD
+Added Net: Name=SD_HOST_DATA0
+Added Net: Name=SD_HOST_DATA1
+Added Net: Name=SD_HOST_DATA2
+Added Net: Name=SD_HOST_DATA3
+Added Net: Name=SPI_CLK
+Added Net: Name=SPI_CS
+Added Net: Name=SPI_DIN
+Added Net: Name=SPI_DOUT
+Added Net: Name=TX_MCU
+Added Net: Name=U0_RX
+Added Net: Name=U0_TX
+Added Net: Name=USB_DN
+Added Net: Name=USB_DP
+Added Net: Name=USB_TO_SERIAL_DN
+Added Net: Name=USB_TO_SERIAL_DP
+Added Net: Name=VCC
+Added Net: Name=VDD1V5
+Added Net: Name=VDD2V8
+Added Net: Name=XMCLK
+Add Class Member: Failed to add class member : Component C1 100nf
+Add Class Member: Failed to add class member : Component C2 100nf
+Add Class Member: Failed to add class member : Component C3 100nf
+Add Class Member: Failed to add class member : Component C4 10uf
+Add Class Member: Failed to add class member : Component C5 20uf
+Add Class Member: Failed to add class member : Component C6 10uf
+Add Class Member: Failed to add class member : Component C7 100nf
+Add Class Member: Failed to add class member : Component C8 1uf
+Add Class Member: Failed to add class member : Component C9 1uf
+Add Class Member: Failed to add class member : Component C10 10uf
+Add Class Member: Failed to add class member : Component C11 100nf
+Add Class Member: Failed to add class member : Component C12 1uf
+Add Class Member: Failed to add class member : Component C13 1uf
+Add Class Member: Failed to add class member : Component C14 10uf
+Add Class Member: Failed to add class member : Component C15 100nf
+Add Class Member: Failed to add class member : Component C16 100nf
+Add Class Member: Failed to add class member : Component C17 22pf
+Add Class Member: Failed to add class member : Component C18 22pf
+Add Class Member: Failed to add class member : Component D1 SS34
+Add Class Member: Failed to add class member : Component D2 LED805GRN
+Add Class Member: Failed to add class member : Component D3 LED805GRN
+Add Class Member: Failed to add class member : Component D4 SS34
+Add Class Member: Failed to add class member : Component D5 SS34
+Add Class Member: Failed to add class member : Component J1 Micro USB 2.0 B SMD
+Add Class Member: Failed to add class member : Component J2 Micro USB 2.0 B SMD
+Add Class Member: Failed to add class member : Component J3 HDRM2
+Add Class Member: Failed to add class member : Component J4 Socket SDmicro AT
+Add Class Member: Failed to add class member : Component J5 HDRF6
+Add Class Member: Failed to add class member : Component J6 HDRF6
+Add Class Member: Failed to add class member : Component J7 HDRF2
+Add Class Member: Failed to add class member : Component J8 HDR1X7
+Add Class Member: Failed to add class member : Component Q1 BC817
+Add Class Member: Failed to add class member : Component Q2 BC807
+Add Class Member: Failed to add class member : Component R1 1k
+Add Class Member: Failed to add class member : Component R2 1k
+Add Class Member: Failed to add class member : Component R3 1k
+Add Class Member: Failed to add class member : Component R4 1k
+Add Class Member: Failed to add class member : Component R5 1k
+Add Class Member: Failed to add class member : Component R6 47k
+Add Class Member: Failed to add class member : Component R7 47k
+Add Class Member: Failed to add class member : Component R8 47k
+Add Class Member: Failed to add class member : Component R9 47k
+Add Class Member: Failed to add class member : Component R10 47k
+Add Class Member: Failed to add class member : Component R11 47k
+Add Class Member: Failed to add class member : Component R12 0k
+Add Class Member: Failed to add class member : Component R13 0k
+Add Class Member: Failed to add class member : Component SW1 PUSHBUTTON
+Add Class Member: Failed to add class member : Component SW2 PUSHBUTTON
+Add Class Member: Failed to add class member : Component SW3 PUSHBUTTON
+Add Class Member: Failed to add class member : Component U1 PMIC-XC6206P182MR(SOT23)-2V8
+Add Class Member: Failed to add class member : Component U2 ESP32-S3-WROOM-1-N16R8
+Add Class Member: Failed to add class member : Component U3 PMIC-XC6206P182MR(SOT23)-1V5
+Add Class Member: Failed to add class member : Component U4 CH340G
+Add Class Member: Failed to add class member : Component VR1 AMS1117-xx
+Add Class Member: Failed to add class member : Component X1 8MHz
