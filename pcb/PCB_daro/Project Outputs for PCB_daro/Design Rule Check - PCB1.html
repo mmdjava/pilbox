@@ -1,0 +1,370 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://D:\Users\Public\Documents\Altium\AD24\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">7/28/2024</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">6:50:26 AM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc" class="file"><acronym title="C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc">C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">14</td></tr>
+</table>
+</td>
+</table><a name="IDXRHC3NNA4D3JLFIINP3J5RVCDBB00MA4UD1YCMD0JP5KJR4BD2JP"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDBEPFB1ZMPV03H5O1SEMAZUCQBFE5AQZTMUGW1BE1YVK4ORVLI4OP">Clearance Constraint (Gap=0.3mm) (All),(All)</a></td>
+<td class="column2">10</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZYO5KPV4CTWWKZPEF4QAQAJS3E3EW4ERHKKVTBKUQIROFNTPMFXL">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDBQDHFMVVOIFANVZWKYAYR20DVLFQCLSYV2H4VHJ3U5SC4HPVE4AK">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">4</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID03PPXQNM3ZT3DZD2HOBEI5NCHBZ4KIKGPUPF2ELZCJLH1ZW3JGCK">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDRHPUTZDBGR2XOVX1MCAEIR4OQL4CSSI1S10GJ2CXSO2WGLAOABEF">Width Constraint (Min=0.3mm) (Max=0.6mm) (Preferred=0.4mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDJJRJJ0ELCG3TBPTWIZTHLZEJ4H5TQWGQ2VQ0BKM3RL0Z4SQEKHLH">Routing Topology Rule(Topology=Shortest) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDJVD1G0B3KDLXIEZ15IBX1I00OCCISQKCIGEC4GDWYVXQRBATK1II">Routing Via (MinHoleWidth=0.4mm) (MaxHoleWidth=0.6mm) (PreferredHoleWidth=0.4mm) (MinWidth=0.8mm) (MaxWidth=1.2mm) (PreferedWidth=0.8mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID2KCFUNHOYBLZIGAR2FGJM13NVEOOG02H5RMUYCFMF1P3QLX5JN4H">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID5MKSDNK33G1YH0HZBKZ4MWRKSMP0FKEJCXH2ESHU1LZKTUYQDZNK">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDLKHNCTW3NAG52WCT4ASC4L1NGFS4TMXMQRZ4WJUCZE3BI1I4HPH">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDRUZGFAMZJAQSBTVDCCRRRSFSOVXEXVY3DBFPWOTEXZ13QSBH05O">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDRHTOARL1EI5TB15BUE4SBRJXNJMGGCTCUK2CMLPLXYNOJEXYXAHI">Component Clearance Constraint ( Horizontal Gap = 0.254mm, Vertical Gap = 0.254mm ) (All),(All) </a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">14</td>
+</tr>
+</table><br><a name="IDBEPFB1ZMPV03H5O1SEMAZUCQBFE5AQZTMUGW1BE1YVK4ORVLI4OP"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Clearance Constraint (Gap=0.3mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3677.986mil|Location2.X=3691.047mil|Location1.Y=5077.877mil|Location2.Y=5090.939mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3677.986mil|Location2.X=3691.047mil|Location1.Y=5077.877mil|Location2.Y=5090.939mil|Absolute=True">Clearance Constraint: (0.253mm &lt; 0.3mm) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Pad PUSB1-1(92.71mm,129.144mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3677.986mil|Location2.X=3691.047mil|Location1.Y=5103.47mil|Location2.Y=5116.53mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3677.986mil|Location2.X=3691.047mil|Location1.Y=5103.47mil|Location2.Y=5116.53mil|Absolute=True">Clearance Constraint: (0.253mm &lt; 0.3mm) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Pad PUSB1-2(92.71mm,129.794mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3677.986mil|Location2.X=3691.047mil|Location1.Y=5129.06mil|Location2.Y=5142.12mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3677.986mil|Location2.X=3691.047mil|Location1.Y=5129.06mil|Location2.Y=5142.12mil|Absolute=True">Clearance Constraint: (0.253mm &lt; 0.3mm) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Pad PUSB1-3(92.71mm,130.444mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3677.986mil|Location2.X=3691.047mil|Location1.Y=5180.242mil|Location2.Y=5193.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3677.986mil|Location2.X=3691.047mil|Location1.Y=5180.242mil|Location2.Y=5193.302mil|Absolute=True">Clearance Constraint: (0.253mm &lt; 0.3mm) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Pad PUSB1-5(92.71mm,131.744mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3705.506mil|Location2.X=3718.567mil|Location1.Y=3283.075mil|Location2.Y=3296.137mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3705.506mil|Location2.X=3718.567mil|Location1.Y=3283.075mil|Location2.Y=3296.137mil|Absolute=True">Clearance Constraint: (0.253mm &lt; 0.3mm) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Pad PUSB2-1(93.409mm,83.556mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3705.506mil|Location2.X=3718.567mil|Location1.Y=3308.666mil|Location2.Y=3321.727mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3705.506mil|Location2.X=3718.567mil|Location1.Y=3308.666mil|Location2.Y=3321.727mil|Absolute=True">Clearance Constraint: (0.253mm &lt; 0.3mm) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Pad PUSB2-2(93.409mm,84.206mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3705.506mil|Location2.X=3718.567mil|Location1.Y=3334.258mil|Location2.Y=3347.318mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3705.506mil|Location2.X=3718.567mil|Location1.Y=3334.258mil|Location2.Y=3347.318mil|Absolute=True">Clearance Constraint: (0.253mm &lt; 0.3mm) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Pad PUSB2-3(93.409mm,84.856mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3705.506mil|Location2.X=3718.567mil|Location1.Y=3385.438mil|Location2.Y=3398.499mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3705.506mil|Location2.X=3718.567mil|Location1.Y=3385.438mil|Location2.Y=3398.499mil|Absolute=True">Clearance Constraint: (0.253mm &lt; 0.3mm) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Pad PUSB2-5(93.409mm,86.156mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3648.352mil|Location2.X=3661.413mil|Location1.Y=3372.15mil|Location2.Y=3385.211mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3648.352mil|Location2.X=3661.413mil|Location1.Y=3372.15mil|Location2.Y=3385.211mil|Absolute=True">Clearance Constraint: (0.275mm &lt; 0.3mm) Between Pad PUSB2-4(93.409mm,85.506mm) on Top Layer And Track (92.279mm,86.156mm)(93.409mm,86.156mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3646.186mil|Location2.X=3659.247mil|Location1.Y=3398.233mil|Location2.Y=3411.294mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3646.186mil|Location2.X=3659.247mil|Location1.Y=3398.233mil|Location2.Y=3411.294mil|Absolute=True">Clearance Constraint: (0.25mm &lt; 0.3mm) Between Pad PUSB2-SH1(93.409mm,87.206mm) on Top Layer And Track (92.279mm,86.156mm)(93.409mm,86.156mm) on Top Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDBQDHFMVVOIFANVZWKYAYR20DVLFQCLSYV2H4VHJ3U5SC4HPVE4AK"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2187.283mil|Location2.X=3071.575mil|Location1.Y=4036.417mil|Location2.Y=5069.921mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2187.283mil|Location2.X=3071.575mil|Location1.Y=4036.417mil|Location2.Y=5069.921mil|Absolute=True">Un-Routed Net Constraint: Net NetJ3_3 Between Pad U2-37(56.432mm,128.251mm) on Bottom Layer And Pad R19-1(77.343mm,103.1mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2187.283mil|Location2.X=2884.748mil|Location1.Y=3990.252mil|Location2.Y=5019.921mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2187.283mil|Location2.X=2884.748mil|Location1.Y=3990.252mil|Location2.Y=5019.921mil|Absolute=True">Un-Routed Net Constraint: Net NetJ3_4 Between Pad U2-36(56.432mm,126.981mm) on Bottom Layer And Via (72.771mm,101.854mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2745.252mil|Location2.X=2955.811mil|Location1.Y=3290.252mil|Location2.Y=3643.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2745.252mil|Location2.X=2955.811mil|Location1.Y=3290.252mil|Location2.Y=3643.134mil|Absolute=True">Un-Routed Net Constraint: Net +5 Between Via (70.231mm,84.074mm) from Top Layer to Bottom Layer And Pad U3-16(74.676mm,91.434mm) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2924.189mil|Location2.X=3389.748mil|Location1.Y=3556.394mil|Location2.Y=4864.748mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2924.189mil|Location2.X=3389.748mil|Location1.Y=3556.394mil|Location2.Y=4864.748mil|Absolute=True">Un-Routed Net Constraint: Net +5 Between Pad U3-16(74.676mm,91.434mm) on Bottom Layer And Via (85.598mm,123.063mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
