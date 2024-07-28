@@ -1,35 +1,39 @@
 Protel Design System Design Rule Check
 PCB File : C:\Users\HDR\Desktop\New folder (3)\pilbox\pcb\PCB_daro\PCB1.PcbDoc
 Date     : 7/28/2024
-Time     : 6:50:26 AM
+Time     : 6:40:22 PM
 
 Processing Rule : Clearance Constraint (Gap=0.3mm) (All),(All)
-   Violation between Clearance Constraint: (0.253mm < 0.3mm) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Pad PUSB1-1(92.71mm,129.144mm) on Top Layer 
-   Violation between Clearance Constraint: (0.253mm < 0.3mm) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Pad PUSB1-2(92.71mm,129.794mm) on Top Layer 
-   Violation between Clearance Constraint: (0.253mm < 0.3mm) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Pad PUSB1-3(92.71mm,130.444mm) on Top Layer 
-   Violation between Clearance Constraint: (0.253mm < 0.3mm) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Pad PUSB1-5(92.71mm,131.744mm) on Top Layer 
-   Violation between Clearance Constraint: (0.253mm < 0.3mm) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Pad PUSB2-1(93.409mm,83.556mm) on Top Layer 
-   Violation between Clearance Constraint: (0.253mm < 0.3mm) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Pad PUSB2-2(93.409mm,84.206mm) on Top Layer 
-   Violation between Clearance Constraint: (0.253mm < 0.3mm) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Pad PUSB2-3(93.409mm,84.856mm) on Top Layer 
-   Violation between Clearance Constraint: (0.253mm < 0.3mm) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Pad PUSB2-5(93.409mm,86.156mm) on Top Layer 
-   Violation between Clearance Constraint: (0.275mm < 0.3mm) Between Pad PUSB2-4(93.409mm,85.506mm) on Top Layer And Track (92.279mm,86.156mm)(93.409mm,86.156mm) on Top Layer 
-   Violation between Clearance Constraint: (0.25mm < 0.3mm) Between Pad PUSB2-SH1(93.409mm,87.206mm) on Top Layer And Track (92.279mm,86.156mm)(93.409mm,86.156mm) on Top Layer 
-Rule Violations :10
+   Violation between Clearance Constraint: (0.253mm < 0.3mm) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Pad PUSB1-1(92.725mm,110.15mm) on Top Layer 
+   Violation between Clearance Constraint: (0.253mm < 0.3mm) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Pad PUSB1-2(92.725mm,110.8mm) on Top Layer 
+   Violation between Clearance Constraint: (0.253mm < 0.3mm) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Pad PUSB1-3(92.725mm,111.45mm) on Top Layer 
+   Violation between Clearance Constraint: (0.253mm < 0.3mm) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Pad PUSB1-5(92.725mm,112.75mm) on Top Layer 
+   Violation between Clearance Constraint: (0.253mm < 0.3mm) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Pad PUSB2-1(92.7mm,123.65mm) on Top Layer 
+   Violation between Clearance Constraint: (0.253mm < 0.3mm) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Pad PUSB2-2(92.7mm,124.3mm) on Top Layer 
+   Violation between Clearance Constraint: (0.253mm < 0.3mm) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Pad PUSB2-3(92.7mm,124.95mm) on Top Layer 
+   Violation between Clearance Constraint: (0.253mm < 0.3mm) Between Board Cutout (Multi-Layer)Region (0 hole(s)) Multi-Layer And Pad PUSB2-5(92.7mm,126.25mm) on Top Layer 
+   Violation between Clearance Constraint: (0.275mm < 0.3mm) Between Pad PUSB1-1(92.725mm,110.15mm) on Top Layer And Pad PUSB1-SH2(92.725mm,109.1mm) on Top Layer 
+   Violation between Clearance Constraint: (0.275mm < 0.3mm) Between Pad PUSB1-5(92.725mm,112.75mm) on Top Layer And Pad PUSB1-SH1(92.725mm,113.8mm) on Top Layer 
+   Violation between Clearance Constraint: (0.275mm < 0.3mm) Between Pad PUSB2-1(92.7mm,123.65mm) on Top Layer And Pad PUSB2-SH2(92.7mm,122.6mm) on Top Layer 
+   Violation between Clearance Constraint: (0.275mm < 0.3mm) Between Pad PUSB2-5(92.7mm,126.25mm) on Top Layer And Pad PUSB2-SH1(92.7mm,127.3mm) on Top Layer 
+   Violation between Clearance Constraint: (0.27mm < 0.3mm) Between Pad Q1-1(85.75mm,87.27mm) on Multi-Layer And Pad Q1-2(85.75mm,86mm) on Multi-Layer 
+   Violation between Clearance Constraint: (0.27mm < 0.3mm) Between Pad Q1-2(85.75mm,86mm) on Multi-Layer And Pad Q1-3(85.75mm,84.73mm) on Multi-Layer 
+   Violation between Clearance Constraint: (0.27mm < 0.3mm) Between Pad Q2-1(58.01mm,126.975mm) on Multi-Layer And Pad Q2-2(59.28mm,126.975mm) on Multi-Layer 
+   Violation between Clearance Constraint: (0.27mm < 0.3mm) Between Pad Q2-2(59.28mm,126.975mm) on Multi-Layer And Pad Q2-3(60.55mm,126.975mm) on Multi-Layer 
+   Violation between Clearance Constraint: (0.27mm < 0.3mm) Between Pad Q3-1(59.28mm,132.875mm) on Multi-Layer And Pad Q3-2(58.01mm,132.875mm) on Multi-Layer 
+   Violation between Clearance Constraint: (0.27mm < 0.3mm) Between Pad Q3-2(58.01mm,132.875mm) on Multi-Layer And Pad Q3-3(56.74mm,132.875mm) on Multi-Layer 
+Rule Violations :18
 
 Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
 Rule Violations :0
 
 Processing Rule : Un-Routed Net Constraint ( (All) )
-   Violation between Un-Routed Net Constraint: Net NetJ3_3 Between Pad U2-37(56.432mm,128.251mm) on Bottom Layer And Pad R19-1(77.343mm,103.1mm) on Top Layer 
-   Violation between Un-Routed Net Constraint: Net NetJ3_4 Between Pad U2-36(56.432mm,126.981mm) on Bottom Layer And Via (72.771mm,101.854mm) from Top Layer to Bottom Layer 
-   Violation between Un-Routed Net Constraint: Net +5 Between Via (70.231mm,84.074mm) from Top Layer to Bottom Layer And Pad U3-16(74.676mm,91.434mm) on Bottom Layer 
-   Violation between Un-Routed Net Constraint: Net +5 Between Pad U3-16(74.676mm,91.434mm) on Bottom Layer And Via (85.598mm,123.063mm) from Top Layer to Bottom Layer 
-Rule Violations :4
+Rule Violations :0
 
 Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
 Rule Violations :0
 
-Processing Rule : Width Constraint (Min=0.3mm) (Max=0.6mm) (Preferred=0.4mm) (All)
+Processing Rule : Width Constraint (Min=0.3mm) (Max=1mm) (Preferred=0.6mm) (All)
 Rule Violations :0
 
 Processing Rule : Routing Topology Rule(Topology=Shortest) (All)
@@ -54,6 +58,6 @@ Processing Rule : Component Clearance Constraint ( Horizontal Gap = 0.254mm, Ver
 Rule Violations :0
 
 
-Violations Detected : 14
+Violations Detected : 18
 Waived Violations : 0
 Time Elapsed        : 00:00:01
