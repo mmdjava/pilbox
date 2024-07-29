@@ -1,0 +1,16 @@
+Add Pin To Net: Unknown Pin: Pin J2-1
+Add Pin To Net: Unknown Pin: Pin U2-39
+Added Pin To Net: NetName=D+ Pin=J?-3
+Added Pin To Net: NetName=D+ Pin=U2-13
+Added Net: Name=D+
+Added Pin To Net: NetName=D- Pin=J?-2
+Added Pin To Net: NetName=D- Pin=U2-14
+Added Net: Name=D-
+Added Pin To Net: NetName=DU+ Pin=J?-3
+Added Pin To Net: NetName=DU+ Pin=U3-5
+Added Net: Name=DU+
+Added Pin To Net: NetName=DU- Pin=J?-2
+Added Pin To Net: NetName=DU- Pin=U3-6
+Added Net: Name=DU-
+Added Member To Class: ClassName=Sheet1 Member=Component J? HDRF4
+Added Member To Class: ClassName=Sheet1 Member=Component J? 629105150521
