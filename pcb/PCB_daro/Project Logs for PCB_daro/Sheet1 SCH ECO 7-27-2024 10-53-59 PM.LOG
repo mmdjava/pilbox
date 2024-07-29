@@ -1,0 +1,8 @@
+Change Pin Designator/Name:  Old Designator=U2-25 Old Name=GPIO0/ADC2_CH1/TOUCH1/RTC_GPIO11/CLK_OUT1/EMAC_TX_CLK New Designator =GPIO17/HS1_DATA5/U2TXD/EMAC_CLK_OUT_180 New Name=28
+Change Pin Designator/Name:  Old Designator=U2-26 Old Name=GPIO4/ADC2_CH0/TOUCH0/RTC_GPIO10/HSPIHD/HS2_DATA1/SD_DATA1/EMAC_TX_ER New Designator =GPIO5/VSPICS0/HS1_DATA6/EMAC_RX_CLK New Name=29
+Change Pin Designator/Name:  Old Designator=U2-28 Old Name=GPIO17/HS1_DATA5/U2TXD/EMAC_CLK_OUT_180 New Designator =GPIO0/ADC2_CH1/TOUCH1/RTC_GPIO11/CLK_OUT1/EMAC_TX_CLK New Name=25
+Change Pin Designator/Name:  Old Designator=U2-29 Old Name=GPIO5/VSPICS0/HS1_DATA6/EMAC_RX_CLK New Designator =GPIO4/ADC2_CH0/TOUCH0/RTC_GPIO10/HSPIHD/HS2_DATA1/SD_DATA1/EMAC_TX_ER New Name=26
+Change Pin Designator/Name:  Old Designator=U2-30 Old Name=GPIO18/VSPICLK/HS1_DATA7 New Designator =GPIO3/U0RXD/CLK_OUT2 New Name=34
+Change Pin Designator/Name:  Old Designator=U2-31 Old Name=GPIO19/VSPIQ/U0CTS/EMAC_TXD0 New Designator =GPIO21/VSPIHD/EMAC_TX_EN New Name=33
+Change Pin Designator/Name:  Old Designator=U2-33 Old Name=GPIO21/VSPIHD/EMAC_TX_EN New Designator =GPIO19/VSPIQ/U0CTS/EMAC_TXD0 New Name=31
+Change Pin Designator/Name:  Old Designator=U2-34 Old Name=GPIO3/U0RXD/CLK_OUT2 New Designator =GPIO18/VSPICLK/HS1_DATA7 New Name=30

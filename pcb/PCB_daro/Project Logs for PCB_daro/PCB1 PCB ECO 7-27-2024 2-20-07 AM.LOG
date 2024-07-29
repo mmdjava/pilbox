@@ -1,0 +1,11 @@
+Removed Pin From Net: NetName=led4 Pin=R5-2
+Removed Pin From Net: NetName=led3 Pin=R6-2
+Removed Pin From Net: NetName=led2 Pin=R7-2
+Removed Pin From Net: NetName=led1 Pin=R8-2
+Added Pin To Net: NetName=led1 Pin=R5-2
+Added Pin To Net: NetName=led2 Pin=R6-2
+Added Pin To Net: NetName=led3 Pin=R7-2
+Added Pin To Net: NetName=led4 Pin=R8-2
+Add Pin To Net: Unknown Pin: Pin U2-39
+Add Net: Net with name "NetQ?_1" already exists
+Added Member To Class: ClassName=Sheet1 Member=Component Q? C945

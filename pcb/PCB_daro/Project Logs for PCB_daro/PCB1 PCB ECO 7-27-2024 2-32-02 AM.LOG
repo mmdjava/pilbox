@@ -1,0 +1,16 @@
+Removed Pin From Net: NetName=VCC Pin=D1-2
+Removed Pin From Net: NetName=VCC Pin=D3-2
+Removed Pin From Net: NetName=VCC Pin=D4-2
+Removed Pin From Net: NetName=VCC Pin=SW3-2
+Removed Pin From Net: NetName=+3.3 Pin=SW3-3
+Added Pin To Net: NetName=VCC Pin=SW3-3
+Add Pin To Net: Unknown Pin: Pin U2-39
+Change Net Name : Old Net Name=VCC New Net Name=+5
+Add Net: Net with name "NetQ?_1" already exists
+Added Pin To Net: NetName=VCC Pin=D1-2
+Added Pin To Net: NetName=VCC Pin=D3-2
+Added Pin To Net: NetName=VCC Pin=D4-2
+Added Pin To Net: NetName=VCC Pin=SW3-2
+Added Net: Name=VCC
+Added Member To Class: ClassName=Sheet1 Member=Component Q? C945
+Added Rule: Name=Schematic Supply Nets_3

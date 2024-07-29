@@ -1,0 +1,14 @@
+Removed Member From Class: ClassName=Sheet1 Member=R18
+Removed Member From Class: ClassName=Sheet1 Member=R19
+Change Footprint: Footprint Not Found SOT-23
+Add Pin To Net: Unknown Pin: Pin BZ1-1
+Add Pin To Net: Unknown Pin: Pin J4-1
+Add Pin To Net: Unknown Pin: Pin U2-39
+Added Pin To Net: NetName=NetU2_36 Pin=U2-36
+Added Pin To Net: NetName=NetU2_36 Pin=U3-2
+Added Net: Name=NetU2_36
+Added Pin To Net: NetName=NetU2_37 Pin=U2-37
+Added Pin To Net: NetName=NetU2_37 Pin=U3-3
+Added Net: Name=NetU2_37
+Added Member To Class: ClassName=Sheet1 Member=Component J1 629105150521
+Added Member To Class: ClassName=Sheet1 Member=Component J4 CONN_TB4

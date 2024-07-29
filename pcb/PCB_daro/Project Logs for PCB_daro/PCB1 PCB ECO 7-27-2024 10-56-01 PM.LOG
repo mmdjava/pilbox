@@ -1,0 +1,22 @@
+Removed Pin From Net: NetName=+5 Pin=BZ1-
+Removed Pin From Net: NetName=led3 Pin=U2-25
+Removed Pin From Net: NetName=led4 Pin=U2-26
+Removed Pin From Net: NetName=led1 Pin=U2-28
+Removed Pin From Net: NetName=led2 Pin=U2-29
+Removed Pin From Net: NetName=key4 Pin=U2-30
+Removed Pin From Net: NetName=key3 Pin=U2-31
+Removed Pin From Net: NetName=key2 Pin=U2-33
+Removed Pin From Net: NetName=key1 Pin=U2-34
+Add Pin To Net: Unknown Pin: Pin BZ1-1
+Added Pin To Net: NetName=led1 Pin=U2-25
+Added Pin To Net: NetName=led2 Pin=U2-26
+Added Pin To Net: NetName=led3 Pin=U2-28
+Added Pin To Net: NetName=led4 Pin=U2-29
+Added Pin To Net: NetName=key1 Pin=U2-30
+Added Pin To Net: NetName=key2 Pin=U2-31
+Added Pin To Net: NetName=key3 Pin=U2-33
+Added Pin To Net: NetName=key4 Pin=U2-34
+Add Pin To Net: Unknown Pin: Pin U2-39
+Added Member To Class: ClassName=Sheet1 Member=Component C2 10uF
+Added Member To Class: ClassName=Sheet1 Member=Component C7 10uF
+Added Member To Class: ClassName=Sheet1 Member=Component U1 LD1117

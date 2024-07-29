@@ -1,0 +1,13 @@
+Change Component Designator: OldDesignator=J3 NewDesignator=J2
+Change Component Designator: OldDesignator=J? NewDesignator=J3
+Change Component Designator: OldDesignator=Q? NewDesignator=Q1
+Change Component Designator: OldDesignator=R? NewDesignator=R13
+Add Component: Footprint Not Found SOT-23
+Add Pin To Net: Unknown Pin: Pin Q3-1
+Add Pin To Net: Unknown Pin: Pin Q3-2
+Add Pin To Net: Unknown Pin: Pin Q3-3
+Add Pin To Net: Unknown Pin: Pin U2-39
+Change Net Name : Old Net Name=NetJ?_3 New Net Name=NetJ3_3
+Change Net Name : Old Net Name=NetJ?_4 New Net Name=NetJ3_4
+Change Net Name : Old Net Name=NetQ?_2 New Net Name=NetQ1_2
+Add Class Member: Failed to add class member : Component Q3 BC807

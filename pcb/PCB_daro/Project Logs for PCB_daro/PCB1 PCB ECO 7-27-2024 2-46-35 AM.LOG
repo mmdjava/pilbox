@@ -1,0 +1,9 @@
+Change Component Designator: OldDesignator=Q? NewDesignator=Q2
+Change Component Designator: OldDesignator=Q? NewDesignator=Q3
+Add Pin To Net: Unknown Pin: Pin U2-39
+Change Net Name : Old Net Name=NetQ?_1 New Net Name=NetQ2_2
+Added Pin To Net: NetName=NetQ2_1 Pin=Q2-1
+Added Pin To Net: NetName=NetQ2_1 Pin=Q3-2
+Added Pin To Net: NetName=NetQ2_1 Pin=U3-14
+Added Net: Name=NetQ2_1
+Added Member To Class: ClassName=Sheet1 Member=Component Q3 BC557

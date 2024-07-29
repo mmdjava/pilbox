@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=+5 Pin=BZ1-
+Removed Pin From Net: NetName=NetJ3_4 Pin=R18-1
+Removed Pin From Net: NetName=NetJ3_3 Pin=R19-1
+Removed Member From Class: ClassName=Sheet1 Member=R18
+Removed Member From Class: ClassName=Sheet1 Member=R19
+Add Pin To Net: Unknown Pin: Pin BZ1-1
+Add Pin To Net: Unknown Pin: Pin U2-39
+Added Pin To Net: NetName=NetJ3_4 Pin=U3-2
+Added Pin To Net: NetName=NetJ3_3 Pin=U3-3

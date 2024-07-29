@@ -1,0 +1,21 @@
+Removed Pin From Net: NetName=key1 Pin=J2-1
+Removed Pin From Net: NetName=key2 Pin=J2-2
+Removed Pin From Net: NetName=key3 Pin=J2-3
+Removed Pin From Net: NetName=key4 Pin=J2-4
+Removed Pin From Net: NetName=key4 Pin=R1-1
+Removed Pin From Net: NetName=key3 Pin=R2-1
+Removed Pin From Net: NetName=key2 Pin=R3-1
+Removed Pin From Net: NetName=key1 Pin=R4-1
+Added Pin To Net: NetName=key4 Pin=J2-1
+Added Pin To Net: NetName=key3 Pin=J2-2
+Added Pin To Net: NetName=key2 Pin=J2-3
+Added Pin To Net: NetName=key1 Pin=J2-4
+Added Pin To Net: NetName=key1 Pin=R1-1
+Added Pin To Net: NetName=key2 Pin=R2-1
+Added Pin To Net: NetName=key3 Pin=R3-1
+Added Pin To Net: NetName=key4 Pin=R4-1
+Add Pin To Net: Unknown Pin: Pin U2-39
+Add Net: Net with name "NetQ?_1" already exists
+Added Member To Class: ClassName=Sheet1 Member=Component J3 HDRF4
+Added Member To Class: ClassName=Sheet1 Member=Component Q? BC557
+Added Member To Class: ClassName=Sheet1 Member=Component Q? C945

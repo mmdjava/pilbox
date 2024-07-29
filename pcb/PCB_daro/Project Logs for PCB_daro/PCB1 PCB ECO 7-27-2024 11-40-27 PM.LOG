@@ -1,0 +1,15 @@
+Added Component: Designator=J?(HDR_F_1X4)
+Add component (AddParameter): Name = "ASSEMBLY"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DESC"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MANF"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MANF_P#"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PARAM"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PRICE"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "VALUE"; Value = "HDRF4"; VariantName = "[No Variations]"
+Add Pin To Net: Unknown Pin: Pin BZ1-1
+Added Pin To Net: NetName=GND Pin=J?-1
+Added Pin To Net: NetName=+3.3 Pin=J?-2
+Added Pin To Net: NetName=scl Pin=J?-3
+Added Pin To Net: NetName=sda Pin=J?-4
+Add Pin To Net: Unknown Pin: Pin U2-39
+Added Member To Class: ClassName=Sheet1 Member=Component J? HDRF4

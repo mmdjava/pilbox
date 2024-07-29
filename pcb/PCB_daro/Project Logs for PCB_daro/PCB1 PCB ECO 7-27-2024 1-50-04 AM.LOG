@@ -1,0 +1,30 @@
+Removed Pin From Net: NetName=NetC3_2 Pin=Q2-3
+Removed Member From Class: ClassName=Sheet1 Member=Q2
+Added Component: Designator=Q?(TO92_3)
+Add component (AddParameter): Name = "ASSEMBLY"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DESC"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MANF"; Value = "-"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MANF_P#"; Value = "C945"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PARAM"; Value = "50v, 0.15A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PARAM2"; Value = "250mW"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PRICE"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "VALUE"; Value = "C945"; VariantName = "[No Variations]"
+Added Component: Designator=Q?(TO92_3)
+Add component (AddParameter): Name = "ASSEMBLY"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DESC"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MANF"; Value = "MULTICOMP"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MANF_P#"; Value = "BC557"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PARAM"; Value = "45v, 0.1A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PARAM2"; Value = "500mW"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PRICE"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "VALUE"; Value = "BC557"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetC3_2 Pin=Q?-3
+Added Pin To Net: NetName=NetC4_2 Pin=Q?-3
+Add Pin To Net: Unknown Pin: Pin U2-39
+Added Pin To Net: NetName=NetQ?_1 Pin=Q?-1
+Added Pin To Net: NetName=NetQ?_1 Pin=Q?-2
+Added Pin To Net: NetName=NetQ?_1 Pin=U3-13
+Added Net: Name=NetQ?_1
+Add Net: Net with name "NetQ?_1" already exists
+Added Member To Class: ClassName=Sheet1 Member=Component Q? C945
+Added Member To Class: ClassName=Sheet1 Member=Component Q? BC557
