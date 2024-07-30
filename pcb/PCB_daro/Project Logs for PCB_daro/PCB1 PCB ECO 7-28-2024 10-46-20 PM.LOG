@@ -1,0 +1,7 @@
+Removed Pin From Net: NetName=key4 Pin=J2-1
+Add Pin To Net: Unknown Pin: Pin J2-1
+Add Pin To Net: Unknown Pin: Pin U2-39
+Add Net: Net with name "NetJ?_2" already exists
+Add Net: Net with name "NetJ?_3" already exists
+Added Member To Class: ClassName=Sheet1 Member=Component J? HDRF4
+Added Member To Class: ClassName=Sheet1 Member=Component J? 629105150521

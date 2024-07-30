@@ -1,0 +1,12 @@
+Removed Pin From Net: NetName=NetJ?_3 Pin=J?-3
+Removed Pin From Net: NetName=NetJ?_2 Pin=U3-6
+Add Pin To Net: Unknown Pin: Pin J2-1
+Added Pin To Net: NetName=NetJ?_3 Pin=J?-3
+Added Pin To Net: NetName=NetJ?_2 Pin=U2-13
+Add Pin To Net: Unknown Pin: Pin U2-39
+Added Pin To Net: NetName=NetU3_5 Pin=U3-5
+Added Net: Name=NetU3_5
+Added Pin To Net: NetName=NetU3_6 Pin=U3-6
+Added Net: Name=NetU3_6
+Added Member To Class: ClassName=Sheet1 Member=Component J? 629105150521
+Added Member To Class: ClassName=Sheet1 Member=Component J? HDRF4
