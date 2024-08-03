@@ -3,11 +3,10 @@ File1=Layout.bal
 FileGroup1=Default Group
 Group=Default Group
 Library1=core
-Library2=xui
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
 Module1=Starter
 NumberOfFiles=1
-NumberOfLibraries=2
+NumberOfLibraries=1
 NumberOfModules=1
 Version=12.8
 @EndOfDesignText@
@@ -26,19 +25,55 @@ Version=12.8
 #End Region
 
 Sub Process_Globals
-	'These global variables will be declared once when the application starts.
-	'These variables can be accessed from all modules.
+	
 	
 End Sub
 
 Sub Globals
-	'These global variables will be redeclared each time the activity is created.
-	Private Button1 As Button
+	
+	
+	Private EditText1 As EditText
+	Private Label1 As Label
+	Private ProgressBar1 As ProgressBar
+	b = 0
+	Private SeekBar1 As SeekBar
+	Private CheckBox1 As CheckBox
+	Private RadioButton1 As RadioButton
+	Private RadioButton2 As RadioButton
+	Private RadioButton3 As RadioButton
+	Private RadioButton4 As RadioButton
+	Private ToggleButton1 As ToggleButton
+	Private Panel1 As Panel
+	Private Spinner1 As Spinner
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 	Activity.LoadLayout("Layout")
+	
+	'EditText1.Color = 0x77FFFFFF
+	'EditText1.Hint = "Enter username"
+	'EditText1.InputType =EditText1.INPUT_TYPE_DECIMAL_NUMBERS
+	RadioButton1.Checked = True
+	
+	Spinner1.DropdownBackgroundColor = 0x55FFE801
+	Spinner1.DropdownTextColor = 0xFF000000
+	Spinner1.Add("نارنجی")
+	Spinner1.Add("قرمز")
+	Spinner1.Add("آبی")
+	Spinner1.Add("سبز")
+	
+	Spinner1.Color = 0x8DFF6E00
+	
+	Dim days() As String
+	
+	days = Array As String("قرمز","آبی","سبز","نارنجی")
+	
+	ToastMessageShow(days(1),False)
+	
+	Spinner1.AddAll(days)
 End Sub
+
+
 
 Sub Activity_Resume
 
@@ -49,7 +84,89 @@ Sub Activity_Pause (UserClosed As Boolean)
 End Sub
 
 Sub Button1_Click
-'	ToastMessageShow("تست",False)
-Msgbox("خطر","هشدار")
-	ToastMessageShow("این پیام را جدی بگیرید",true)
+	
+	
+	
+	
+End Sub
+
+Private Sub EditText1_TextChanged (Old As String, New As String)
+
+ToastMessageShow(Old,False)
+	
+End Sub
+
+Private Sub Label1_Click
+	
+	'b =  b + 1
+	'ProgressBar1.Progress = b
+End Sub
+
+Private Sub SeekBar1_ValueChanged (Value As Int, UserChanged As Boolean)
+	
+	Label1.Text = Value
+	
+	ToastMessageShow(UserChanged,False)
+	
+	
+End Sub
+
+Private Sub CheckBox1_CheckedChange(Checked As Boolean)
+	
+	If Checked Then
+		CheckBox1.Text = "بلوتوث فعال شد"
+		
+		Else
+			
+		CheckBox1.Text = "بلوتوث غیر فعال شد"
+			
+	End If
+	
+End Sub
+
+Private Sub RadioButton4_CheckedChange(Checked As Boolean)
+	
+	ToastMessageShow("گزینه چهارم فعال شده است",False)
+	
+End Sub
+
+Private Sub RadioButton3_CheckedChange(Checked As Boolean)
+	
+	ToastMessageShow("گزینه سوم فعال شده است",False)
+	
+End Sub
+
+Private Sub RadioButton2_CheckedChange(Checked As Boolean)
+	
+	ToastMessageShow("گزینه دوم فعال شده است",False)
+	
+End Sub
+
+Private Sub RadioButton1_CheckedChange(Checked As Boolean)
+	
+	ToastMessageShow("گزینه اول فعال شده است",False)
+	
+End Sub
+
+Private Sub ToggleButton1_CheckedChange(Checked As Boolean)
+	
+	'ToastMessageShow(Checked,False)
+	If Checked Then
+		Panel1.Color = 0x85FFBB00
+		
+		Else
+		Panel1.Color = 0x00FFBB00
+	
+	End If
+End Sub
+
+Private Sub Spinner1_ItemClick (Position As Int, Value As Object)
+	'ToastMessageShow("("&Position&") "&Value,False)
+	
+	If Position = 0 Then Spinner1.Color = 0x8DFF6E00
+	If Position = 1 Then Spinner1.Color = 0x78FF0000
+	If Position = 2 Then Spinner1.Color = 0x780024FF
+	If Position = 3 Then Spinner1.Color = 0x7800FF0E
+	
+	
 End Sub

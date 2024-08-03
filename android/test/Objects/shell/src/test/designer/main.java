@@ -55,9 +55,21 @@ public boolean isSingleton() {
 		return pcBA;
 	}
 public static RemoteObject __c = RemoteObject.declareNull("anywheresoftware.b4a.keywords.Common");
-public static RemoteObject _button1 = RemoteObject.declareNull("anywheresoftware.b4a.objects.ButtonWrapper");
+public static RemoteObject _edittext1 = RemoteObject.declareNull("anywheresoftware.b4a.objects.EditTextWrapper");
+public static RemoteObject _label1 = RemoteObject.declareNull("anywheresoftware.b4a.objects.LabelWrapper");
+public static RemoteObject _progressbar1 = RemoteObject.declareNull("anywheresoftware.b4a.objects.ProgressBarWrapper");
+public static RemoteObject _b = RemoteObject.createImmutable("");
+public static RemoteObject _seekbar1 = RemoteObject.declareNull("anywheresoftware.b4a.objects.SeekBarWrapper");
+public static RemoteObject _checkbox1 = RemoteObject.declareNull("anywheresoftware.b4a.objects.CompoundButtonWrapper.CheckBoxWrapper");
+public static RemoteObject _radiobutton1 = RemoteObject.declareNull("anywheresoftware.b4a.objects.CompoundButtonWrapper.RadioButtonWrapper");
+public static RemoteObject _radiobutton2 = RemoteObject.declareNull("anywheresoftware.b4a.objects.CompoundButtonWrapper.RadioButtonWrapper");
+public static RemoteObject _radiobutton3 = RemoteObject.declareNull("anywheresoftware.b4a.objects.CompoundButtonWrapper.RadioButtonWrapper");
+public static RemoteObject _radiobutton4 = RemoteObject.declareNull("anywheresoftware.b4a.objects.CompoundButtonWrapper.RadioButtonWrapper");
+public static RemoteObject _togglebutton1 = RemoteObject.declareNull("anywheresoftware.b4a.objects.CompoundButtonWrapper.ToggleButtonWrapper");
+public static RemoteObject _panel1 = RemoteObject.declareNull("anywheresoftware.b4a.objects.PanelWrapper");
+public static RemoteObject _spinner1 = RemoteObject.declareNull("anywheresoftware.b4a.objects.SpinnerWrapper");
 public static test.designer.starter _starter = null;
   public Object[] GetGlobals() {
-		return new Object[] {"Activity",main.mostCurrent._activity,"Button1",main.mostCurrent._button1,"Starter",Debug.moduleToString(test.designer.starter.class)};
+		return new Object[] {"Activity",main.mostCurrent._activity,"CheckBox1",main.mostCurrent._checkbox1,"EditText1",main.mostCurrent._edittext1,"Label1",main.mostCurrent._label1,"Panel1",main.mostCurrent._panel1,"ProgressBar1",main.mostCurrent._progressbar1,"RadioButton1",main.mostCurrent._radiobutton1,"RadioButton2",main.mostCurrent._radiobutton2,"RadioButton3",main.mostCurrent._radiobutton3,"RadioButton4",main.mostCurrent._radiobutton4,"SeekBar1",main.mostCurrent._seekbar1,"Spinner1",main.mostCurrent._spinner1,"Starter",Debug.moduleToString(test.designer.starter.class),"ToggleButton1",main.mostCurrent._togglebutton1};
 }
 }

@@ -3,7 +3,7 @@ package test.designer;
 import anywheresoftware.b4a.BA;
 import anywheresoftware.b4a.pc.*;
 
-public class main_subs_1 {
+public class main_subs_2 {
 
 
 public static RemoteObject  _activity_create(RemoteObject _firsttime) throws Exception{

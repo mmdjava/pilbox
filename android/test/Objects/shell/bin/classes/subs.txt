@@ -2,28 +2,68 @@ test.designer
 0
 0
 0
-main,activity_create,1,0,26,28
-,button1
-,button1
+main,activity_create,1,1,38,62
+,checkbox1,,edittext1,,label1,,panel1,,progressbar1,,radiobutton1,,radiobutton2,,radiobutton3,,radiobutton4,,seekbar1,,spinner1,,togglebutton1
+,checkbox1,,edittext1,,label1,,panel1,,progressbar1,,radiobutton1,,radiobutton2,,radiobutton3,,radiobutton4,,seekbar1,,spinner1,,togglebutton1
 
-main,activity_pause,0,0,34,36
-
-
-
-main,activity_resume,0,0,30,32
+main,activity_pause,0,0,70,72
 
 
 
-main,button1_click,1,1,38,42
+main,activity_resume,0,0,66,68
 
 
 
-main,globals,0,1,21,24
+main,button1_click,0,0,74,79
 
 
 
-main,process_globals,0,1,15,19
+main,checkbox1_checkedchange,0,0,102,113
+,checkbox1
 
+
+main,edittext1_textchanged,0,0,81,85
+
+
+
+main,globals,0,1,20,36
+,b
+,b
+
+main,label1_click,0,0,87,91
+
+
+
+main,process_globals,0,1,15,18
+
+
+
+main,radiobutton1_checkedchange,0,0,133,137
+
+
+
+main,radiobutton2_checkedchange,0,0,127,131
+
+
+
+main,radiobutton3_checkedchange,0,0,121,125
+
+
+
+main,radiobutton4_checkedchange,0,0,115,119
+
+
+
+main,seekbar1_valuechanged,0,0,93,100
+,label1
+
+
+main,spinner1_itemclick,0,0,151,160
+,spinner1
+
+
+main,togglebutton1_checkedchange,0,0,139,149
+,panel1
 
 
 starter,application_error,0,0,27,29
