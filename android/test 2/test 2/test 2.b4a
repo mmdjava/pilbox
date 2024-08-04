@@ -1,12 +1,14 @@
 ﻿Build1=Default,b4a.example2
-File1=Layout.bal
+File1=IMG_20240715_095612_394.jpg
+File2=Layout.bal
 FileGroup1=Default Group
+FileGroup2=Default Group
 Group=Default Group
 Library1=core
 Library2=xui
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
 Module1=Starter
-NumberOfFiles=1
+NumberOfFiles=2
 NumberOfLibraries=2
 NumberOfModules=1
 Version=12.8
@@ -28,16 +30,29 @@ Version=12.8
 Sub Process_Globals
 	'These global variables will be declared once when the application starts.
 	'These variables can be accessed from all modules.
-	Private xui As XUI
 End Sub
 
 Sub Globals
 	'These global variables will be redeclared each time the activity is created.
 	Private ListView1 As ListView
+	Private ImageView1 As ImageView
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 	Activity.LoadLayout("Layout")
+	
+	ListView1.AddSingleLine("  شنبه")
+	ListView1.AddSingleLine("  یکشنبه")
+	ListView1.AddSingleLine("  دوشنبه")
+	ListView1.AddSingleLine("  سه شنبه")
+	ListView1.AddSingleLine("  چهارشنبه")
+	ListView1.AddSingleLine("  پنج شنبه")
+	ListView1.AddSingleLine("  جمعه")
+	ListView1.AddTwoLines("This is the first line.", "And this is the second")
+	
+	
+	
+	
 End Sub
 
 Sub Activity_Resume
@@ -48,10 +63,13 @@ Sub Activity_Pause (UserClosed As Boolean)
 
 End Sub
 
-Sub Button1_Click
-	xui.MsgboxAsync("Hello world!", "B4X")
-End Sub
 
 Private Sub ListView1_ItemClick (Position As Int, Value As Object)
+	
+	ToastMessageShow(Value&"("&Position&")",False)
+	
+End Sub
+
+Private Sub ImageView1_Click
 	
 End Sub
