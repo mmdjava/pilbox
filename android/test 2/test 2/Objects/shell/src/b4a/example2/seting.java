@@ -11,13 +11,13 @@ import anywheresoftware.b4a.pc.Debug;
 import anywheresoftware.b4a.pc.B4XTypes.B4XClass;
 import anywheresoftware.b4a.pc.B4XTypes.DeviceClass;
 
-public class main implements IRemote{
-	public static main mostCurrent;
+public class seting implements IRemote{
+	public static seting mostCurrent;
 	public static RemoteObject processBA;
     public static boolean processGlobalsRun;
     public static RemoteObject myClass;
     public static RemoteObject remoteMe;
-	public main() {
+	public seting() {
 		mostCurrent = this;
 	}
     public RemoteObject getRemoteMe() {
@@ -30,7 +30,7 @@ public class main implements IRemote{
 
 	}
     static {
-        anywheresoftware.b4a.pc.RapidSub.moduleToObject.put(new B4XClass("main"), "b4a.example2.main");
+        anywheresoftware.b4a.pc.RapidSub.moduleToObject.put(new B4XClass("seting"), "b4a.example2.seting");
 	}
 
 public boolean isSingleton() {
@@ -50,18 +50,14 @@ public boolean isSingleton() {
 		_activity = (RemoteObject) args[3];
         anywheresoftware.b4a.keywords.Common.Density = (Float)args[4];
         remoteMe = (RemoteObject) args[5];
-		pcBA = new PCBA(this, main.class);
+		pcBA = new PCBA(this, seting.class);
         main_subs_0.initializeProcessGlobals();
 		return pcBA;
 	}
 public static RemoteObject __c = RemoteObject.declareNull("anywheresoftware.b4a.keywords.Common");
-public static RemoteObject _listview1 = RemoteObject.declareNull("anywheresoftware.b4a.objects.ListViewWrapper");
-public static RemoteObject _imageview1 = RemoteObject.declareNull("anywheresoftware.b4a.objects.ImageViewWrapper");
-public static RemoteObject _autocompleteedittext1 = RemoteObject.declareNull("anywheresoftware.b4a.objects.AutoCompleteEditTextWrapper");
-public static RemoteObject _button1 = RemoteObject.declareNull("anywheresoftware.b4a.objects.ButtonWrapper");
+public static b4a.example2.main _main = null;
 public static b4a.example2.starter _starter = null;
-public static b4a.example2.seting _seting = null;
   public Object[] GetGlobals() {
-		return new Object[] {"Activity",main.mostCurrent._activity,"AutoCompleteEditText1",main.mostCurrent._autocompleteedittext1,"Button1",main.mostCurrent._button1,"ImageView1",main.mostCurrent._imageview1,"ListView1",main.mostCurrent._listview1,"seting",Debug.moduleToString(b4a.example2.seting.class),"Starter",Debug.moduleToString(b4a.example2.starter.class)};
+		return new Object[] {"Activity",seting.mostCurrent._activity,"Main",Debug.moduleToString(b4a.example2.main.class),"Starter",Debug.moduleToString(b4a.example2.starter.class)};
 }
 }

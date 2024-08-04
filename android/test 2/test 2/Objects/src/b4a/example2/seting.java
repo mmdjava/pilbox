@@ -14,8 +14,8 @@ import anywheresoftware.b4a.B4AUncaughtException;
 import anywheresoftware.b4a.debug.*;
 import java.lang.ref.WeakReference;
 
-public class main extends Activity implements B4AActivity{
-	public static main mostCurrent;
+public class seting extends Activity implements B4AActivity{
+	public static seting mostCurrent;
 	static boolean afterFirstLayout;
 	static boolean isFirst = true;
     private static boolean processGlobalsRun = false;
@@ -34,7 +34,7 @@ public class main extends Activity implements B4AActivity{
 		super.onCreate(savedInstanceState);
         mostCurrent = this;
 		if (processBA == null) {
-			processBA = new anywheresoftware.b4a.ShellBA(this.getApplicationContext(), null, null, "b4a.example2", "b4a.example2.main");
+			processBA = new anywheresoftware.b4a.ShellBA(this.getApplicationContext(), null, null, "b4a.example2", "b4a.example2.seting");
 			processBA.loadHtSubs(this.getClass());
 	        float deviceScale = getApplicationContext().getResources().getDisplayMetrics().density;
 	        BALayout.setDeviceScale(deviceScale);
@@ -43,7 +43,7 @@ public class main extends Activity implements B4AActivity{
 		else if (previousOne != null) {
 			Activity p = previousOne.get();
 			if (p != null && p != this) {
-                BA.LogInfo("Killing previous instance (main).");
+                BA.LogInfo("Killing previous instance (seting).");
 				p.finish();
 			}
 		}
@@ -86,7 +86,7 @@ public class main extends Activity implements B4AActivity{
 	private void afterFirstLayout() {
         if (this != mostCurrent)
 			return;
-		activityBA = new BA(this, layout, processBA, "b4a.example2", "b4a.example2.main");
+		activityBA = new BA(this, layout, processBA, "b4a.example2", "b4a.example2.seting");
         
         processBA.sharedProcessBA.activityBA = new java.lang.ref.WeakReference<BA>(activityBA);
         anywheresoftware.b4a.objects.ViewWrapper.lastId = 0;
@@ -95,19 +95,19 @@ public class main extends Activity implements B4AActivity{
         if (BA.isShellModeRuntimeCheck(processBA)) {
 			if (isFirst)
 				processBA.raiseEvent2(null, true, "SHELL", false);
-			processBA.raiseEvent2(null, true, "CREATE", true, "b4a.example2.main", processBA, activityBA, _activity, anywheresoftware.b4a.keywords.Common.Density, mostCurrent);
+			processBA.raiseEvent2(null, true, "CREATE", true, "b4a.example2.seting", processBA, activityBA, _activity, anywheresoftware.b4a.keywords.Common.Density, mostCurrent);
 			_activity.reinitializeForShell(activityBA, "activity");
 		}
         initializeProcessGlobals();		
         initializeGlobals();
         
-        BA.LogInfo("** Activity (main) Create " + (isFirst ? "(first time)" : "") + " **");
+        BA.LogInfo("** Activity (seting) Create " + (isFirst ? "(first time)" : "") + " **");
         processBA.raiseEvent2(null, true, "activity_create", false, isFirst);
 		isFirst = false;
 		if (this != mostCurrent)
 			return;
         processBA.setActivityPaused(false);
-        BA.LogInfo("** Activity (main) Resume **");
+        BA.LogInfo("** Activity (seting) Resume **");
         processBA.raiseEvent(null, "activity_resume");
         if (android.os.Build.VERSION.SDK_INT >= 11) {
 			try {
@@ -196,7 +196,7 @@ public class main extends Activity implements B4AActivity{
 		}
 	}
     public static Class<?> getObject() {
-		return main.class;
+		return seting.class;
 	}
     private Boolean onKeySubExist = null;
     private Boolean onKeyUpSubExist = null;
@@ -268,9 +268,9 @@ public class main extends Activity implements B4AActivity{
 			return;
 		anywheresoftware.b4a.Msgbox.dismiss(true);
         if (!dontPause)
-            BA.LogInfo("** Activity (main) Pause, UserClosed = " + activityBA.activity.isFinishing() + " **");
+            BA.LogInfo("** Activity (seting) Pause, UserClosed = " + activityBA.activity.isFinishing() + " **");
         else
-            BA.LogInfo("** Activity (main) Pause event (activity is not paused). **");
+            BA.LogInfo("** Activity (seting) Pause event (activity is not paused). **");
         if (mostCurrent != null)
             processBA.raiseEvent2(_activity, true, "activity_pause", false, activityBA.activity.isFinishing());		
         if (!dontPause) {
@@ -307,11 +307,11 @@ public class main extends Activity implements B4AActivity{
     		this.activity = new WeakReference<Activity>(activity);
     	}
 		public void run() {
-            main mc = mostCurrent;
+            seting mc = mostCurrent;
 			if (mc == null || mc != activity.get())
 				return;
 			processBA.setActivityPaused(false);
-            BA.LogInfo("** Activity (main) Resume **");
+            BA.LogInfo("** Activity (seting) Resume **");
             if (mc != mostCurrent)
                 return;
 		    processBA.raiseEvent(mc._activity, "activity_resume", (Object[])null);
@@ -338,177 +338,44 @@ public class main extends Activity implements B4AActivity{
 
 
 public static void initializeProcessGlobals() {
-    
-    if (main.processGlobalsRun == false) {
-	    main.processGlobalsRun = true;
-		try {
-		        		
-        } catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-    }
-}
-public static boolean isAnyActivityVisible() {
-    boolean vis = false;
-vis = vis | (main.mostCurrent != null);
-vis = vis | (seting.mostCurrent != null);
-return vis;}
-
-private static BA killProgramHelper(BA ba) {
-    if (ba == null)
-        return null;
-    anywheresoftware.b4a.BA.SharedProcessBA sharedProcessBA = ba.sharedProcessBA;
-    if (sharedProcessBA == null || sharedProcessBA.activityBA == null)
-        return null;
-    return sharedProcessBA.activityBA.get();
-}
-public static void killProgram() {
-     {
-            Activity __a = null;
-            if (main.previousOne != null) {
-				__a = main.previousOne.get();
-			}
-            else {
-                BA ba = killProgramHelper(main.mostCurrent == null ? null : main.mostCurrent.processBA);
-                if (ba != null) __a = ba.activity;
+             try {
+                Class.forName(BA.applicationContext.getPackageName() + ".main").getMethod("initializeProcessGlobals").invoke(null, null);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
-            if (__a != null)
-				__a.finish();}
-
-BA.applicationContext.stopService(new android.content.Intent(BA.applicationContext, starter.class));
- {
-            Activity __a = null;
-            if (seting.previousOne != null) {
-				__a = seting.previousOne.get();
-			}
-            else {
-                BA ba = killProgramHelper(seting.mostCurrent == null ? null : seting.mostCurrent.processBA);
-                if (ba != null) __a = ba.activity;
-            }
-            if (__a != null)
-				__a.finish();}
-
 }
 public anywheresoftware.b4a.keywords.Common __c = null;
-public anywheresoftware.b4a.objects.ListViewWrapper _listview1 = null;
-public anywheresoftware.b4a.objects.ImageViewWrapper _imageview1 = null;
-public anywheresoftware.b4a.objects.AutoCompleteEditTextWrapper _autocompleteedittext1 = null;
-public anywheresoftware.b4a.objects.ButtonWrapper _button1 = null;
+public b4a.example2.main _main = null;
 public b4a.example2.starter _starter = null;
-public b4a.example2.seting _seting = null;
 public static String  _activity_create(boolean _firsttime) throws Exception{
-RDebugUtils.currentModule="main";
+RDebugUtils.currentModule="seting";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_create", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_create", new Object[] {_firsttime}));}
-String[] _wle = null;
-RDebugUtils.currentLine=131072;
- //BA.debugLineNum = 131072;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
-RDebugUtils.currentLine=131073;
- //BA.debugLineNum = 131073;BA.debugLine="Activity.LoadLayout(\"Layout\")";
-mostCurrent._activity.LoadLayout("Layout",mostCurrent.activityBA);
-RDebugUtils.currentLine=131075;
- //BA.debugLineNum = 131075;BA.debugLine="ListView1.AddSingleLine(\"  شنبه\")";
-mostCurrent._listview1.AddSingleLine(BA.ObjectToCharSequence("  شنبه"));
-RDebugUtils.currentLine=131076;
- //BA.debugLineNum = 131076;BA.debugLine="ListView1.AddSingleLine(\"  یکشنبه\")";
-mostCurrent._listview1.AddSingleLine(BA.ObjectToCharSequence("  یکشنبه"));
-RDebugUtils.currentLine=131077;
- //BA.debugLineNum = 131077;BA.debugLine="ListView1.AddSingleLine(\"  دوشنبه\")";
-mostCurrent._listview1.AddSingleLine(BA.ObjectToCharSequence("  دوشنبه"));
-RDebugUtils.currentLine=131078;
- //BA.debugLineNum = 131078;BA.debugLine="ListView1.AddSingleLine(\"  سه شنبه\")";
-mostCurrent._listview1.AddSingleLine(BA.ObjectToCharSequence("  سه شنبه"));
-RDebugUtils.currentLine=131079;
- //BA.debugLineNum = 131079;BA.debugLine="ListView1.AddSingleLine(\"  چهارشنبه\")";
-mostCurrent._listview1.AddSingleLine(BA.ObjectToCharSequence("  چهارشنبه"));
-RDebugUtils.currentLine=131080;
- //BA.debugLineNum = 131080;BA.debugLine="ListView1.AddSingleLine(\"  پنج شنبه\")";
-mostCurrent._listview1.AddSingleLine(BA.ObjectToCharSequence("  پنج شنبه"));
-RDebugUtils.currentLine=131081;
- //BA.debugLineNum = 131081;BA.debugLine="ListView1.AddSingleLine(\"  جمعه\")";
-mostCurrent._listview1.AddSingleLine(BA.ObjectToCharSequence("  جمعه"));
-RDebugUtils.currentLine=131082;
- //BA.debugLineNum = 131082;BA.debugLine="ListView1.AddTwoLines(\"This is the first line.\",";
-mostCurrent._listview1.AddTwoLines(BA.ObjectToCharSequence("This is the first line."),BA.ObjectToCharSequence("And this is the second"));
-RDebugUtils.currentLine=131083;
- //BA.debugLineNum = 131083;BA.debugLine="Dim wle() As String";
-_wle = new String[(int) (0)];
-java.util.Arrays.fill(_wle,"");
-RDebugUtils.currentLine=131084;
- //BA.debugLineNum = 131084;BA.debugLine="wle = Array As String(\"ایران\",\"ایمان\",\"خر\",\"خراسا";
-_wle = new String[]{"ایران","ایمان","خر","خراسان","خراسان بزرگ","عقل","عراق","احمد"};
-RDebugUtils.currentLine=131085;
- //BA.debugLineNum = 131085;BA.debugLine="AutoCompleteEditText1.SetItems(wle)";
-mostCurrent._autocompleteedittext1.SetItems(processBA,anywheresoftware.b4a.keywords.Common.ArrayToList(_wle));
-RDebugUtils.currentLine=131092;
- //BA.debugLineNum = 131092;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1310720;
+ //BA.debugLineNum = 1310720;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+RDebugUtils.currentLine=1310722;
+ //BA.debugLineNum = 1310722;BA.debugLine="Activity.LoadLayout(\"about\")";
+mostCurrent._activity.LoadLayout("about",mostCurrent.activityBA);
+RDebugUtils.currentLine=1310724;
+ //BA.debugLineNum = 1310724;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
-RDebugUtils.currentModule="main";
-RDebugUtils.currentLine=262144;
- //BA.debugLineNum = 262144;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
-RDebugUtils.currentLine=262146;
- //BA.debugLineNum = 262146;BA.debugLine="End Sub";
+RDebugUtils.currentModule="seting";
+RDebugUtils.currentLine=1441792;
+ //BA.debugLineNum = 1441792;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+RDebugUtils.currentLine=1441794;
+ //BA.debugLineNum = 1441794;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
-RDebugUtils.currentModule="main";
+RDebugUtils.currentModule="seting";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_resume", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_resume", null));}
-RDebugUtils.currentLine=196608;
- //BA.debugLineNum = 196608;BA.debugLine="Sub Activity_Resume";
-RDebugUtils.currentLine=196610;
- //BA.debugLineNum = 196610;BA.debugLine="End Sub";
-return "";
-}
-public static String  _button1_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "button1_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "button1_click", null));}
-RDebugUtils.currentLine=1114112;
- //BA.debugLineNum = 1114112;BA.debugLine="Private Sub Button1_Click";
-RDebugUtils.currentLine=1114115;
- //BA.debugLineNum = 1114115;BA.debugLine="StartActivity(\"seting\")";
-anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("seting"));
-RDebugUtils.currentLine=1114116;
- //BA.debugLineNum = 1114116;BA.debugLine="Activity.Finish";
-mostCurrent._activity.Finish();
-RDebugUtils.currentLine=1114119;
- //BA.debugLineNum = 1114119;BA.debugLine="End Sub";
-return "";
-}
-public static String  _imageview1_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "imageview1_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "imageview1_click", null));}
-RDebugUtils.currentLine=393216;
- //BA.debugLineNum = 393216;BA.debugLine="Private Sub ImageView1_Click";
-RDebugUtils.currentLine=393218;
- //BA.debugLineNum = 393218;BA.debugLine="End Sub";
-return "";
-}
-public static String  _listview1_itemclick(int _position,Object _value) throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "listview1_itemclick", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "listview1_itemclick", new Object[] {_position,_value}));}
-RDebugUtils.currentLine=327680;
- //BA.debugLineNum = 327680;BA.debugLine="Private Sub ListView1_ItemClick (Position As Int,";
-RDebugUtils.currentLine=327682;
- //BA.debugLineNum = 327682;BA.debugLine="ToastMessageShow(Value&\"(\"&Position&\")\",False)";
-anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence(BA.ObjectToString(_value)+"("+BA.NumberToString(_position)+")"),anywheresoftware.b4a.keywords.Common.False);
-RDebugUtils.currentLine=327684;
- //BA.debugLineNum = 327684;BA.debugLine="End Sub";
-return "";
-}
-public static String  _openfile_click() throws Exception{
-RDebugUtils.currentModule="main";
-if (Debug.shouldDelegate(mostCurrent.activityBA, "openfile_click", false))
-	 {return ((String) Debug.delegate(mostCurrent.activityBA, "openfile_click", null));}
-RDebugUtils.currentLine=1048576;
- //BA.debugLineNum = 1048576;BA.debugLine="Sub OpenFile_Click";
-RDebugUtils.currentLine=1048578;
- //BA.debugLineNum = 1048578;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1376256;
+ //BA.debugLineNum = 1376256;BA.debugLine="Sub Activity_Resume";
+RDebugUtils.currentLine=1376258;
+ //BA.debugLineNum = 1376258;BA.debugLine="End Sub";
 return "";
 }
 }

@@ -130,6 +130,7 @@ public class starter extends android.app.Service{
 	}
 public anywheresoftware.b4a.keywords.Common __c = null;
 public b4a.example2.main _main = null;
+public b4a.example2.seting _seting = null;
 public static boolean  _application_error(anywheresoftware.b4a.objects.B4AException _error,String _stacktrace) throws Exception{
 RDebugUtils.currentModule="starter";
 if (Debug.shouldDelegate(processBA, "application_error", false))

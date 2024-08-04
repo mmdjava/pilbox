@@ -2,23 +2,35 @@ b4a.example2
 0
 0
 0
-main,activity_create,1,1,25,40
-,listview1
-,listview1
+main,activity_create,1,0,30,50
+,autocompleteedittext1,,button1,,imageview1,,listview1
+,autocompleteedittext1,,button1,,imageview1,,listview1
 
-main,activity_pause,0,0,46,48
-
-
-
-main,activity_resume,0,0,42,44
+main,activity_pause,0,0,56,58
 
 
 
-main,globals,0,1,20,23
+main,activity_resume,0,0,52,54
 
 
 
-main,listview1_itemclick,0,1,51,55
+main,button1_click,0,1,77,84
+
+
+
+main,globals,0,1,20,28
+
+
+
+main,imageview1_click,0,0,67,69
+
+
+
+main,listview1_itemclick,0,0,61,65
+
+
+
+main,openfile_click,0,0,73,75
 
 
 
@@ -47,6 +59,26 @@ starter,service_start,0,0,18,20
 
 
 starter,service_taskremoved,0,0,22,24
+
+
+
+seting,activity_create,1,0,18,22
+
+
+
+seting,activity_pause,0,0,28,30
+
+
+
+seting,activity_resume,0,0,24,26
+
+
+
+seting,globals,0,1,12,16
+
+
+
+seting,process_globals,0,1,6,10
 
 
 

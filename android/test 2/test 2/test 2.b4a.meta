@@ -1,9 +1,12 @@
 ﻿ModuleBookmarks0=
 ModuleBookmarks1=
+ModuleBookmarks2=
 ModuleBreakpoints0=
 ModuleBreakpoints1=
+ModuleBreakpoints2=
 ModuleClosedNodes0=1,2
-ModuleClosedNodes1=1
-NavigationStack=Main,Activity_Pause,32,0,Main,Process_Globals,17,4,Main,ListView1_ItemClick,46,6,Main,Globals,23,0,Visual Designer,Layout.bal,-100,6,Main,ImageView1_Click,59,0,Main,Activity_Create,37,6
+ModuleClosedNodes1=
+ModuleClosedNodes2=1
+NavigationStack=Main,Globals,23,3,Main,Activity_Create,43,6,seting,Activity_Pause,29,0,seting,Activity_Resume,23,0,Visual Designer,Layout.bal,-100,6,Visual Designer,about.bal,-100,1,seting,Process_Globals,6,0,seting,Globals,12,0,seting,Activity_Create,19,1,Main,Button1_Click,79,6
 SelectedBuild=0
 VisibleModules=1

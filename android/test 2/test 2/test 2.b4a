@@ -1,16 +1,19 @@
 ﻿Build1=Default,b4a.example2
-File1=IMG_20240715_095612_394.jpg
-File2=Layout.bal
+File1=about.bal
+File2=IMG_20240715_095612_394.jpg
+File3=Layout.bal
 FileGroup1=Default Group
 FileGroup2=Default Group
+FileGroup3=Default Group
 Group=Default Group
 Library1=core
 Library2=xui
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
-Module1=Starter
-NumberOfFiles=2
+Module1=seting
+Module2=Starter
+NumberOfFiles=3
 NumberOfLibraries=2
-NumberOfModules=1
+NumberOfModules=2
 Version=12.8
 @EndOfDesignText@
 #Region  Project Attributes 
@@ -36,6 +39,10 @@ Sub Globals
 	'These global variables will be redeclared each time the activity is created.
 	Private ListView1 As ListView
 	Private ImageView1 As ImageView
+	Private AutoCompleteEditText1 As AutoCompleteEditText	
+
+
+	Private Button1 As Button
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -49,7 +56,12 @@ Sub Activity_Create(FirstTime As Boolean)
 	ListView1.AddSingleLine("  پنج شنبه")
 	ListView1.AddSingleLine("  جمعه")
 	ListView1.AddTwoLines("This is the first line.", "And this is the second")
+	Dim wle() As String
+	wle = Array As String("ایران","ایمان","خر","خراسان","خراسان بزرگ","عقل","عراق","احمد")
+	AutoCompleteEditText1.SetItems(wle)
 	
+	
+
 	
 	
 	
@@ -71,5 +83,20 @@ Private Sub ListView1_ItemClick (Position As Int, Value As Object)
 End Sub
 
 Private Sub ImageView1_Click
+	
+End Sub
+
+
+
+Sub OpenFile_Click
+	
+End Sub
+
+Private Sub Button1_Click
+	
+	'Activity.Finish
+	StartActivity("seting")
+	Activity.Finish
+	
 	
 End Sub
