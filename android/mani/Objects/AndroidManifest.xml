@@ -38,5 +38,37 @@
 			android:name=".starter$starter_BR"
 			android:exported="true">
 		</receiver>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
+			android:name=".pill_1"
+			android:label="B4A Example"
+			android:screenOrientation="unspecified"
+			android:exported="true">
+		</activity>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
+			android:name=".pill_2"
+			android:label="B4A Example"
+			android:screenOrientation="unspecified"
+			android:exported="true">
+		</activity>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
+			android:name=".pill_3"
+			android:label="B4A Example"
+			android:screenOrientation="unspecified"
+			android:exported="true">
+		</activity>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
+			android:name=".pill_4"
+			android:label="B4A Example"
+			android:screenOrientation="unspecified"
+			android:exported="true">
+		</activity>
 	</application>
 </manifest>

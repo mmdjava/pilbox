@@ -4,19 +4,31 @@ File2=Pill (1).png
 File3=Pill (2).png
 File4=pill (4).png
 File5=Pill.png
+File6=pill_1.bal
+File7=pill_2.bal
+File8=pill_3.bal
+File9=pill_4.bal
 FileGroup1=Default Group
 FileGroup2=Default Group
 FileGroup3=Default Group
 FileGroup4=Default Group
 FileGroup5=Default Group
+FileGroup6=Default Group
+FileGroup7=Default Group
+FileGroup8=Default Group
+FileGroup9=Default Group
 Group=Default Group
 Library1=core
 Library2=xui
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
-Module1=Starter
-NumberOfFiles=5
+Module1=pill_1
+Module2=pill_2
+Module3=pill_3
+Module4=pill_4
+Module5=Starter
+NumberOfFiles=9
 NumberOfLibraries=2
-NumberOfModules=1
+NumberOfModules=5
 Version=12.8
 @EndOfDesignText@
 #Region  Project Attributes 
@@ -30,17 +42,30 @@ Version=12.8
 
 #Region  Activity Attributes 
 	#FullScreen: False
-	#IncludeTitle: True
+	#IncludeTitle: False
 #End Region
 
 Sub Process_Globals
 	'These global variables will be declared once when the application starts.
 	'These variables can be accessed from all modules.
 	
+	Dim pill_count_box1 As String
+	Dim box1_alarm As String
+	
+	Dim pill_count_box2 As String
+	Dim box2_alarm As String
+	
+	Dim pill_count_box3 As String
+	Dim box3_alarm As String
+	
+	Dim pill_count_box4 As String
+	Dim box4_alarm As String
+	
 End Sub
 
 Sub Globals
 	'These global variables will be redeclared each time the activity is created.
+
 
 
 	Private Listbox1 As ListView
@@ -51,21 +76,55 @@ Sub Globals
 	Private Imagepill2 As ImageView
 	Private Imagepill3 As ImageView
 	Private Imagepill4 As ImageView
-	Dim box1 As String
+	
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
-	box1 = 5
-	Activity.Titl
-	
-	
-	
-	
+
 	Activity.LoadLayout("Layout")
-	Listbox1.AddTwoLines("تعداد قرص موجود:",box1)
+
+
+	'*******************************باکس شماره یک*******************************
+	pill_count_box1 = 3
+	box1_alarm ="18:50"
+	
+	
+	
+
+	Listbox1.AddSingleLine("   "&"تعداد قرص های موجود:"&"("&pill_count_box1&")")
+	Listbox1.AddSingleLine("   "&"ساعت مصرف:"&"("&box1_alarm&")")
+	
+	
+	'*******************************باکس شماره دو*******************************
+	pill_count_box2 = 12
+	box2_alarm ="9:30"
+	
+
+	Listbox2.AddSingleLine("   "&"تعداد قرص های موجود:"&"("&pill_count_box2&")")
+	Listbox2.AddSingleLine("   "&"ساعت مصرف:"&"("&box2_alarm&")")
+	
+	'*******************************باکس شماره سه*******************************
+	pill_count_box3 = 5
+	box3_alarm ="23:00"
+	
+
+	Listbox3.AddSingleLine("   "&"تعداد قرص های موجود:"&"("&pill_count_box3&")")
+	Listbox3.AddSingleLine("   "&"ساعت مصرف:"&"("&box3_alarm&")")
+	
+	'*******************************باکس شماره چهار*******************************
+	pill_count_box4 = 16
+	box4_alarm ="13:00"
+	
+
+	Listbox4.AddSingleLine("   "&"تعداد قرص های موجود:"&"("&pill_count_box4&")")
+	Listbox4.AddSingleLine("   "&"ساعت مصرف:"&"("&box4_alarm&")")
+	
+	
 End Sub
 
 Sub Activity_Resume
+	
+	
 
 End Sub
 
@@ -77,19 +136,35 @@ End Sub
 
 
 
-Private Sub Imagepill4_Click
+Private Sub Imagepill4_LongClick
+	
+	StartActivity("pill_4")
+	Activity.Finish
+	
 	
 End Sub
 
-Private Sub Imagepill3_Click
+Private Sub Imagepill3_LongClick
+	
+	StartActivity("pill_3")
+	Activity.Finish
+	
 	
 End Sub
 
-Private Sub Imagepill2_Click
+Private Sub Imagepill2_LongClick
+	
+	StartActivity("pill_2")
+	Activity.Finish
+	
 	
 End Sub
 
-Private Sub Imagepill1_Click
+Private Sub Imagepill1_LongClick
+	
+	StartActivity("pill_1")
+	Activity.Finish
+	
 	
 End Sub
 
