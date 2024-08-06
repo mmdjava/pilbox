@@ -1,4 +1,4 @@
-﻿Build1=Default,b4a.example
+﻿Build1=Default,pill.boxV1
 File1=Layout.bal
 File2=Pill (1).png
 File3=Pill (2).png
@@ -49,16 +49,28 @@ Sub Process_Globals
 	'These global variables will be declared once when the application starts.
 	'These variables can be accessed from all modules.
 	
+	Dim pill_naim1 As String	
 	Dim pill_count_box1 As String
+	Dim start_time_1 As String
+	Dim interval_1 As String
 	Dim box1_alarm As String
-	
+	'**********************************************************
+	Dim pill_naim2 As String
 	Dim pill_count_box2 As String
+	Dim start_time_2 As String
+	Dim interval_2 As String
 	Dim box2_alarm As String
-	
+	'**********************************************************
+	Dim pill_naim3 As String
 	Dim pill_count_box3 As String
+	Dim start_time_3 As String
+	Dim interval_3 As String
 	Dim box3_alarm As String
-	
+	'**********************************************************
+	Dim pill_naim4 As String
 	Dim pill_count_box4 As String
+	Dim start_time_4 As String
+	Dim interval_4 As String
 	Dim box4_alarm As String
 	
 End Sub
@@ -77,6 +89,10 @@ Sub Globals
 	Private Imagepill3 As ImageView
 	Private Imagepill4 As ImageView
 	
+	Private Label1 As Label
+	Private Label2 As Label
+	Private Label3 As Label
+	Private Label4 As Label
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -85,37 +101,75 @@ Sub Activity_Create(FirstTime As Boolean)
 
 
 	'*******************************باکس شماره یک*******************************
-	pill_count_box1 = 3
-	box1_alarm ="18:50"
-	
-	
-	
 
+	Try
+		pill_naim1 = File.ReadString(File.DirInternal, "pill_naim1.txt")
+		pill_count_box1 = File.ReadString(File.DirInternal, "pill_count_box1.txt")
+		start_time_1 = File.ReadString(File.DirInternal, "start_time_1.txt")
+		interval_1 = File.ReadString(File.DirInternal, "interval_1.txt")
+	Catch
+		
+		Msgbox("هنوز هیچ تنظیماتی برای قرص شماره یک ذخیره نشده است", "توجه")
+		 
+	End Try
+	
+	
+    Label1.Text=("("&pill_naim1&")")
 	Listbox1.AddSingleLine("   "&"تعداد قرص های موجود:"&"("&pill_count_box1&")")
 	Listbox1.AddSingleLine("   "&"ساعت مصرف:"&"("&box1_alarm&")")
 	
 	
 	'*******************************باکس شماره دو*******************************
-	pill_count_box2 = 12
-	box2_alarm ="9:30"
-	
 
+	Try
+		pill_naim2 = File.ReadString(File.DirInternal, "pill_naim2.txt")
+		pill_count_box2 = File.ReadString(File.DirInternal, "pill_count_box2.txt")
+		start_time_2 = File.ReadString(File.DirInternal, "start_time_2.txt")
+		interval_2 = File.ReadString(File.DirInternal, "interval_2.txt")
+	Catch
+		
+		Msgbox("هنوز هیچ تنظیماتی برای قرص شماره دو ذخیره نشده است", "توجه")
+		 
+	End Try
+	
+	
+	Label2.Text=("("&pill_naim2&")")
 	Listbox2.AddSingleLine("   "&"تعداد قرص های موجود:"&"("&pill_count_box2&")")
 	Listbox2.AddSingleLine("   "&"ساعت مصرف:"&"("&box2_alarm&")")
 	
 	'*******************************باکس شماره سه*******************************
-	pill_count_box3 = 5
-	box3_alarm ="23:00"
-	
 
+	Try
+		pill_naim3 = File.ReadString(File.DirInternal, "pill_naim3.txt")
+		pill_count_box3 = File.ReadString(File.DirInternal, "pill_count_box3.txt")
+		start_time_3 = File.ReadString(File.DirInternal, "start_time_3.txt")
+		interval_3 = File.ReadString(File.DirInternal, "interval_3.txt")
+	Catch
+		
+		Msgbox("هنوز هیچ تنظیماتی برای قرص شماره سه ذخیره نشده است", "توجه")
+		 
+	End Try
+	
+	
+	Label3.Text=("("&pill_naim3&")")
 	Listbox3.AddSingleLine("   "&"تعداد قرص های موجود:"&"("&pill_count_box3&")")
 	Listbox3.AddSingleLine("   "&"ساعت مصرف:"&"("&box3_alarm&")")
 	
 	'*******************************باکس شماره چهار*******************************
-	pill_count_box4 = 16
-	box4_alarm ="13:00"
-	
 
+	Try
+		pill_naim4 = File.ReadString(File.DirInternal, "pill_naim4.txt")
+		pill_count_box4 = File.ReadString(File.DirInternal, "pill_count_box4.txt")
+		start_time_4 = File.ReadString(File.DirInternal, "start_time_4.txt")
+		interval_4 = File.ReadString(File.DirInternal, "interval_4.txt")
+	Catch
+		
+		Msgbox("هنوز هیچ تنظیماتی برای قرص شماره چهار ذخیره نشده است", "توجه")
+		 
+	End Try
+
+	
+	Label4.Text=("("&pill_naim4&")")
 	Listbox4.AddSingleLine("   "&"تعداد قرص های موجود:"&"("&pill_count_box4&")")
 	Listbox4.AddSingleLine("   "&"ساعت مصرف:"&"("&box4_alarm&")")
 	

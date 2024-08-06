@@ -10,8 +10,6 @@ Version=12.8
 #End Region
 
 Sub Process_Globals
-	'These global variables will be declared once when the application starts.
-	'These variables can be accessed from all modules.
 
 End Sub
 
@@ -24,15 +22,25 @@ Sub Globals
 	Private Label2 As Label
 	Private Label3 As Label
 	Private Label4 As Label
-	Private Label5 As Label
+	Private EditText1 As EditText
+	Private EditText2 As EditText
+	Private EditText3 As EditText
+	Private AutoCompleteEditText1 As AutoCompleteEditText
+	
+	Dim etext1 As String
+	Dim etext2 As String
+	Dim etext3 As String
+	Dim etext4 As String
+	
+	
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 	'Do not forget to load the layout file created with the visual designer. For example:
 	Activity.LoadLayout("pill_1")
-
-
+	
 End Sub
+
 
 Sub Activity_Resume
 
@@ -45,7 +53,41 @@ End Sub
 
 Private Sub Button1_Click
 	
+	Main.pill_naim1 = etext1
+	Main.pill_count_box1 = etext2
+	Main.start_time_1 = etext3
+	Main.interval_1 = etext4
+	File.WriteString(File.DirInternal, "pill_naim1.txt",Main.pill_naim1)
+	File.WriteString(File.DirInternal, "pill_count_box1.txt",Main.pill_count_box1)
+	File.WriteString(File.DirInternal, "start_time_1.txt",Main.start_time_1)
+	File.WriteString(File.DirInternal, "interval_1.txt",Main.interval_1)
+	
+	
 	StartActivity("Main")
 	Activity.Finish
+		
+End Sub
+
+Private Sub AutoCompleteEditText1_TextChanged (Old As String, New As String)
+	
+	etext4 = New
+	
+End Sub
+
+Private Sub EditText3_TextChanged (Old As String, New As String)
+	
+	etext3 = New
+	
+End Sub
+
+Private Sub EditText2_TextChanged (Old As String, New As String)
+	
+	etext2 = New
+	
+End Sub
+
+Private Sub EditText1_TextChanged (Old As String, New As String)
+	
+	etext1 = New
 	
 End Sub

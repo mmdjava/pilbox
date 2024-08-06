@@ -18,8 +18,23 @@ End Sub
 Sub Globals
 	'These global variables will be redeclared each time the activity is created.
 	'These variables can only be accessed from this module.
-
+	
 	Private Button1 As Button
+	Private Label1 As Label
+	Private Label2 As Label
+	Private Label3 As Label
+	Private Label4 As Label
+	Private EditText1 As EditText
+	Private EditText2 As EditText
+	Private EditText3 As EditText
+	Private AutoCompleteEditText1 As AutoCompleteEditText
+	
+	Dim etext1 As String
+	Dim etext2 As String
+	Dim etext3 As String
+	Dim etext4 As String
+	
+	
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -39,7 +54,43 @@ End Sub
 
 Private Sub Button1_Click
 	
+	Main.pill_naim4 = etext1
+	Main.pill_count_box4 = etext2
+	Main.start_time_4 = etext3
+	Main.interval_4 = etext4
+	File.WriteString(File.DirInternal, "pill_naim4.txt",Main.pill_naim4)
+	File.WriteString(File.DirInternal, "pill_count_box4.txt",Main.pill_count_box4)
+	File.WriteString(File.DirInternal, "start_time_4.txt",Main.start_time_4)
+	File.WriteString(File.DirInternal, "interval_4.txt",Main.interval_4)
+	
+	
+	
 	StartActivity("main")	
 	Activity.Finish
 
+End Sub
+
+
+Private Sub AutoCompleteEditText1_TextChanged (Old As String, New As String)
+	
+	etext4 = New
+	
+End Sub
+
+Private Sub EditText3_TextChanged (Old As String, New As String)
+	
+	etext3 = New
+	
+End Sub
+
+Private Sub EditText2_TextChanged (Old As String, New As String)
+	
+	etext2 = New
+	
+End Sub
+
+Private Sub EditText1_TextChanged (Old As String, New As String)
+	
+	etext1 = New
+	
 End Sub
