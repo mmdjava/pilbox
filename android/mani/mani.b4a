@@ -1,4 +1,4 @@
-﻿Build1=Default,pill.boxV1
+﻿Build1=pillbox,pill.boxV1
 File1=Layout.bal
 File2=Pill (1).png
 File3=Pill (2).png
@@ -32,9 +32,9 @@ NumberOfModules=5
 Version=12.8
 @EndOfDesignText@
 #Region  Project Attributes 
-	#ApplicationLabel: B4A Example
+	#ApplicationLabel: pill box
 	#VersionCode: 1
-	#VersionName: 
+	#VersionName: 1
 	'SupportedOrientations possible values: unspecified, landscape or portrait.
 	#SupportedOrientations: unspecified
 	#CanInstallToExternalStorage: False

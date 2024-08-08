@@ -3,7 +3,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	package="pill.boxV1"
 	android:versionCode="1"
-	android:versionName=""
+	android:versionName="1"
 	android:installLocation="internalOnly">
 	
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33"/>
@@ -14,13 +14,13 @@
 	<uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 	<application
 		android:icon="@drawable/icon"
-		android:label="B4A Example"
+		android:label="pill box"
 		android:theme="@style/LightTheme">
 		<activity
 			android:windowSoftInputMode="stateHidden"
 			android:launchMode="singleTop"
 			android:name=".main"
-			android:label="B4A Example"
+			android:label="pill box"
 			android:screenOrientation="unspecified"
 			android:exported="true">
 			<intent-filter>
@@ -33,7 +33,7 @@
 			android:windowSoftInputMode="stateHidden"
 			android:launchMode="singleTop"
 			android:name=".pill_1"
-			android:label="B4A Example"
+			android:label="pill box"
 			android:screenOrientation="unspecified"
 			android:exported="true">
 		</activity>
@@ -41,7 +41,7 @@
 			android:windowSoftInputMode="stateHidden"
 			android:launchMode="singleTop"
 			android:name=".pill_2"
-			android:label="B4A Example"
+			android:label="pill box"
 			android:screenOrientation="unspecified"
 			android:exported="true">
 		</activity>
@@ -49,7 +49,7 @@
 			android:windowSoftInputMode="stateHidden"
 			android:launchMode="singleTop"
 			android:name=".pill_3"
-			android:label="B4A Example"
+			android:label="pill box"
 			android:screenOrientation="unspecified"
 			android:exported="true">
 		</activity>
@@ -57,7 +57,7 @@
 			android:windowSoftInputMode="stateHidden"
 			android:launchMode="singleTop"
 			android:name=".pill_4"
-			android:label="B4A Example"
+			android:label="pill box"
 			android:screenOrientation="unspecified"
 			android:exported="true">
 		</activity>
