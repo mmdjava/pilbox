@@ -353,6 +353,7 @@ public pill.boxV1.main _main = null;
 public pill.boxV1.pill_1 _pill_1 = null;
 public pill.boxV1.pill_2 _pill_2 = null;
 public pill.boxV1.pill_4 _pill_4 = null;
+public pill.boxV1.setconnect _setconnect = null;
 public pill.boxV1.starter _starter = null;
 
 public static void initializeProcessGlobals() {
@@ -366,70 +367,78 @@ public static String  _activity_create(boolean _firsttime) throws Exception{
  //BA.debugLineNum = 34;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
  //BA.debugLineNum = 36;BA.debugLine="Activity.LoadLayout(\"pill_3\")";
 mostCurrent._activity.LoadLayout("pill_3",mostCurrent.activityBA);
- //BA.debugLineNum = 38;BA.debugLine="End Sub";
+ //BA.debugLineNum = 38;BA.debugLine="EditText1.Text = Main.pill_naim3";
+mostCurrent._edittext1.setText(BA.ObjectToCharSequence(mostCurrent._main._pill_naim3 /*String*/ ));
+ //BA.debugLineNum = 39;BA.debugLine="EditText2.Text = Main.pill_count_box3";
+mostCurrent._edittext2.setText(BA.ObjectToCharSequence(mostCurrent._main._pill_count_box3 /*String*/ ));
+ //BA.debugLineNum = 40;BA.debugLine="EditText3.Text = Main.start_time_3";
+mostCurrent._edittext3.setText(BA.ObjectToCharSequence(mostCurrent._main._start_time_3 /*String*/ ));
+ //BA.debugLineNum = 41;BA.debugLine="AutoCompleteEditText1.Text = Main.interval_3";
+mostCurrent._autocompleteedittext1.setText(BA.ObjectToCharSequence(mostCurrent._main._interval_3 /*String*/ ));
+ //BA.debugLineNum = 43;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 44;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 46;BA.debugLine="End Sub";
+ //BA.debugLineNum = 49;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 51;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 40;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 42;BA.debugLine="End Sub";
+ //BA.debugLineNum = 45;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 47;BA.debugLine="End Sub";
 return "";
 }
 public static String  _autocompleteedittext1_textchanged(String _old,String _new) throws Exception{
- //BA.debugLineNum = 68;BA.debugLine="Private Sub AutoCompleteEditText1_TextChanged (Old";
- //BA.debugLineNum = 70;BA.debugLine="etext4 = New";
+ //BA.debugLineNum = 73;BA.debugLine="Private Sub AutoCompleteEditText1_TextChanged (Old";
+ //BA.debugLineNum = 75;BA.debugLine="etext4 = New";
 mostCurrent._etext4 = _new;
- //BA.debugLineNum = 72;BA.debugLine="End Sub";
+ //BA.debugLineNum = 77;BA.debugLine="End Sub";
 return "";
 }
 public static String  _button1_click() throws Exception{
- //BA.debugLineNum = 49;BA.debugLine="Private Sub Button1_Click";
- //BA.debugLineNum = 51;BA.debugLine="Main.pill_naim3 = etext1";
+ //BA.debugLineNum = 54;BA.debugLine="Private Sub Button1_Click";
+ //BA.debugLineNum = 56;BA.debugLine="Main.pill_naim3 = etext1";
 mostCurrent._main._pill_naim3 /*String*/  = mostCurrent._etext1;
- //BA.debugLineNum = 52;BA.debugLine="Main.pill_count_box3 = etext2";
+ //BA.debugLineNum = 57;BA.debugLine="Main.pill_count_box3 = etext2";
 mostCurrent._main._pill_count_box3 /*String*/  = mostCurrent._etext2;
- //BA.debugLineNum = 53;BA.debugLine="Main.start_time_3 = etext3";
+ //BA.debugLineNum = 58;BA.debugLine="Main.start_time_3 = etext3";
 mostCurrent._main._start_time_3 /*String*/  = mostCurrent._etext3;
- //BA.debugLineNum = 54;BA.debugLine="Main.interval_3 = etext4";
+ //BA.debugLineNum = 59;BA.debugLine="Main.interval_3 = etext4";
 mostCurrent._main._interval_3 /*String*/  = mostCurrent._etext4;
- //BA.debugLineNum = 55;BA.debugLine="File.WriteString(File.DirInternal, \"pill_naim3.tx";
+ //BA.debugLineNum = 60;BA.debugLine="File.WriteString(File.DirInternal, \"pill_naim3.tx";
 anywheresoftware.b4a.keywords.Common.File.WriteString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_naim3.txt",mostCurrent._main._pill_naim3 /*String*/ );
- //BA.debugLineNum = 56;BA.debugLine="File.WriteString(File.DirInternal, \"pill_count_bo";
+ //BA.debugLineNum = 61;BA.debugLine="File.WriteString(File.DirInternal, \"pill_count_bo";
 anywheresoftware.b4a.keywords.Common.File.WriteString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_count_box3.txt",mostCurrent._main._pill_count_box3 /*String*/ );
- //BA.debugLineNum = 57;BA.debugLine="File.WriteString(File.DirInternal, \"start_time_3.";
+ //BA.debugLineNum = 62;BA.debugLine="File.WriteString(File.DirInternal, \"start_time_3.";
 anywheresoftware.b4a.keywords.Common.File.WriteString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"start_time_3.txt",mostCurrent._main._start_time_3 /*String*/ );
- //BA.debugLineNum = 58;BA.debugLine="File.WriteString(File.DirInternal, \"interval_3.tx";
+ //BA.debugLineNum = 63;BA.debugLine="File.WriteString(File.DirInternal, \"interval_3.tx";
 anywheresoftware.b4a.keywords.Common.File.WriteString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"interval_3.txt",mostCurrent._main._interval_3 /*String*/ );
- //BA.debugLineNum = 62;BA.debugLine="StartActivity(\"main\")";
+ //BA.debugLineNum = 67;BA.debugLine="StartActivity(\"main\")";
 anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("main"));
- //BA.debugLineNum = 63;BA.debugLine="Activity.Finish";
+ //BA.debugLineNum = 68;BA.debugLine="Activity.Finish";
 mostCurrent._activity.Finish();
- //BA.debugLineNum = 65;BA.debugLine="End Sub";
+ //BA.debugLineNum = 70;BA.debugLine="End Sub";
 return "";
 }
 public static String  _edittext1_textchanged(String _old,String _new) throws Exception{
- //BA.debugLineNum = 86;BA.debugLine="Private Sub EditText1_TextChanged (Old As String,";
- //BA.debugLineNum = 88;BA.debugLine="etext1 = New";
+ //BA.debugLineNum = 91;BA.debugLine="Private Sub EditText1_TextChanged (Old As String,";
+ //BA.debugLineNum = 93;BA.debugLine="etext1 = New";
 mostCurrent._etext1 = _new;
- //BA.debugLineNum = 90;BA.debugLine="End Sub";
+ //BA.debugLineNum = 95;BA.debugLine="End Sub";
 return "";
 }
 public static String  _edittext2_textchanged(String _old,String _new) throws Exception{
- //BA.debugLineNum = 80;BA.debugLine="Private Sub EditText2_TextChanged (Old As String,";
- //BA.debugLineNum = 82;BA.debugLine="etext2 = New";
+ //BA.debugLineNum = 85;BA.debugLine="Private Sub EditText2_TextChanged (Old As String,";
+ //BA.debugLineNum = 87;BA.debugLine="etext2 = New";
 mostCurrent._etext2 = _new;
- //BA.debugLineNum = 84;BA.debugLine="End Sub";
+ //BA.debugLineNum = 89;BA.debugLine="End Sub";
 return "";
 }
 public static String  _edittext3_textchanged(String _old,String _new) throws Exception{
- //BA.debugLineNum = 74;BA.debugLine="Private Sub EditText3_TextChanged (Old As String,";
- //BA.debugLineNum = 76;BA.debugLine="etext3 = New";
+ //BA.debugLineNum = 79;BA.debugLine="Private Sub EditText3_TextChanged (Old As String,";
+ //BA.debugLineNum = 81;BA.debugLine="etext3 = New";
 mostCurrent._etext3 = _new;
- //BA.debugLineNum = 78;BA.debugLine="End Sub";
+ //BA.debugLineNum = 83;BA.debugLine="End Sub";
 return "";
 }
 public static String  _globals() throws Exception{

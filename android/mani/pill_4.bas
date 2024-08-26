@@ -40,6 +40,11 @@ End Sub
 Sub Activity_Create(FirstTime As Boolean)
 	'Do not forget to load the layout file created with the visual designer. For example:
 	Activity.LoadLayout("pill_4")
+	
+	EditText1.Text = Main.pill_naim4
+	EditText2.Text = Main.pill_count_box4
+	EditText3.Text = Main.start_time_4
+	AutoCompleteEditText1.Text = Main.interval_4
 
 End Sub
 

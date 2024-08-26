@@ -39,6 +39,11 @@ Sub Activity_Create(FirstTime As Boolean)
 	'Do not forget to load the layout file created with the visual designer. For example:
 	Activity.LoadLayout("pill_1")
 	
+	EditText1.Text = Main.pill_naim1
+	EditText2.Text = Main.pill_count_box1
+	EditText3.Text = Main.start_time_1
+	AutoCompleteEditText1.Text = Main.interval_1
+	
 End Sub
 
 
@@ -62,9 +67,11 @@ Private Sub Button1_Click
 	File.WriteString(File.DirInternal, "start_time_1.txt",Main.start_time_1)
 	File.WriteString(File.DirInternal, "interval_1.txt",Main.interval_1)
 	
+	setconnect.astreams.Write(Main.pill_count_box1.GetBytes("UTF8"))
 	
 	StartActivity("Main")
 	Activity.Finish
+	
 		
 End Sub
 

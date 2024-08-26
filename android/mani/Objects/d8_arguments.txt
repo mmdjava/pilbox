@@ -5,7 +5,9 @@ C:\Users\HDR-PC\Desktop\project\esp32-s3_git\pilbox\android\mani\Objects
 C:\Android\platforms\android-33\android.jar
 C:\Android\tools\..\extras\b4a_local\unpacked-b4ashared-63837502956000\dex_v1\b4ashared.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-core-63837502958000\dex_v1\core.zip
-C:\Android\tools\..\extras\b4a_local\unpacked-xui-63837502958000\dex_v1\xui.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-network-63837502958000\dex_v1\network.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-phone-63837502958000\dex_v1\phone.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-randomaccessfile-63837502958000\dex_v1\randomaccessfile.zip
 C:\Users\HDR-PC\Desktop\project\esp32-s3_git\pilbox\android\mani\Objects\dexed\pill\boxV1\main$1.dex
 C:\Users\HDR-PC\Desktop\project\esp32-s3_git\pilbox\android\mani\Objects\dexed\pill\boxV1\main$B4AMenuItemsClickListener.dex
 C:\Users\HDR-PC\Desktop\project\esp32-s3_git\pilbox\android\mani\Objects\dexed\pill\boxV1\main$HandleKeyDelayed.dex
@@ -39,6 +41,12 @@ C:\Users\HDR-PC\Desktop\project\esp32-s3_git\pilbox\android\mani\Objects\dexed\p
 C:\Users\HDR-PC\Desktop\project\esp32-s3_git\pilbox\android\mani\Objects\dexed\pill\boxV1\R$drawable.dex
 C:\Users\HDR-PC\Desktop\project\esp32-s3_git\pilbox\android\mani\Objects\dexed\pill\boxV1\R$style.dex
 C:\Users\HDR-PC\Desktop\project\esp32-s3_git\pilbox\android\mani\Objects\dexed\pill\boxV1\R.dex
+C:\Users\HDR-PC\Desktop\project\esp32-s3_git\pilbox\android\mani\Objects\dexed\pill\boxV1\setconnect$1.dex
+C:\Users\HDR-PC\Desktop\project\esp32-s3_git\pilbox\android\mani\Objects\dexed\pill\boxV1\setconnect$B4AMenuItemsClickListener.dex
+C:\Users\HDR-PC\Desktop\project\esp32-s3_git\pilbox\android\mani\Objects\dexed\pill\boxV1\setconnect$HandleKeyDelayed.dex
+C:\Users\HDR-PC\Desktop\project\esp32-s3_git\pilbox\android\mani\Objects\dexed\pill\boxV1\setconnect$ResumeMessage.dex
+C:\Users\HDR-PC\Desktop\project\esp32-s3_git\pilbox\android\mani\Objects\dexed\pill\boxV1\setconnect$WaitForLayout.dex
+C:\Users\HDR-PC\Desktop\project\esp32-s3_git\pilbox\android\mani\Objects\dexed\pill\boxV1\setconnect.dex
 C:\Users\HDR-PC\Desktop\project\esp32-s3_git\pilbox\android\mani\Objects\dexed\pill\boxV1\starter$1.dex
 C:\Users\HDR-PC\Desktop\project\esp32-s3_git\pilbox\android\mani\Objects\dexed\pill\boxV1\starter$2.dex
 C:\Users\HDR-PC\Desktop\project\esp32-s3_git\pilbox\android\mani\Objects\dexed\pill\boxV1\starter$starter_BR.dex

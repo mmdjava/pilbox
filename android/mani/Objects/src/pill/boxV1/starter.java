@@ -133,6 +133,7 @@ public pill.boxV1.pill_1 _pill_1 = null;
 public pill.boxV1.pill_2 _pill_2 = null;
 public pill.boxV1.pill_3 _pill_3 = null;
 public pill.boxV1.pill_4 _pill_4 = null;
+public pill.boxV1.setconnect _setconnect = null;
 public static boolean  _application_error(anywheresoftware.b4a.objects.B4AException _error,String _stacktrace) throws Exception{
  //BA.debugLineNum = 27;BA.debugLine="Sub Application_Error (Error As Exception, StackTr";
  //BA.debugLineNum = 28;BA.debugLine="Return True";
