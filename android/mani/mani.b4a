@@ -1,6 +1,8 @@
 ﻿Build1=pillbox,pill.boxV1
 File1=Layout.bal
 File10=setconnect.bal
+File11=switch-off.png
+File12=switch-on.png
 File2=Pill (1).png
 File3=Pill (2).png
 File4=pill (4).png
@@ -11,6 +13,8 @@ File8=pill_3.bal
 File9=pill_4.bal
 FileGroup1=Default Group
 FileGroup10=Default Group
+FileGroup11=Default Group
+FileGroup12=Default Group
 FileGroup2=Default Group
 FileGroup3=Default Group
 FileGroup4=Default Group
@@ -25,15 +29,16 @@ Library2=network
 Library3=phone
 Library4=randomaccessfile
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
-Module1=pill_1
-Module2=pill_2
-Module3=pill_3
-Module4=pill_4
-Module5=setconnect
-Module6=Starter
-NumberOfFiles=10
+Module1=|relative|..\naseri_func
+Module2=pill_1
+Module3=pill_2
+Module4=pill_3
+Module5=pill_4
+Module6=setconnect
+Module7=Starter
+NumberOfFiles=12
 NumberOfLibraries=4
-NumberOfModules=6
+NumberOfModules=7
 Version=12.8
 @EndOfDesignText@
 #Region  Project Attributes 
@@ -78,7 +83,7 @@ Sub Process_Globals
 	Dim interval_4 As String
 	Dim box4_alarm As String
 	'*******************************بخش وای فای و ارتباط*******************************
-
+	
 	
 End Sub
 

@@ -25,6 +25,7 @@ Sub Globals
 	Private Button1 As Button
 	Private EditText1 As EditText
 	Private Button_connect As Button
+	Private back As Button
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -105,4 +106,11 @@ Sub AStreams_NewData (Buffer() As Byte)
 
 	'Label1.Text = Buffer
 	 
+End Sub
+
+Private Sub back_Click
+	
+	StartActivity("main")
+	
+	
 End Sub

@@ -374,6 +374,7 @@ public pill.boxV1.pill_2 _pill_2 = null;
 public pill.boxV1.pill_3 _pill_3 = null;
 public pill.boxV1.pill_4 _pill_4 = null;
 public pill.boxV1.setconnect _setconnect = null;
+public pill.boxV1.naseri_func _naseri_func = null;
 public pill.boxV1.starter _starter = null;
 
 public static boolean isAnyActivityVisible() {
@@ -573,6 +574,7 @@ pill_2._process_globals();
 pill_3._process_globals();
 pill_4._process_globals();
 setconnect._process_globals();
+naseri_func._process_globals();
 starter._process_globals();
 		
         } catch (Exception e) {

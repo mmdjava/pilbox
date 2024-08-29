@@ -344,11 +344,13 @@ public anywheresoftware.b4a.objects.LabelWrapper _label1 = null;
 public anywheresoftware.b4a.objects.ButtonWrapper _button1 = null;
 public anywheresoftware.b4a.objects.EditTextWrapper _edittext1 = null;
 public anywheresoftware.b4a.objects.ButtonWrapper _button_connect = null;
+public anywheresoftware.b4a.objects.ButtonWrapper _back = null;
 public pill.boxV1.main _main = null;
 public pill.boxV1.pill_1 _pill_1 = null;
 public pill.boxV1.pill_2 _pill_2 = null;
 public pill.boxV1.pill_3 _pill_3 = null;
 public pill.boxV1.pill_4 _pill_4 = null;
+public pill.boxV1.naseri_func _naseri_func = null;
 public pill.boxV1.starter _starter = null;
 
 public static void initializeProcessGlobals() {
@@ -359,70 +361,77 @@ public static void initializeProcessGlobals() {
             }
 }
 public static String  _activity_create(boolean _firsttime) throws Exception{
- //BA.debugLineNum = 24;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 25;BA.debugLine="Activity.LoadLayout(\"setconnect\")";
+ //BA.debugLineNum = 25;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+ //BA.debugLineNum = 26;BA.debugLine="Activity.LoadLayout(\"setconnect\")";
 mostCurrent._activity.LoadLayout("setconnect",mostCurrent.activityBA);
- //BA.debugLineNum = 26;BA.debugLine="End Sub";
+ //BA.debugLineNum = 27;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 32;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 34;BA.debugLine="End Sub";
+ //BA.debugLineNum = 33;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 35;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 28;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 30;BA.debugLine="End Sub";
+ //BA.debugLineNum = 29;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 31;BA.debugLine="End Sub";
 return "";
 }
 public static String  _astreams_error() throws Exception{
- //BA.debugLineNum = 78;BA.debugLine="Sub AStreams_Error";
- //BA.debugLineNum = 79;BA.debugLine="Button_connect.Enabled = True";
+ //BA.debugLineNum = 79;BA.debugLine="Sub AStreams_Error";
+ //BA.debugLineNum = 80;BA.debugLine="Button_connect.Enabled = True";
 mostCurrent._button_connect.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 80;BA.debugLine="ToastMessageShow(\"مشکلی رخ داده است\",True)";
+ //BA.debugLineNum = 81;BA.debugLine="ToastMessageShow(\"مشکلی رخ داده است\",True)";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("مشکلی رخ داده است"),anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 82;BA.debugLine="Button_connect.Text = \"اتصال\"";
+ //BA.debugLineNum = 83;BA.debugLine="Button_connect.Text = \"اتصال\"";
 mostCurrent._button_connect.setText(BA.ObjectToCharSequence("اتصال"));
- //BA.debugLineNum = 83;BA.debugLine="viber.Vibrate(1000)";
+ //BA.debugLineNum = 84;BA.debugLine="viber.Vibrate(1000)";
 mostCurrent._viber.Vibrate(processBA,(long) (1000));
- //BA.debugLineNum = 84;BA.debugLine="socket1.Close";
+ //BA.debugLineNum = 85;BA.debugLine="socket1.Close";
 mostCurrent._socket1.Close();
- //BA.debugLineNum = 85;BA.debugLine="End Sub";
+ //BA.debugLineNum = 86;BA.debugLine="End Sub";
 return "";
 }
 public static String  _astreams_newdata(byte[] _buffer) throws Exception{
 String _input = "";
- //BA.debugLineNum = 90;BA.debugLine="Sub AStreams_NewData (Buffer() As Byte)";
- //BA.debugLineNum = 93;BA.debugLine="Dim input As String = BytesToString(Buffer, 0, Bu";
+ //BA.debugLineNum = 91;BA.debugLine="Sub AStreams_NewData (Buffer() As Byte)";
+ //BA.debugLineNum = 94;BA.debugLine="Dim input As String = BytesToString(Buffer, 0, Bu";
 _input = anywheresoftware.b4a.keywords.Common.BytesToString(_buffer,(int) (0),_buffer.length,"UTF-8");
- //BA.debugLineNum = 95;BA.debugLine="Log(input)";
-anywheresoftware.b4a.keywords.Common.LogImpl("54718597",_input,0);
- //BA.debugLineNum = 97;BA.debugLine="Label1.Text =Label1.Text &   (input)";
+ //BA.debugLineNum = 96;BA.debugLine="Log(input)";
+anywheresoftware.b4a.keywords.Common.LogImpl("64259845",_input,0);
+ //BA.debugLineNum = 98;BA.debugLine="Label1.Text =Label1.Text &   (input)";
 mostCurrent._label1.setText(BA.ObjectToCharSequence(mostCurrent._label1.getText()+(_input)));
- //BA.debugLineNum = 102;BA.debugLine="End Sub";
+ //BA.debugLineNum = 103;BA.debugLine="End Sub";
+return "";
+}
+public static String  _back_click() throws Exception{
+ //BA.debugLineNum = 105;BA.debugLine="Private Sub back_Click";
+ //BA.debugLineNum = 107;BA.debugLine="StartActivity(\"main\")";
+anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("main"));
+ //BA.debugLineNum = 110;BA.debugLine="End Sub";
 return "";
 }
 public static String  _button_connect_click() throws Exception{
- //BA.debugLineNum = 36;BA.debugLine="Private Sub Button_connect_Click";
- //BA.debugLineNum = 37;BA.debugLine="ProgressDialogShow2(\"درحال اتصال...\",False)";
+ //BA.debugLineNum = 37;BA.debugLine="Private Sub Button_connect_Click";
+ //BA.debugLineNum = 38;BA.debugLine="ProgressDialogShow2(\"درحال اتصال...\",False)";
 anywheresoftware.b4a.keywords.Common.ProgressDialogShow2(mostCurrent.activityBA,BA.ObjectToCharSequence("درحال اتصال..."),anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 38;BA.debugLine="socket1.Initialize(\"socket1\")";
+ //BA.debugLineNum = 39;BA.debugLine="socket1.Initialize(\"socket1\")";
 mostCurrent._socket1.Initialize("socket1");
- //BA.debugLineNum = 39;BA.debugLine="socket1.Connect(\"192.168.4.1\",8888,5000)";
+ //BA.debugLineNum = 40;BA.debugLine="socket1.Connect(\"192.168.4.1\",8888,5000)";
 mostCurrent._socket1.Connect(processBA,"192.168.4.1",(int) (8888),(int) (5000));
- //BA.debugLineNum = 41;BA.debugLine="End Sub";
+ //BA.debugLineNum = 42;BA.debugLine="End Sub";
 return "";
 }
 public static String  _button1_click() throws Exception{
- //BA.debugLineNum = 43;BA.debugLine="Sub Button1_Click";
- //BA.debugLineNum = 45;BA.debugLine="astreams.Write(EditText1.Text.GetBytes(\"UTF8\"))";
+ //BA.debugLineNum = 44;BA.debugLine="Sub Button1_Click";
+ //BA.debugLineNum = 46;BA.debugLine="astreams.Write(EditText1.Text.GetBytes(\"UTF8\"))";
 _astreams.Write(mostCurrent._edittext1.getText().getBytes("UTF8"));
- //BA.debugLineNum = 46;BA.debugLine="End Sub";
+ //BA.debugLineNum = 47;BA.debugLine="End Sub";
 return "";
 }
 public static String  _edittext1_textchanged(String _old,String _new) throws Exception{
- //BA.debugLineNum = 48;BA.debugLine="Private Sub EditText1_TextChanged (Old As String,";
- //BA.debugLineNum = 52;BA.debugLine="End Sub";
+ //BA.debugLineNum = 49;BA.debugLine="Private Sub EditText1_TextChanged (Old As String,";
+ //BA.debugLineNum = 53;BA.debugLine="End Sub";
 return "";
 }
 public static String  _globals() throws Exception{
@@ -441,7 +450,9 @@ mostCurrent._button1 = new anywheresoftware.b4a.objects.ButtonWrapper();
 mostCurrent._edittext1 = new anywheresoftware.b4a.objects.EditTextWrapper();
  //BA.debugLineNum = 21;BA.debugLine="Private Button_connect As Button";
 mostCurrent._button_connect = new anywheresoftware.b4a.objects.ButtonWrapper();
- //BA.debugLineNum = 22;BA.debugLine="End Sub";
+ //BA.debugLineNum = 22;BA.debugLine="Private back As Button";
+mostCurrent._back = new anywheresoftware.b4a.objects.ButtonWrapper();
+ //BA.debugLineNum = 23;BA.debugLine="End Sub";
 return "";
 }
 public static String  _process_globals() throws Exception{
@@ -452,30 +463,30 @@ _astreams = new anywheresoftware.b4a.randomaccessfile.AsyncStreams();
 return "";
 }
 public static boolean  _socket1_connected(boolean _connected) throws Exception{
- //BA.debugLineNum = 54;BA.debugLine="Sub Socket1_Connected(Connected As Boolean)As Bool";
- //BA.debugLineNum = 56;BA.debugLine="If Connected = True Then";
+ //BA.debugLineNum = 55;BA.debugLine="Sub Socket1_Connected(Connected As Boolean)As Bool";
+ //BA.debugLineNum = 57;BA.debugLine="If Connected = True Then";
 if (_connected==anywheresoftware.b4a.keywords.Common.True) { 
- //BA.debugLineNum = 57;BA.debugLine="ToastMessageShow(\"ارتباط برقرار شد\",True)";
+ //BA.debugLineNum = 58;BA.debugLine="ToastMessageShow(\"ارتباط برقرار شد\",True)";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("ارتباط برقرار شد"),anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 58;BA.debugLine="astreams.Initialize(socket1.InputStream, socket1";
+ //BA.debugLineNum = 59;BA.debugLine="astreams.Initialize(socket1.InputStream, socket1";
 _astreams.Initialize(processBA,mostCurrent._socket1.getInputStream(),mostCurrent._socket1.getOutputStream(),"AStreams");
- //BA.debugLineNum = 59;BA.debugLine="viber.Vibrate(50)";
+ //BA.debugLineNum = 60;BA.debugLine="viber.Vibrate(50)";
 mostCurrent._viber.Vibrate(processBA,(long) (50));
- //BA.debugLineNum = 60;BA.debugLine="Button_connect.Enabled =False";
+ //BA.debugLineNum = 61;BA.debugLine="Button_connect.Enabled =False";
 mostCurrent._button_connect.setEnabled(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 61;BA.debugLine="Button_connect.Text = \"متصل شد\"";
+ //BA.debugLineNum = 62;BA.debugLine="Button_connect.Text = \"متصل شد\"";
 mostCurrent._button_connect.setText(BA.ObjectToCharSequence("متصل شد"));
  }else {
- //BA.debugLineNum = 65;BA.debugLine="ToastMessageShow(\"مشکلی رخ داده است\",True)";
+ //BA.debugLineNum = 66;BA.debugLine="ToastMessageShow(\"مشکلی رخ داده است\",True)";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("مشکلی رخ داده است"),anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 67;BA.debugLine="Button_connect.Text = \"اتصال\"";
+ //BA.debugLineNum = 68;BA.debugLine="Button_connect.Text = \"اتصال\"";
 mostCurrent._button_connect.setText(BA.ObjectToCharSequence("اتصال"));
- //BA.debugLineNum = 68;BA.debugLine="viber.Vibrate(500)";
+ //BA.debugLineNum = 69;BA.debugLine="viber.Vibrate(500)";
 mostCurrent._viber.Vibrate(processBA,(long) (500));
  };
- //BA.debugLineNum = 71;BA.debugLine="ProgressDialogHide";
+ //BA.debugLineNum = 72;BA.debugLine="ProgressDialogHide";
 anywheresoftware.b4a.keywords.Common.ProgressDialogHide();
- //BA.debugLineNum = 73;BA.debugLine="End Sub";
+ //BA.debugLineNum = 74;BA.debugLine="End Sub";
 return false;
 }
 }

@@ -14,6 +14,7 @@ C:\Users\HDR-PC\Desktop\project\esp32-s3_git\pilbox\android\mani\Objects\dexed\p
 C:\Users\HDR-PC\Desktop\project\esp32-s3_git\pilbox\android\mani\Objects\dexed\pill\boxV1\main$ResumeMessage.dex
 C:\Users\HDR-PC\Desktop\project\esp32-s3_git\pilbox\android\mani\Objects\dexed\pill\boxV1\main$WaitForLayout.dex
 C:\Users\HDR-PC\Desktop\project\esp32-s3_git\pilbox\android\mani\Objects\dexed\pill\boxV1\main.dex
+C:\Users\HDR-PC\Desktop\project\esp32-s3_git\pilbox\android\mani\Objects\dexed\pill\boxV1\naseri_func.dex
 C:\Users\HDR-PC\Desktop\project\esp32-s3_git\pilbox\android\mani\Objects\dexed\pill\boxV1\pill_1$1.dex
 C:\Users\HDR-PC\Desktop\project\esp32-s3_git\pilbox\android\mani\Objects\dexed\pill\boxV1\pill_1$B4AMenuItemsClickListener.dex
 C:\Users\HDR-PC\Desktop\project\esp32-s3_git\pilbox\android\mani\Objects\dexed\pill\boxV1\pill_1$HandleKeyDelayed.dex

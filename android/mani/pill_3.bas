@@ -35,16 +35,37 @@ Sub Globals
 	Dim etext3 As String
 	Dim etext4 As String
 	
+	
+	Dim etext1_flag1 As Boolean
+	Dim etext2_flag2 As Boolean
+	Dim etext3_flag3 As Boolean
+	Dim etext4_flag4  As Boolean
+	
+	Dim data_count As String
+	Dim data_starttime As String
+	Dim data_interval As String
+	
+	etext1_flag1 =False
+	etext2_flag2 =False
+	etext3_flag3=False
+	etext4_flag4 =False
+
+	
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 	'Do not forget to load the layout file created with the visual designer. For example:
 	Activity.LoadLayout("pill_3")
 	
-	EditText1.Text = Main.pill_naim3
-	EditText2.Text = Main.pill_count_box3
-	EditText3.Text = Main.start_time_3
-	AutoCompleteEditText1.Text = Main.interval_3
+	Try
+	
+		EditText1.Text = File.ReadString(File.DirInternal, "pill_naim3.txt")
+		EditText2.Text = File.ReadString(File.DirInternal, "pill_count_box3.txt")
+		EditText3.Text = File.ReadString(File.DirInternal, "start_time_3.txt")
+		AutoCompleteEditText1.Text = File.ReadString(File.DirInternal, "interval_3.txt")
+	
+	Catch
+	End Try
 
 End Sub
 
@@ -59,18 +80,41 @@ End Sub
 
 Private Sub Button1_Click
 	
-	Main.pill_naim3 = etext1
-	Main.pill_count_box3 = etext2
-	Main.start_time_3 = etext3
-	Main.interval_3 = etext4
-	File.WriteString(File.DirInternal, "pill_naim3.txt",Main.pill_naim3)
-	File.WriteString(File.DirInternal, "pill_count_box3.txt",Main.pill_count_box3)
-	File.WriteString(File.DirInternal, "start_time_3.txt",Main.start_time_3)
-	File.WriteString(File.DirInternal, "interval_3.txt",Main.interval_3)
+	If(etext1_flag1=True ) Then
+		File.WriteString(File.DirInternal, "pill_naim3.txt",etext1)
+	End If
+	If(etext2_flag2=True ) Then
+		
+
+		File.WriteString(File.DirInternal, "pill_count_box3.txt",etext2)
+	End If
+	If(etext3_flag3=True ) Then
+				
 	
 	
+		File.WriteString(File.DirInternal, "start_time_3.txt",etext3)
+	End If
+	If(etext4_flag4=True ) Then
+				
+		File.WriteString(File.DirInternal, "interval_3.txt",etext4)
+	End If
+	If (etext2_flag2 Or etext3_flag3 Or etext3_flag3) Then
+		setconnect.astreams.Write("p3s".GetBytes("UTF8"))
 	
-	StartActivity("main")
+		'======================================
+		
+		
+		
+		setconnect.astreams.Write(naseri_func.string2byte(etext2))
+		setconnect.astreams.Write(naseri_func.string2byte(etext3))
+		setconnect.astreams.Write(naseri_func.string2byte(etext4))
+		setconnect.astreams.Write("p3e".GetBytes("UTF8"))
+
+	
+		Log(data_count & data_starttime & data_interval)
+	End If
+	
+	StartActivity("Main")
 	Activity.Finish
 	
 End Sub
@@ -79,23 +123,23 @@ End Sub
 Private Sub AutoCompleteEditText1_TextChanged (Old As String, New As String)
 	
 	etext4 = New
-	
+	etext4_flag4=True
 End Sub
 
 Private Sub EditText3_TextChanged (Old As String, New As String)
 	
 	etext3 = New
-	
+	etext3_flag3=True
 End Sub
 
 Private Sub EditText2_TextChanged (Old As String, New As String)
 	
 	etext2 = New
-	
+	etext2_flag2=True
 End Sub
 
 Private Sub EditText1_TextChanged (Old As String, New As String)
 	
 	etext1 = New
-	
+	etext1_flag1=True
 End Sub
