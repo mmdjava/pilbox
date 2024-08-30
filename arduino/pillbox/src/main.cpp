@@ -58,10 +58,27 @@ char output[50];
 int rxCount=0;
 char rxBufer[50]="";
  int len=0;
-//--------------------------------------------------------------
+//======================================================={
+/*
+int key = 40;
+int pill_count = 8;
+int keyState = 0;
+int lastKeyState = HIGH; // وضعیت قبلی کلید
+unsigned long lastDebounceTime = 0;
+unsigned long debounceDelay = 50; // تأخیر برای حذف نویز
+
+int pill1_e;
+int pill_count_box1;
+int start_time_1;
+int interval_1;
+*/
+
+//=======================================================}
 void setup() {
   Serial.begin(115200);
-
+//======================================================={
+//pinMode(key, INPUT_PULLUP);
+//=======================================================}
   WiFi.mode(WIFI_AP);
   WiFi.softAPConfig(local_IP, gateway, subnet);
   WiFi.softAP(ssid, password);
@@ -73,21 +90,23 @@ void setup() {
   Serial.print("Server started at IP: ");
   Serial.println(myIP);
 
-    client = server.available();
-
-    if(client.connected()){
-    
-      Serial.println("Client Connected");
-    } 
+  
 }
 
 void loop() 
 {
- 
+  WiFiClient client = server.available();
+  
+  if (client){ 
+    if(client.connected()){
+    {
+
+      Serial.println("clint conected");
+
+    }
   
 
-  
-   if(client.connected()){      
+   while(client.connected()){      
       while(client.available()>0){
         // read data from the connected client
 
@@ -98,36 +117,54 @@ void loop()
         if(rxCount>5){
        
          len= wordFilter( output,rxBufer,"p1s","p1e");
-       
+          Serial.println(len);
          if(len){
-         int pil1_e=output[0];
-         int pill_count_box1=output[1];
-         int start_time_1=output[2];
-         int interval_1=output[3];
-
+           //  pill1_e=output[0];
+           //  pill_count_box1=output[1];
+           //  start_time_1=output[2];
+           //  interval_1=output[3];
+          
 
          rxCount=0;
-        /* for(int i=0;i<len;i++){
+         for(int i=0;i<len;i++){
  
-            Serial.print(output[i]);
-        }  */    
+            Serial.println(output[i]);
+            client.println(output[i]);
+        }      
        }
       }
     }
-    
-   else{ 
-    if(client.connected())
-     {
-      Serial.println("Client Connected");
-     }
-    else {
-    Serial.println("Client disconnected");}
-     }  
-  //====================================================
+
+  } 
+          client.stop();
+    Serial.println("Client disconnected");
+  }
+  //===================================================={
+/*
+     int reading = digitalRead(key);
+
+  if (reading != lastKeyState) {
+    lastDebounceTime = millis();
+  }
+
+  if ((millis() - lastDebounceTime) > debounceDelay) {
+    if (reading == LOW && keyState == HIGH) {
+      if (pill_count > 0) { // فقط زمانی کاهش بده که pill_count_box1 بزرگتر از صفر است
+        pill_count--;
+        Serial.println(pill_count); // نمایش مقدار در سریال مانیتور
+      }
+
+      if (pill_count == 0) { // اگر مقدار pill_count_box1 به صفر رسید
+        Serial.println("pill=0!!!"); // وقتی قرص ها تمام شود
+      }
+    }
+    keyState = reading;
+  }
+
+  lastKeyState = reading;
    
-
-
-
-  //====================================================
+   
+   */
+  //====================================================}
 
   }
