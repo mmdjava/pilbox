@@ -13,7 +13,7 @@ Sub Process_Globals
 End Sub
 
 
-Public Sub   string2byte (input As String) As Byte()
+Sub   string2byte (input As String) As Byte()
 	
 	'========================================================
 	Dim byteArray() As Byte
@@ -33,3 +33,4 @@ Public Sub   string2byte (input As String) As Byte()
 	byteArray_tx(0)=byteValue
 	Return byteArray_tx
 End Sub
+

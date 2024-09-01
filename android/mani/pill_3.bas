@@ -99,16 +99,16 @@ Private Sub Button1_Click
 		File.WriteString(File.DirInternal, "interval_3.txt",etext4)
 	End If
 	If (etext2_flag2 Or etext3_flag3 Or etext3_flag3) Then
-		setconnect.astreams.Write("p3s".GetBytes("UTF8"))
+		Main.astreams.Write("p3s".GetBytes("UTF8"))
 	
 		'======================================
 		
 		
 		
-		setconnect.astreams.Write(naseri_func.string2byte(etext2))
-		setconnect.astreams.Write(naseri_func.string2byte(etext3))
-		setconnect.astreams.Write(naseri_func.string2byte(etext4))
-		setconnect.astreams.Write("p3e".GetBytes("UTF8"))
+		Main.astreams.Write(naseri_func.string2byte(etext2))
+		Main.astreams.Write(naseri_func.string2byte(etext3))
+		Main.astreams.Write(naseri_func.string2byte(etext4))
+		Main.astreams.Write("p3e".GetBytes("UTF8"))
 
 	
 		Log(data_count & data_starttime & data_interval)

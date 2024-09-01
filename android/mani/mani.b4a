@@ -34,11 +34,10 @@ Module2=pill_1
 Module3=pill_2
 Module4=pill_3
 Module5=pill_4
-Module6=setconnect
-Module7=Starter
+Module6=Starter
 NumberOfFiles=12
 NumberOfLibraries=4
-NumberOfModules=7
+NumberOfModules=6
 Version=12.8
 @EndOfDesignText@
 #Region  Project Attributes 
@@ -83,7 +82,14 @@ Sub Process_Globals
 	Dim interval_4 As String
 	Dim box4_alarm As String
 	'*******************************بخش بروز رسانی صفحه*******************************
+	'Dim Timer1 As Timer
+	'=============================connect=========================
+	Dim viber As PhoneVibrate
+	Dim count As Byte = 1
+	Dim socket1 As Socket
 	Dim Timer1 As Timer
+	Dim astreams As AsyncStreams
+	Dim input As String
 	
 End Sub
 
@@ -109,25 +115,20 @@ Sub Globals
 
 
 	Private setconnect1 As Button
+	Private Label5 As Label
+	Private Label6 As Label
+	Private Label7 As Label
+	Private Label8 As Label
+	Private Label9 As Label
+	Private Label10 As Label
+	Private Label11 As Label
+	Private Label12 As Label
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 
 	Activity.LoadLayout("Layout")
-
 	
-	'------------------------------------
-	Timer1.Initialize("Timer1", 500)
-	Timer1.Enabled = True
-	'---------------------------------
-
-End Sub
-
-
-
-Sub Timer1_Tick
-	'کدهای دریافت داده و به‌روزرسانی Label
-
 	
 	'*******************************باکس شماره یک*******************************
 
@@ -146,10 +147,10 @@ Sub Timer1_Tick
 		 
 	End Try
 	
-	
+'	
 	Label1.Text=("("&pill_naim1&")")
-	Listbox1.AddSingleLine("   "&"تعداد قرص های موجود:"&"("&pill_count_box1&")")
-	Listbox1.AddSingleLine("   "&"ساعت مصرف:"&"("&box1_alarm&")")
+    Label5.Text = ("   "&"تعداد قرص های موجود:"&"("&pill_count_box1&")")
+	Label6.Text = ("   "&"ساعت مصرف:"&"("&box1_alarm&")")
 	
 	
 	'*******************************باکس شماره دو*******************************
@@ -167,8 +168,8 @@ Sub Timer1_Tick
 	
 	
 	Label2.Text=("("&pill_naim2&")")
-	Listbox2.AddSingleLine("   "&"تعداد قرص های موجود:"&"("&pill_count_box2&")")
-	Listbox2.AddSingleLine("   "&"ساعت مصرف:"&"("&box2_alarm&")")
+	Label7.Text = ("   "&"تعداد قرص های موجود:"&"("&pill_count_box2&")")
+	Label8.Text = ("   "&"ساعت مصرف:"&"("&box2_alarm&")")
 	
 	'*******************************باکس شماره سه*******************************
 
@@ -185,8 +186,8 @@ Sub Timer1_Tick
 	
 	
 	Label3.Text=("("&pill_naim3&")")
-	Listbox3.AddSingleLine("   "&"تعداد قرص های موجود:"&"("&pill_count_box3&")")
-	Listbox3.AddSingleLine("   "&"ساعت مصرف:"&"("&box3_alarm&")")
+	Label9.Text = ("   "&"تعداد قرص های موجود:"&"("&pill_count_box3&")")
+	Label10.Text = ("   "&"ساعت مصرف:"&"("&box3_alarm&")")
 	
 	'*******************************باکس شماره چهار*******************************
 
@@ -203,26 +204,42 @@ Sub Timer1_Tick
 
 	
 	Label4.Text=("("&pill_naim4&")")
-	Listbox4.AddSingleLine("   "&"تعداد قرص های موجود:"&"("&pill_count_box4&")")
-	Listbox4.AddSingleLine("   "&"ساعت مصرف:"&"("&box4_alarm&")")
+	Label11.Text = ("   "&"تعداد قرص های موجود:"&"("&")")
+	Label12.Text = ("   "&"ساعت مصرف:"&"("&box4_alarm&")")
 	
 
+
 	
+'	'------------------------------------
+'	Timer1.Initialize("Timer1", 500)
+'	Timer1.Enabled = True
+'	'---------------------------------
 
 End Sub
+
+
+
+'Sub Timer1_Tick
+'	'کدهای دریافت داده و به‌روزرسانی Label
+'
+'
+'
+'	
+'
+'End Sub
 
 
 
 
 Sub Activity_Resume
 	
-	Timer1.Enabled = True
+
 
 End Sub
 
 Sub Activity_Pause (UserClosed As Boolean)
 	
-	Timer1.Enabled = False
+
 
 End Sub
 
@@ -257,7 +274,7 @@ End Sub
 Private Sub Imagepill1_LongClick
 	
 	StartActivity("pill_1")
-	Activity.Finish
+	'Activity.Finish
 	
 	
 End Sub
@@ -283,11 +300,94 @@ End Sub
 
 
 Private Sub setconnect1_Click
-	StartActivity("setconnect")
-	Activity.Finish
+	ProgressDialogShow2("درحال اتصال...",False)
+	socket1.Initialize("socket1")
+	socket1.Connect("192.168.4.1",8888,5000)
 	
 End Sub
 
 '----------------------------------------------------------------------------------------
+'############################################### تابع اتصال ################################
+Sub Socket1_Connected(Connected As Boolean)As Boolean
+
+	If Connected = True Then
+		ToastMessageShow("ارتباط برقرار شد",True)
+		astreams.Initialize(socket1.InputStream, socket1.OutputStream, "AStreams")
+		viber.Vibrate(50)
+		setconnect1.Enabled =False
+		setconnect1.Text = "متصل شد"
+		'Label_status.Color = 0xFF16860D
+	Else
+   	
+		ToastMessageShow("مشکلی رخ داده است",True)
+		'Label_status.Color = 0xFFE40909
+		setconnect1.Text = "اتصال"
+		viber.Vibrate(500)
+	   
+	End If
+	ProgressDialogHide
+   
+End Sub
 
 
+ 
+'###############################################تابع خطای################################
+Sub AStreams_Error
+	setconnect1.Enabled = True
+	ToastMessageShow("مشکلی رخ داده است",True)
+	'Label_status.Color = 0xFFE40909
+	setconnect1.Text = "اتصال"
+	viber.Vibrate(1000)
+	socket1.Close
+End Sub
+
+'###############################################تابع دریافت دیتا################################		
+ 
+
+Sub AStreams_NewData (Buffer() As Byte)
+ 
+ 	
+	input = BytesToString(Buffer, 0, Buffer.Length, "UTF-8")
+	'EditText1.Text = input
+	File.WriteString(File.DirInternal, "pill_count_arduino.txt",input)
+	pill_count_box1 = File.ReadString(File.DirInternal, "pill_count_arduino.txt")
+	Label5.Text = ("   "&"تعداد قرص های موجود:"&"("&pill_count_box1&")")
+'Label1.Text=input
+	Log(input)
+
+	
+	'Label1.Text=("("&input&")")
+'	Listbox1.AddSingleLine("   "&"تعداد قرص های موجود:"&"("&input&")")
+	'Listbox1.RemoveAt()
+	'Listbox1.AddSingleLine("   "&"ساعت مصرف:"&"("&box1_alarm&")")
+	'''''''''''''''''''''''''''''''''''''ChangeItemText(1,"   "&"تعداد قرص های موجود:"&"("&input&")")
+
+'	Dim parts() As String
+'	parts = Regex.Split(",", data)
+ 
+	'ChangeItemText(0, input)
+
+	
+
+
+	 
+End Sub
+
+'Sub ChangeItemText(Index As Int, NewLine1 As String)
+'	' حذف آیتم قبلی از لیست
+'	Log(Listbox1.Size)
+'	Listbox1.RemoveAt(Index)
+'	Log(Listbox1.Size)
+'   ' Listbox1.RemoveAt(Index+1) ' 
+'	' اضافه کردن آیتم جدید با متن جدید در همان مکان
+'	'Listbox1.AddTwoLines("",NewLine1)
+'	'Listbox1.AddTwoLines2(NewLine1, "", Index)
+'	'Listbox1.RemoveAt(Index)
+'	'آیتم قدیمی که به انتهای لیست اضافه شده بود، حذف می‌شود
+'
+'	Listbox1.AddSingleLine(NewLine1)
+'	'Listbox1.AddSingleLine2("   "&"تعداد قرص های موجود:"&"("&input&")",0)
+'   
+'	'Listbox1.AddSingleLine("   "&"ساعت مصرف:"&"("&box1_alarm&")")
+'
+'End Sub

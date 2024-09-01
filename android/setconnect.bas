@@ -14,8 +14,6 @@ Sub Process_Globals
 	'These variables can be accessed from all modules.
 	Dim astreams As AsyncStreams
 	Dim input As String
-	Dim dataQueue As List
-	dataQueue.Initialize
 End Sub
 
 Sub Globals
@@ -107,15 +105,16 @@ Sub AStreams_NewData (Buffer() As Byte)
  
  	
 	 input = BytesToString(Buffer, 0, Buffer.Length, "UTF-8")
-	dataQueue.Add(input)
-	Log("Data added to custom queue: " & input)
-	
-
+	'EditText1.Text = input	
+	File.WriteString(File.DirInternal, "pill_count_arduino.txt",input)	
+	Log(input)
 
 	Label1.Text =Label1.Text &   (input)
 
-
-
+'	Dim parts() As String
+'	parts = Regex.Split(",", data)
+ 
+	CallSubDelayed(Me, "RefreshLayout")
 	
 
 
@@ -132,12 +131,4 @@ End Sub
 
 Sub Timer1_Tick
 
-	' پردازش داده‌ها در هر بار تیک تایمر
-	For Each data As String In dataQueue
-		' پردازش داده‌ها
-		Log("Processing: " & data)
-		File.WriteString(File.DirInternal, "pill_count_arduino.txt",input)
-	Next
-	dataQueue.Clear
-	
 End Sub

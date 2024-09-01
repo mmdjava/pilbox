@@ -122,17 +122,17 @@ Private Sub Button1_Click
 	
 	If (ToggleButton.Checked And (etext2_flag2 Or etext3_flag3 Or etext3_flag3)) Then
 		
-		setconnect.astreams.Write("p1s".GetBytes("UTF8"))	
+		Main.astreams.Write("p1s".GetBytes("UTF8"))	
 		If ToggleButton.Checked=True Then
-			setconnect.astreams.Write(naseri_func.string2byte("1"))
+			Main.astreams.Write(naseri_func.string2byte("1"))
 			Else
-			setconnect.astreams.Write(naseri_func.string2byte("0"))
+			Main.astreams.Write(naseri_func.string2byte("0"))
 		End If
 		
-		setconnect.astreams.Write(naseri_func.string2byte(etext2))
-		setconnect.astreams.Write(naseri_func.string2byte(etext3))
-		setconnect.astreams.Write(naseri_func.string2byte(etext4))
-		setconnect.astreams.Write("p1e".GetBytes("UTF8"))
+		Main.astreams.Write(naseri_func.string2byte(etext2))
+		Main.astreams.Write(naseri_func.string2byte(etext3))
+		Main.astreams.Write(naseri_func.string2byte(etext4))
+		Main.astreams.Write("p1e".GetBytes("UTF8"))
 
 	
 		Log(ToggleButton.Checked & data_count & data_starttime & data_interval)
