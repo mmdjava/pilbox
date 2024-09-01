@@ -13,6 +13,9 @@ Sub Process_Globals
 	'These global variables will be declared once when the application starts.
 	'These variables can be accessed from all modules.
 	Dim astreams As AsyncStreams
+	Dim input As String
+	Dim dataQueue As List
+	dataQueue.Initialize
 End Sub
 
 Sub Globals
@@ -26,10 +29,16 @@ Sub Globals
 	Private EditText1 As EditText
 	Private Button_connect As Button
 	Private back As Button
+	Dim Timer1 As Timer
+	
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 	Activity.LoadLayout("setconnect")
+	
+	Timer1.Initialize("Timer1", 1000)
+	Timer1.Enabled = True
+	
 End Sub
 
 Sub Activity_Resume
@@ -97,14 +106,19 @@ End Sub
 Sub AStreams_NewData (Buffer() As Byte)
  
  	
-	Dim input As String = BytesToString(Buffer, 0, Buffer.Length, "UTF-8")
-	'EditText1.Text = input
-	Log(input)
+	 input = BytesToString(Buffer, 0, Buffer.Length, "UTF-8")
+	dataQueue.Add(input)
+	Log("Data added to custom queue: " & input)
 	
-	Label1.Text =Label1.Text &   (input)
- 
 
-	'Label1.Text = Buffer
+
+	Label1.Text =Label1.Text &   (input)
+
+
+
+	
+
+
 	 
 End Sub
 
@@ -112,5 +126,18 @@ Private Sub back_Click
 	
 	StartActivity("main")
 	
+	
+End Sub
+
+
+Sub Timer1_Tick
+
+	' پردازش داده‌ها در هر بار تیک تایمر
+	For Each data As String In dataQueue
+		' پردازش داده‌ها
+		Log("Processing: " & data)
+		File.WriteString(File.DirInternal, "pill_count_arduino.txt",input)
+	Next
+	dataQueue.Clear
 	
 End Sub

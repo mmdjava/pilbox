@@ -101,25 +101,25 @@ Private Sub Button1_Click
 '	Main.pill_count_box1 = etext2
 '	Main.start_time_1 = etext3
 '	Main.interval_1 = etext4
-	File.WriteString(File.DirInternal, "toogle_en.txt",ToggleButton.Checked)
-    If(etext1_flag1=True ) Then
+
+	File.WriteString(File.DirInternal, "toogle_en.txt",ToggleButton.Checked)'ذخیره داده های فعال یا غیرفعال بودن قرص
+	
+	If(etext1_flag1=True ) Then'اگر متن etext1 تغییر کرد متن جدید را در حافظه ذخیره کن
 	File.WriteString(File.DirInternal, "pill_naim1.txt",etext1)
 	End If
-	If(etext2_flag2=True ) Then
-		
-
+	
+	If(etext2_flag2=True ) Then'اگر متن etext2 تغییر کرد متن جدید را در حافظه ذخیره کن
 		File.WriteString(File.DirInternal, "pill_count_box1.txt",etext2)
 	End If
-	If(etext3_flag3=True ) Then
-				
 	
-	
+	If(etext3_flag3=True ) Then'اگر متن etext3 تغییر کرد متن جدید را در حافظه ذخیره کن
 		File.WriteString(File.DirInternal, "start_time_1.txt",etext3)
 	End If
-	If(etext4_flag4=True ) Then
-				
+	
+	If(etext4_flag4=True ) Then'اگر متن etext4 تغییر کرد متن جدید را در حافظه ذخیره کن
 		File.WriteString(File.DirInternal, "interval_1.txt",etext4)
     End If
+	
 	If (ToggleButton.Checked And (etext2_flag2 Or etext3_flag3 Or etext3_flag3)) Then
 		
 		setconnect.astreams.Write("p1s".GetBytes("UTF8"))	

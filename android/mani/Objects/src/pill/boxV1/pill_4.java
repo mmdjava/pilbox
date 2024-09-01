@@ -34,7 +34,7 @@ public class pill_4 extends Activity implements B4AActivity{
 		super.onCreate(savedInstanceState);
         mostCurrent = this;
 		if (processBA == null) {
-			processBA = new BA(this.getApplicationContext(), null, null, "pill.boxV1", "pill.boxV1.pill_4");
+			processBA = new anywheresoftware.b4a.ShellBA(this.getApplicationContext(), null, null, "pill.boxV1", "pill.boxV1.pill_4");
 			processBA.loadHtSubs(this.getClass());
 	        float deviceScale = getApplicationContext().getResources().getDisplayMetrics().density;
 	        BALayout.setDeviceScale(deviceScale);
@@ -335,6 +335,15 @@ public class pill_4 extends Activity implements B4AActivity{
             
     }
 
+
+
+public static void initializeProcessGlobals() {
+             try {
+                Class.forName(BA.applicationContext.getPackageName() + ".main").getMethod("initializeProcessGlobals").invoke(null, null);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+}
 public anywheresoftware.b4a.keywords.Common __c = null;
 public anywheresoftware.b4a.objects.ButtonWrapper _button1 = null;
 public anywheresoftware.b4a.objects.LabelWrapper _label1 = null;
@@ -363,179 +372,182 @@ public pill.boxV1.pill_3 _pill_3 = null;
 public pill.boxV1.setconnect _setconnect = null;
 public pill.boxV1.naseri_func _naseri_func = null;
 public pill.boxV1.starter _starter = null;
-
-public static void initializeProcessGlobals() {
-             try {
-                Class.forName(BA.applicationContext.getPackageName() + ".main").getMethod("initializeProcessGlobals").invoke(null, null);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-}
 public static String  _activity_create(boolean _firsttime) throws Exception{
- //BA.debugLineNum = 50;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 52;BA.debugLine="Activity.LoadLayout(\"pill_4\")";
+RDebugUtils.currentModule="pill_4";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_create", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_create", new Object[] {_firsttime}));}
+RDebugUtils.currentLine=3080192;
+ //BA.debugLineNum = 3080192;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+RDebugUtils.currentLine=3080194;
+ //BA.debugLineNum = 3080194;BA.debugLine="Activity.LoadLayout(\"pill_4\")";
 mostCurrent._activity.LoadLayout("pill_4",mostCurrent.activityBA);
- //BA.debugLineNum = 54;BA.debugLine="Try";
-try { //BA.debugLineNum = 56;BA.debugLine="EditText1.Text = File.ReadString(File.DirInterna";
+RDebugUtils.currentLine=3080196;
+ //BA.debugLineNum = 3080196;BA.debugLine="Try";
+try {RDebugUtils.currentLine=3080198;
+ //BA.debugLineNum = 3080198;BA.debugLine="EditText1.Text = File.ReadString(File.DirInterna";
 mostCurrent._edittext1.setText(BA.ObjectToCharSequence(anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_naim4.txt")));
- //BA.debugLineNum = 57;BA.debugLine="EditText2.Text = File.ReadString(File.DirInterna";
+RDebugUtils.currentLine=3080199;
+ //BA.debugLineNum = 3080199;BA.debugLine="EditText2.Text = File.ReadString(File.DirInterna";
 mostCurrent._edittext2.setText(BA.ObjectToCharSequence(anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_count_box4.txt")));
- //BA.debugLineNum = 58;BA.debugLine="EditText3.Text = File.ReadString(File.DirInterna";
+RDebugUtils.currentLine=3080200;
+ //BA.debugLineNum = 3080200;BA.debugLine="EditText3.Text = File.ReadString(File.DirInterna";
 mostCurrent._edittext3.setText(BA.ObjectToCharSequence(anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"start_time_4.txt")));
- //BA.debugLineNum = 59;BA.debugLine="AutoCompleteEditText1.Text = File.ReadString(Fil";
+RDebugUtils.currentLine=3080201;
+ //BA.debugLineNum = 3080201;BA.debugLine="AutoCompleteEditText1.Text = File.ReadString(Fil";
 mostCurrent._autocompleteedittext1.setText(BA.ObjectToCharSequence(anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"interval_4.txt")));
  } 
        catch (Exception e8) {
 			processBA.setLastException(e8); };
- //BA.debugLineNum = 64;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3080206;
+ //BA.debugLineNum = 3080206;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 70;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 72;BA.debugLine="End Sub";
+RDebugUtils.currentModule="pill_4";
+RDebugUtils.currentLine=3211264;
+ //BA.debugLineNum = 3211264;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+RDebugUtils.currentLine=3211266;
+ //BA.debugLineNum = 3211266;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 66;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 68;BA.debugLine="End Sub";
+RDebugUtils.currentModule="pill_4";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_resume", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_resume", null));}
+RDebugUtils.currentLine=3145728;
+ //BA.debugLineNum = 3145728;BA.debugLine="Sub Activity_Resume";
+RDebugUtils.currentLine=3145730;
+ //BA.debugLineNum = 3145730;BA.debugLine="End Sub";
 return "";
 }
 public static String  _autocompleteedittext1_textchanged(String _old,String _new) throws Exception{
- //BA.debugLineNum = 117;BA.debugLine="Private Sub AutoCompleteEditText1_TextChanged (Old";
- //BA.debugLineNum = 119;BA.debugLine="etext4 = New";
+RDebugUtils.currentModule="pill_4";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "autocompleteedittext1_textchanged", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "autocompleteedittext1_textchanged", new Object[] {_old,_new}));}
+RDebugUtils.currentLine=3342336;
+ //BA.debugLineNum = 3342336;BA.debugLine="Private Sub AutoCompleteEditText1_TextChanged (Old";
+RDebugUtils.currentLine=3342338;
+ //BA.debugLineNum = 3342338;BA.debugLine="etext4 = New";
 mostCurrent._etext4 = _new;
- //BA.debugLineNum = 120;BA.debugLine="etext4_flag4=True";
+RDebugUtils.currentLine=3342339;
+ //BA.debugLineNum = 3342339;BA.debugLine="etext4_flag4=True";
 _etext4_flag4 = anywheresoftware.b4a.keywords.Common.True;
- //BA.debugLineNum = 121;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3342340;
+ //BA.debugLineNum = 3342340;BA.debugLine="End Sub";
 return "";
 }
 public static String  _button1_click() throws Exception{
- //BA.debugLineNum = 75;BA.debugLine="Private Sub Button1_Click";
- //BA.debugLineNum = 77;BA.debugLine="If(etext1_flag1=True ) Then";
+RDebugUtils.currentModule="pill_4";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "button1_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "button1_click", null));}
+RDebugUtils.currentLine=3276800;
+ //BA.debugLineNum = 3276800;BA.debugLine="Private Sub Button1_Click";
+RDebugUtils.currentLine=3276802;
+ //BA.debugLineNum = 3276802;BA.debugLine="If(etext1_flag1=True ) Then";
 if ((_etext1_flag1==anywheresoftware.b4a.keywords.Common.True)) { 
- //BA.debugLineNum = 78;BA.debugLine="File.WriteString(File.DirInternal, \"pill_naim4.t";
+RDebugUtils.currentLine=3276803;
+ //BA.debugLineNum = 3276803;BA.debugLine="File.WriteString(File.DirInternal, \"pill_naim4.t";
 anywheresoftware.b4a.keywords.Common.File.WriteString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_naim4.txt",mostCurrent._etext1);
  };
- //BA.debugLineNum = 80;BA.debugLine="If(etext2_flag2=True ) Then";
+RDebugUtils.currentLine=3276805;
+ //BA.debugLineNum = 3276805;BA.debugLine="If(etext2_flag2=True ) Then";
 if ((_etext2_flag2==anywheresoftware.b4a.keywords.Common.True)) { 
- //BA.debugLineNum = 83;BA.debugLine="File.WriteString(File.DirInternal, \"pill_count_b";
+RDebugUtils.currentLine=3276808;
+ //BA.debugLineNum = 3276808;BA.debugLine="File.WriteString(File.DirInternal, \"pill_count_b";
 anywheresoftware.b4a.keywords.Common.File.WriteString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_count_box4.txt",mostCurrent._etext2);
  };
- //BA.debugLineNum = 85;BA.debugLine="If(etext3_flag3=True ) Then";
+RDebugUtils.currentLine=3276810;
+ //BA.debugLineNum = 3276810;BA.debugLine="If(etext3_flag3=True ) Then";
 if ((_etext3_flag3==anywheresoftware.b4a.keywords.Common.True)) { 
- //BA.debugLineNum = 89;BA.debugLine="File.WriteString(File.DirInternal, \"start_time_4";
+RDebugUtils.currentLine=3276814;
+ //BA.debugLineNum = 3276814;BA.debugLine="File.WriteString(File.DirInternal, \"start_time_4";
 anywheresoftware.b4a.keywords.Common.File.WriteString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"start_time_4.txt",mostCurrent._etext3);
  };
- //BA.debugLineNum = 91;BA.debugLine="If(etext4_flag4=True ) Then";
+RDebugUtils.currentLine=3276816;
+ //BA.debugLineNum = 3276816;BA.debugLine="If(etext4_flag4=True ) Then";
 if ((_etext4_flag4==anywheresoftware.b4a.keywords.Common.True)) { 
- //BA.debugLineNum = 93;BA.debugLine="File.WriteString(File.DirInternal, \"interval_4.t";
+RDebugUtils.currentLine=3276818;
+ //BA.debugLineNum = 3276818;BA.debugLine="File.WriteString(File.DirInternal, \"interval_4.t";
 anywheresoftware.b4a.keywords.Common.File.WriteString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"interval_4.txt",mostCurrent._etext4);
  };
- //BA.debugLineNum = 95;BA.debugLine="If (etext2_flag2 Or etext3_flag3 Or etext3_flag3)";
+RDebugUtils.currentLine=3276820;
+ //BA.debugLineNum = 3276820;BA.debugLine="If (etext2_flag2 Or etext3_flag3 Or etext3_flag3)";
 if ((_etext2_flag2 || _etext3_flag3 || _etext3_flag3)) { 
- //BA.debugLineNum = 96;BA.debugLine="setconnect.astreams.Write(\"p4s\".GetBytes(\"UTF8\")";
+RDebugUtils.currentLine=3276821;
+ //BA.debugLineNum = 3276821;BA.debugLine="setconnect.astreams.Write(\"p4s\".GetBytes(\"UTF8\")";
 mostCurrent._setconnect._astreams /*anywheresoftware.b4a.randomaccessfile.AsyncStreams*/ .Write("p4s".getBytes("UTF8"));
- //BA.debugLineNum = 102;BA.debugLine="setconnect.astreams.Write(naseri_func.string2byt";
+RDebugUtils.currentLine=3276827;
+ //BA.debugLineNum = 3276827;BA.debugLine="setconnect.astreams.Write(naseri_func.string2byt";
 mostCurrent._setconnect._astreams /*anywheresoftware.b4a.randomaccessfile.AsyncStreams*/ .Write(mostCurrent._naseri_func._string2byte /*byte[]*/ (mostCurrent.activityBA,mostCurrent._etext2));
- //BA.debugLineNum = 103;BA.debugLine="setconnect.astreams.Write(naseri_func.string2byt";
+RDebugUtils.currentLine=3276828;
+ //BA.debugLineNum = 3276828;BA.debugLine="setconnect.astreams.Write(naseri_func.string2byt";
 mostCurrent._setconnect._astreams /*anywheresoftware.b4a.randomaccessfile.AsyncStreams*/ .Write(mostCurrent._naseri_func._string2byte /*byte[]*/ (mostCurrent.activityBA,mostCurrent._etext3));
- //BA.debugLineNum = 104;BA.debugLine="setconnect.astreams.Write(naseri_func.string2byt";
+RDebugUtils.currentLine=3276829;
+ //BA.debugLineNum = 3276829;BA.debugLine="setconnect.astreams.Write(naseri_func.string2byt";
 mostCurrent._setconnect._astreams /*anywheresoftware.b4a.randomaccessfile.AsyncStreams*/ .Write(mostCurrent._naseri_func._string2byte /*byte[]*/ (mostCurrent.activityBA,mostCurrent._etext4));
- //BA.debugLineNum = 105;BA.debugLine="setconnect.astreams.Write(\"p4e\".GetBytes(\"UTF8\")";
+RDebugUtils.currentLine=3276830;
+ //BA.debugLineNum = 3276830;BA.debugLine="setconnect.astreams.Write(\"p4e\".GetBytes(\"UTF8\")";
 mostCurrent._setconnect._astreams /*anywheresoftware.b4a.randomaccessfile.AsyncStreams*/ .Write("p4e".getBytes("UTF8"));
- //BA.debugLineNum = 108;BA.debugLine="Log(data_count & data_starttime & data_interval)";
-anywheresoftware.b4a.keywords.Common.LogImpl("63276833",mostCurrent._data_count+mostCurrent._data_starttime+mostCurrent._data_interval,0);
+RDebugUtils.currentLine=3276833;
+ //BA.debugLineNum = 3276833;BA.debugLine="Log(data_count & data_starttime & data_interval)";
+anywheresoftware.b4a.keywords.Common.LogImpl("33276833",mostCurrent._data_count+mostCurrent._data_starttime+mostCurrent._data_interval,0);
  };
- //BA.debugLineNum = 111;BA.debugLine="StartActivity(\"Main\")";
+RDebugUtils.currentLine=3276836;
+ //BA.debugLineNum = 3276836;BA.debugLine="StartActivity(\"Main\")";
 anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("Main"));
- //BA.debugLineNum = 112;BA.debugLine="Activity.Finish";
+RDebugUtils.currentLine=3276837;
+ //BA.debugLineNum = 3276837;BA.debugLine="Activity.Finish";
 mostCurrent._activity.Finish();
- //BA.debugLineNum = 114;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3276839;
+ //BA.debugLineNum = 3276839;BA.debugLine="End Sub";
 return "";
 }
 public static String  _edittext1_textchanged(String _old,String _new) throws Exception{
- //BA.debugLineNum = 135;BA.debugLine="Private Sub EditText1_TextChanged (Old As String,";
- //BA.debugLineNum = 137;BA.debugLine="etext1 = New";
+RDebugUtils.currentModule="pill_4";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "edittext1_textchanged", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "edittext1_textchanged", new Object[] {_old,_new}));}
+RDebugUtils.currentLine=3538944;
+ //BA.debugLineNum = 3538944;BA.debugLine="Private Sub EditText1_TextChanged (Old As String,";
+RDebugUtils.currentLine=3538946;
+ //BA.debugLineNum = 3538946;BA.debugLine="etext1 = New";
 mostCurrent._etext1 = _new;
- //BA.debugLineNum = 138;BA.debugLine="etext1_flag1=True";
+RDebugUtils.currentLine=3538947;
+ //BA.debugLineNum = 3538947;BA.debugLine="etext1_flag1=True";
 _etext1_flag1 = anywheresoftware.b4a.keywords.Common.True;
- //BA.debugLineNum = 139;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3538948;
+ //BA.debugLineNum = 3538948;BA.debugLine="End Sub";
 return "";
 }
 public static String  _edittext2_textchanged(String _old,String _new) throws Exception{
- //BA.debugLineNum = 129;BA.debugLine="Private Sub EditText2_TextChanged (Old As String,";
- //BA.debugLineNum = 131;BA.debugLine="etext2 = New";
+RDebugUtils.currentModule="pill_4";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "edittext2_textchanged", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "edittext2_textchanged", new Object[] {_old,_new}));}
+RDebugUtils.currentLine=3473408;
+ //BA.debugLineNum = 3473408;BA.debugLine="Private Sub EditText2_TextChanged (Old As String,";
+RDebugUtils.currentLine=3473410;
+ //BA.debugLineNum = 3473410;BA.debugLine="etext2 = New";
 mostCurrent._etext2 = _new;
- //BA.debugLineNum = 132;BA.debugLine="etext2_flag2=True";
+RDebugUtils.currentLine=3473411;
+ //BA.debugLineNum = 3473411;BA.debugLine="etext2_flag2=True";
 _etext2_flag2 = anywheresoftware.b4a.keywords.Common.True;
- //BA.debugLineNum = 133;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3473412;
+ //BA.debugLineNum = 3473412;BA.debugLine="End Sub";
 return "";
 }
 public static String  _edittext3_textchanged(String _old,String _new) throws Exception{
- //BA.debugLineNum = 123;BA.debugLine="Private Sub EditText3_TextChanged (Old As String,";
- //BA.debugLineNum = 125;BA.debugLine="etext3 = New";
+RDebugUtils.currentModule="pill_4";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "edittext3_textchanged", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "edittext3_textchanged", new Object[] {_old,_new}));}
+RDebugUtils.currentLine=3407872;
+ //BA.debugLineNum = 3407872;BA.debugLine="Private Sub EditText3_TextChanged (Old As String,";
+RDebugUtils.currentLine=3407874;
+ //BA.debugLineNum = 3407874;BA.debugLine="etext3 = New";
 mostCurrent._etext3 = _new;
- //BA.debugLineNum = 126;BA.debugLine="etext3_flag3=True";
+RDebugUtils.currentLine=3407875;
+ //BA.debugLineNum = 3407875;BA.debugLine="etext3_flag3=True";
 _etext3_flag3 = anywheresoftware.b4a.keywords.Common.True;
- //BA.debugLineNum = 127;BA.debugLine="End Sub";
-return "";
-}
-public static String  _globals() throws Exception{
- //BA.debugLineNum = 12;BA.debugLine="Sub Globals";
- //BA.debugLineNum = 16;BA.debugLine="Private Button1 As Button";
-mostCurrent._button1 = new anywheresoftware.b4a.objects.ButtonWrapper();
- //BA.debugLineNum = 17;BA.debugLine="Private Label1 As Label";
-mostCurrent._label1 = new anywheresoftware.b4a.objects.LabelWrapper();
- //BA.debugLineNum = 18;BA.debugLine="Private Label2 As Label";
-mostCurrent._label2 = new anywheresoftware.b4a.objects.LabelWrapper();
- //BA.debugLineNum = 19;BA.debugLine="Private Label3 As Label";
-mostCurrent._label3 = new anywheresoftware.b4a.objects.LabelWrapper();
- //BA.debugLineNum = 20;BA.debugLine="Private Label4 As Label";
-mostCurrent._label4 = new anywheresoftware.b4a.objects.LabelWrapper();
- //BA.debugLineNum = 21;BA.debugLine="Private EditText1 As EditText";
-mostCurrent._edittext1 = new anywheresoftware.b4a.objects.EditTextWrapper();
- //BA.debugLineNum = 22;BA.debugLine="Private EditText2 As EditText";
-mostCurrent._edittext2 = new anywheresoftware.b4a.objects.EditTextWrapper();
- //BA.debugLineNum = 23;BA.debugLine="Private EditText3 As EditText";
-mostCurrent._edittext3 = new anywheresoftware.b4a.objects.EditTextWrapper();
- //BA.debugLineNum = 24;BA.debugLine="Private AutoCompleteEditText1 As AutoCompleteEdit";
-mostCurrent._autocompleteedittext1 = new anywheresoftware.b4a.objects.AutoCompleteEditTextWrapper();
- //BA.debugLineNum = 26;BA.debugLine="Dim etext1 As String";
-mostCurrent._etext1 = "";
- //BA.debugLineNum = 27;BA.debugLine="Dim etext2 As String";
-mostCurrent._etext2 = "";
- //BA.debugLineNum = 28;BA.debugLine="Dim etext3 As String";
-mostCurrent._etext3 = "";
- //BA.debugLineNum = 29;BA.debugLine="Dim etext4 As String";
-mostCurrent._etext4 = "";
- //BA.debugLineNum = 32;BA.debugLine="Dim etext1_flag1 As Boolean";
-_etext1_flag1 = false;
- //BA.debugLineNum = 33;BA.debugLine="Dim etext2_flag2 As Boolean";
-_etext2_flag2 = false;
- //BA.debugLineNum = 34;BA.debugLine="Dim etext3_flag3 As Boolean";
-_etext3_flag3 = false;
- //BA.debugLineNum = 35;BA.debugLine="Dim etext4_flag4  As Boolean";
-_etext4_flag4 = false;
- //BA.debugLineNum = 37;BA.debugLine="Dim data_count As String";
-mostCurrent._data_count = "";
- //BA.debugLineNum = 38;BA.debugLine="Dim data_starttime As String";
-mostCurrent._data_starttime = "";
- //BA.debugLineNum = 39;BA.debugLine="Dim data_interval As String";
-mostCurrent._data_interval = "";
- //BA.debugLineNum = 41;BA.debugLine="etext1_flag1 =False";
-_etext1_flag1 = anywheresoftware.b4a.keywords.Common.False;
- //BA.debugLineNum = 42;BA.debugLine="etext2_flag2 =False";
-_etext2_flag2 = anywheresoftware.b4a.keywords.Common.False;
- //BA.debugLineNum = 43;BA.debugLine="etext3_flag3=False";
-_etext3_flag3 = anywheresoftware.b4a.keywords.Common.False;
- //BA.debugLineNum = 44;BA.debugLine="etext4_flag4 =False";
-_etext4_flag4 = anywheresoftware.b4a.keywords.Common.False;
- //BA.debugLineNum = 48;BA.debugLine="End Sub";
-return "";
-}
-public static String  _process_globals() throws Exception{
- //BA.debugLineNum = 6;BA.debugLine="Sub Process_Globals";
- //BA.debugLineNum = 10;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3407876;
+ //BA.debugLineNum = 3407876;BA.debugLine="End Sub";
 return "";
 }
 }

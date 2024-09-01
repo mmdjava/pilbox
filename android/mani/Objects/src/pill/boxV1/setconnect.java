@@ -34,7 +34,7 @@ public class setconnect extends Activity implements B4AActivity{
 		super.onCreate(savedInstanceState);
         mostCurrent = this;
 		if (processBA == null) {
-			processBA = new BA(this.getApplicationContext(), null, null, "pill.boxV1", "pill.boxV1.setconnect");
+			processBA = new anywheresoftware.b4a.ShellBA(this.getApplicationContext(), null, null, "pill.boxV1", "pill.boxV1.setconnect");
 			processBA.loadHtSubs(this.getClass());
 	        float deviceScale = getApplicationContext().getResources().getDisplayMetrics().density;
 	        BALayout.setDeviceScale(deviceScale);
@@ -335,23 +335,7 @@ public class setconnect extends Activity implements B4AActivity{
             
     }
 
-public anywheresoftware.b4a.keywords.Common __c = null;
-public static anywheresoftware.b4a.randomaccessfile.AsyncStreams _astreams = null;
-public anywheresoftware.b4a.phone.Phone.PhoneVibrate _viber = null;
-public static byte _count = (byte)0;
-public anywheresoftware.b4a.objects.SocketWrapper _socket1 = null;
-public anywheresoftware.b4a.objects.LabelWrapper _label1 = null;
-public anywheresoftware.b4a.objects.ButtonWrapper _button1 = null;
-public anywheresoftware.b4a.objects.EditTextWrapper _edittext1 = null;
-public anywheresoftware.b4a.objects.ButtonWrapper _button_connect = null;
-public anywheresoftware.b4a.objects.ButtonWrapper _back = null;
-public pill.boxV1.main _main = null;
-public pill.boxV1.pill_1 _pill_1 = null;
-public pill.boxV1.pill_2 _pill_2 = null;
-public pill.boxV1.pill_3 _pill_3 = null;
-public pill.boxV1.pill_4 _pill_4 = null;
-public pill.boxV1.naseri_func _naseri_func = null;
-public pill.boxV1.starter _starter = null;
+
 
 public static void initializeProcessGlobals() {
              try {
@@ -360,133 +344,236 @@ public static void initializeProcessGlobals() {
                 throw new RuntimeException(e);
             }
 }
+public anywheresoftware.b4a.keywords.Common __c = null;
+public static anywheresoftware.b4a.randomaccessfile.AsyncStreams _astreams = null;
+public static String _input = "";
+public static anywheresoftware.b4a.objects.collections.List _dataqueue = null;
+public anywheresoftware.b4a.phone.Phone.PhoneVibrate _viber = null;
+public static byte _count = (byte)0;
+public anywheresoftware.b4a.objects.SocketWrapper _socket1 = null;
+public anywheresoftware.b4a.objects.LabelWrapper _label1 = null;
+public anywheresoftware.b4a.objects.ButtonWrapper _button1 = null;
+public anywheresoftware.b4a.objects.EditTextWrapper _edittext1 = null;
+public anywheresoftware.b4a.objects.ButtonWrapper _button_connect = null;
+public anywheresoftware.b4a.objects.ButtonWrapper _back = null;
+public anywheresoftware.b4a.objects.Timer _timer1 = null;
+public pill.boxV1.main _main = null;
+public pill.boxV1.pill_1 _pill_1 = null;
+public pill.boxV1.pill_2 _pill_2 = null;
+public pill.boxV1.pill_3 _pill_3 = null;
+public pill.boxV1.pill_4 _pill_4 = null;
+public pill.boxV1.naseri_func _naseri_func = null;
+public pill.boxV1.starter _starter = null;
 public static String  _activity_create(boolean _firsttime) throws Exception{
- //BA.debugLineNum = 25;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 26;BA.debugLine="Activity.LoadLayout(\"setconnect\")";
+RDebugUtils.currentModule="setconnect";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_create", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_create", new Object[] {_firsttime}));}
+RDebugUtils.currentLine=3735552;
+ //BA.debugLineNum = 3735552;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+RDebugUtils.currentLine=3735553;
+ //BA.debugLineNum = 3735553;BA.debugLine="Activity.LoadLayout(\"setconnect\")";
 mostCurrent._activity.LoadLayout("setconnect",mostCurrent.activityBA);
- //BA.debugLineNum = 27;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3735555;
+ //BA.debugLineNum = 3735555;BA.debugLine="Timer1.Initialize(\"Timer1\", 1000)";
+mostCurrent._timer1.Initialize(processBA,"Timer1",(long) (1000));
+RDebugUtils.currentLine=3735556;
+ //BA.debugLineNum = 3735556;BA.debugLine="Timer1.Enabled = True";
+mostCurrent._timer1.setEnabled(anywheresoftware.b4a.keywords.Common.True);
+RDebugUtils.currentLine=3735558;
+ //BA.debugLineNum = 3735558;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 33;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 35;BA.debugLine="End Sub";
+RDebugUtils.currentModule="setconnect";
+RDebugUtils.currentLine=3866624;
+ //BA.debugLineNum = 3866624;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+RDebugUtils.currentLine=3866626;
+ //BA.debugLineNum = 3866626;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 29;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 31;BA.debugLine="End Sub";
+RDebugUtils.currentModule="setconnect";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_resume", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_resume", null));}
+RDebugUtils.currentLine=3801088;
+ //BA.debugLineNum = 3801088;BA.debugLine="Sub Activity_Resume";
+RDebugUtils.currentLine=3801090;
+ //BA.debugLineNum = 3801090;BA.debugLine="End Sub";
 return "";
 }
 public static String  _astreams_error() throws Exception{
- //BA.debugLineNum = 79;BA.debugLine="Sub AStreams_Error";
- //BA.debugLineNum = 80;BA.debugLine="Button_connect.Enabled = True";
+RDebugUtils.currentModule="setconnect";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "astreams_error", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "astreams_error", null));}
+RDebugUtils.currentLine=4194304;
+ //BA.debugLineNum = 4194304;BA.debugLine="Sub AStreams_Error";
+RDebugUtils.currentLine=4194305;
+ //BA.debugLineNum = 4194305;BA.debugLine="Button_connect.Enabled = True";
 mostCurrent._button_connect.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 81;BA.debugLine="ToastMessageShow(\"مشکلی رخ داده است\",True)";
+RDebugUtils.currentLine=4194306;
+ //BA.debugLineNum = 4194306;BA.debugLine="ToastMessageShow(\"مشکلی رخ داده است\",True)";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("مشکلی رخ داده است"),anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 83;BA.debugLine="Button_connect.Text = \"اتصال\"";
+RDebugUtils.currentLine=4194308;
+ //BA.debugLineNum = 4194308;BA.debugLine="Button_connect.Text = \"اتصال\"";
 mostCurrent._button_connect.setText(BA.ObjectToCharSequence("اتصال"));
- //BA.debugLineNum = 84;BA.debugLine="viber.Vibrate(1000)";
+RDebugUtils.currentLine=4194309;
+ //BA.debugLineNum = 4194309;BA.debugLine="viber.Vibrate(1000)";
 mostCurrent._viber.Vibrate(processBA,(long) (1000));
- //BA.debugLineNum = 85;BA.debugLine="socket1.Close";
+RDebugUtils.currentLine=4194310;
+ //BA.debugLineNum = 4194310;BA.debugLine="socket1.Close";
 mostCurrent._socket1.Close();
- //BA.debugLineNum = 86;BA.debugLine="End Sub";
+RDebugUtils.currentLine=4194311;
+ //BA.debugLineNum = 4194311;BA.debugLine="End Sub";
 return "";
 }
 public static String  _astreams_newdata(byte[] _buffer) throws Exception{
-String _input = "";
- //BA.debugLineNum = 91;BA.debugLine="Sub AStreams_NewData (Buffer() As Byte)";
- //BA.debugLineNum = 94;BA.debugLine="Dim input As String = BytesToString(Buffer, 0, Bu";
+RDebugUtils.currentModule="setconnect";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "astreams_newdata", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "astreams_newdata", new Object[] {_buffer}));}
+RDebugUtils.currentLine=4259840;
+ //BA.debugLineNum = 4259840;BA.debugLine="Sub AStreams_NewData (Buffer() As Byte)";
+RDebugUtils.currentLine=4259843;
+ //BA.debugLineNum = 4259843;BA.debugLine="input = BytesToString(Buffer, 0, Buffer.Length,";
 _input = anywheresoftware.b4a.keywords.Common.BytesToString(_buffer,(int) (0),_buffer.length,"UTF-8");
- //BA.debugLineNum = 96;BA.debugLine="Log(input)";
-anywheresoftware.b4a.keywords.Common.LogImpl("64259845",_input,0);
- //BA.debugLineNum = 98;BA.debugLine="Label1.Text =Label1.Text &   (input)";
+RDebugUtils.currentLine=4259844;
+ //BA.debugLineNum = 4259844;BA.debugLine="dataQueue.Add(input)";
+_dataqueue.Add((Object)(_input));
+RDebugUtils.currentLine=4259845;
+ //BA.debugLineNum = 4259845;BA.debugLine="Log(\"Data added to custom queue: \" & input)";
+anywheresoftware.b4a.keywords.Common.LogImpl("34259845","Data added to custom queue: "+_input,0);
+RDebugUtils.currentLine=4259849;
+ //BA.debugLineNum = 4259849;BA.debugLine="Label1.Text =Label1.Text &   (input)";
 mostCurrent._label1.setText(BA.ObjectToCharSequence(mostCurrent._label1.getText()+(_input)));
- //BA.debugLineNum = 103;BA.debugLine="End Sub";
+RDebugUtils.currentLine=4259857;
+ //BA.debugLineNum = 4259857;BA.debugLine="End Sub";
 return "";
 }
 public static String  _back_click() throws Exception{
- //BA.debugLineNum = 105;BA.debugLine="Private Sub back_Click";
- //BA.debugLineNum = 107;BA.debugLine="StartActivity(\"main\")";
+RDebugUtils.currentModule="setconnect";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "back_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "back_click", null));}
+RDebugUtils.currentLine=4325376;
+ //BA.debugLineNum = 4325376;BA.debugLine="Private Sub back_Click";
+RDebugUtils.currentLine=4325378;
+ //BA.debugLineNum = 4325378;BA.debugLine="StartActivity(\"main\")";
 anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("main"));
- //BA.debugLineNum = 110;BA.debugLine="End Sub";
+RDebugUtils.currentLine=4325381;
+ //BA.debugLineNum = 4325381;BA.debugLine="End Sub";
 return "";
 }
 public static String  _button_connect_click() throws Exception{
- //BA.debugLineNum = 37;BA.debugLine="Private Sub Button_connect_Click";
- //BA.debugLineNum = 38;BA.debugLine="ProgressDialogShow2(\"درحال اتصال...\",False)";
+RDebugUtils.currentModule="setconnect";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "button_connect_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "button_connect_click", null));}
+RDebugUtils.currentLine=3932160;
+ //BA.debugLineNum = 3932160;BA.debugLine="Private Sub Button_connect_Click";
+RDebugUtils.currentLine=3932161;
+ //BA.debugLineNum = 3932161;BA.debugLine="ProgressDialogShow2(\"درحال اتصال...\",False)";
 anywheresoftware.b4a.keywords.Common.ProgressDialogShow2(mostCurrent.activityBA,BA.ObjectToCharSequence("درحال اتصال..."),anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 39;BA.debugLine="socket1.Initialize(\"socket1\")";
+RDebugUtils.currentLine=3932162;
+ //BA.debugLineNum = 3932162;BA.debugLine="socket1.Initialize(\"socket1\")";
 mostCurrent._socket1.Initialize("socket1");
- //BA.debugLineNum = 40;BA.debugLine="socket1.Connect(\"192.168.4.1\",8888,5000)";
+RDebugUtils.currentLine=3932163;
+ //BA.debugLineNum = 3932163;BA.debugLine="socket1.Connect(\"192.168.4.1\",8888,5000)";
 mostCurrent._socket1.Connect(processBA,"192.168.4.1",(int) (8888),(int) (5000));
- //BA.debugLineNum = 42;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3932165;
+ //BA.debugLineNum = 3932165;BA.debugLine="End Sub";
 return "";
 }
 public static String  _button1_click() throws Exception{
- //BA.debugLineNum = 44;BA.debugLine="Sub Button1_Click";
- //BA.debugLineNum = 46;BA.debugLine="astreams.Write(EditText1.Text.GetBytes(\"UTF8\"))";
+RDebugUtils.currentModule="setconnect";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "button1_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "button1_click", null));}
+RDebugUtils.currentLine=3997696;
+ //BA.debugLineNum = 3997696;BA.debugLine="Sub Button1_Click";
+RDebugUtils.currentLine=3997698;
+ //BA.debugLineNum = 3997698;BA.debugLine="astreams.Write(EditText1.Text.GetBytes(\"UTF8\"))";
 _astreams.Write(mostCurrent._edittext1.getText().getBytes("UTF8"));
- //BA.debugLineNum = 47;BA.debugLine="End Sub";
+RDebugUtils.currentLine=3997699;
+ //BA.debugLineNum = 3997699;BA.debugLine="End Sub";
 return "";
 }
 public static String  _edittext1_textchanged(String _old,String _new) throws Exception{
- //BA.debugLineNum = 49;BA.debugLine="Private Sub EditText1_TextChanged (Old As String,";
- //BA.debugLineNum = 53;BA.debugLine="End Sub";
-return "";
-}
-public static String  _globals() throws Exception{
- //BA.debugLineNum = 12;BA.debugLine="Sub Globals";
- //BA.debugLineNum = 14;BA.debugLine="Dim viber As PhoneVibrate";
-mostCurrent._viber = new anywheresoftware.b4a.phone.Phone.PhoneVibrate();
- //BA.debugLineNum = 15;BA.debugLine="Dim count As Byte = 1";
-_count = (byte) (1);
- //BA.debugLineNum = 17;BA.debugLine="Dim socket1 As Socket";
-mostCurrent._socket1 = new anywheresoftware.b4a.objects.SocketWrapper();
- //BA.debugLineNum = 18;BA.debugLine="Private Label1 As Label";
-mostCurrent._label1 = new anywheresoftware.b4a.objects.LabelWrapper();
- //BA.debugLineNum = 19;BA.debugLine="Private Button1 As Button";
-mostCurrent._button1 = new anywheresoftware.b4a.objects.ButtonWrapper();
- //BA.debugLineNum = 20;BA.debugLine="Private EditText1 As EditText";
-mostCurrent._edittext1 = new anywheresoftware.b4a.objects.EditTextWrapper();
- //BA.debugLineNum = 21;BA.debugLine="Private Button_connect As Button";
-mostCurrent._button_connect = new anywheresoftware.b4a.objects.ButtonWrapper();
- //BA.debugLineNum = 22;BA.debugLine="Private back As Button";
-mostCurrent._back = new anywheresoftware.b4a.objects.ButtonWrapper();
- //BA.debugLineNum = 23;BA.debugLine="End Sub";
-return "";
-}
-public static String  _process_globals() throws Exception{
- //BA.debugLineNum = 6;BA.debugLine="Sub Process_Globals";
- //BA.debugLineNum = 9;BA.debugLine="Dim astreams As AsyncStreams";
-_astreams = new anywheresoftware.b4a.randomaccessfile.AsyncStreams();
- //BA.debugLineNum = 10;BA.debugLine="End Sub";
+RDebugUtils.currentModule="setconnect";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "edittext1_textchanged", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "edittext1_textchanged", new Object[] {_old,_new}));}
+RDebugUtils.currentLine=4063232;
+ //BA.debugLineNum = 4063232;BA.debugLine="Private Sub EditText1_TextChanged (Old As String,";
+RDebugUtils.currentLine=4063236;
+ //BA.debugLineNum = 4063236;BA.debugLine="End Sub";
 return "";
 }
 public static boolean  _socket1_connected(boolean _connected) throws Exception{
- //BA.debugLineNum = 55;BA.debugLine="Sub Socket1_Connected(Connected As Boolean)As Bool";
- //BA.debugLineNum = 57;BA.debugLine="If Connected = True Then";
+RDebugUtils.currentModule="setconnect";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "socket1_connected", false))
+	 {return ((Boolean) Debug.delegate(mostCurrent.activityBA, "socket1_connected", new Object[] {_connected}));}
+RDebugUtils.currentLine=4128768;
+ //BA.debugLineNum = 4128768;BA.debugLine="Sub Socket1_Connected(Connected As Boolean)As Bool";
+RDebugUtils.currentLine=4128770;
+ //BA.debugLineNum = 4128770;BA.debugLine="If Connected = True Then";
 if (_connected==anywheresoftware.b4a.keywords.Common.True) { 
- //BA.debugLineNum = 58;BA.debugLine="ToastMessageShow(\"ارتباط برقرار شد\",True)";
+RDebugUtils.currentLine=4128771;
+ //BA.debugLineNum = 4128771;BA.debugLine="ToastMessageShow(\"ارتباط برقرار شد\",True)";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("ارتباط برقرار شد"),anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 59;BA.debugLine="astreams.Initialize(socket1.InputStream, socket1";
+RDebugUtils.currentLine=4128772;
+ //BA.debugLineNum = 4128772;BA.debugLine="astreams.Initialize(socket1.InputStream, socket1";
 _astreams.Initialize(processBA,mostCurrent._socket1.getInputStream(),mostCurrent._socket1.getOutputStream(),"AStreams");
- //BA.debugLineNum = 60;BA.debugLine="viber.Vibrate(50)";
+RDebugUtils.currentLine=4128773;
+ //BA.debugLineNum = 4128773;BA.debugLine="viber.Vibrate(50)";
 mostCurrent._viber.Vibrate(processBA,(long) (50));
- //BA.debugLineNum = 61;BA.debugLine="Button_connect.Enabled =False";
+RDebugUtils.currentLine=4128774;
+ //BA.debugLineNum = 4128774;BA.debugLine="Button_connect.Enabled =False";
 mostCurrent._button_connect.setEnabled(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 62;BA.debugLine="Button_connect.Text = \"متصل شد\"";
+RDebugUtils.currentLine=4128775;
+ //BA.debugLineNum = 4128775;BA.debugLine="Button_connect.Text = \"متصل شد\"";
 mostCurrent._button_connect.setText(BA.ObjectToCharSequence("متصل شد"));
  }else {
- //BA.debugLineNum = 66;BA.debugLine="ToastMessageShow(\"مشکلی رخ داده است\",True)";
+RDebugUtils.currentLine=4128779;
+ //BA.debugLineNum = 4128779;BA.debugLine="ToastMessageShow(\"مشکلی رخ داده است\",True)";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("مشکلی رخ داده است"),anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 68;BA.debugLine="Button_connect.Text = \"اتصال\"";
+RDebugUtils.currentLine=4128781;
+ //BA.debugLineNum = 4128781;BA.debugLine="Button_connect.Text = \"اتصال\"";
 mostCurrent._button_connect.setText(BA.ObjectToCharSequence("اتصال"));
- //BA.debugLineNum = 69;BA.debugLine="viber.Vibrate(500)";
+RDebugUtils.currentLine=4128782;
+ //BA.debugLineNum = 4128782;BA.debugLine="viber.Vibrate(500)";
 mostCurrent._viber.Vibrate(processBA,(long) (500));
  };
- //BA.debugLineNum = 72;BA.debugLine="ProgressDialogHide";
+RDebugUtils.currentLine=4128785;
+ //BA.debugLineNum = 4128785;BA.debugLine="ProgressDialogHide";
 anywheresoftware.b4a.keywords.Common.ProgressDialogHide();
- //BA.debugLineNum = 74;BA.debugLine="End Sub";
+RDebugUtils.currentLine=4128787;
+ //BA.debugLineNum = 4128787;BA.debugLine="End Sub";
 return false;
+}
+public static String  _timer1_tick() throws Exception{
+RDebugUtils.currentModule="setconnect";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "timer1_tick", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "timer1_tick", null));}
+String _data = "";
+RDebugUtils.currentLine=5177344;
+ //BA.debugLineNum = 5177344;BA.debugLine="Sub Timer1_Tick";
+RDebugUtils.currentLine=5177347;
+ //BA.debugLineNum = 5177347;BA.debugLine="For Each data As String In dataQueue";
+{
+final anywheresoftware.b4a.BA.IterableList group1 = _dataqueue;
+final int groupLen1 = group1.getSize()
+;int index1 = 0;
+;
+for (; index1 < groupLen1;index1++){
+_data = BA.ObjectToString(group1.Get(index1));
+RDebugUtils.currentLine=5177349;
+ //BA.debugLineNum = 5177349;BA.debugLine="Log(\"Processing: \" & data)";
+anywheresoftware.b4a.keywords.Common.LogImpl("35177349","Processing: "+_data,0);
+RDebugUtils.currentLine=5177350;
+ //BA.debugLineNum = 5177350;BA.debugLine="File.WriteString(File.DirInternal, \"pill_count_a";
+anywheresoftware.b4a.keywords.Common.File.WriteString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_count_arduino.txt",_input);
+ }
+};
+RDebugUtils.currentLine=5177352;
+ //BA.debugLineNum = 5177352;BA.debugLine="dataQueue.Clear";
+_dataqueue.Clear();
+RDebugUtils.currentLine=5177354;
+ //BA.debugLineNum = 5177354;BA.debugLine="End Sub";
+return "";
 }
 }

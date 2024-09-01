@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../../../../Documents/PlatformIO/Projects/xcv/gyh"
+		},
+		{
+			"name": "pillbox",
+			"path": "../../../project/esp32-s3_git/pilbox/arduino/pillbox"
+		}
+	],
+	"settings": {}
+}

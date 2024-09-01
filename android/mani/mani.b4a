@@ -82,8 +82,8 @@ Sub Process_Globals
 	Dim start_time_4 As String
 	Dim interval_4 As String
 	Dim box4_alarm As String
-	'*******************************بخش وای فای و ارتباط*******************************
-	
+	'*******************************بخش بروز رسانی صفحه*******************************
+	Dim Timer1 As Timer
 	
 End Sub
 
@@ -115,14 +115,31 @@ Sub Activity_Create(FirstTime As Boolean)
 
 	Activity.LoadLayout("Layout")
 
+	
+	'------------------------------------
+	Timer1.Initialize("Timer1", 500)
+	Timer1.Enabled = True
+	'---------------------------------
 
+End Sub
+
+
+
+Sub Timer1_Tick
+	'کدهای دریافت داده و به‌روزرسانی Label
+
+	
 	'*******************************باکس شماره یک*******************************
 
 	Try
+
 		pill_naim1 = File.ReadString(File.DirInternal, "pill_naim1.txt")
-		pill_count_box1 = File.ReadString(File.DirInternal, "pill_count_box1.txt")
+		pill_count_box1 = File.ReadString(File.DirInternal, "pill_count_arduino.txt")
 		start_time_1 = File.ReadString(File.DirInternal, "start_time_1.txt")
 		interval_1 = File.ReadString(File.DirInternal, "interval_1.txt")
+		
+		
+		
 	Catch
 		
 		'Msgbox("هنوز هیچ تنظیماتی برای قرص شماره یک ذخیره نشده است", "توجه")
@@ -130,7 +147,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	End Try
 	
 	
-    Label1.Text=("("&pill_naim1&")")
+	Label1.Text=("("&pill_naim1&")")
 	Listbox1.AddSingleLine("   "&"تعداد قرص های موجود:"&"("&pill_count_box1&")")
 	Listbox1.AddSingleLine("   "&"ساعت مصرف:"&"("&box1_alarm&")")
 	
@@ -191,15 +208,21 @@ Sub Activity_Create(FirstTime As Boolean)
 	
 
 	
+
 End Sub
+
+
+
 
 Sub Activity_Resume
 	
-	
+	Timer1.Enabled = True
 
 End Sub
 
 Sub Activity_Pause (UserClosed As Boolean)
+	
+	Timer1.Enabled = False
 
 End Sub
 
@@ -264,3 +287,7 @@ Private Sub setconnect1_Click
 	Activity.Finish
 	
 End Sub
+
+'----------------------------------------------------------------------------------------
+
+
