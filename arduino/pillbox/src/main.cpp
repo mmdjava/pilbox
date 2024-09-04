@@ -1,3 +1,4 @@
+/*
 #include <WiFi.h>
 #include <string.h>
 const char* ssid = "mmd";
@@ -11,6 +12,10 @@ IPAddress subnet(255, 255, 255, 0);
 const int port = 8888;
 WiFiServer server(port);
 //WiFiClient client;
+
+#include <iostream>
+#include <string>
+
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #include <stdio.h>
 #include <stdlib.h>
@@ -148,20 +153,33 @@ void loop() {
 
     if (reading == LOW && keyState == HIGH) {
 
-      if (pill_count > 01) { // فقط زمانی کاهش بده که pill_count_box1 بزرگتر از صفر است
+      if (pill_count > 1) { // فقط زمانی کاهش بده که pill_count_box1 بزرگتر از صفر است
 
-        pill_count--;
-       char data[20];
-       sprintf(data,"%d",pill_count);
-       client.print(data); // نمایش مقدار در سریال مانیتور
-        Serial.print(pill_count); // وقتی قرص ها تمام شود
+       pill_count--;
+       char data_1[20];
+       sprintf(data_1,"%d",pill_count);
+
+       std::string count_1 = data_1;  // داده‌ای که می‌خواهید اضافه کنید
+       std::string dataout_1;
+       dataout_1 = "p1cs" + count_1 + "p1ce";    // ترکیب پیشوند، داده و پسوند
+
+       client.print(dataout_1.c_str()); //ارسال مقدار به شبکه
+
+       Serial.print(dataout_1.c_str());// ارسال مقدار به سریال
+
 
       }
 
       else {  // اگر مقدار pill_count_box1 به صفر رسید
-      
-       client.print("pill_1=0"); // وقتی قرص ها تمام شود
-       Serial.print("pill_1=0"); // وقتی قرص ها تمام شود
+
+       std::string zero_1 = "0";  // داده‌ای که می‌خواهید اضافه کنید
+       std::string zero_out_1;
+       zero_out_1 = "p1cs" + zero_1 + "p1ce";    // ترکیب پیشوند، داده و پسوند
+
+       client.print(zero_out_1.c_str()); // وقتی قرص ها تمام شود
+
+       Serial.print(zero_out_1.c_str()); // وقتی قرص ها تمام شود
+
 
       }
 
@@ -172,5 +190,8 @@ void loop() {
   }
 
  lastKeyState = reading;
+
+
                        
- }     
+ }   
+   */

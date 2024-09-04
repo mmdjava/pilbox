@@ -19,6 +19,6 @@ ModuleClosedNodes3=
 ModuleClosedNodes4=
 ModuleClosedNodes5=
 ModuleClosedNodes6=1
-NavigationStack=Main,Activity_Pause,204,0,Main,Imagepill4_LongClick,206,0,Main,Imagepill1_LongClick,231,0,Main,Listbox4_ItemClick,242,0,Main,Socket1_Connected,272,0,Main,AStreams_Error,304,0,Main,Globals,83,0,Visual Designer,Layout.bal,-100,6,Main,AStreams_NewData,308,6,Main,Activity_Create,95,6
+NavigationStack=Main,setconnect1_Click,243,0,pill_1,Activity_Resume,85,0,Main,AStreams_Error,285,0,Main,Socket1_Connected,254,0,Main,Imagepill3_LongClick,223,0,Main,Activity_Resume,193,0,Main,Activity_Create,108,6,Main,Globals,96,2,Main,AStreams_NewData,313,5,Main,Process_Globals,28,0
 SelectedBuild=0
 VisibleModules=2,3,4,5,1

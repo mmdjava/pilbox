@@ -58,63 +58,63 @@ Sub Process_Globals
 	'These global variables will be declared once when the application starts.
 	'These variables can be accessed from all modules.
 	
+	'********************متغییر های قرص 1****************************
 	Dim pill_naim1 As String	
 	Dim pill_count_box1 As String
 	Dim start_time_1 As String
 	Dim interval_1 As String
 	Dim box1_alarm As String
-	'**********************************************************
+	'---------------------------------------------------------------
+	
+	'********************متغییر های قرص 2****************************
 	Dim pill_naim2 As String
 	Dim pill_count_box2 As String
 	Dim start_time_2 As String
 	Dim interval_2 As String
 	Dim box2_alarm As String
-	'**********************************************************
+	'---------------------------------------------------------------
+	
+	'********************متغییر های قرص 3****************************
 	Dim pill_naim3 As String
 	Dim pill_count_box3 As String
 	Dim start_time_3 As String
 	Dim interval_3 As String
 	Dim box3_alarm As String
-	'**********************************************************
+	'---------------------------------------------------------------
+	
+	'********************متغییر های قرص 4****************************
 	Dim pill_naim4 As String
 	Dim pill_count_box4 As String
 	Dim start_time_4 As String
 	Dim interval_4 As String
 	Dim box4_alarm As String
-	'*******************************بخش بروز رسانی صفحه*******************************
-	'Dim Timer1 As Timer
-	'=============================connect=========================
+	'---------------------------------------------------------------
+	
+	'********************متغییر های بخش اتصال*************************
 	Dim viber As PhoneVibrate
 	Dim count As Byte = 1
 	Dim socket1 As Socket
 	Dim Timer1 As Timer
 	Dim astreams As AsyncStreams
 	Dim input As String
+	'---------------------------------------------------------------
 	
 End Sub
 
 Sub Globals
 	'These global variables will be redeclared each time the activity is created.
-
-
-
-	Private Listbox1 As ListView
-	Private Listbox2 As ListView
-	Private Listbox3 As ListView
-	Private Listbox4 As ListView
+	'********************متغییر های عکس******************************
 	Private Imagepill1 As ImageView
 	Private Imagepill2 As ImageView
 	Private Imagepill3 As ImageView
 	Private Imagepill4 As ImageView
+	'---------------------------------------------------------------
 	
+	'**********************متغییر های لیبل*****************************
 	Private Label1 As Label
 	Private Label2 As Label
 	Private Label3 As Label
 	Private Label4 As Label
-	
-
-
-	Private setconnect1 As Button
 	Private Label5 As Label
 	Private Label6 As Label
 	Private Label7 As Label
@@ -123,6 +123,28 @@ Sub Globals
 	Private Label10 As Label
 	Private Label11 As Label
 	Private Label12 As Label
+	'---------------------------------------------------------------
+	
+	'**********************متغییر کلید اتصال****************************
+	Private setconnect1 As Button	
+	'---------------------------------------------------------------
+	
+	'******************تعریف الگوها برای جستجوی داده‌ها*******************
+	Private pattern1 As String = "p1cs(\d+)p1ce"  ' برای data1
+'	Private pattern2 As String = "s1ts(\d+)s1te"  ' برای data2
+'	Private pattern3 As String = "i1vs(\d+)i1ve"  ' برای data3
+	'---------------------------------------------------------------
+	
+	'***************متغیرها برای ذخیره داده‌های استخراج شده*****************
+	Private data1 As String = ""
+'	Private data2 As String
+'	Private data3 As String
+	'---------------------------------------------------------------
+	
+	'*********************استخراج داده برای data1***********************
+	Private Matcher As Matcher
+	'---------------------------------------------------------------
+	
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -130,120 +152,98 @@ Sub Activity_Create(FirstTime As Boolean)
 	Activity.LoadLayout("Layout")
 	
 	
-	'*******************************باکس شماره یک*******************************
-
+'*************************************باکس شماره 1***************************************
 	Try
 
 		pill_naim1 = File.ReadString(File.DirInternal, "pill_naim1.txt")
-		pill_count_box1 = File.ReadString(File.DirInternal, "pill_count_arduino.txt")
+		pill_count_box1 = File.ReadString(File.DirInternal, "pill_count_Data1.txt")
 		start_time_1 = File.ReadString(File.DirInternal, "start_time_1.txt")
 		interval_1 = File.ReadString(File.DirInternal, "interval_1.txt")
-		
-		
-		
+			
 	Catch
 		
 		'Msgbox("هنوز هیچ تنظیماتی برای قرص شماره یک ذخیره نشده است", "توجه")
 		 
 	End Try
 	
-'	
 	Label1.Text=("("&pill_naim1&")")
     Label5.Text = ("   "&"تعداد قرص های موجود:"&"("&pill_count_box1&")")
 	Label6.Text = ("   "&"ساعت مصرف:"&"("&box1_alarm&")")
+'---------------------------------------------------------------------------------------
 	
-	
-	'*******************************باکس شماره دو*******************************
-
+'*************************************باکس شماره 2***************************************
 	Try
+		
 		pill_naim2 = File.ReadString(File.DirInternal, "pill_naim2.txt")
 		pill_count_box2 = File.ReadString(File.DirInternal, "pill_count_box2.txt")
 		start_time_2 = File.ReadString(File.DirInternal, "start_time_2.txt")
 		interval_2 = File.ReadString(File.DirInternal, "interval_2.txt")
+		
 	Catch
 		
 		'Msgbox("هنوز هیچ تنظیماتی برای قرص شماره دو ذخیره نشده است", "توجه")
 		 
 	End Try
 	
-	
 	Label2.Text=("("&pill_naim2&")")
 	Label7.Text = ("   "&"تعداد قرص های موجود:"&"("&pill_count_box2&")")
 	Label8.Text = ("   "&"ساعت مصرف:"&"("&box2_alarm&")")
+'---------------------------------------------------------------------------------------
 	
-	'*******************************باکس شماره سه*******************************
-
+'*************************************باکس شماره 3***************************************
 	Try
+		
 		pill_naim3 = File.ReadString(File.DirInternal, "pill_naim3.txt")
 		pill_count_box3 = File.ReadString(File.DirInternal, "pill_count_box3.txt")
 		start_time_3 = File.ReadString(File.DirInternal, "start_time_3.txt")
 		interval_3 = File.ReadString(File.DirInternal, "interval_3.txt")
+		
 	Catch
 		
 		'Msgbox("هنوز هیچ تنظیماتی برای قرص شماره سه ذخیره نشده است", "توجه")
 		 
 	End Try
 	
-	
 	Label3.Text=("("&pill_naim3&")")
 	Label9.Text = ("   "&"تعداد قرص های موجود:"&"("&pill_count_box3&")")
 	Label10.Text = ("   "&"ساعت مصرف:"&"("&box3_alarm&")")
-	
-	'*******************************باکس شماره چهار*******************************
+'---------------------------------------------------------------------------------------
 
+'*************************************باکس شماره 4***************************************
 	Try
+		
 		pill_naim4 = File.ReadString(File.DirInternal, "pill_naim4.txt")
 		pill_count_box4 = File.ReadString(File.DirInternal, "pill_count_box4.txt")
 		start_time_4 = File.ReadString(File.DirInternal, "start_time_4.txt")
 		interval_4 = File.ReadString(File.DirInternal, "interval_4.txt")
+		
 	Catch
 		
 		'Msgbox("هنوز هیچ تنظیماتی برای قرص شماره چهار ذخیره نشده است", "توجه")
 		 
 	End Try
 
-	
 	Label4.Text=("("&pill_naim4&")")
 	Label11.Text = ("   "&"تعداد قرص های موجود:"&"("&")")
 	Label12.Text = ("   "&"ساعت مصرف:"&"("&box4_alarm&")")
-	
-
-
-	
-'	'------------------------------------
-'	Timer1.Initialize("Timer1", 500)
-'	Timer1.Enabled = True
-'	'---------------------------------
-
+'---------------------------------------------------------------------------------------
 End Sub
 
-
-
-'Sub Timer1_Tick
-'	'کدهای دریافت داده و به‌روزرسانی Label
-'
-'
-'
-'	
-'
-'End Sub
-
-
-
-
+'****************************زمانی که صفحه باز شد اجرا میشود*******************************
 Sub Activity_Resume
 	
 
 
 End Sub
+'---------------------------------------------------------------------------------------
 
+'***************************زمانی که صفحه بسته شد اجرا میشود******************************
 Sub Activity_Pause (UserClosed As Boolean)
 	
 
 
 End Sub
-
-
+'---------------------------------------------------------------------------------------
 
 '***************************(باز شدن صفحه تنظیمات قرص شماره(4***************************
 Private Sub Imagepill4_LongClick
@@ -251,63 +251,47 @@ Private Sub Imagepill4_LongClick
 	StartActivity("pill_4")
 	Activity.Finish
 	
-	
-	
 End Sub
+'---------------------------------------------------------------------------------------
+
 '***************************(باز شدن صفحه تنظیمات قرص شماره(3***************************
 Private Sub Imagepill3_LongClick
 	
 	StartActivity("pill_3")
 	Activity.Finish
 	
-	
 End Sub
+'---------------------------------------------------------------------------------------
+
 '***************************(باز شدن صفحه تنظیمات قرص شماره(2***************************
 Private Sub Imagepill2_LongClick
 	
 	StartActivity("pill_2")
 	Activity.Finish
 	
-	
 End Sub
+'---------------------------------------------------------------------------------------
+
 '***************************(باز شدن صفحه تنظیمات قرص شماره(1***************************
 Private Sub Imagepill1_LongClick
 	
 	StartActivity("pill_1")
 	'Activity.Finish
 	
-	
 End Sub
+'---------------------------------------------------------------------------------------
 
-Private Sub Listbox4_ItemClick (Position As Int, Value As Object)
-	
-End Sub
-
-Private Sub Listbox3_ItemClick (Position As Int, Value As Object)
-	
-End Sub
-
-Private Sub Listbox2_ItemClick (Position As Int, Value As Object)
-	
-End Sub
-
-Private Sub Listbox1_ItemClick (Position As Int, Value As Object)
-	
-End Sub
-
-
-
-
-
+'***************************************کلید اتصال***************************************
 Private Sub setconnect1_Click
+	
 	ProgressDialogShow2("درحال اتصال...",False)
 	socket1.Initialize("socket1")
 	socket1.Connect("192.168.4.1",8888,5000)
 	
 End Sub
+'---------------------------------------------------------------------------------------
 
-'----------------------------------------------------------------------------------------
-'############################################### تابع اتصال ################################
+'***************************************تابع اتصال***************************************
 Sub Socket1_Connected(Connected As Boolean)As Boolean
 
 	If Connected = True Then
@@ -328,66 +312,57 @@ Sub Socket1_Connected(Connected As Boolean)As Boolean
 	ProgressDialogHide
    
 End Sub
+'---------------------------------------------------------------------------------------
 
-
- 
-'###############################################تابع خطای################################
+'***************************************تابع خطای***************************************
 Sub AStreams_Error
+	
 	setconnect1.Enabled = True
 	ToastMessageShow("مشکلی رخ داده است",True)
 	'Label_status.Color = 0xFFE40909
 	setconnect1.Text = "اتصال"
 	viber.Vibrate(1000)
 	socket1.Close
+	
 End Sub
+'---------------------------------------------------------------------------------------
 
-'###############################################تابع دریافت دیتا################################		
- 
-
+'*************************************تابع دریافت دیتا*************************************		
 Sub AStreams_NewData (Buffer() As Byte)
  
  	
 	input = BytesToString(Buffer, 0, Buffer.Length, "UTF-8")
-	'EditText1.Text = input
-	File.WriteString(File.DirInternal, "pill_count_arduino.txt",input)
-	pill_count_box1 = File.ReadString(File.DirInternal, "pill_count_arduino.txt")
-	Label5.Text = ("   "&"تعداد قرص های موجود:"&"("&pill_count_box1&")")
-'Label1.Text=input
 	Log(input)
-
 	
-	'Label1.Text=("("&input&")")
-'	Listbox1.AddSingleLine("   "&"تعداد قرص های موجود:"&"("&input&")")
-	'Listbox1.RemoveAt()
-	'Listbox1.AddSingleLine("   "&"ساعت مصرف:"&"("&box1_alarm&")")
-	'''''''''''''''''''''''''''''''''''''ChangeItemText(1,"   "&"تعداد قرص های موجود:"&"("&input&")")
+'*********************************جداسازی دیتا از ورودی*********************************
+	Matcher = Regex.Matcher(pattern1, input)
+	If Matcher.Find Then
+		data1 = Matcher.Group(1)
+	End If
+    
+	' استخراج داده برای data2
+'	Matcher = Regex.Matcher(pattern2, input)
+'	If Matcher.Find Then
+'		data2 = Matcher.Group(1)
+'	End If
+    
+	' استخراج داده برای data3
+'	Matcher = Regex.Matcher(pattern3, input)
+'	If Matcher.Find Then
+'		data3 = Matcher.Group(1)
+'	End If
+    
+	' نمایش داده‌ها برای بررسی
+	'Log("Data1: " & data1)
+'	Log("Data2: " & data2)
+'	Log("Data3: " & data3)
+'-------------------------------------------------------------------------------------
 
-'	Dim parts() As String
-'	parts = Regex.Split(",", data)
- 
-	'ChangeItemText(0, input)
+'**********************************ذخیره و نمایش دیتا*************************************
+	File.WriteString(File.DirInternal, "pill_count_Data1.txt",data1)
+	pill_count_box1 = File.ReadString(File.DirInternal, "pill_count_Data1.txt")
+	Label5.Text = ("   "&"تعداد قرص های موجود:"&"("&data1&")")
+'------------------------------------------------------------------------------
 
-	
-
-
-	 
 End Sub
-
-'Sub ChangeItemText(Index As Int, NewLine1 As String)
-'	' حذف آیتم قبلی از لیست
-'	Log(Listbox1.Size)
-'	Listbox1.RemoveAt(Index)
-'	Log(Listbox1.Size)
-'   ' Listbox1.RemoveAt(Index+1) ' 
-'	' اضافه کردن آیتم جدید با متن جدید در همان مکان
-'	'Listbox1.AddTwoLines("",NewLine1)
-'	'Listbox1.AddTwoLines2(NewLine1, "", Index)
-'	'Listbox1.RemoveAt(Index)
-'	'آیتم قدیمی که به انتهای لیست اضافه شده بود، حذف می‌شود
-'
-'	Listbox1.AddSingleLine(NewLine1)
-'	'Listbox1.AddSingleLine2("   "&"تعداد قرص های موجود:"&"("&input&")",0)
-'   
-'	'Listbox1.AddSingleLine("   "&"ساعت مصرف:"&"("&box1_alarm&")")
-'
-'End Sub
+'-------------------------------------------------------------------------------------
