@@ -1,4 +1,4 @@
-/*
+
 #include <WiFi.h>
 #include <string.h>
 const char* ssid = "mmd";
@@ -66,23 +66,23 @@ char rxBufer[50]="";
 //======================================================={
 
 
-char pill1_e;
-char pill_count_box1;
-char start_time_1;
-char interval_1;
+char pill1_en;//وضعیت قرص 1
+char pill_count_box1;//تعداد قرص 1
+char start_time_1;//تایم شروع قرص 1
+char interval_1;//چرخه مصرف قرص 1
 
-int key = 40;
-char pill_count = 5;
-int keyState = 0;
-int lastKeyState = HIGH; // وضعیت قبلی کلید
-unsigned long lastDebounceTime = 0;
-unsigned long debounceDelay = 50; // تأخیر برای حذف نویز
-
+int key1 = 40;//کلید قرص 1
+char pill_count1 = 5;//تعداد پیشفرض قرص 1
+int keyState1 = 0;//وضعیت پیشفرض قرص 1
+int lastKeyState1 = HIGH; // وضعیت قبلی کلید
+unsigned long lastDebounceTime1 = 0;
+unsigned long debounceDelay1 = 50; // تأخیر برای حذف نویز
+int reading1;
 //=======================================================}
 void setup() {
   Serial.begin(115200);
 //======================================================={
-pinMode(key, INPUT_PULLUP);
+pinMode(key1, INPUT_PULLUP);
 //=======================================================}
   WiFi.mode(WIFI_AP);
   WiFi.softAPConfig(local_IP, gateway, subnet);
@@ -126,11 +126,11 @@ void loop() {
           
     if(len){
 
-     pill1_e=output[0];
+     pill1_en=output[0];
      pill_count_box1=output[1];
      start_time_1=output[2];
      interval_1=output[3];
-     pill_count =pill_count_box1;
+     pill_count1 =pill_count_box1;
      rxCount=0;
 
     }     
@@ -138,26 +138,27 @@ void loop() {
             
        
   }
+  //-----------------------------------------------------------
 
   //==========================  read keys =============================
 
- int reading = digitalRead(key);
+ reading = digitalRead(key1);
 
-   if(reading != lastKeyState) {
+   if(reading != lastKeyState1) {
 
-   lastDebounceTime = millis();
+   lastDebounceTime1 = millis();
 
   }
 
- if ((millis() - lastDebounceTime) > debounceDelay) {
+ if ((millis() - lastDebounceTime1) > debounceDelay1) {
 
-    if (reading == LOW && keyState == HIGH) {
+    if (reading == LOW && keyState1 == HIGH) {
 
-      if (pill_count > 1) { // فقط زمانی کاهش بده که pill_count_box1 بزرگتر از صفر است
+      if (pill_count1 > 1) { // فقط زمانی کاهش بده که pill_count_box1 بزرگتر از صفر است
 
-       pill_count--;
+       pill_count1--;
        char data_1[20];
-       sprintf(data_1,"%d",pill_count);
+       sprintf(data_1,"%d",pill_count1);
 
        std::string count_1 = data_1;  // داده‌ای که می‌خواهید اضافه کنید
        std::string dataout_1;
@@ -185,13 +186,13 @@ void loop() {
 
     }  
 
-   keyState = reading;
+   keyState1 = reading;
 
   }
 
- lastKeyState = reading;
-
+ lastKeyState1 = reading;
+ //-----------------------------------------------------------
 
                        
  }   
-   */
+  
