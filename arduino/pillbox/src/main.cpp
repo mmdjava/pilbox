@@ -37,21 +37,21 @@ int interval_1 = 1;//چرخه مصرف قرص 1
 //----------------قرص 2---------------- 
 char pill2_en;//وضعیت قرص 2
 char pill_count_box2;//تعداد قرص 2
-int start_time_2 = 0;//تایم شروع قرص 2
+int start_time_2 = 13;//تایم شروع قرص 2
 int interval_2 = 1;//چرخه مصرف قرص 2
 //---------------- ---------------- ----------------
 
 //----------------قرص 3---------------- 
 char pill3_en;//وضعیت قرص 3
 char pill_count_box3;//تعداد قرص 3
-int start_time_3 = 0;//تایم شروع قرص 3
+int start_time_3 = 13;//تایم شروع قرص 3
 int interval_3 = 1;//چرخه مصرف قرص 3
 //---------------- ---------------- ----------------
 
 //----------------قرص 4---------------- 
 char pill4_en;//وضعیت قرص 4
 char pill_count_box4;//تعداد قرص 4
-int start_time_4 = 0;//تایم شروع قرص 4
+int start_time_4 = 13;//تایم شروع قرص 4
 int interval_4 = 1;//چرخه مصرف قرص 4
 //---------------- ---------------- ----------------
 
@@ -162,23 +162,33 @@ DateTime alarmTime[numAlarms];
 //---------------- ---------------- ----------------
 
 RTC_DS3231 rtc;// ایجاد شیء از کتابخانه RTC
- 
+  DateTime now1 ;
 
 //----------------core 0 لوپ پردازش موازی----------------
 void Task1(void *pvParameters) {
     while(1) {
     
     
-    DateTime now = rtc.now();// rtc دریافت زمان کنونی از 
+     now1 = rtc.now();// rtc دریافت زمان کنونی از 
+       Serial.println("==============now second top================ ");
+      Serial.println(now1.secondstime());
+      Serial.println("============================== ");
+
   //----------------برسی میکند آیا زمان کنونی با زمان آلارم برابراست----------------
   for (int i = 0; i < numAlarms; i++) {
-    if (now >= alarmTime[i]) {
+       Serial.print("==============alarm ");
+      Serial.print(i);
+      Serial.print("time=");
+      Serial.println(alarmTime[i].secondstime());
+      Serial.println("============================== ");
+    if (now1 >= alarmTime[i]) {
       Serial.print("Alarm ");
       Serial.print(i + 1);
       Serial.println(" triggered!");
 
       //----------------تولید یک زنگ هشدار سیگنال دادن به خروجی buzzer----------------
-      for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 5; j++) {
+
         digitalWrite(buzzerPin,HIGH);
         delay(100); // مدت زمان پخش صدا به میلی‌ثانیه
         digitalWrite(buzzerPin,LOW);
@@ -210,12 +220,28 @@ void Task1(void *pvParameters) {
             digitalWrite(led4, HIGH);
             break;
         }
-      }//---------------- ---------------- ----------------
+        digitalWrite(led1,LOW);
+        digitalWrite(led2,LOW);
+        digitalWrite(led3,LOW);
+        digitalWrite(led4,LOW);
+      }
+      //---------------- ---------------- ----------------
+
       //----------------به‌روزرسانی زمان آلارم برای بار بعدی----------------
-      alarmTime[i] = alarmTime[i] + TimeSpan(intervalHours[i] * 3600);
-      Serial.print("Next alarm time for alarm ");
-      Serial.print(i + 1);
-      Serial.print(": ");
+      Serial.println("==============now second================ ");
+      Serial.println(now1.secondstime());
+      Serial.println("============================== ");
+      
+      Serial.println("==============previos second================ ");
+      Serial.println(alarmTime[i].secondstime());
+      Serial.println("============================== ");
+      alarmTime[i] = alarmTime[i] + (intervalHours[i] * 3600);
+      Serial.println("=============after second ================= ");
+      Serial.println(alarmTime[i].secondstime());
+      Serial.println("============================== ");
+      Serial.println("Next alarm time for alarm ");
+      Serial.println(i + 1);
+      Serial.println(": ");
       Serial.println(alarmTime[i].timestamp());
       //---------------- ---------------- ----------------
     }
@@ -228,6 +254,8 @@ void Task1(void *pvParameters) {
 
 
 void setup() {
+
+  //===================================================
   Serial.begin(115200);// راه اندازی پورت سریال
   Wire.begin(13,14);// نرم افزاری i2c راه اندازی
  //---------------- تعریف پین های وردی  خروجی---------------- 
@@ -243,9 +271,10 @@ void setup() {
   if (!rtc.begin()) {
     Serial.println("Couldn't find RTC");
     while (1);
-  }//---------------- ---------------- ----------------
+  }
+  //---------------- ---------------- ----------------
 
-    //----------------بررسی اتصال به ماژول SSD1306----------------
+  //----------------بررسی اتصال به ماژول SSD1306----------------
   if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
     Serial.println(F("SSD1306 allocation failed"));
     for (;;);
@@ -255,11 +284,14 @@ void setup() {
 
     //----------------محاسبه زمان‌های آلارم اولیه----------------
   for (int i = 0; i < numAlarms; i++) {
-    DateTime startTime(now.year(), now.month(), now.day(), startHour[i], startMinute[i], 0);
-    alarmTime[i] = startTime;
+    DateTime startTime(now.year(), now.month(), now.day(), now.hour(), startMinute[i], 0);
+   // alarmTime[i] = now+TimeSpan((startHour[i] * 3600)+(startMinute[i]*60));
+    alarmTime[i]=startTime;
+
     while (alarmTime[i] <= now) {
-      alarmTime[i] = alarmTime[i] + TimeSpan(intervalHours[i] * 3600);
+      alarmTime[i] = alarmTime[i] + (intervalHours[i] * 3600);
     }
+
     Serial.print("Next alarm time for alarm ");
     Serial.print(i + 1);
     Serial.print(": ");
@@ -288,7 +320,7 @@ void setup() {
 void loop() {
  DateTime now = rtc.now();//دریافت زمان کنونی از ماژول
   //----------------نمایش ساعت و تاریخ روی نمایشگر----------------
-    display.clearDisplay();
+  display.clearDisplay();
   display.setTextSize(2);
   display.setTextColor(SSD1306_WHITE);
   display.setCursor(0, 0);
@@ -330,7 +362,8 @@ void loop() {
  //======================پردازش دیتا قرص ها==========================
 
   if(rxCount>9){
-       
+
+   //----------------اگر دیتا از قرص 1 بود---------------    
    len= wordFilter( output,rxBufer,"p1s","p1e");
           
     if(len){
@@ -342,7 +375,10 @@ void loop() {
      pill_count1 =pill_count_box1;
      rxCount=0;
 
-    }     
+    } 
+   //---------------- ---------------- ----------------
+
+   //----------------اگر دیتا از قرص 1 بود---------------
    len= wordFilter( output,rxBufer,"p2s","p2e");
           
     if(len){
@@ -355,7 +391,9 @@ void loop() {
      rxCount=0;
 
     }
+   //---------------- ---------------- ----------------
 
+   //----------------اگر دیتا از قرص 1 بود---------------
    len= wordFilter( output,rxBufer,"p3s","p3e");
           
     if(len){
@@ -368,9 +406,11 @@ void loop() {
      rxCount=0;
 
     }
+   //---------------- ---------------- ----------------
 
-   len= wordFilter( output,rxBufer,"p4s","p4e");
-          
+   //----------------اگر دیتا از قرص 1 بود---------------
+   len= wordFilter( output,rxBufer,"p4s","p4e");   
+
     if(len){
 
      pill4_en=output[0];
@@ -379,8 +419,9 @@ void loop() {
      interval_4=output[3];
      pill_count4 =pill_count_box4;
      rxCount=0;
-
+     
     } 
+   //---------------- ---------------- ----------------
   }
   //-----------------------------------------------------------
 
@@ -558,8 +599,6 @@ void loop() {
    keyState4 = reading4;
   }
  lastKeyState4 = reading4;
- //---------------- ---------------- ----------------       
-
-                       
+ //---------------- ---------------- ----------------                          
  }   
   
