@@ -30,29 +30,29 @@ WiFiServer server(port);
 //----------------قرص 1---------------- 
 char pill1_en;//وضعیت قرص 1
 char pill_count_box1;//تعداد قرص 1
-volatile int start_time_1  ;//تایم شروع قرص 1
-volatile int interval_1  ;//چرخه مصرف قرص 1
+volatile int start_time_1 =0 ;//تایم شروع قرص 1
+volatile int interval_1 =0 ;//چرخه مصرف قرص 1
 //---------------- ---------------- ----------------
 
 //----------------قرص 2---------------- 
 char pill2_en;//وضعیت قرص 2
 char pill_count_box2;//تعداد قرص 2
-volatile int start_time_2 ;//تایم شروع قرص 2
-volatile int interval_2 ;//چرخه مصرف قرص 2
+volatile int start_time_2 = 0;//تایم شروع قرص 2
+volatile int interval_2 = 1;//چرخه مصرف قرص 2
 //---------------- ---------------- ----------------
 
 //----------------قرص 3---------------- 
 char pill3_en;//وضعیت قرص 3
 char pill_count_box3;//تعداد قرص 3
-volatile int start_time_3 ;//تایم شروع قرص 3
-volatile int interval_3 ;//چرخه مصرف قرص 3
+volatile int start_time_3 = 0;//تایم شروع قرص 3
+volatile int interval_3 = 1;//چرخه مصرف قرص 3
 //---------------- ---------------- ----------------
 
 //----------------قرص 4---------------- 
 char pill4_en;//وضعیت قرص 4
 char pill_count_box4;//تعداد قرص 4
-volatile int start_time_4 ;//تایم شروع قرص 4
-volatile int interval_4 ;//چرخه مصرف قرص 4
+volatile int start_time_4 = 0;//تایم شروع قرص 4
+volatile int interval_4 = 1;//چرخه مصرف قرص 4
 //---------------- ---------------- ----------------
 
 //----------------کیلید 1---------------- 
@@ -626,7 +626,43 @@ void loop() {
  lastKeyState4 = reading4;
  //---------------- ---------------- ----------------       
 
+     unsigned long currentMillis = millis();  // دریافت زمان کنونی
 
+  // چک کنید آیا ۵ ثانیه گذشته است یا خیر
+  if (currentMillis - previousMillis >= interval) {
+    previousMillis = currentMillis;  // زمان کنونی را به‌روز کنید
+    
+    Serial.println("Send alarm data");
+
+    client.print("p1ts");
+    client.print(alarmTime[0].hour()); //ارسال مقدار به شبکه
+    client.println("p1te");
+    Serial.print("p1ts");
+    Serial.print(alarmTime[0].hour()); //ارسال مقدار به شبکه
+    Serial.println("p1te");
+
+    client.print("p2ts");
+    client.print(alarmTime[1].hour()); //ارسال مقدار به شبکه
+    client.println("p2te");
+    Serial.print("p2ts");
+    Serial.print(alarmTime[1].hour()); //ارسال مقدار به شبکه
+    Serial.println("p2te");
+
+    client.print("p3ts");
+    client.print(alarmTime[2].hour()); //ارسال مقدار به شبکه
+    client.println("p3te");
+    Serial.print("p3ts");
+    Serial.print(alarmTime[2].hour()); //ارسال مقدار به شبکه
+    Serial.println("p3te");
+
+    client.print("p4ts");
+    client.print(alarmTime[3].hour()); //ارسال مقدار به شبکه
+    client.println("p4te");
+    Serial.print("p4ts");
+    Serial.print(alarmTime[3].hour()); //ارسال مقدار به شبکه
+    Serial.println("p4te");
+
+  }
 
  }   
   
