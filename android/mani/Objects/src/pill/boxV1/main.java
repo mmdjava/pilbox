@@ -380,7 +380,21 @@ public anywheresoftware.b4a.objects.LabelWrapper _label11 = null;
 public anywheresoftware.b4a.objects.LabelWrapper _label12 = null;
 public anywheresoftware.b4a.objects.ButtonWrapper _setconnect1 = null;
 public static String _pattern1 = "";
+public static String _pattern2 = "";
+public static String _pattern3 = "";
+public static String _pattern4 = "";
+public static String _pattern5 = "";
+public static String _pattern6 = "";
+public static String _pattern7 = "";
+public static String _pattern8 = "";
 public static String _data1 = "";
+public static String _data2 = "";
+public static String _data3 = "";
+public static String _data4 = "";
+public static String _data5 = "";
+public static String _data6 = "";
+public static String _data7 = "";
+public static String _data8 = "";
 public anywheresoftware.b4a.keywords.Regex.MatcherWrapper _matcher = null;
 public pill.boxV1.pill_1 _pill_1 = null;
 public pill.boxV1.pill_2 _pill_2 = null;
@@ -398,129 +412,244 @@ vis = vis | (pill_3.mostCurrent != null);
 vis = vis | (pill_4.mostCurrent != null);
 return vis;}
 public static String  _activity_create(boolean _firsttime) throws Exception{
- //BA.debugLineNum = 108;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 110;BA.debugLine="Activity.LoadLayout(\"Layout\")";
+ //BA.debugLineNum = 120;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+ //BA.debugLineNum = 122;BA.debugLine="Activity.LoadLayout(\"Layout\")";
 mostCurrent._activity.LoadLayout("Layout",mostCurrent.activityBA);
- //BA.debugLineNum = 114;BA.debugLine="Try";
-try { //BA.debugLineNum = 116;BA.debugLine="pill_naim1 = File.ReadString(File.DirInternal, \"";
+ //BA.debugLineNum = 126;BA.debugLine="Try";
+try { //BA.debugLineNum = 128;BA.debugLine="pill_naim1 = File.ReadString(File.DirInternal, \"";
 _pill_naim1 = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_naim1.txt");
- //BA.debugLineNum = 117;BA.debugLine="pill_count_box1 = File.ReadString(File.DirIntern";
+ //BA.debugLineNum = 129;BA.debugLine="pill_count_box1 = File.ReadString(File.DirIntern";
 _pill_count_box1 = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_count_Data1.txt");
- //BA.debugLineNum = 118;BA.debugLine="start_time_1 = File.ReadString(File.DirInternal,";
+ //BA.debugLineNum = 130;BA.debugLine="start_time_1 = File.ReadString(File.DirInternal,";
 _start_time_1 = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"start_time_1.txt");
- //BA.debugLineNum = 119;BA.debugLine="interval_1 = File.ReadString(File.DirInternal, \"";
+ //BA.debugLineNum = 131;BA.debugLine="interval_1 = File.ReadString(File.DirInternal, \"";
 _interval_1 = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"interval_1.txt");
+ //BA.debugLineNum = 132;BA.debugLine="box1_alarm = File.ReadString(File.DirInternal, \"";
+_box1_alarm = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"box1_alarm.txt");
  } 
-       catch (Exception e8) {
-			processBA.setLastException(e8); };
- //BA.debugLineNum = 127;BA.debugLine="Label1.Text=(\"(\"&pill_naim1&\")\")";
+       catch (Exception e9) {
+			processBA.setLastException(e9); };
+ //BA.debugLineNum = 140;BA.debugLine="Label1.Text=(\"(\"&pill_naim1&\")\")";
 mostCurrent._label1.setText(BA.ObjectToCharSequence(("("+_pill_naim1+")")));
- //BA.debugLineNum = 128;BA.debugLine="Label5.Text = (\"   \"&\"تعداد قرص های موجود:\"&\"(";
+ //BA.debugLineNum = 141;BA.debugLine="Label5.Text = (\"   \"&\"تعداد قرص های موجود:\"&\"(";
 mostCurrent._label5.setText(BA.ObjectToCharSequence(("   "+"تعداد قرص های موجود:"+"("+_pill_count_box1+")")));
- //BA.debugLineNum = 129;BA.debugLine="Label6.Text = (\"   \"&\"ساعت مصرف:\"&\"(\"&box1_alarm&";
+ //BA.debugLineNum = 142;BA.debugLine="Label6.Text = (\"   \"&\"ساعت مصرف:\"&\"(\"&box1_alarm&";
 mostCurrent._label6.setText(BA.ObjectToCharSequence(("   "+"ساعت مصرف:"+"("+_box1_alarm+")")));
- //BA.debugLineNum = 133;BA.debugLine="Try";
-try { //BA.debugLineNum = 135;BA.debugLine="pill_naim2 = File.ReadString(File.DirInternal, \"";
+ //BA.debugLineNum = 146;BA.debugLine="Try";
+try { //BA.debugLineNum = 148;BA.debugLine="pill_naim2 = File.ReadString(File.DirInternal, \"";
 _pill_naim2 = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_naim2.txt");
- //BA.debugLineNum = 136;BA.debugLine="pill_count_box2 = File.ReadString(File.DirIntern";
-_pill_count_box2 = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_count_box2.txt");
- //BA.debugLineNum = 137;BA.debugLine="start_time_2 = File.ReadString(File.DirInternal,";
+ //BA.debugLineNum = 149;BA.debugLine="pill_count_box2 = File.ReadString(File.DirIntern";
+_pill_count_box2 = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_count_Data2.txt");
+ //BA.debugLineNum = 150;BA.debugLine="start_time_2 = File.ReadString(File.DirInternal,";
 _start_time_2 = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"start_time_2.txt");
- //BA.debugLineNum = 138;BA.debugLine="interval_2 = File.ReadString(File.DirInternal, \"";
+ //BA.debugLineNum = 151;BA.debugLine="interval_2 = File.ReadString(File.DirInternal, \"";
 _interval_2 = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"interval_2.txt");
+ //BA.debugLineNum = 152;BA.debugLine="box2_alarm = File.ReadString(File.DirInternal, \"";
+_box2_alarm = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"box2_alarm.txt");
  } 
-       catch (Exception e18) {
-			processBA.setLastException(e18); };
- //BA.debugLineNum = 146;BA.debugLine="Label2.Text=(\"(\"&pill_naim2&\")\")";
+       catch (Exception e20) {
+			processBA.setLastException(e20); };
+ //BA.debugLineNum = 160;BA.debugLine="Label2.Text=(\"(\"&pill_naim2&\")\")";
 mostCurrent._label2.setText(BA.ObjectToCharSequence(("("+_pill_naim2+")")));
- //BA.debugLineNum = 147;BA.debugLine="Label7.Text = (\"   \"&\"تعداد قرص های موجود:\"&\"(\"&p";
+ //BA.debugLineNum = 161;BA.debugLine="Label7.Text = (\"   \"&\"تعداد قرص های موجود:\"&\"(\"&p";
 mostCurrent._label7.setText(BA.ObjectToCharSequence(("   "+"تعداد قرص های موجود:"+"("+_pill_count_box2+")")));
- //BA.debugLineNum = 148;BA.debugLine="Label8.Text = (\"   \"&\"ساعت مصرف:\"&\"(\"&box2_alarm&";
+ //BA.debugLineNum = 162;BA.debugLine="Label8.Text = (\"   \"&\"ساعت مصرف:\"&\"(\"&box2_alarm&";
 mostCurrent._label8.setText(BA.ObjectToCharSequence(("   "+"ساعت مصرف:"+"("+_box2_alarm+")")));
- //BA.debugLineNum = 152;BA.debugLine="Try";
-try { //BA.debugLineNum = 154;BA.debugLine="pill_naim3 = File.ReadString(File.DirInternal, \"";
+ //BA.debugLineNum = 166;BA.debugLine="Try";
+try { //BA.debugLineNum = 168;BA.debugLine="pill_naim3 = File.ReadString(File.DirInternal, \"";
 _pill_naim3 = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_naim3.txt");
- //BA.debugLineNum = 155;BA.debugLine="pill_count_box3 = File.ReadString(File.DirIntern";
-_pill_count_box3 = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_count_box3.txt");
- //BA.debugLineNum = 156;BA.debugLine="start_time_3 = File.ReadString(File.DirInternal,";
+ //BA.debugLineNum = 169;BA.debugLine="pill_count_box3 = File.ReadString(File.DirIntern";
+_pill_count_box3 = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_count_Data3.txt");
+ //BA.debugLineNum = 170;BA.debugLine="start_time_3 = File.ReadString(File.DirInternal,";
 _start_time_3 = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"start_time_3.txt");
- //BA.debugLineNum = 157;BA.debugLine="interval_3 = File.ReadString(File.DirInternal, \"";
+ //BA.debugLineNum = 171;BA.debugLine="interval_3 = File.ReadString(File.DirInternal, \"";
 _interval_3 = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"interval_3.txt");
+ //BA.debugLineNum = 172;BA.debugLine="box3_alarm = File.ReadString(File.DirInternal, \"";
+_box3_alarm = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"box3_alarm.txt");
  } 
-       catch (Exception e28) {
-			processBA.setLastException(e28); };
- //BA.debugLineNum = 165;BA.debugLine="Label3.Text=(\"(\"&pill_naim3&\")\")";
+       catch (Exception e31) {
+			processBA.setLastException(e31); };
+ //BA.debugLineNum = 180;BA.debugLine="Label3.Text=(\"(\"&pill_naim3&\")\")";
 mostCurrent._label3.setText(BA.ObjectToCharSequence(("("+_pill_naim3+")")));
- //BA.debugLineNum = 166;BA.debugLine="Label9.Text = (\"   \"&\"تعداد قرص های موجود:\"&\"(\"&p";
+ //BA.debugLineNum = 181;BA.debugLine="Label9.Text = (\"   \"&\"تعداد قرص های موجود:\"&\"(\"&p";
 mostCurrent._label9.setText(BA.ObjectToCharSequence(("   "+"تعداد قرص های موجود:"+"("+_pill_count_box3+")")));
- //BA.debugLineNum = 167;BA.debugLine="Label10.Text = (\"   \"&\"ساعت مصرف:\"&\"(\"&box3_alarm";
+ //BA.debugLineNum = 182;BA.debugLine="Label10.Text = (\"   \"&\"ساعت مصرف:\"&\"(\"&box3_alarm";
 mostCurrent._label10.setText(BA.ObjectToCharSequence(("   "+"ساعت مصرف:"+"("+_box3_alarm+")")));
- //BA.debugLineNum = 171;BA.debugLine="Try";
-try { //BA.debugLineNum = 173;BA.debugLine="pill_naim4 = File.ReadString(File.DirInternal, \"";
+ //BA.debugLineNum = 186;BA.debugLine="Try";
+try { //BA.debugLineNum = 188;BA.debugLine="pill_naim4 = File.ReadString(File.DirInternal, \"";
 _pill_naim4 = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_naim4.txt");
- //BA.debugLineNum = 174;BA.debugLine="pill_count_box4 = File.ReadString(File.DirIntern";
-_pill_count_box4 = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_count_box4.txt");
- //BA.debugLineNum = 175;BA.debugLine="start_time_4 = File.ReadString(File.DirInternal,";
+ //BA.debugLineNum = 189;BA.debugLine="pill_count_box4 = File.ReadString(File.DirIntern";
+_pill_count_box4 = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_count_Data4.txt");
+ //BA.debugLineNum = 190;BA.debugLine="start_time_4 = File.ReadString(File.DirInternal,";
 _start_time_4 = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"start_time_4.txt");
- //BA.debugLineNum = 176;BA.debugLine="interval_4 = File.ReadString(File.DirInternal, \"";
+ //BA.debugLineNum = 191;BA.debugLine="interval_4 = File.ReadString(File.DirInternal, \"";
 _interval_4 = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"interval_4.txt");
+ //BA.debugLineNum = 192;BA.debugLine="box4_alarm = File.ReadString(File.DirInternal, \"";
+_box4_alarm = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"box4_alarm.txt");
  } 
-       catch (Exception e38) {
-			processBA.setLastException(e38); };
- //BA.debugLineNum = 184;BA.debugLine="Label4.Text=(\"(\"&pill_naim4&\")\")";
+       catch (Exception e42) {
+			processBA.setLastException(e42); };
+ //BA.debugLineNum = 200;BA.debugLine="Label4.Text=(\"(\"&pill_naim4&\")\")";
 mostCurrent._label4.setText(BA.ObjectToCharSequence(("("+_pill_naim4+")")));
- //BA.debugLineNum = 185;BA.debugLine="Label11.Text = (\"   \"&\"تعداد قرص های موجود:\"&\"(\"&";
-mostCurrent._label11.setText(BA.ObjectToCharSequence(("   "+"تعداد قرص های موجود:"+"("+")")));
- //BA.debugLineNum = 186;BA.debugLine="Label12.Text = (\"   \"&\"ساعت مصرف:\"&\"(\"&box4_alarm";
+ //BA.debugLineNum = 201;BA.debugLine="Label11.Text = (\"   \"&\"تعداد قرص های موجود:\"&\"(\"&";
+mostCurrent._label11.setText(BA.ObjectToCharSequence(("   "+"تعداد قرص های موجود:"+"("+_pill_count_box4+")")));
+ //BA.debugLineNum = 202;BA.debugLine="Label12.Text = (\"   \"&\"ساعت مصرف:\"&\"(\"&box4_alarm";
 mostCurrent._label12.setText(BA.ObjectToCharSequence(("   "+"ساعت مصرف:"+"("+_box4_alarm+")")));
- //BA.debugLineNum = 188;BA.debugLine="End Sub";
+ //BA.debugLineNum = 204;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 199;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 203;BA.debugLine="End Sub";
+ //BA.debugLineNum = 215;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 219;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 191;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 195;BA.debugLine="End Sub";
+ //BA.debugLineNum = 207;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 211;BA.debugLine="End Sub";
 return "";
 }
 public static String  _astreams_error() throws Exception{
- //BA.debugLineNum = 276;BA.debugLine="Sub AStreams_Error";
- //BA.debugLineNum = 278;BA.debugLine="setconnect1.Enabled = True";
+ //BA.debugLineNum = 292;BA.debugLine="Sub AStreams_Error";
+ //BA.debugLineNum = 294;BA.debugLine="setconnect1.Enabled = True";
 mostCurrent._setconnect1.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 279;BA.debugLine="ToastMessageShow(\"مشکلی رخ داده است\",True)";
+ //BA.debugLineNum = 295;BA.debugLine="ToastMessageShow(\"مشکلی رخ داده است\",True)";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("مشکلی رخ داده است"),anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 281;BA.debugLine="setconnect1.Text = \"اتصال\"";
+ //BA.debugLineNum = 297;BA.debugLine="setconnect1.Text = \"اتصال\"";
 mostCurrent._setconnect1.setText(BA.ObjectToCharSequence("اتصال"));
- //BA.debugLineNum = 282;BA.debugLine="viber.Vibrate(1000)";
+ //BA.debugLineNum = 298;BA.debugLine="viber.Vibrate(1000)";
 _viber.Vibrate(processBA,(long) (1000));
- //BA.debugLineNum = 283;BA.debugLine="socket1.Close";
+ //BA.debugLineNum = 299;BA.debugLine="socket1.Close";
 _socket1.Close();
- //BA.debugLineNum = 285;BA.debugLine="End Sub";
+ //BA.debugLineNum = 301;BA.debugLine="End Sub";
 return "";
 }
 public static String  _astreams_newdata(byte[] _buffer) throws Exception{
- //BA.debugLineNum = 289;BA.debugLine="Sub AStreams_NewData (Buffer() As Byte)";
- //BA.debugLineNum = 292;BA.debugLine="input = BytesToString(Buffer, 0, Buffer.Length, \"";
+ //BA.debugLineNum = 305;BA.debugLine="Sub AStreams_NewData (Buffer() As Byte)";
+ //BA.debugLineNum = 308;BA.debugLine="input = BytesToString(Buffer, 0, Buffer.Length, \"";
 _input = anywheresoftware.b4a.keywords.Common.BytesToString(_buffer,(int) (0),_buffer.length,"UTF-8");
- //BA.debugLineNum = 293;BA.debugLine="Log(input)";
-anywheresoftware.b4a.keywords.Common.LogImpl("4786436",_input,0);
- //BA.debugLineNum = 296;BA.debugLine="Matcher = Regex.Matcher(pattern1, input)";
+ //BA.debugLineNum = 309;BA.debugLine="Log(input)";
+anywheresoftware.b4a.keywords.Common.LogImpl("7786436",_input,0);
+ //BA.debugLineNum = 313;BA.debugLine="Matcher = Regex.Matcher(pattern1, input)";
 mostCurrent._matcher = anywheresoftware.b4a.keywords.Common.Regex.Matcher(mostCurrent._pattern1,_input);
- //BA.debugLineNum = 297;BA.debugLine="If Matcher.Find Then";
+ //BA.debugLineNum = 314;BA.debugLine="If Matcher.Find Then";
 if (mostCurrent._matcher.Find()) { 
- //BA.debugLineNum = 298;BA.debugLine="data1 = Matcher.Group(1)";
+ //BA.debugLineNum = 315;BA.debugLine="data1 = Matcher.Group(1)";
 mostCurrent._data1 = mostCurrent._matcher.Group((int) (1));
  };
- //BA.debugLineNum = 320;BA.debugLine="File.WriteString(File.DirInternal, \"pill_count_Da";
+ //BA.debugLineNum = 319;BA.debugLine="Matcher = Regex.Matcher(pattern2, input)";
+mostCurrent._matcher = anywheresoftware.b4a.keywords.Common.Regex.Matcher(mostCurrent._pattern2,_input);
+ //BA.debugLineNum = 320;BA.debugLine="If Matcher.Find Then";
+if (mostCurrent._matcher.Find()) { 
+ //BA.debugLineNum = 321;BA.debugLine="data2 = Matcher.Group(1)";
+mostCurrent._data2 = mostCurrent._matcher.Group((int) (1));
+ };
+ //BA.debugLineNum = 325;BA.debugLine="Matcher = Regex.Matcher(pattern3, input)";
+mostCurrent._matcher = anywheresoftware.b4a.keywords.Common.Regex.Matcher(mostCurrent._pattern3,_input);
+ //BA.debugLineNum = 326;BA.debugLine="If Matcher.Find Then";
+if (mostCurrent._matcher.Find()) { 
+ //BA.debugLineNum = 327;BA.debugLine="data3 = Matcher.Group(1)";
+mostCurrent._data3 = mostCurrent._matcher.Group((int) (1));
+ };
+ //BA.debugLineNum = 331;BA.debugLine="Matcher = Regex.Matcher(pattern4, input)";
+mostCurrent._matcher = anywheresoftware.b4a.keywords.Common.Regex.Matcher(mostCurrent._pattern4,_input);
+ //BA.debugLineNum = 332;BA.debugLine="If Matcher.Find Then";
+if (mostCurrent._matcher.Find()) { 
+ //BA.debugLineNum = 333;BA.debugLine="data4 = Matcher.Group(1)";
+mostCurrent._data4 = mostCurrent._matcher.Group((int) (1));
+ };
+ //BA.debugLineNum = 336;BA.debugLine="Matcher = Regex.Matcher(pattern5, input)";
+mostCurrent._matcher = anywheresoftware.b4a.keywords.Common.Regex.Matcher(mostCurrent._pattern5,_input);
+ //BA.debugLineNum = 337;BA.debugLine="If Matcher.Find Then";
+if (mostCurrent._matcher.Find()) { 
+ //BA.debugLineNum = 338;BA.debugLine="data5 = Matcher.Group(1)";
+mostCurrent._data5 = mostCurrent._matcher.Group((int) (1));
+ };
+ //BA.debugLineNum = 342;BA.debugLine="Matcher = Regex.Matcher(pattern6, input)";
+mostCurrent._matcher = anywheresoftware.b4a.keywords.Common.Regex.Matcher(mostCurrent._pattern6,_input);
+ //BA.debugLineNum = 343;BA.debugLine="If Matcher.Find Then";
+if (mostCurrent._matcher.Find()) { 
+ //BA.debugLineNum = 344;BA.debugLine="data6 = Matcher.Group(1)";
+mostCurrent._data6 = mostCurrent._matcher.Group((int) (1));
+ };
+ //BA.debugLineNum = 348;BA.debugLine="Matcher = Regex.Matcher(pattern7, input)";
+mostCurrent._matcher = anywheresoftware.b4a.keywords.Common.Regex.Matcher(mostCurrent._pattern7,_input);
+ //BA.debugLineNum = 349;BA.debugLine="If Matcher.Find Then";
+if (mostCurrent._matcher.Find()) { 
+ //BA.debugLineNum = 350;BA.debugLine="data7 = Matcher.Group(1)";
+mostCurrent._data7 = mostCurrent._matcher.Group((int) (1));
+ };
+ //BA.debugLineNum = 354;BA.debugLine="Matcher = Regex.Matcher(pattern8, input)";
+mostCurrent._matcher = anywheresoftware.b4a.keywords.Common.Regex.Matcher(mostCurrent._pattern8,_input);
+ //BA.debugLineNum = 355;BA.debugLine="If Matcher.Find Then";
+if (mostCurrent._matcher.Find()) { 
+ //BA.debugLineNum = 356;BA.debugLine="data8 = Matcher.Group(1)";
+mostCurrent._data8 = mostCurrent._matcher.Group((int) (1));
+ };
+ //BA.debugLineNum = 360;BA.debugLine="Log(\"Data1: \" & data1)";
+anywheresoftware.b4a.keywords.Common.LogImpl("7786487","Data1: "+mostCurrent._data1,0);
+ //BA.debugLineNum = 361;BA.debugLine="Log(\"Data2: \" & data2)";
+anywheresoftware.b4a.keywords.Common.LogImpl("7786488","Data2: "+mostCurrent._data2,0);
+ //BA.debugLineNum = 362;BA.debugLine="Log(\"Data3: \" & data3)";
+anywheresoftware.b4a.keywords.Common.LogImpl("7786489","Data3: "+mostCurrent._data3,0);
+ //BA.debugLineNum = 363;BA.debugLine="Log(\"Data4: \" & data4)";
+anywheresoftware.b4a.keywords.Common.LogImpl("7786490","Data4: "+mostCurrent._data4,0);
+ //BA.debugLineNum = 364;BA.debugLine="Log(\"Data1: \" & data5)";
+anywheresoftware.b4a.keywords.Common.LogImpl("7786491","Data1: "+mostCurrent._data5,0);
+ //BA.debugLineNum = 365;BA.debugLine="Log(\"Data2: \" & data6)";
+anywheresoftware.b4a.keywords.Common.LogImpl("7786492","Data2: "+mostCurrent._data6,0);
+ //BA.debugLineNum = 366;BA.debugLine="Log(\"Data3: \" & data7)";
+anywheresoftware.b4a.keywords.Common.LogImpl("7786493","Data3: "+mostCurrent._data7,0);
+ //BA.debugLineNum = 367;BA.debugLine="Log(\"Data4: \" & data8)";
+anywheresoftware.b4a.keywords.Common.LogImpl("7786494","Data4: "+mostCurrent._data8,0);
+ //BA.debugLineNum = 371;BA.debugLine="File.WriteString(File.DirInternal, \"pill_count_Da";
 anywheresoftware.b4a.keywords.Common.File.WriteString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_count_Data1.txt",mostCurrent._data1);
- //BA.debugLineNum = 321;BA.debugLine="pill_count_box1 = File.ReadString(File.DirInterna";
+ //BA.debugLineNum = 372;BA.debugLine="pill_count_box1 = File.ReadString(File.DirInterna";
 _pill_count_box1 = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_count_Data1.txt");
- //BA.debugLineNum = 322;BA.debugLine="Label5.Text = (\"   \"&\"تعداد قرص های موجود:\"&\"(\"&d";
+ //BA.debugLineNum = 373;BA.debugLine="Label5.Text = (\"   \"&\"تعداد قرص های موجود:\"&\"(\"&d";
 mostCurrent._label5.setText(BA.ObjectToCharSequence(("   "+"تعداد قرص های موجود:"+"("+mostCurrent._data1+")")));
- //BA.debugLineNum = 325;BA.debugLine="End Sub";
+ //BA.debugLineNum = 376;BA.debugLine="File.WriteString(File.DirInternal, \"box1_alarm.tx";
+anywheresoftware.b4a.keywords.Common.File.WriteString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"box1_alarm.txt",mostCurrent._data5);
+ //BA.debugLineNum = 377;BA.debugLine="box1_alarm = File.ReadString(File.DirInternal, \"b";
+_box1_alarm = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"box1_alarm.txt");
+ //BA.debugLineNum = 378;BA.debugLine="Label6.Text = (\"   \"&\"ساعت مصرف:\"&\"(\"&box1_alarm&";
+mostCurrent._label6.setText(BA.ObjectToCharSequence(("   "+"ساعت مصرف:"+"("+_box1_alarm+")")));
+ //BA.debugLineNum = 382;BA.debugLine="File.WriteString(File.DirInternal, \"pill_count_Da";
+anywheresoftware.b4a.keywords.Common.File.WriteString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_count_Data2.txt",mostCurrent._data2);
+ //BA.debugLineNum = 383;BA.debugLine="pill_count_box2 = File.ReadString(File.DirInterna";
+_pill_count_box2 = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_count_Data2.txt");
+ //BA.debugLineNum = 384;BA.debugLine="Label7.Text = (\"   \"&\"تعداد قرص های موجود:\"&\"(\"&d";
+mostCurrent._label7.setText(BA.ObjectToCharSequence(("   "+"تعداد قرص های موجود:"+"("+mostCurrent._data2+")")));
+ //BA.debugLineNum = 386;BA.debugLine="File.WriteString(File.DirInternal, \"box2_alarm.tx";
+anywheresoftware.b4a.keywords.Common.File.WriteString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"box2_alarm.txt",mostCurrent._data6);
+ //BA.debugLineNum = 387;BA.debugLine="box2_alarm = File.ReadString(File.DirInternal, \"b";
+_box2_alarm = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"box2_alarm.txt");
+ //BA.debugLineNum = 388;BA.debugLine="Label8.Text = (\"   \"&\"ساعت مصرف:\"&\"(\"&box2_alarm&";
+mostCurrent._label8.setText(BA.ObjectToCharSequence(("   "+"ساعت مصرف:"+"("+_box2_alarm+")")));
+ //BA.debugLineNum = 392;BA.debugLine="File.WriteString(File.DirInternal, \"pill_count_Da";
+anywheresoftware.b4a.keywords.Common.File.WriteString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_count_Data3.txt",mostCurrent._data3);
+ //BA.debugLineNum = 393;BA.debugLine="pill_count_box3 = File.ReadString(File.DirInterna";
+_pill_count_box3 = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_count_Data3.txt");
+ //BA.debugLineNum = 394;BA.debugLine="Label9.Text = (\"   \"&\"تعداد قرص های موجود:\"&\"(\"&d";
+mostCurrent._label9.setText(BA.ObjectToCharSequence(("   "+"تعداد قرص های موجود:"+"("+mostCurrent._data3+")")));
+ //BA.debugLineNum = 396;BA.debugLine="File.WriteString(File.DirInternal, \"box3_alarm.tx";
+anywheresoftware.b4a.keywords.Common.File.WriteString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"box3_alarm.txt",mostCurrent._data7);
+ //BA.debugLineNum = 397;BA.debugLine="box3_alarm = File.ReadString(File.DirInternal, \"b";
+_box3_alarm = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"box3_alarm.txt");
+ //BA.debugLineNum = 398;BA.debugLine="Label10.Text = (\"   \"&\"ساعت مصرف:\"&\"(\"&box3_alarm";
+mostCurrent._label10.setText(BA.ObjectToCharSequence(("   "+"ساعت مصرف:"+"("+_box3_alarm+")")));
+ //BA.debugLineNum = 402;BA.debugLine="File.WriteString(File.DirInternal, \"pill_count_Da";
+anywheresoftware.b4a.keywords.Common.File.WriteString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_count_Data4.txt",mostCurrent._data4);
+ //BA.debugLineNum = 403;BA.debugLine="pill_count_box4 = File.ReadString(File.DirInterna";
+_pill_count_box4 = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_count_Data4.txt");
+ //BA.debugLineNum = 404;BA.debugLine="Label11.Text = (\"   \"&\"تعداد قرص های موجود:\"&\"(\"&";
+mostCurrent._label11.setText(BA.ObjectToCharSequence(("   "+"تعداد قرص های موجود:"+"("+mostCurrent._data4+")")));
+ //BA.debugLineNum = 406;BA.debugLine="File.WriteString(File.DirInternal, \"box4_alarm.tx";
+anywheresoftware.b4a.keywords.Common.File.WriteString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"box4_alarm.txt",mostCurrent._data8);
+ //BA.debugLineNum = 407;BA.debugLine="box4_alarm = File.ReadString(File.DirInternal, \"b";
+_box4_alarm = anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"box4_alarm.txt");
+ //BA.debugLineNum = 408;BA.debugLine="Label12.Text = (\"   \"&\"ساعت مصرف:\"&\"(\"&box4_alarm";
+mostCurrent._label12.setText(BA.ObjectToCharSequence(("   "+"ساعت مصرف:"+"("+_box4_alarm+")")));
+ //BA.debugLineNum = 411;BA.debugLine="End Sub";
 return "";
 }
 public static String  _globals() throws Exception{
@@ -561,45 +690,73 @@ mostCurrent._label12 = new anywheresoftware.b4a.objects.LabelWrapper();
 mostCurrent._setconnect1 = new anywheresoftware.b4a.objects.ButtonWrapper();
  //BA.debugLineNum = 91;BA.debugLine="Private pattern1 As String = \"p1cs(\\d+)p1ce\"  ' ب";
 mostCurrent._pattern1 = "p1cs(\\d+)p1ce";
- //BA.debugLineNum = 97;BA.debugLine="Private data1 As String = \"\"";
+ //BA.debugLineNum = 92;BA.debugLine="Private pattern2 As String = \"p2cs(\\d+)p2ce\"  ' ب";
+mostCurrent._pattern2 = "p2cs(\\d+)p2ce";
+ //BA.debugLineNum = 93;BA.debugLine="Private pattern3 As String = \"p3cs(\\d+)p3ce\"  ' ب";
+mostCurrent._pattern3 = "p3cs(\\d+)p3ce";
+ //BA.debugLineNum = 94;BA.debugLine="Private pattern4 As String = \"p4cs(\\d+)p4ce\"  ' ب";
+mostCurrent._pattern4 = "p4cs(\\d+)p4ce";
+ //BA.debugLineNum = 96;BA.debugLine="Private pattern5 As String = \"p1ts(\\d+)p1te\"  ' ب";
+mostCurrent._pattern5 = "p1ts(\\d+)p1te";
+ //BA.debugLineNum = 97;BA.debugLine="Private pattern6 As String = \"p2ts(\\d+)p2te\"  ' ب";
+mostCurrent._pattern6 = "p2ts(\\d+)p2te";
+ //BA.debugLineNum = 98;BA.debugLine="Private pattern7 As String = \"p3ts(\\d+)p3te\"  ' ب";
+mostCurrent._pattern7 = "p3ts(\\d+)p3te";
+ //BA.debugLineNum = 99;BA.debugLine="Private pattern8 As String = \"p4ts(\\d+)p4te\"  ' ب";
+mostCurrent._pattern8 = "p4ts(\\d+)p4te";
+ //BA.debugLineNum = 103;BA.debugLine="Private data1 As String = \"\"";
 mostCurrent._data1 = "";
- //BA.debugLineNum = 103;BA.debugLine="Private Matcher As Matcher";
+ //BA.debugLineNum = 104;BA.debugLine="Private data2 As String = \"\"";
+mostCurrent._data2 = "";
+ //BA.debugLineNum = 105;BA.debugLine="Private data3 As String = \"\"";
+mostCurrent._data3 = "";
+ //BA.debugLineNum = 106;BA.debugLine="Private data4 As String = \"\"";
+mostCurrent._data4 = "";
+ //BA.debugLineNum = 108;BA.debugLine="Private data5 As String = \"\"";
+mostCurrent._data5 = "";
+ //BA.debugLineNum = 109;BA.debugLine="Private data6 As String = \"\"";
+mostCurrent._data6 = "";
+ //BA.debugLineNum = 110;BA.debugLine="Private data7 As String = \"\"";
+mostCurrent._data7 = "";
+ //BA.debugLineNum = 111;BA.debugLine="Private data8 As String = \"\"";
+mostCurrent._data8 = "";
+ //BA.debugLineNum = 115;BA.debugLine="Private Matcher As Matcher";
 mostCurrent._matcher = new anywheresoftware.b4a.keywords.Regex.MatcherWrapper();
- //BA.debugLineNum = 106;BA.debugLine="End Sub";
+ //BA.debugLineNum = 118;BA.debugLine="End Sub";
 return "";
 }
 public static String  _imagepill1_longclick() throws Exception{
- //BA.debugLineNum = 234;BA.debugLine="Private Sub Imagepill1_LongClick";
- //BA.debugLineNum = 236;BA.debugLine="StartActivity(\"pill_1\")";
+ //BA.debugLineNum = 250;BA.debugLine="Private Sub Imagepill1_LongClick";
+ //BA.debugLineNum = 252;BA.debugLine="StartActivity(\"pill_1\")";
 anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("pill_1"));
- //BA.debugLineNum = 239;BA.debugLine="End Sub";
+ //BA.debugLineNum = 255;BA.debugLine="End Sub";
 return "";
 }
 public static String  _imagepill2_longclick() throws Exception{
- //BA.debugLineNum = 225;BA.debugLine="Private Sub Imagepill2_LongClick";
- //BA.debugLineNum = 227;BA.debugLine="StartActivity(\"pill_2\")";
+ //BA.debugLineNum = 241;BA.debugLine="Private Sub Imagepill2_LongClick";
+ //BA.debugLineNum = 243;BA.debugLine="StartActivity(\"pill_2\")";
 anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("pill_2"));
- //BA.debugLineNum = 228;BA.debugLine="Activity.Finish";
+ //BA.debugLineNum = 244;BA.debugLine="Activity.Finish";
 mostCurrent._activity.Finish();
- //BA.debugLineNum = 230;BA.debugLine="End Sub";
+ //BA.debugLineNum = 246;BA.debugLine="End Sub";
 return "";
 }
 public static String  _imagepill3_longclick() throws Exception{
- //BA.debugLineNum = 216;BA.debugLine="Private Sub Imagepill3_LongClick";
- //BA.debugLineNum = 218;BA.debugLine="StartActivity(\"pill_3\")";
+ //BA.debugLineNum = 232;BA.debugLine="Private Sub Imagepill3_LongClick";
+ //BA.debugLineNum = 234;BA.debugLine="StartActivity(\"pill_3\")";
 anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("pill_3"));
- //BA.debugLineNum = 219;BA.debugLine="Activity.Finish";
+ //BA.debugLineNum = 235;BA.debugLine="Activity.Finish";
 mostCurrent._activity.Finish();
- //BA.debugLineNum = 221;BA.debugLine="End Sub";
+ //BA.debugLineNum = 237;BA.debugLine="End Sub";
 return "";
 }
 public static String  _imagepill4_longclick() throws Exception{
- //BA.debugLineNum = 207;BA.debugLine="Private Sub Imagepill4_LongClick";
- //BA.debugLineNum = 209;BA.debugLine="StartActivity(\"pill_4\")";
+ //BA.debugLineNum = 223;BA.debugLine="Private Sub Imagepill4_LongClick";
+ //BA.debugLineNum = 225;BA.debugLine="StartActivity(\"pill_4\")";
 anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("pill_4"));
- //BA.debugLineNum = 210;BA.debugLine="Activity.Finish";
+ //BA.debugLineNum = 226;BA.debugLine="Activity.Finish";
 mostCurrent._activity.Finish();
- //BA.debugLineNum = 212;BA.debugLine="End Sub";
+ //BA.debugLineNum = 228;BA.debugLine="End Sub";
 return "";
 }
 
@@ -678,41 +835,41 @@ _input = "";
 return "";
 }
 public static String  _setconnect1_click() throws Exception{
- //BA.debugLineNum = 243;BA.debugLine="Private Sub setconnect1_Click";
- //BA.debugLineNum = 245;BA.debugLine="ProgressDialogShow2(\"درحال اتصال...\",False)";
+ //BA.debugLineNum = 259;BA.debugLine="Private Sub setconnect1_Click";
+ //BA.debugLineNum = 261;BA.debugLine="ProgressDialogShow2(\"درحال اتصال...\",False)";
 anywheresoftware.b4a.keywords.Common.ProgressDialogShow2(mostCurrent.activityBA,BA.ObjectToCharSequence("درحال اتصال..."),anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 246;BA.debugLine="socket1.Initialize(\"socket1\")";
+ //BA.debugLineNum = 262;BA.debugLine="socket1.Initialize(\"socket1\")";
 _socket1.Initialize("socket1");
- //BA.debugLineNum = 247;BA.debugLine="socket1.Connect(\"192.168.4.1\",8888,5000)";
+ //BA.debugLineNum = 263;BA.debugLine="socket1.Connect(\"192.168.4.1\",8888,5000)";
 _socket1.Connect(processBA,"192.168.4.1",(int) (8888),(int) (5000));
- //BA.debugLineNum = 249;BA.debugLine="End Sub";
+ //BA.debugLineNum = 265;BA.debugLine="End Sub";
 return "";
 }
 public static boolean  _socket1_connected(boolean _connected) throws Exception{
- //BA.debugLineNum = 253;BA.debugLine="Sub Socket1_Connected(Connected As Boolean)As Bool";
- //BA.debugLineNum = 255;BA.debugLine="If Connected = True Then";
+ //BA.debugLineNum = 269;BA.debugLine="Sub Socket1_Connected(Connected As Boolean)As Bool";
+ //BA.debugLineNum = 271;BA.debugLine="If Connected = True Then";
 if (_connected==anywheresoftware.b4a.keywords.Common.True) { 
- //BA.debugLineNum = 256;BA.debugLine="ToastMessageShow(\"ارتباط برقرار شد\",True)";
+ //BA.debugLineNum = 272;BA.debugLine="ToastMessageShow(\"ارتباط برقرار شد\",True)";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("ارتباط برقرار شد"),anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 257;BA.debugLine="astreams.Initialize(socket1.InputStream, socket1";
+ //BA.debugLineNum = 273;BA.debugLine="astreams.Initialize(socket1.InputStream, socket1";
 _astreams.Initialize(processBA,_socket1.getInputStream(),_socket1.getOutputStream(),"AStreams");
- //BA.debugLineNum = 258;BA.debugLine="viber.Vibrate(50)";
+ //BA.debugLineNum = 274;BA.debugLine="viber.Vibrate(50)";
 _viber.Vibrate(processBA,(long) (50));
- //BA.debugLineNum = 259;BA.debugLine="setconnect1.Enabled =False";
+ //BA.debugLineNum = 275;BA.debugLine="setconnect1.Enabled =False";
 mostCurrent._setconnect1.setEnabled(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 260;BA.debugLine="setconnect1.Text = \"متصل شد\"";
+ //BA.debugLineNum = 276;BA.debugLine="setconnect1.Text = \"متصل شد\"";
 mostCurrent._setconnect1.setText(BA.ObjectToCharSequence("متصل شد"));
  }else {
- //BA.debugLineNum = 264;BA.debugLine="ToastMessageShow(\"مشکلی رخ داده است\",True)";
+ //BA.debugLineNum = 280;BA.debugLine="ToastMessageShow(\"مشکلی رخ داده است\",True)";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("مشکلی رخ داده است"),anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 266;BA.debugLine="setconnect1.Text = \"اتصال\"";
+ //BA.debugLineNum = 282;BA.debugLine="setconnect1.Text = \"اتصال\"";
 mostCurrent._setconnect1.setText(BA.ObjectToCharSequence("اتصال"));
- //BA.debugLineNum = 267;BA.debugLine="viber.Vibrate(500)";
+ //BA.debugLineNum = 283;BA.debugLine="viber.Vibrate(500)";
 _viber.Vibrate(processBA,(long) (500));
  };
- //BA.debugLineNum = 270;BA.debugLine="ProgressDialogHide";
+ //BA.debugLineNum = 286;BA.debugLine="ProgressDialogHide";
 anywheresoftware.b4a.keywords.Common.ProgressDialogHide();
- //BA.debugLineNum = 272;BA.debugLine="End Sub";
+ //BA.debugLineNum = 288;BA.debugLine="End Sub";
 return false;
 }
 }

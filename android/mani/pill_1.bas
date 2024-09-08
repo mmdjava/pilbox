@@ -49,8 +49,10 @@ Sub Globals
     etext2_flag2 =False
 	etext3_flag3=False
 	etext4_flag4 =False
+	
 	togeleButton_flge=False
 	Private ToggleButton As ToggleButton
+	
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -84,7 +86,6 @@ Sub Activity_Create(FirstTime As Boolean)
 
 
 End Sub
-
 
 Sub Activity_Resume
 

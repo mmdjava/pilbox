@@ -30,29 +30,29 @@ WiFiServer server(port);
 //----------------قرص 1---------------- 
 char pill1_en;//وضعیت قرص 1
 char pill_count_box1;//تعداد قرص 1
-int start_time_1 = 0;//تایم شروع قرص 1
-int interval_1 = 1;//چرخه مصرف قرص 1
+volatile int start_time_1  ;//تایم شروع قرص 1
+volatile int interval_1  ;//چرخه مصرف قرص 1
 //---------------- ---------------- ----------------
 
 //----------------قرص 2---------------- 
 char pill2_en;//وضعیت قرص 2
 char pill_count_box2;//تعداد قرص 2
-int start_time_2 = 13;//تایم شروع قرص 2
-int interval_2 = 1;//چرخه مصرف قرص 2
+volatile int start_time_2 ;//تایم شروع قرص 2
+volatile int interval_2 ;//چرخه مصرف قرص 2
 //---------------- ---------------- ----------------
 
 //----------------قرص 3---------------- 
 char pill3_en;//وضعیت قرص 3
 char pill_count_box3;//تعداد قرص 3
-int start_time_3 = 13;//تایم شروع قرص 3
-int interval_3 = 1;//چرخه مصرف قرص 3
+volatile int start_time_3 ;//تایم شروع قرص 3
+volatile int interval_3 ;//چرخه مصرف قرص 3
 //---------------- ---------------- ----------------
 
 //----------------قرص 4---------------- 
 char pill4_en;//وضعیت قرص 4
 char pill_count_box4;//تعداد قرص 4
-int start_time_4 = 13;//تایم شروع قرص 4
-int interval_4 = 1;//چرخه مصرف قرص 4
+volatile int start_time_4 ;//تایم شروع قرص 4
+volatile int interval_4 ;//چرخه مصرف قرص 4
 //---------------- ---------------- ----------------
 
 //----------------کیلید 1---------------- 
@@ -98,6 +98,8 @@ const int startMinute[numAlarms] = {0, 0, 0, 0};
 const int intervalHours[numAlarms] = { interval_1 , interval_2 , interval_3 , interval_4 };
 //---------------- ---------------- ----------------
 
+unsigned long previousMillis = 0;   // ذخیره زمان قبلی
+const long interval = 5000;         // فاصله زمانی بین ارسال داده (۵۰۰۰ میلی‌ثانیه = ۵ ثانیه)
 
 //----------------تابع پردازش داده ورودی----------------
 int in_find_word(char *array_in, char *target) {
@@ -163,23 +165,27 @@ DateTime alarmTime[numAlarms];
 
 RTC_DS3231 rtc;// ایجاد شیء از کتابخانه RTC
   DateTime now1 ;
-
+uint8_t rtc_busy=0;
 //----------------core 0 لوپ پردازش موازی----------------
 void Task1(void *pvParameters) {
     while(1) {
-    
-    
-     now1 = rtc.now();// rtc دریافت زمان کنونی از 
-       Serial.println("==============now second top================ ");
-      Serial.println(now1.secondstime());
-      Serial.println("============================== ");
+     
+      /////////=================================================================
+      if(!rtc_busy) {
+        rtc_busy=1;
+        now1 = rtc.now();// rtc دریافت زمان کنونی از 
+        rtc_busy=0;
+        }
+      Serial.print("==============NOW================= ");
+      Serial.println(now1.timestamp());
+      Serial.println("============================================ ");
 
   //----------------برسی میکند آیا زمان کنونی با زمان آلارم برابراست----------------
   for (int i = 0; i < numAlarms; i++) {
        Serial.print("==============alarm ");
       Serial.print(i);
       Serial.print("time=");
-      Serial.println(alarmTime[i].secondstime());
+      Serial.println(alarmTime[i].timestamp());
       Serial.println("============================== ");
     if (now1 >= alarmTime[i]) {
       Serial.print("Alarm ");
@@ -187,7 +193,7 @@ void Task1(void *pvParameters) {
       Serial.println(" triggered!");
 
       //----------------تولید یک زنگ هشدار سیگنال دادن به خروجی buzzer----------------
-      for (int j = 0; j < 5; j++) {
+      for (int j = 0; j < 3; j++) {
 
         digitalWrite(buzzerPin,HIGH);
         delay(100); // مدت زمان پخش صدا به میلی‌ثانیه
@@ -228,16 +234,14 @@ void Task1(void *pvParameters) {
       //---------------- ---------------- ----------------
 
       //----------------به‌روزرسانی زمان آلارم برای بار بعدی----------------
-      Serial.println("==============now second================ ");
-      Serial.println(now1.secondstime());
+      Serial.println("==============now time================ ");
+      Serial.println(now1.timestamp());
       Serial.println("============================== ");
       
-      Serial.println("==============previos second================ ");
-      Serial.println(alarmTime[i].secondstime());
+      Serial.println("==============now alarm ================ ");
+      Serial.println(alarmTime[i].timestamp());
       Serial.println("============================== ");
-      alarmTime[i] = alarmTime[i] + (intervalHours[i] * 3600);
-      Serial.println("=============after second ================= ");
-      Serial.println(alarmTime[i].secondstime());
+      alarmTime[i] = alarmTime[i] +TimeSpan(0, intervalHours[i], 0, 0);
       Serial.println("============================== ");
       Serial.println("Next alarm time for alarm ");
       Serial.println(i + 1);
@@ -251,6 +255,7 @@ void Task1(void *pvParameters) {
         vTaskDelay(1000 / portTICK_PERIOD_MS);
     }
 }
+ DateTime now ;//دریافت زمان کنونی از ماژول
 
 
 void setup() {
@@ -280,25 +285,33 @@ void setup() {
     for (;;);
   }//---------------- ---------------- ----------------
 
- DateTime now = rtc.now();//دریافت زمان کنونی از ماژول
+  now = rtc.now();//دریافت زمان کنونی از ماژول
 
     //----------------محاسبه زمان‌های آلارم اولیه----------------
   for (int i = 0; i < numAlarms; i++) {
-    DateTime startTime(now.year(), now.month(), now.day(), now.hour(), startMinute[i], 0);
+    DateTime startTime(now.year(), now.month(), now.day(), startHour[i], startMinute[i], 0);
    // alarmTime[i] = now+TimeSpan((startHour[i] * 3600)+(startMinute[i]*60));
     alarmTime[i]=startTime;
 
     while (alarmTime[i] <= now) {
-      alarmTime[i] = alarmTime[i] + (intervalHours[i] * 3600);
-    }
+      alarmTime[i] = alarmTime[i] + TimeSpan(0, intervalHours[i], 0, 0);
 
+    }
+  //=============just for test ===================================
+      Serial.println("==============now================ ");
+      Serial.println(now.timestamp());
+    
+
+
+  //==============================================================
     Serial.print("Next alarm time for alarm ");
     Serial.print(i + 1);
     Serial.print(": ");
     Serial.println(alarmTime[i].timestamp());
+    Serial.println("============================== ");
   }//---------------- ---------------- ----------------
 
- 
+ //while(1);
 
   WiFi.mode(WIFI_AP);
   WiFi.softAPConfig(local_IP, gateway, subnet);
@@ -316,9 +329,18 @@ void setup() {
 
 }
   WiFiClient client;
-
+//DateTime now ;
 void loop() {
- DateTime now = rtc.now();//دریافت زمان کنونی از ماژول
+
+
+
+
+        if(!rtc_busy) {
+        rtc_busy=1;
+        now = rtc.now();// rtc دریافت زمان کنونی از 
+        rtc_busy=0;
+        }
+
   //----------------نمایش ساعت و تاریخ روی نمایشگر----------------
   display.clearDisplay();
   display.setTextSize(2);
@@ -424,6 +446,9 @@ void loop() {
    //---------------- ---------------- ----------------
   }
   //-----------------------------------------------------------
+
+
+
 
  //--------------------------------بخش عملکرد کیلید 1--------------------------------
  reading1 = digitalRead(key1);
@@ -599,6 +624,9 @@ void loop() {
    keyState4 = reading4;
   }
  lastKeyState4 = reading4;
- //---------------- ---------------- ----------------                          
+ //---------------- ---------------- ----------------       
+
+
+
  }   
   

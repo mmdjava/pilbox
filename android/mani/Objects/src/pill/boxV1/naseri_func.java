@@ -51,7 +51,7 @@ _bytevalue = (byte) (_bytevalue*10);
  //BA.debugLineNum = 21;BA.debugLine="byteValue=byteValue+(byteArray(i)-48)";
 _bytevalue = (byte) (_bytevalue+(_bytearray[_i]-48));
  //BA.debugLineNum = 23;BA.debugLine="Log(i)";
-anywheresoftware.b4a.keywords.Common.LogImpl("43604493",BA.NumberToString(_i),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("73604493",BA.NumberToString(_i),0);
  }
 };
  //BA.debugLineNum = 27;BA.debugLine="byteArray_tx(0)=byteValue";

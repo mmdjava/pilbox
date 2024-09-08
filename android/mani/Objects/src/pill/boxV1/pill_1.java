@@ -374,148 +374,148 @@ public static void initializeProcessGlobals() {
 }
 public static String  _activity_create(boolean _firsttime) throws Exception{
 anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper _newimage = null;
- //BA.debugLineNum = 50;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 52;BA.debugLine="Activity.LoadLayout(\"pill_1\")";
+ //BA.debugLineNum = 52;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+ //BA.debugLineNum = 54;BA.debugLine="Activity.LoadLayout(\"pill_1\")";
 mostCurrent._activity.LoadLayout("pill_1",mostCurrent.activityBA);
- //BA.debugLineNum = 54;BA.debugLine="Try";
-try { //BA.debugLineNum = 55;BA.debugLine="Log(\"try\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("4983045","try",0);
- //BA.debugLineNum = 56;BA.debugLine="ToggleButton.Checked= File.ReadString(File.DirIn";
+ //BA.debugLineNum = 56;BA.debugLine="Try";
+try { //BA.debugLineNum = 57;BA.debugLine="Log(\"try\")";
+anywheresoftware.b4a.keywords.Common.LogImpl("7983045","try",0);
+ //BA.debugLineNum = 58;BA.debugLine="ToggleButton.Checked= File.ReadString(File.DirIn";
 mostCurrent._togglebutton.setChecked(BA.ObjectToBoolean(anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"toogle_en.txt")));
- //BA.debugLineNum = 57;BA.debugLine="Dim newImage As Bitmap";
+ //BA.debugLineNum = 59;BA.debugLine="Dim newImage As Bitmap";
 _newimage = new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper();
- //BA.debugLineNum = 59;BA.debugLine="If ToggleButton.Checked=True Then";
+ //BA.debugLineNum = 61;BA.debugLine="If ToggleButton.Checked=True Then";
 if (mostCurrent._togglebutton.getChecked()==anywheresoftware.b4a.keywords.Common.True) { 
- //BA.debugLineNum = 60;BA.debugLine="newImage.Initialize(File.DirAssets, \"switch-on.";
+ //BA.debugLineNum = 62;BA.debugLine="newImage.Initialize(File.DirAssets, \"switch-on.";
 _newimage.Initialize(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"switch-on.png");
  }else {
- //BA.debugLineNum = 63;BA.debugLine="newImage.Initialize(File.DirAssets, \"switch-off";
+ //BA.debugLineNum = 65;BA.debugLine="newImage.Initialize(File.DirAssets, \"switch-off";
 _newimage.Initialize(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"switch-off.png");
  };
- //BA.debugLineNum = 65;BA.debugLine="ToggleButton.SetBackgroundImage(newImage)";
+ //BA.debugLineNum = 67;BA.debugLine="ToggleButton.SetBackgroundImage(newImage)";
 mostCurrent._togglebutton.SetBackgroundImageNew((android.graphics.Bitmap)(_newimage.getObject()));
- //BA.debugLineNum = 66;BA.debugLine="EditText1.Text = File.ReadString(File.DirInternal";
+ //BA.debugLineNum = 68;BA.debugLine="EditText1.Text = File.ReadString(File.DirInternal";
 mostCurrent._edittext1.setText(BA.ObjectToCharSequence(anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_naim1.txt")));
- //BA.debugLineNum = 67;BA.debugLine="EditText2.Text = File.ReadString(File.DirInternal";
+ //BA.debugLineNum = 69;BA.debugLine="EditText2.Text = File.ReadString(File.DirInternal";
 mostCurrent._edittext2.setText(BA.ObjectToCharSequence(anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_count_box1.txt")));
- //BA.debugLineNum = 68;BA.debugLine="EditText3.Text = File.ReadString(File.DirInternal";
+ //BA.debugLineNum = 70;BA.debugLine="EditText3.Text = File.ReadString(File.DirInternal";
 mostCurrent._edittext3.setText(BA.ObjectToCharSequence(anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"start_time_1.txt")));
- //BA.debugLineNum = 69;BA.debugLine="AutoCompleteEditText1.Text = File.ReadString(File";
+ //BA.debugLineNum = 71;BA.debugLine="AutoCompleteEditText1.Text = File.ReadString(File";
 mostCurrent._autocompleteedittext1.setText(BA.ObjectToCharSequence(anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"interval_1.txt")));
  } 
        catch (Exception e17) {
-			processBA.setLastException(e17); //BA.debugLineNum = 72;BA.debugLine="Log(\"catch\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("4983062","catch",0);
- //BA.debugLineNum = 73;BA.debugLine="ToggleButton.Checked=False";
+			processBA.setLastException(e17); //BA.debugLineNum = 74;BA.debugLine="Log(\"catch\")";
+anywheresoftware.b4a.keywords.Common.LogImpl("7983062","catch",0);
+ //BA.debugLineNum = 75;BA.debugLine="ToggleButton.Checked=False";
 mostCurrent._togglebutton.setChecked(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 74;BA.debugLine="Dim newImage As Bitmap";
+ //BA.debugLineNum = 76;BA.debugLine="Dim newImage As Bitmap";
 _newimage = new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper();
- //BA.debugLineNum = 75;BA.debugLine="newImage.Initialize(File.DirAssets, \"switch-off.";
+ //BA.debugLineNum = 77;BA.debugLine="newImage.Initialize(File.DirAssets, \"switch-off.";
 _newimage.Initialize(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"switch-off.png");
- //BA.debugLineNum = 76;BA.debugLine="ToggleButton.SetBackgroundImage(newImage)";
+ //BA.debugLineNum = 78;BA.debugLine="ToggleButton.SetBackgroundImage(newImage)";
 mostCurrent._togglebutton.SetBackgroundImageNew((android.graphics.Bitmap)(_newimage.getObject()));
  };
- //BA.debugLineNum = 80;BA.debugLine="End Sub";
+ //BA.debugLineNum = 82;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 87;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 89;BA.debugLine="End Sub";
+ //BA.debugLineNum = 88;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 90;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 83;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 85;BA.debugLine="End Sub";
+ //BA.debugLineNum = 84;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 86;BA.debugLine="End Sub";
 return "";
 }
 public static String  _autocompleteedittext1_textchanged(String _old,String _new) throws Exception{
- //BA.debugLineNum = 141;BA.debugLine="Private Sub AutoCompleteEditText1_TextChanged (Old";
- //BA.debugLineNum = 143;BA.debugLine="etext4 = New";
+ //BA.debugLineNum = 142;BA.debugLine="Private Sub AutoCompleteEditText1_TextChanged (Old";
+ //BA.debugLineNum = 144;BA.debugLine="etext4 = New";
 mostCurrent._etext4 = _new;
- //BA.debugLineNum = 144;BA.debugLine="etext4_flag4=True";
+ //BA.debugLineNum = 145;BA.debugLine="etext4_flag4=True";
 _etext4_flag4 = anywheresoftware.b4a.keywords.Common.True;
- //BA.debugLineNum = 146;BA.debugLine="End Sub";
+ //BA.debugLineNum = 147;BA.debugLine="End Sub";
 return "";
 }
 public static String  _button1_click() throws Exception{
- //BA.debugLineNum = 92;BA.debugLine="Private Sub Button1_Click";
- //BA.debugLineNum = 99;BA.debugLine="File.WriteString(File.DirInternal, \"toogle_en.txt";
+ //BA.debugLineNum = 93;BA.debugLine="Private Sub Button1_Click";
+ //BA.debugLineNum = 100;BA.debugLine="File.WriteString(File.DirInternal, \"toogle_en.txt";
 anywheresoftware.b4a.keywords.Common.File.WriteString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"toogle_en.txt",BA.ObjectToString(mostCurrent._togglebutton.getChecked()));
- //BA.debugLineNum = 101;BA.debugLine="If(etext1_flag1=True ) Then'اگر متن etext1 تغییر";
+ //BA.debugLineNum = 102;BA.debugLine="If(etext1_flag1=True ) Then'اگر متن etext1 تغییر";
 if ((_etext1_flag1==anywheresoftware.b4a.keywords.Common.True)) { 
- //BA.debugLineNum = 102;BA.debugLine="File.WriteString(File.DirInternal, \"pill_naim1.tx";
+ //BA.debugLineNum = 103;BA.debugLine="File.WriteString(File.DirInternal, \"pill_naim1.tx";
 anywheresoftware.b4a.keywords.Common.File.WriteString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_naim1.txt",mostCurrent._etext1);
  };
- //BA.debugLineNum = 105;BA.debugLine="If(etext2_flag2=True ) Then'اگر متن etext2 تغییر";
+ //BA.debugLineNum = 106;BA.debugLine="If(etext2_flag2=True ) Then'اگر متن etext2 تغییر";
 if ((_etext2_flag2==anywheresoftware.b4a.keywords.Common.True)) { 
- //BA.debugLineNum = 106;BA.debugLine="File.WriteString(File.DirInternal, \"pill_count_b";
+ //BA.debugLineNum = 107;BA.debugLine="File.WriteString(File.DirInternal, \"pill_count_b";
 anywheresoftware.b4a.keywords.Common.File.WriteString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"pill_count_box1.txt",mostCurrent._etext2);
  };
- //BA.debugLineNum = 109;BA.debugLine="If(etext3_flag3=True ) Then'اگر متن etext3 تغییر";
+ //BA.debugLineNum = 110;BA.debugLine="If(etext3_flag3=True ) Then'اگر متن etext3 تغییر";
 if ((_etext3_flag3==anywheresoftware.b4a.keywords.Common.True)) { 
- //BA.debugLineNum = 110;BA.debugLine="File.WriteString(File.DirInternal, \"start_time_1";
+ //BA.debugLineNum = 111;BA.debugLine="File.WriteString(File.DirInternal, \"start_time_1";
 anywheresoftware.b4a.keywords.Common.File.WriteString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"start_time_1.txt",mostCurrent._etext3);
  };
- //BA.debugLineNum = 113;BA.debugLine="If(etext4_flag4=True ) Then'اگر متن etext4 تغییر";
+ //BA.debugLineNum = 114;BA.debugLine="If(etext4_flag4=True ) Then'اگر متن etext4 تغییر";
 if ((_etext4_flag4==anywheresoftware.b4a.keywords.Common.True)) { 
- //BA.debugLineNum = 114;BA.debugLine="File.WriteString(File.DirInternal, \"interval_1.t";
+ //BA.debugLineNum = 115;BA.debugLine="File.WriteString(File.DirInternal, \"interval_1.t";
 anywheresoftware.b4a.keywords.Common.File.WriteString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"interval_1.txt",mostCurrent._etext4);
  };
- //BA.debugLineNum = 117;BA.debugLine="If (ToggleButton.Checked And (etext2_flag2 Or ete";
+ //BA.debugLineNum = 118;BA.debugLine="If (ToggleButton.Checked And (etext2_flag2 Or ete";
 if ((mostCurrent._togglebutton.getChecked() && (_etext2_flag2 || _etext3_flag3 || _etext3_flag3))) { 
- //BA.debugLineNum = 119;BA.debugLine="Main.astreams.Write(\"p1s\".GetBytes(\"UTF8\"))";
+ //BA.debugLineNum = 120;BA.debugLine="Main.astreams.Write(\"p1s\".GetBytes(\"UTF8\"))";
 mostCurrent._main._astreams /*anywheresoftware.b4a.randomaccessfile.AsyncStreams*/ .Write("p1s".getBytes("UTF8"));
- //BA.debugLineNum = 120;BA.debugLine="If ToggleButton.Checked=True Then";
+ //BA.debugLineNum = 121;BA.debugLine="If ToggleButton.Checked=True Then";
 if (mostCurrent._togglebutton.getChecked()==anywheresoftware.b4a.keywords.Common.True) { 
- //BA.debugLineNum = 121;BA.debugLine="Main.astreams.Write(naseri_func.string2byte(\"1\"";
+ //BA.debugLineNum = 122;BA.debugLine="Main.astreams.Write(naseri_func.string2byte(\"1\"";
 mostCurrent._main._astreams /*anywheresoftware.b4a.randomaccessfile.AsyncStreams*/ .Write(mostCurrent._naseri_func._string2byte /*byte[]*/ (mostCurrent.activityBA,"1"));
  }else {
- //BA.debugLineNum = 123;BA.debugLine="Main.astreams.Write(naseri_func.string2byte(\"0\"";
+ //BA.debugLineNum = 124;BA.debugLine="Main.astreams.Write(naseri_func.string2byte(\"0\"";
 mostCurrent._main._astreams /*anywheresoftware.b4a.randomaccessfile.AsyncStreams*/ .Write(mostCurrent._naseri_func._string2byte /*byte[]*/ (mostCurrent.activityBA,"0"));
  };
- //BA.debugLineNum = 126;BA.debugLine="Main.astreams.Write(naseri_func.string2byte(etex";
-mostCurrent._main._astreams /*anywheresoftware.b4a.randomaccessfile.AsyncStreams*/ .Write(mostCurrent._naseri_func._string2byte /*byte[]*/ (mostCurrent.activityBA,mostCurrent._etext2));
  //BA.debugLineNum = 127;BA.debugLine="Main.astreams.Write(naseri_func.string2byte(etex";
-mostCurrent._main._astreams /*anywheresoftware.b4a.randomaccessfile.AsyncStreams*/ .Write(mostCurrent._naseri_func._string2byte /*byte[]*/ (mostCurrent.activityBA,mostCurrent._etext3));
+mostCurrent._main._astreams /*anywheresoftware.b4a.randomaccessfile.AsyncStreams*/ .Write(mostCurrent._naseri_func._string2byte /*byte[]*/ (mostCurrent.activityBA,mostCurrent._etext2));
  //BA.debugLineNum = 128;BA.debugLine="Main.astreams.Write(naseri_func.string2byte(etex";
+mostCurrent._main._astreams /*anywheresoftware.b4a.randomaccessfile.AsyncStreams*/ .Write(mostCurrent._naseri_func._string2byte /*byte[]*/ (mostCurrent.activityBA,mostCurrent._etext3));
+ //BA.debugLineNum = 129;BA.debugLine="Main.astreams.Write(naseri_func.string2byte(etex";
 mostCurrent._main._astreams /*anywheresoftware.b4a.randomaccessfile.AsyncStreams*/ .Write(mostCurrent._naseri_func._string2byte /*byte[]*/ (mostCurrent.activityBA,mostCurrent._etext4));
- //BA.debugLineNum = 129;BA.debugLine="Main.astreams.Write(\"p1e\".GetBytes(\"UTF8\"))";
+ //BA.debugLineNum = 130;BA.debugLine="Main.astreams.Write(\"p1e\".GetBytes(\"UTF8\"))";
 mostCurrent._main._astreams /*anywheresoftware.b4a.randomaccessfile.AsyncStreams*/ .Write("p1e".getBytes("UTF8"));
- //BA.debugLineNum = 132;BA.debugLine="Log(ToggleButton.Checked & data_count & data_sta";
-anywheresoftware.b4a.keywords.Common.LogImpl("41179688",BA.ObjectToString(mostCurrent._togglebutton.getChecked())+mostCurrent._data_count+mostCurrent._data_starttime+mostCurrent._data_interval,0);
+ //BA.debugLineNum = 133;BA.debugLine="Log(ToggleButton.Checked & data_count & data_sta";
+anywheresoftware.b4a.keywords.Common.LogImpl("71179688",BA.ObjectToString(mostCurrent._togglebutton.getChecked())+mostCurrent._data_count+mostCurrent._data_starttime+mostCurrent._data_interval,0);
  };
- //BA.debugLineNum = 135;BA.debugLine="StartActivity(\"Main\")";
+ //BA.debugLineNum = 136;BA.debugLine="StartActivity(\"Main\")";
 anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("Main"));
- //BA.debugLineNum = 136;BA.debugLine="Activity.Finish";
+ //BA.debugLineNum = 137;BA.debugLine="Activity.Finish";
 mostCurrent._activity.Finish();
- //BA.debugLineNum = 139;BA.debugLine="End Sub";
+ //BA.debugLineNum = 140;BA.debugLine="End Sub";
 return "";
 }
 public static String  _edittext1_textchanged(String _old,String _new) throws Exception{
- //BA.debugLineNum = 163;BA.debugLine="Private Sub EditText1_TextChanged (Old As String,";
- //BA.debugLineNum = 166;BA.debugLine="etext1 = New";
+ //BA.debugLineNum = 164;BA.debugLine="Private Sub EditText1_TextChanged (Old As String,";
+ //BA.debugLineNum = 167;BA.debugLine="etext1 = New";
 mostCurrent._etext1 = _new;
- //BA.debugLineNum = 167;BA.debugLine="etext1_flag1=True";
+ //BA.debugLineNum = 168;BA.debugLine="etext1_flag1=True";
 _etext1_flag1 = anywheresoftware.b4a.keywords.Common.True;
- //BA.debugLineNum = 168;BA.debugLine="End Sub";
+ //BA.debugLineNum = 169;BA.debugLine="End Sub";
 return "";
 }
 public static String  _edittext2_textchanged(String _old,String _new) throws Exception{
- //BA.debugLineNum = 156;BA.debugLine="Private Sub EditText2_TextChanged (Old As String,";
- //BA.debugLineNum = 159;BA.debugLine="etext2 = New";
+ //BA.debugLineNum = 157;BA.debugLine="Private Sub EditText2_TextChanged (Old As String,";
+ //BA.debugLineNum = 160;BA.debugLine="etext2 = New";
 mostCurrent._etext2 = _new;
- //BA.debugLineNum = 160;BA.debugLine="etext2_flag2=True";
+ //BA.debugLineNum = 161;BA.debugLine="etext2_flag2=True";
 _etext2_flag2 = anywheresoftware.b4a.keywords.Common.True;
- //BA.debugLineNum = 161;BA.debugLine="End Sub";
+ //BA.debugLineNum = 162;BA.debugLine="End Sub";
 return "";
 }
 public static String  _edittext3_textchanged(String _old,String _new) throws Exception{
- //BA.debugLineNum = 148;BA.debugLine="Private Sub EditText3_TextChanged (Old As String,";
- //BA.debugLineNum = 152;BA.debugLine="etext3 = New";
+ //BA.debugLineNum = 149;BA.debugLine="Private Sub EditText3_TextChanged (Old As String,";
+ //BA.debugLineNum = 153;BA.debugLine="etext3 = New";
 mostCurrent._etext3 = _new;
- //BA.debugLineNum = 153;BA.debugLine="etext3_flag3=True";
+ //BA.debugLineNum = 154;BA.debugLine="etext3_flag3=True";
 _etext3_flag3 = anywheresoftware.b4a.keywords.Common.True;
- //BA.debugLineNum = 154;BA.debugLine="End Sub";
+ //BA.debugLineNum = 155;BA.debugLine="End Sub";
 return "";
 }
 public static String  _globals() throws Exception{
@@ -570,11 +570,11 @@ _etext2_flag2 = anywheresoftware.b4a.keywords.Common.False;
 _etext3_flag3 = anywheresoftware.b4a.keywords.Common.False;
  //BA.debugLineNum = 45;BA.debugLine="etext4_flag4 =False";
 _etext4_flag4 = anywheresoftware.b4a.keywords.Common.False;
- //BA.debugLineNum = 46;BA.debugLine="togeleButton_flge=False";
+ //BA.debugLineNum = 47;BA.debugLine="togeleButton_flge=False";
 _togelebutton_flge = anywheresoftware.b4a.keywords.Common.False;
- //BA.debugLineNum = 47;BA.debugLine="Private ToggleButton As ToggleButton";
+ //BA.debugLineNum = 48;BA.debugLine="Private ToggleButton As ToggleButton";
 mostCurrent._togglebutton = new anywheresoftware.b4a.objects.CompoundButtonWrapper.ToggleButtonWrapper();
- //BA.debugLineNum = 48;BA.debugLine="End Sub";
+ //BA.debugLineNum = 50;BA.debugLine="End Sub";
 return "";
 }
 public static String  _process_globals() throws Exception{
@@ -584,20 +584,20 @@ return "";
 }
 public static String  _togglebutton_checkedchange(boolean _checked) throws Exception{
 anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper _newimage = null;
- //BA.debugLineNum = 172;BA.debugLine="Private Sub ToggleButton_CheckedChange(Checked As";
- //BA.debugLineNum = 174;BA.debugLine="Dim newImage As Bitmap";
+ //BA.debugLineNum = 173;BA.debugLine="Private Sub ToggleButton_CheckedChange(Checked As";
+ //BA.debugLineNum = 175;BA.debugLine="Dim newImage As Bitmap";
 _newimage = new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper();
- //BA.debugLineNum = 176;BA.debugLine="If Checked=True Then";
+ //BA.debugLineNum = 177;BA.debugLine="If Checked=True Then";
 if (_checked==anywheresoftware.b4a.keywords.Common.True) { 
- //BA.debugLineNum = 177;BA.debugLine="newImage.Initialize(File.DirAssets, \"switch-on.pn";
+ //BA.debugLineNum = 178;BA.debugLine="newImage.Initialize(File.DirAssets, \"switch-on.pn";
 _newimage.Initialize(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"switch-on.png");
  }else {
- //BA.debugLineNum = 180;BA.debugLine="newImage.Initialize(File.DirAssets, \"switch-off.";
+ //BA.debugLineNum = 181;BA.debugLine="newImage.Initialize(File.DirAssets, \"switch-off.";
 _newimage.Initialize(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"switch-off.png");
  };
- //BA.debugLineNum = 182;BA.debugLine="ToggleButton.SetBackgroundImage(newImage)";
+ //BA.debugLineNum = 183;BA.debugLine="ToggleButton.SetBackgroundImage(newImage)";
 mostCurrent._togglebutton.SetBackgroundImageNew((android.graphics.Bitmap)(_newimage.getObject()));
- //BA.debugLineNum = 183;BA.debugLine="End Sub";
+ //BA.debugLineNum = 184;BA.debugLine="End Sub";
 return "";
 }
 }
