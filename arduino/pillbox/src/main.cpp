@@ -30,29 +30,29 @@ WiFiServer server(port);
 //----------------قرص 1---------------- 
 char pill1_en;//وضعیت قرص 1
 char pill_count_box1;//تعداد قرص 1
-volatile int start_time_1 =0 ;//تایم شروع قرص 1
-volatile int interval_1 =0 ;//چرخه مصرف قرص 1
+ int start_time_1 =0 ;//تایم شروع قرص 1
+ int interval_1 =1 ;//چرخه مصرف قرص 1
 //---------------- ---------------- ----------------
 
 //----------------قرص 2---------------- 
 char pill2_en;//وضعیت قرص 2
 char pill_count_box2;//تعداد قرص 2
-volatile int start_time_2 = 0;//تایم شروع قرص 2
-volatile int interval_2 = 1;//چرخه مصرف قرص 2
+ int start_time_2 = 0;//تایم شروع قرص 2
+ int interval_2 = 1;//چرخه مصرف قرص 2
 //---------------- ---------------- ----------------
 
 //----------------قرص 3---------------- 
 char pill3_en;//وضعیت قرص 3
 char pill_count_box3;//تعداد قرص 3
-volatile int start_time_3 = 0;//تایم شروع قرص 3
-volatile int interval_3 = 1;//چرخه مصرف قرص 3
+ int start_time_3 = 0;//تایم شروع قرص 3
+ int interval_3 = 1;//چرخه مصرف قرص 3
 //---------------- ---------------- ----------------
 
 //----------------قرص 4---------------- 
 char pill4_en;//وضعیت قرص 4
 char pill_count_box4;//تعداد قرص 4
-volatile int start_time_4 = 0;//تایم شروع قرص 4
-volatile int interval_4 = 1;//چرخه مصرف قرص 4
+ int start_time_4 = 0;//تایم شروع قرص 4
+ int interval_4 = 1;//چرخه مصرف قرص 4
 //---------------- ---------------- ----------------
 
 //----------------کیلید 1---------------- 
@@ -259,10 +259,10 @@ void Task1(void *pvParameters) {
 
 
 void setup() {
-
-  //===================================================
-  Serial.begin(115200);// راه اندازی پورت سریال
+  
+  Serial.begin(115200);
   Wire.begin(13,14);// نرم افزاری i2c راه اندازی
+
  //---------------- تعریف پین های وردی  خروجی---------------- 
   pinMode(buzzerPin,OUTPUT);
   pinMode(key1, INPUT_PULLUP);
@@ -332,14 +332,11 @@ void setup() {
 //DateTime now ;
 void loop() {
 
-
-
-
-        if(!rtc_busy) {
-        rtc_busy=1;
-        now = rtc.now();// rtc دریافت زمان کنونی از 
-        rtc_busy=0;
-        }
+  if(!rtc_busy) {
+    rtc_busy=1;
+    now = rtc.now();// rtc دریافت زمان کنونی از 
+    rtc_busy=0;
+    }
 
   //----------------نمایش ساعت و تاریخ روی نمایشگر----------------
   display.clearDisplay();
@@ -375,7 +372,7 @@ void loop() {
   if(client.available()>0){
 
     rxBufer[rxCount]= client.read();
-
+   // Serial.write(rxBufer[rxCount]);
     rxCount++;
 
   }
@@ -385,11 +382,12 @@ void loop() {
 
   if(rxCount>9){
 
-   //----------------اگر دیتا از قرص 1 بود---------------    
+   //----------------اگر دیتا از قرص 1 بود---------------  
+   
    len= wordFilter( output,rxBufer,"p1s","p1e");
           
     if(len){
-
+     
      pill1_en=output[0];
      pill_count_box1=output[1];
      start_time_1=output[2];
@@ -397,7 +395,21 @@ void loop() {
      pill_count1 =pill_count_box1;
      rxCount=0;
 
-    } 
+     if(!rtc_busy) {
+        rtc_busy=1;
+        now = rtc.now();// rtc دریافت زمان کنونی از 
+        rtc_busy=0;
+      }
+      
+     DateTime startTime(now.year(), now.month(), now.day(),start_time_1+interval_1,0, 0);
+     if(startTime.hour()<23)    {DateTime startTime(now.year(), now.month(), now.day(),start_time_1+interval_1,0, 0);alarmTime[0]=startTime;}
+     else{ DateTime startTime(now.year(), now.month(), now.day()+1,start_time_1+interval_1-24,0, 0);alarmTime[0]=startTime;}
+     // alarmTime[i] = now+TimeSpan((startHour[i] * 3600)+(startMinute[i]*60));
+    len = -1 ;
+    }
+
+    
+
    //---------------- ---------------- ----------------
 
    //----------------اگر دیتا از قرص 1 بود---------------
@@ -412,10 +424,23 @@ void loop() {
      pill_count2 =pill_count_box2;
      rxCount=0;
 
+     if(!rtc_busy) {
+        rtc_busy=1;
+        now = rtc.now();// rtc دریافت زمان کنونی از 
+        rtc_busy=0;
+      }
+      
+     DateTime startTime(now.year(), now.month(), now.day(),start_time_2+interval_2,0, 0);
+     if(startTime.hour()<23)    {DateTime startTime(now.year(), now.month(), now.day(),start_time_2+interval_2,0, 0);alarmTime[1]=startTime;}
+     else{ DateTime startTime(now.year(), now.month(), now.day()+1,start_time_2+interval_2-24,0, 0);alarmTime[1]=startTime;}
+     // alarmTime[i] = now+TimeSpan((startHour[i] * 3600)+(startMinute[i]*60));
+     len = -1 ;
     }
+
+    
    //---------------- ---------------- ----------------
 
-   //----------------اگر دیتا از قرص 1 بود---------------
+   //----------------اگر دیتا از قرص 3 بود---------------
    len= wordFilter( output,rxBufer,"p3s","p3e");
           
     if(len){
@@ -427,10 +452,21 @@ void loop() {
      pill_count3 =pill_count_box3;
      rxCount=0;
 
+     if(!rtc_busy) {
+        rtc_busy=1;
+        now = rtc.now();// rtc دریافت زمان کنونی از 
+        rtc_busy=0;
+      }
+
+     DateTime startTime(now.year(), now.month(), now.day(),start_time_3+interval_3,0, 0);
+     if(startTime.hour()<23)    {DateTime startTime(now.year(), now.month(), now.day(),start_time_3+interval_3,0, 0);alarmTime[2]=startTime;}
+     else{ DateTime startTime(now.year(), now.month(), now.day()+1,start_time_3+interval_3-24,0, 0);alarmTime[2]=startTime;}
+     // alarmTime[i] = now+TimeSpan((startHour[i] * 3600)+(startMinute[i]*60));
+     len = -1 ;
     }
    //---------------- ---------------- ----------------
 
-   //----------------اگر دیتا از قرص 1 بود---------------
+   //----------------اگر دیتا از قرص 4 بود---------------
    len= wordFilter( output,rxBufer,"p4s","p4e");   
 
     if(len){
@@ -442,13 +478,23 @@ void loop() {
      pill_count4 =pill_count_box4;
      rxCount=0;
      
-    } 
+     if(!rtc_busy) {
+        rtc_busy=1;
+        now = rtc.now();// rtc دریافت زمان کنونی از 
+        rtc_busy=0;
+      }
+      
+     DateTime startTime(now.year(), now.month(), now.day(),start_time_4+interval_4,0, 0);
+     if(startTime.hour()<23)    {DateTime startTime(now.year(), now.month(), now.day(),start_time_4+interval_4,0, 0);alarmTime[3]=startTime;}
+     else{ DateTime startTime(now.year(), now.month(), now.day()+1,start_time_4+interval_4-24,0, 0);alarmTime[3]=startTime;}
+     // alarmTime[i] = now+TimeSpan((startHour[i] * 3600)+(startMinute[i]*60));
+     len = -1 ;
+    }
+
+     
    //---------------- ---------------- ----------------
   }
   //-----------------------------------------------------------
-
-
-
 
  //--------------------------------بخش عملکرد کیلید 1--------------------------------
  reading1 = digitalRead(key1);
@@ -473,7 +519,7 @@ void loop() {
        std::string dataout_1;
        dataout_1 = "p1cs" + count_1 + "p1ce";    // ترکیب پیشوند، داده و پسوند
 
-       client.print(dataout_1.c_str()); //ارسال مقدار به شبکه
+      // client.print(dataout_1.c_str()); //ارسال مقدار به شبکه
 
        Serial.print(dataout_1.c_str());// ارسال مقدار به سریال
       }
@@ -484,7 +530,7 @@ void loop() {
        std::string zero_out_1;
        zero_out_1 = "p1cs" + zero_1 + "p1ce";    // ترکیب پیشوند، داده و پسوند
 
-       client.print(zero_out_1.c_str()); // وقتی قرص ها تمام شود
+      // client.print(zero_out_1.c_str()); // وقتی قرص ها تمام شود
 
        Serial.print(zero_out_1.c_str()); // وقتی قرص ها تمام شود
       }
@@ -517,7 +563,7 @@ void loop() {
        std::string dataout_2;
        dataout_2 = "p2cs" + count_2 + "p2ce";    // ترکیب پیشوند، داده و پسوند
 
-       client.print(dataout_2.c_str()); //ارسال مقدار به شبکه
+      // client.print(dataout_2.c_str()); //ارسال مقدار به شبکه
 
        Serial.print(dataout_2.c_str());// ارسال مقدار به سریال
       }
@@ -528,7 +574,7 @@ void loop() {
        std::string zero_out_2;
        zero_out_2 = "p2cs" + zero_2 + "p2ce";    // ترکیب پیشوند، داده و پسوند
 
-       client.print(zero_out_2.c_str()); // وقتی قرص ها تمام شود
+      // client.print(zero_out_2.c_str()); // وقتی قرص ها تمام شود
 
        Serial.print(zero_out_2.c_str()); // وقتی قرص ها تمام شود
       }
@@ -561,7 +607,7 @@ void loop() {
        std::string dataout_3;
        dataout_3 = "p3cs" + count_3 + "p3ce";    // ترکیب پیشوند، داده و پسوند
 
-       client.print(dataout_3.c_str()); //ارسال مقدار به شبکه
+      // client.print(dataout_3.c_str()); //ارسال مقدار به شبکه
 
        Serial.print(dataout_3.c_str());// ارسال مقدار به سریال
       }
@@ -572,7 +618,7 @@ void loop() {
        std::string zero_out_3;
        zero_out_3 = "p3cs" + zero_3 + "p3ce";    // ترکیب پیشوند، داده و پسوند
 
-       client.print(zero_out_3.c_str()); // وقتی قرص ها تمام شود
+      // client.print(zero_out_3.c_str()); // وقتی قرص ها تمام شود
 
        Serial.print(zero_out_3.c_str()); // وقتی قرص ها تمام شود
       }
@@ -605,18 +651,20 @@ void loop() {
        std::string dataout_4;
        dataout_4 = "p4cs" + count_4 + "p4ce";    // ترکیب پیشوند، داده و پسوند
 
-       client.print(dataout_4.c_str()); //ارسال مقدار به شبکه
+      // client.print(dataout_4.c_str()); //ارسال مقدار به شبکه
 
        Serial.print(dataout_4.c_str());// ارسال مقدار به سریال
       }
 
       else {  // اگر مقدار pill_count_box4 به صفر رسید
+      
+      pill_count4 = 0;
 
        std::string zero_4 = "0";  // داده‌ای که می‌خواهید اضافه کنید
        std::string zero_out_4;
        zero_out_4 = "p4cs" + zero_4 + "p4ce";    // ترکیب پیشوند، داده و پسوند
 
-       client.print(zero_out_4.c_str()); // وقتی قرص ها تمام شود
+      // client.print(zero_out_4.c_str()); // وقتی قرص ها تمام شود
 
        Serial.print(zero_out_4.c_str()); // وقتی قرص ها تمام شود
       }
@@ -626,7 +674,7 @@ void loop() {
  lastKeyState4 = reading4;
  //---------------- ---------------- ----------------       
 
-     unsigned long currentMillis = millis();  // دریافت زمان کنونی
+ unsigned long currentMillis = millis();  // دریافت زمان کنونی
 
   // چک کنید آیا ۵ ثانیه گذشته است یا خیر
   if (currentMillis - previousMillis >= interval) {
@@ -638,29 +686,59 @@ void loop() {
     client.print(alarmTime[0].hour()); //ارسال مقدار به شبکه
     client.println("p1te");
     Serial.print("p1ts");
-    Serial.print(alarmTime[0].hour()); //ارسال مقدار به شبکه
+    Serial.print(alarmTime[0].hour()); //ارسال مقدار به سریال
     Serial.println("p1te");
 
     client.print("p2ts");
     client.print(alarmTime[1].hour()); //ارسال مقدار به شبکه
     client.println("p2te");
     Serial.print("p2ts");
-    Serial.print(alarmTime[1].hour()); //ارسال مقدار به شبکه
+    Serial.print(alarmTime[1].hour()); //ارسال مقدار به سریال
     Serial.println("p2te");
 
     client.print("p3ts");
     client.print(alarmTime[2].hour()); //ارسال مقدار به شبکه
     client.println("p3te");
     Serial.print("p3ts");
-    Serial.print(alarmTime[2].hour()); //ارسال مقدار به شبکه
+    Serial.print(alarmTime[2].hour()); //ارسال مقدار به سریال
     Serial.println("p3te");
 
     client.print("p4ts");
     client.print(alarmTime[3].hour()); //ارسال مقدار به شبکه
     client.println("p4te");
     Serial.print("p4ts");
-    Serial.print(alarmTime[3].hour()); //ارسال مقدار به شبکه
+    Serial.print(alarmTime[3].hour()); //ارسال مقدار به سریال
     Serial.println("p4te");
+//******************************************************************************
+    Serial.println("Send count data");
+    
+    client.print("p1cs");
+    client.print(pill_count1); //ارسال مقدار به شبکه
+    client.println("p1ce");
+    Serial.print("p1cs");
+    Serial.print(pill_count1); //ارسال مقدار به سریال
+    Serial.println("p1ce");
+
+    client.print("p2cs");
+    client.print(pill_count2); //ارسال مقدار به شبکه
+    client.println("p2ce");
+    Serial.print("p1cs");
+    Serial.print(pill_count1); //ارسال مقدار به سریال
+    Serial.println("p1ce");
+
+    client.print("p3cs");
+    client.print(pill_count3); //ارسال مقدار به شبکه
+    client.println("p3ce");
+    Serial.print("p1cs");
+    Serial.print(pill_count1); //ارسال مقدار به سریال
+    Serial.println("p1ce");
+
+    client.print("p4cs");
+    client.print(pill_count4); //ارسال مقدار به شبکه
+    client.println("p4ce");
+    Serial.print("p1cs");
+    Serial.print(pill_count1); //ارسال مقدار به سریال
+    Serial.println("p1ce");
 
   }
 
