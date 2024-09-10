@@ -186,12 +186,19 @@ void Task1(void *pvParameters) {
       //Serial.print(i);
       //Serial.print("time=");
       //Serial.println(alarmTime[i].timestamp());
-      //Serial.println("============================== ");
-    if (now1 >= alarmTime[i]) {
-      //Serial.print("Alarm ");
-      //Serial.print(i + 1);
-      //Serial.println(" triggered!");
+      Serial.print("============== ");
+      Serial.print(i);
+      Serial.println("============== ");
 
+      while (alarmTime[i] <= now1) {
+      alarmTime[i] = alarmTime[i] + TimeSpan(0, intervalHours[i], 0, 0);
+
+    }
+
+    if (now1 >= alarmTime[i]) {
+      Serial.print("Alarm ");
+      Serial.println(i + 1);
+      //Serial.println(" triggered!");
       //----------------تولید یک زنگ هشدار سیگنال دادن به خروجی buzzer----------------
       for (int j = 0; j < 3; j++) {
 
@@ -372,7 +379,7 @@ void loop() {
   if(client.available()>0){
 
     rxBufer[rxCount]= client.read();
-    Serial.write(rxBufer[rxCount]);
+    //Serial.write(rxBufer[rxCount]);
     rxCount++;
 
   }
@@ -387,13 +394,16 @@ void loop() {
    len= wordFilter( output,rxBufer,"p1s","p1e");
           
     if(len){
+      
+      Serial.print("========= p1s =========");
+      Serial.println(len);
      
      pill1_en=output[0];
      pill_count_box1=output[1];
      start_time_1=output[2];
      interval_1=output[3];
      pill_count1 =pill_count_box1;
-     rxCount=0;
+    
 
      if(!rtc_busy) {
         rtc_busy=1;
@@ -417,12 +427,15 @@ void loop() {
           
     if(len){
 
+      Serial.print("========= p2s =========");
+      Serial.println(len);
+
      pill2_en=output[0];
      pill_count_box2=output[1];
      start_time_2=output[2];
      interval_2=output[3];
      pill_count2 =pill_count_box2;
-     rxCount=0;
+     
 
      if(!rtc_busy) {
         rtc_busy=1;
@@ -445,12 +458,15 @@ void loop() {
           
     if(len){
 
+      Serial.print("========= p3s =========");
+      Serial.println(len);
+
      pill3_en=output[0];
      pill_count_box3=output[1];
      start_time_3=output[2];
      interval_3=output[3];
      pill_count3 =pill_count_box3;
-     rxCount=0;
+     
 
      if(!rtc_busy) {
         rtc_busy=1;
@@ -471,12 +487,15 @@ void loop() {
 
     if(len){
 
+      Serial.print("========= p4s =========");
+      Serial.println(len);
+
      pill4_en=output[0];
      pill_count_box4=output[1];
      start_time_4=output[2];
      interval_4=output[3];
      pill_count4 =pill_count_box4;
-     rxCount=0;
+    
      
      if(!rtc_busy) {
         rtc_busy=1;
@@ -491,7 +510,7 @@ void loop() {
      len = -1 ;
     }
 
-     
+     rxCount=0; 
    //---------------- ---------------- ----------------
   }
   //-----------------------------------------------------------
@@ -684,28 +703,28 @@ void loop() {
 
     client.print("p1ts");
     client.print(alarmTime[0].hour()); //ارسال مقدار به شبکه
-    client.println("p1te");
+    client.print("p1te");
     //Serial.print("p1ts");
     //Serial.print(alarmTime[0].hour()); //ارسال مقدار به سریال
     //Serial.println("p1te");
 
     client.print("p2ts");
     client.print(alarmTime[1].hour()); //ارسال مقدار به شبکه
-    client.println("p2te");
+    client.print("p2te");
     //Serial.print("p2ts");
     //Serial.print(alarmTime[1].hour()); //ارسال مقدار به سریال
     //Serial.println("p2te");
 
     client.print("p3ts");
     client.print(alarmTime[2].hour()); //ارسال مقدار به شبکه
-    client.println("p3te");
+    client.print("p3te");
     //Serial.print("p3ts");
     //Serial.print(alarmTime[2].hour()); //ارسال مقدار به سریال
     //Serial.println("p3te");
 
     client.print("p4ts");
     client.print(alarmTime[3].hour()); //ارسال مقدار به شبکه
-    client.println("p4te");
+    client.print("p4te");
     //Serial.print("p4ts");
     //Serial.print(alarmTime[3].hour()); //ارسال مقدار به سریال
     //Serial.println("p4te");
@@ -714,33 +733,42 @@ void loop() {
     
     client.print("p1cs");
     client.print(pill_count1); //ارسال مقدار به شبکه
-    client.println("p1ce");
+    client.print("p1ce");
     //Serial.print("p1cs");
     //Serial.print(pill_count1); //ارسال مقدار به سریال
     //Serial.println("p1ce");
 
     client.print("p2cs");
     client.print(pill_count2); //ارسال مقدار به شبکه
-    client.println("p2ce");
+    client.print("p2ce");
     //Serial.print("p1cs");
     //Serial.print(pill_count1); //ارسال مقدار به سریال
     //Serial.println("p1ce");
 
     client.print("p3cs");
     client.print(pill_count3); //ارسال مقدار به شبکه
-    client.println("p3ce");
+    client.print("p3ce");
     //Serial.print("p1cs");
     //Serial.print(pill_count1); //ارسال مقدار به سریال
     //Serial.println("p1ce");
 
     client.print("p4cs");
     client.print(pill_count4); //ارسال مقدار به شبکه
-    client.println("p4ce");
+    client.print("p4ce");
     //Serial.print("p1cs");
     //Serial.print(pill_count1); //ارسال مقدار به سریال
     //Serial.println("p1ce");
+   
+   // Serial.println(alarmTime[0].timestamp());
+   // Serial.println(alarmTime[1].timestamp());
+   // Serial.println(alarmTime[2].timestamp());
+   // Serial.println(alarmTime[3].timestamp());\
+   // Serial.println("===========================");
+      
+
 
   }
 
  }   
+  
   
