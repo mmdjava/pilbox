@@ -58,11 +58,11 @@ public int _hintlabelsmalloffsetx = 0;
 public long _lastswitchtextfieldtime = 0L;
 public b4a.example.dateutils _dateutils = null;
 public b4a.example.main _main = null;
+public b4a.example.naseri_func _naseri_func = null;
 public b4a.example.pill_1 _pill_1 = null;
 public b4a.example.pill_2 _pill_2 = null;
 public b4a.example.pill_3 _pill_3 = null;
 public b4a.example.pill_4 _pill_4 = null;
-public b4a.example.naseri_func _naseri_func = null;
 public b4a.example.starter _starter = null;
 public b4a.example.xuiviewsutils _xuiviewsutils = null;
 public String  _base_resize(double _width,double _height) throws Exception{
@@ -349,7 +349,7 @@ if (_passwordmode && _multiline) {
  //BA.debugLineNum = 90;BA.debugLine="Multiline = False";
 _multiline = __c.False;
  //BA.debugLineNum = 91;BA.debugLine="Log(\"Multiline not supported with password mode.";
-__c.LogImpl("912189720","Multiline not supported with password mode.",0);
+__c.LogImpl("911730968","Multiline not supported with password mode.",0);
  };
  //BA.debugLineNum = 93;BA.debugLine="CreateTextFieldAll(PasswordMode, PassedLabel.Font";
 _createtextfieldall(_passwordmode,_passedlabel.getFont(),_xui.PaintOrColorToColor((Object)(_lbl.getTextColor())));

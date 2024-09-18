@@ -94,12 +94,12 @@ int reading4;
  //---------------- تعریف زمان‌های شروع و فاصله‌های زمانی---------------- 
 const int numAlarms = 4; // تعداد آلارم‌ها
 const int startHour[numAlarms] = { start_time_1 , start_time_2 , start_time_3 , start_time_4 };
-const int startMinute[numAlarms] = {37, 38, 39, 40};
+const int startMinute[numAlarms] = {0, 0, 0, 0};
  int intervalHours[numAlarms] = { interval_1 , interval_2 , interval_3 , interval_4 };
 //---------------- ---------------- ----------------
 
 unsigned long previousMillis = 0;   // ذخیره زمان قبلی
-const long interval = 5000;         // فاصله زمانی بین ارسال داده (۵۰۰۰ میلی‌ثانیه = ۵ ثانیه)
+const long interval = 1000;         // فاصله زمانی بین ارسال داده (1۰۰۰ میلی‌ثانیه = 1 ثانیه)
 DateTime convert2dateTime(uint16_t year, uint8_t month, uint8_t day, uint8_t hour,uint8_t min , uint8_t sec ) {
   
 
@@ -151,6 +151,14 @@ char rxBufer[50]="";
 signed int len=0;
 //---------------- ---------------- ---------------- ----------------
 
+//==========================================
+char data_1[20];
+char data_2[20];
+char data_3[20];
+char data_4[20];
+int readingkey;
+//=========================================
+
 //---------------- تعریف پین های وردی  خروجی---------------- 
 int buzzerPin = 8;//پین بازر
 int key1 = 44;//کلید قرص 1
@@ -184,8 +192,8 @@ void Task1(void *pvParameters) {
       //Serial.println(now1.timestamp());
       //Serial.println("============================================ ");
 
-  //----------------برسی میکند آیا زمان کنونی با زمان آلارم برابراست----------------
-  for (int i = 0; i < numAlarms; i++) {
+   //----------------برسی میکند آیا زمان کنونی با زمان آلارم برابراست----------------
+   for (int i = 0; i < numAlarms; i++) {
       //Serial.print("==============alarm ");
       //Serial.print(i);
       //Serial.print("time=");
@@ -215,50 +223,52 @@ void Task1(void *pvParameters) {
             digitalWrite(led4, HIGH);
             break;
         }
-
+       readingkey = (reading1==0 || reading2==0 || reading3==0 || reading4==0 );
       //----------------تولید یک زنگ هشدار سیگنال دادن به خروجی buzzer----------------
-      for (int j = 0; j < 5; j++) {
 
-        digitalWrite(buzzerPin,HIGH);
-        delay(100); // مدت زمان پخش صدا به میلی‌ثانیه
-        digitalWrite(buzzerPin,LOW);
-        delay(100); // مدت زمان توقف صدا به میلی‌ثانیه
-        digitalWrite(buzzerPin,HIGH);
-        delay(100); // مدت زمان پخش صدا به میلی‌ثانیه
-        digitalWrite(buzzerPin,LOW);
-        //delay(1000); // مدت زمان توقف صدا به میلی‌ثانیه
-        digitalWrite(buzzerPin,HIGH);
-        delay(100); // مدت زمان پخش صدا به میلی‌ثانیه
-        digitalWrite(buzzerPin,LOW);
-        delay(100); // مدت زمان توقف صدا به میلی‌ثانیه
-        digitalWrite(buzzerPin,HIGH);
-        delay(100); // مدت زمان پخش صدا به میلی‌ثانیه
-        digitalWrite(buzzerPin,LOW);
-        delay(1000); // مدت زمان توقف صدا به میلی‌ثانیه
-      
+        unsigned long startTime;
+        int readingkey = 0;  // فرض کنید که readingkey با یک شرط به‌روزرسانی می‌شود
+        startTime = millis();  // ذخیره زمان شروع
+        while (millis() - startTime < 600000) {  // 10 دقیقه یا 600,000 میلی‌ثانیه
+          
+          digitalWrite(buzzerPin,HIGH);
+          delay(100); // مدت زمان پخش صدا به میلی‌ثانیه
+          digitalWrite(buzzerPin,LOW);
+          delay(100); // مدت زمان توقف صدا به میلی‌ثانیه
+          digitalWrite(buzzerPin,HIGH);
+          delay(100); // مدت زمان پخش صدا به میلی‌ثانیه
+          digitalWrite(buzzerPin,LOW);
+          //delay(1000); // مدت زمان توقف صدا به میلی‌ثانیه
+          digitalWrite(buzzerPin,HIGH);
+          delay(100); // مدت زمان پخش صدا به میلی‌ثانیه
+          digitalWrite(buzzerPin,LOW);
+          delay(100); // مدت زمان توقف صدا به میلی‌ثانیه
+          digitalWrite(buzzerPin,HIGH);
+          delay(100); // مدت زمان پخش صدا به میلی‌ثانیه
+          digitalWrite(buzzerPin,LOW);
+          delay(1000); // مدت زمان توقف صدا به میلی‌ثانیه         
 
-      }
-      //---------------- ---------------- ----------------
+          // بررسی readingkey
+          if (readingkey == 1) {
+            break;  // خروج از حلقه
+          }
+
+        }
+
+        // اگر از حلقه خارج شده‌ایم و readingkey هنوز 1 نیست
+        if (readingkey != 1) {
+          Serial.println("ده دقیقه گذشت و readingkey برابر 1 نشد.");
+        }
+
+   //===========================================================================================================================
      
         digitalWrite(led1,LOW);
         digitalWrite(led2,LOW);
         digitalWrite(led3,LOW);
         digitalWrite(led4,LOW);
-      //----------------به‌روزرسانی زمان آلارم برای بار بعدی----------------
-      //Serial.println("==============now time================ ");
-      //Serial.println(now1.timestamp());
-      //Serial.println("============================== ");
-      
-      //Serial.println("==============now alarm ================ ");
-      //Serial.println(alarmTime[i].timestamp());
-      //Serial.println("============================== ");
+
       alarmTime[i] = alarmTime[i] +TimeSpan(0, intervalHours[i], 0, 0);
-      //Serial.println("============================== ");
-      //Serial.println("Next alarm time for alarm ");
-      //Serial.println(i + 1);
-      //Serial.println(": ");
-      //Serial.println(alarmTime[i].timestamp());
-      //---------------- ---------------- ----------------
+
     }
   }//---------------- ---------------- ---------------- ----------------
 
@@ -303,7 +313,7 @@ void setup() {
     for (;;);
   }//---------------- ---------------- ----------------
 
- // rtc.adjust(DateTime(F(__DATE__), F(__TIME__))); فقط یک بار
+  //rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));// فقط یک بار
 
   now = rtc.now();//دریافت زمان کنونی از ماژول
 
@@ -589,27 +599,13 @@ void loop() {
       if (pill_count1 > 1) { // فقط زمانی کاهش بده که pill_count_box1 بزرگتر از صفر است
 
        pill_count1--;
-       char data_1[20];
-       sprintf(data_1,"%d",pill_count1);
 
-       std::string count_1 = data_1;  // داده‌ای که می‌خواهید اضافه کنید
-       std::string dataout_1;
-       dataout_1 = "p1cs" + count_1 + "p1ce";    // ترکیب پیشوند، داده و پسوند
-
-       client.print(dataout_1.c_str()); //ارسال مقدار به شبکه
-
-       //Serial.print(dataout_1.c_str());// ارسال مقدار به سریال
       }
 
       else {  // اگر مقدار pill_count_box1 به صفر رسید
 
-       std::string zero_1 = "0";  // داده‌ای که می‌خواهید اضافه کنید
-       std::string zero_out_1;
-       zero_out_1 = "p1cs" + zero_1 + "p1ce";    // ترکیب پیشوند، داده و پسوند
+       pill_count1 = 0 ;
 
-       client.print(zero_out_1.c_str()); // وقتی قرص ها تمام شود
-
-       //Serial.print(zero_out_1.c_str()); // وقتی قرص ها تمام شود
       }
     }  
    keyState1 = reading1;
@@ -633,27 +629,13 @@ void loop() {
       if (pill_count2 > 1) { // فقط زمانی کاهش بده که pill_count_box2 بزرگتر از صفر است
 
        pill_count2--;
-       char data_2[20];
-       sprintf(data_2,"%d",pill_count2);
 
-       std::string count_2 = data_2;  // داده‌ای که می‌خواهید اضافه کنید
-       std::string dataout_2;
-       dataout_2 = "p2cs" + count_2 + "p2ce";    // ترکیب پیشوند، داده و پسوند
-
-       client.print(dataout_2.c_str()); //ارسال مقدار به شبکه
-
-       //Serial.print(dataout_2.c_str());// ارسال مقدار به سریال
       }
 
       else {  // اگر مقدار pill_count_box2 به صفر رسید
 
-       std::string zero_2 = "0";  // داده‌ای که می‌خواهید اضافه کنید
-       std::string zero_out_2;
-       zero_out_2 = "p2cs" + zero_2 + "p2ce";    // ترکیب پیشوند، داده و پسوند
+       pill_count2 = 0 ;
 
-       client.print(zero_out_2.c_str()); // وقتی قرص ها تمام شود
-
-       //Serial.print(zero_out_2.c_str()); // وقتی قرص ها تمام شود
       }
     }  
    keyState2 = reading2;
@@ -677,27 +659,13 @@ void loop() {
       if (pill_count3 > 1) { // فقط زمانی کاهش بده که pill_count_box3 بزرگتر از صفر است
 
        pill_count3--;
-       char data_3[20];
-       sprintf(data_3,"%d",pill_count3);
-
-       std::string count_3 = data_3;  // داده‌ای که می‌خواهید اضافه کنید
-       std::string dataout_3;
-       dataout_3 = "p3cs" + count_3 + "p3ce";    // ترکیب پیشوند، داده و پسوند
-
-       client.print(dataout_3.c_str()); //ارسال مقدار به شبکه
-
-       //Serial.print(dataout_3.c_str());// ارسال مقدار به سریال
+      
       }
 
       else {  // اگر مقدار pill_count_box3 به صفر رسید
 
-       std::string zero_3 = "0";  // داده‌ای که می‌خواهید اضافه کنید
-       std::string zero_out_3;
-       zero_out_3 = "p3cs" + zero_3 + "p3ce";    // ترکیب پیشوند، داده و پسوند
+     pill_count3 = 0 ;
 
-       client.print(zero_out_3.c_str()); // وقتی قرص ها تمام شود
-
-       //Serial.print(zero_out_3.c_str()); // وقتی قرص ها تمام شود
       }
     }  
    keyState3 = reading3;
@@ -721,35 +689,28 @@ void loop() {
       if (pill_count4 > 1) { // فقط زمانی کاهش بده که pill_count_box4 بزرگتر از صفر است
 
        pill_count4--;
-       char data_4[20];
-       sprintf(data_4,"%d",pill_count4);
 
-       std::string count_4 = data_4;  // داده‌ای که می‌خواهید اضافه کنید
-       std::string dataout_4;
-       dataout_4 = "p4cs" + count_4 + "p4ce";    // ترکیب پیشوند، داده و پسوند
-
-       client.print(dataout_4.c_str()); //ارسال مقدار به شبکه
-
-       //Serial.print(dataout_4.c_str());// ارسال مقدار به سریال
       }
 
       else {  // اگر مقدار pill_count_box4 به صفر رسید
       
-      pill_count4 = 0;
+      pill_count4 = 0 ;
 
-       std::string zero_4 = "0";  // داده‌ای که می‌خواهید اضافه کنید
-       std::string zero_out_4;
-       zero_out_4 = "p4cs" + zero_4 + "p4ce";    // ترکیب پیشوند، داده و پسوند
-
-       client.print(zero_out_4.c_str()); // وقتی قرص ها تمام شود
-
-       //Serial.print(zero_out_4.c_str()); // وقتی قرص ها تمام شود
       }
     }  
    keyState4 = reading4;
   }
  lastKeyState4 = reading4;
- //---------------- ---------------- ----------------       
+ //---------------- ---------------- ----------------  
+
+ //******************************************************
+  sprintf(data_1,"%d",pill_count1); 
+  sprintf(data_2,"%d",pill_count2);
+  sprintf(data_3,"%d",pill_count3);
+  sprintf(data_4,"%d",pill_count4);
+ //******************************************************
+
+
 
  unsigned long currentMillis = millis();  // دریافت زمان کنونی
 
@@ -788,36 +749,27 @@ void loop() {
     //Serial.print(alarmTime[3].hour()); //ارسال مقدار به سریال
     //Serial.println("p4te");
 //******************************************************************************
-    //Serial.println("Send count data");
-    
-    //client.print("p1cs");
-    //client.print(pill_count1); //ارسال مقدار به شبکه
-    //client.print("p1ce");
-    //Serial.print("p1cs");
-    //Serial.print(pill_count1); //ارسال مقدار به سریال
-    //Serial.println("p1ce");
 
-    //client.print("p2cs");
-    //client.print(pill_count2); //ارسال مقدار به شبکه
-    //client.print("p2ce");
-    //Serial.print("p1cs");
-    //Serial.print(pill_count1); //ارسال مقدار به سریال
-    //Serial.println("p1ce");
+       std::string count_1 = data_1;  // داده‌ای که می‌خواهید اضافه کنید
+       std::string dataout_1;
+       dataout_1 = "p1cs" + count_1 + "p1ce";    // ترکیب پیشوند، داده و پسوند
+       client.print(dataout_1.c_str()); //ارسال مقدار به شبکه
 
-    //client.print("p3cs");
-    //client.print(pill_count3); //ارسال مقدار به شبکه
-    //client.print("p3ce");
-    //Serial.print("p1cs");
-    //Serial.print(pill_count1); //ارسال مقدار به سریال
-    //Serial.println("p1ce");
-
-    //client.print("p4cs");
-    //client.print(pill_count4); //ارسال مقدار به شبکه
-    //client.print("p4ce");
-    //Serial.print("p1cs");
-    //Serial.print(pill_count1); //ارسال مقدار به سریال
-    //Serial.println("p1ce");
+        std::string count_2 = data_2;  // داده‌ای که می‌خواهید اضافه کنید
+       std::string dataout_2;
+       dataout_2 = "p2cs" + count_2 + "p2ce";    // ترکیب پیشوند، داده و پسوند
+       client.print(dataout_2.c_str()); //ارسال مقدار به شبکه
    
+       std::string count_3 = data_3;  // داده‌ای که می‌خواهید اضافه کنید
+       std::string dataout_3;
+       dataout_3 = "p3cs" + count_3 + "p3ce";    // ترکیب پیشوند، داده و پسوند
+       client.print(dataout_3.c_str()); //ارسال مقدار به شبکه
+
+       std::string count_4 = data_4;  // داده‌ای که می‌خواهید اضافه کنید
+       std::string dataout_4;
+       dataout_4 = "p4cs" + count_4 + "p4ce";    // ترکیب پیشوند، داده و پسوند
+       client.print(dataout_4.c_str()); //ارسال مقدار به شبکه
+
     Serial.println(alarmTime[0].timestamp());
     Serial.println(alarmTime[1].timestamp());
     Serial.println(alarmTime[2].timestamp());

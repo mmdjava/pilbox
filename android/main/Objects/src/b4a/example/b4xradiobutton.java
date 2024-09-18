@@ -46,11 +46,11 @@ public anywheresoftware.b4a.objects.B4XViewWrapper _pnl = null;
 public float _scale = 0f;
 public b4a.example.dateutils _dateutils = null;
 public b4a.example.main _main = null;
+public b4a.example.naseri_func _naseri_func = null;
 public b4a.example.pill_1 _pill_1 = null;
 public b4a.example.pill_2 _pill_2 = null;
 public b4a.example.pill_3 _pill_3 = null;
 public b4a.example.pill_4 _pill_4 = null;
-public b4a.example.naseri_func _naseri_func = null;
 public b4a.example.starter _starter = null;
 public b4a.example.xuiviewsutils _xuiviewsutils = null;
 public String  _base_resize(double _width1,double _height1) throws Exception{

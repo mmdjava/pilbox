@@ -210,10 +210,8 @@ Sub Activity_Create(FirstTime As Boolean)
 		 
 	End Try
 	
-
-	
     Label18.Text=(pill_naim1)
-
+	Label4.Text = (pill_count_box1&"/"&data1)
 '	Label6.Text = ("   "&"ساعت مصرف:"&"("&box1_alarm&")")
 	'---------------------------------------------------------------------------------------
 	
@@ -234,7 +232,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	End Try
 	
 	Label19.Text=(pill_naim2)
-	Label8.Text = (data2)
+	Label8.Text = (pill_count_box2&"/"&data2)
 '	Label8.Text = (&box2_alarm)
 	'---------------------------------------------------------------------------------------
 	
@@ -256,7 +254,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	End Try
 	
 	Label20.Text=(pill_naim3)
-	Label13.Text = (data3)
+	Label13.Text = (pill_count_box3&"/"&data3)
 '	Label10.Text = (box3_alarm)
 	'---------------------------------------------------------------------------------------
 
@@ -270,7 +268,6 @@ Sub Activity_Create(FirstTime As Boolean)
 		box4_alarm = File.ReadString(File.DirInternal, "box4_alarm.txt")
 		data4 = File.ReadString(File.DirInternal, "pill_count_Data4.txt")
 		
-		
 	Catch
 		
 		'Msgbox("هنوز هیچ تنظیماتی برای قرص شماره چهار ذخیره نشده است", "توجه")
@@ -278,10 +275,9 @@ Sub Activity_Create(FirstTime As Boolean)
 	End Try
 
 	Label21.Text=(pill_naim4)
-	Label17.Text = (data4)
+	Label17.Text = (pill_count_box4&"/"&data4)
 '	Label12.Text = (box4_alarm)
 	'---------------------------------------------------------------------------------------
-	
 	
 	Label4.TextColor = 0xFFFFFFFF
     Label4.TextSize = 25
@@ -300,8 +296,6 @@ Sub Activity_Create(FirstTime As Boolean)
 	Label17.Text = "!"
 	
 	histori(Label11)
-	
-
     
 	' تنظیم لیبل‌های "ویرایش"
 	SetupEditLabel(Label2)
@@ -406,7 +400,6 @@ Private Sub setconnect1_Click
 	End If
 End Sub
 
-
 '------------------ویرایش پنل یک------------------
 Private Sub Label2_Click
 	
@@ -451,8 +444,7 @@ Sub Socket1_Connected(Connected As Boolean)As Boolean
 	Else
    	
 		ToastMessageShow("مشکلی رخ داده است",True)
-		
-		
+	
 		disconnectWIFI(setconnect1)
 		viber.Vibrate(500)
 	   
@@ -460,9 +452,6 @@ Sub Socket1_Connected(Connected As Boolean)As Boolean
 	ProgressDialogHide
    
 End Sub
-
-
-
 '---------------------------------------------------------------------------------------
 
 '***************************************تابع خطای***************************************
@@ -480,7 +469,6 @@ End Sub
 '*************************************تابع دریافت دیتا*************************************		
 Sub AStreams_NewData (Buffer() As Byte)
  
- 	
 	input = BytesToString(Buffer, 0, Buffer.Length, "UTF-8")
 '	Log(input)
 	
@@ -536,8 +524,9 @@ Sub AStreams_NewData (Buffer() As Byte)
 Try
 	'**********************************ذخیره و نمایش دیتا 1*************************************
 	File.WriteString(File.DirInternal, "pill_count_Data1.txt",data1)
+	pill_count_box1 = File.ReadString(File.DirInternal, "pill_count_box1.txt").As (Int)
 '	data1 = File.ReadString(File.DirInternal, "pill_count_Data1.txt")
-	Label4.Text = (data1)
+		Label4.Text = (pill_count_box1&"/"&data1)
 
 
 	File.WriteString(File.DirInternal, "box1_alarm.txt",data5)
@@ -547,8 +536,9 @@ Try
 
 	'**********************************ذخیره و نمایش دیتا 2*************************************
 	File.WriteString(File.DirInternal, "pill_count_Data2.txt",data2)
+	pill_count_box2 = File.ReadString(File.DirInternal, "pill_count_box2.txt").As (Int)
 '	data2 = File.ReadString(File.DirInternal, "pill_count_Data2.txt")
-	Label8.Text = (data2)
+		Label8.Text = (pill_count_box2&"/"&data2)
 	
 	File.WriteString(File.DirInternal, "box2_alarm.txt",data6)
 	box2_alarm = File.ReadString(File.DirInternal, "box2_alarm.txt")
@@ -557,8 +547,9 @@ Try
 
 	'**********************************ذخیره و نمایش دیتا 3*************************************
 	File.WriteString(File.DirInternal, "pill_count_Data3.txt",data3)
+	pill_count_box3 = File.ReadString(File.DirInternal, "pill_count_box3.txt").As (Int)
 '	data3 = File.ReadString(File.DirInternal, "pill_count_Data3.txt")
-	Label13.Text = (data3)
+		Label13.Text = (pill_count_box3&"/"&data3)
 	
 	File.WriteString(File.DirInternal, "box3_alarm.txt",data7)
 	box3_alarm = File.ReadString(File.DirInternal, "box3_alarm.txt")
@@ -567,8 +558,9 @@ Try
 
 	'**********************************ذخیره و نمایش دیتا 4*************************************
 	File.WriteString(File.DirInternal, "pill_count_Data4.txt",data4)
+	pill_count_box4 = File.ReadString(File.DirInternal, "pill_count_box4.txt").As (Int)
 '	data4 = File.ReadString(File.DirInternal, "pill_count_Data4.txt")
-	Label17.Text = (data4)
+		Label17.Text = (pill_count_box4&"/"&data4)
 	
 	File.WriteString(File.DirInternal, "box4_alarm.txt",data8)
 	box4_alarm = File.ReadString(File.DirInternal, "box4_alarm.txt")
@@ -577,7 +569,6 @@ Try
 	Catch
 	End Try
 	
-
 	' تنظیم اندازه جدید برای نوارهای پیشرفت
 	Label1.Width = 280dip ' تغییر عرض به مقدار دلخواه
 	Label1.Height = 40dip ' تغییر ارتفاع به مقدار دلخواه
@@ -593,52 +584,35 @@ Try
 	SetupProgressBar(Label7, 0xFF5DD700 , 50)
 	SetupProgressBar(Label12, 0xFF5DD700 , 50)
 	SetupProgressBar(Label16, 0xFF5DD700 , 50)
-	
-	
-		
-
 		
 	label_size1 = ( 100 / pill_count_box1 )* data1
 	label_size2 = ( 100 / pill_count_box2 )* data2
-'	label_size3 = ( 100 / pill_count_box3 )* data3
-'	label_size4 = ( 100 / pill_count_box4 )* data4
-		
-	Log ("----------------------------------------------")
-	Log (label_size1)
-	Log(pill_count_box1)
-	Log(data1)
-	Log ("----------------------------------------------")
-	Log ("----------------------------------------------")
-	Log (label_size2)
-	Log(pill_count_box2)
-	Log(data2)
-	Log ("----------------------------------------------")
+	label_size3 = ( 100 / pill_count_box3 )* data3
+	label_size4 = ( 100 / pill_count_box4 )* data4
 
 	' تنظیم پیش‌فرض مقدار پروگرس بارها
 	UpdateProgressBar(Label1,label_size1)
 	UpdateProgressBar(Label7,label_size2)
-	UpdateProgressBar(Label12,0)
-	UpdateProgressBar(Label16,0)
+	UpdateProgressBar(Label12,label_size3)
+	UpdateProgressBar(Label16,label_size4)
 	
-
 End Sub
 '-------------------------------------------------------------------------------------
 
 Sub disconnectSocket(socket11 As Socket)
+	
 	Try
 		If socket11.Connected Then
 			socket11.Close ' بستن اتصال سوکت
 			astreams.Close ' بستن استریم‌ها
 			Log("ارتباط قطع شد")
 			disconnectWIFI(setconnect1)
-			
 			ToastMessageShow("ارتباط قطع شد", True)
 		End If
-        
-		' Re-initialize the socket after disconnect
 		socket11.Initialize("socket1")
 		setconnect1.Enabled = True ' فعال کردن دکمه اتصال
 	Catch
 		Log("خطا در قطع اتصال")
 	End Try
+	
 End Sub

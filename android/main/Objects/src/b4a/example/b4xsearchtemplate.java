@@ -44,11 +44,11 @@ public boolean _allowunlistedtext = false;
 public boolean _prefixonly = false;
 public b4a.example.dateutils _dateutils = null;
 public b4a.example.main _main = null;
+public b4a.example.naseri_func _naseri_func = null;
 public b4a.example.pill_1 _pill_1 = null;
 public b4a.example.pill_2 _pill_2 = null;
 public b4a.example.pill_3 _pill_3 = null;
 public b4a.example.pill_4 _pill_4 = null;
-public b4a.example.naseri_func _naseri_func = null;
 public b4a.example.starter _starter = null;
 public b4a.example.xuiviewsutils _xuiviewsutils = null;
 public String  _additemstolist(anywheresoftware.b4a.objects.collections.List _li,String _full) throws Exception{
@@ -385,7 +385,7 @@ _count = (int) (_count+1);
  }
 };
  //BA.debugLineNum = 227;BA.debugLine="Log(\"Index time: \" & (DateTime.Now - startTime) &";
-__c.LogImpl("920316191","Index time: "+BA.NumberToString((__c.DateTime.getNow()-_starttime))+" ms ("+BA.NumberToString(_items.getSize())+" Items)",0);
+__c.LogImpl("919857439","Index time: "+BA.NumberToString((__c.DateTime.getNow()-_starttime))+" ms ("+BA.NumberToString(_items.getSize())+" Items)",0);
  //BA.debugLineNum = 228;BA.debugLine="AllItems = Items";
 _allitems = _items;
  //BA.debugLineNum = 229;BA.debugLine="Return Array(prefixList, substringList, AllItems)";

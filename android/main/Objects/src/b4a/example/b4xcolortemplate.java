@@ -43,11 +43,11 @@ public b4a.example.b4xdialog _xdialog = null;
 public Object[] _initialcolor = null;
 public b4a.example.dateutils _dateutils = null;
 public b4a.example.main _main = null;
+public b4a.example.naseri_func _naseri_func = null;
 public b4a.example.pill_1 _pill_1 = null;
 public b4a.example.pill_2 _pill_2 = null;
 public b4a.example.pill_3 _pill_3 = null;
 public b4a.example.pill_4 _pill_4 = null;
-public b4a.example.naseri_func _naseri_func = null;
 public b4a.example.starter _starter = null;
 public b4a.example.xuiviewsutils _xuiviewsutils = null;
 public static class _colorpickerpart{

@@ -130,11 +130,11 @@ public class starter extends android.app.Service{
 	}public anywheresoftware.b4a.keywords.Common __c = null;
 public b4a.example.dateutils _dateutils = null;
 public b4a.example.main _main = null;
+public b4a.example.naseri_func _naseri_func = null;
 public b4a.example.pill_1 _pill_1 = null;
 public b4a.example.pill_2 _pill_2 = null;
 public b4a.example.pill_3 _pill_3 = null;
 public b4a.example.pill_4 _pill_4 = null;
-public b4a.example.naseri_func _naseri_func = null;
 public b4a.example.xuiviewsutils _xuiviewsutils = null;
 public static boolean  _application_error(anywheresoftware.b4a.objects.B4AException _error,String _stacktrace) throws Exception{
  //BA.debugLineNum = 27;BA.debugLine="Sub Application_Error (Error As Exception, StackTr";
