@@ -94,7 +94,7 @@ int reading4;
  //---------------- تعریف زمان‌های شروع و فاصله‌های زمانی---------------- 
 const int numAlarms = 4; // تعداد آلارم‌ها
 const int startHour[numAlarms] = { start_time_1 , start_time_2 , start_time_3 , start_time_4 };
-const int startMinute[numAlarms] = {0, 0, 0, 0};
+const int startMinute[numAlarms] = {0, 1, 2, 3};
  int intervalHours[numAlarms] = { interval_1 , interval_2 , interval_3 , interval_4 };
 //---------------- ---------------- ----------------
 
@@ -157,6 +157,7 @@ char data_2[20];
 char data_3[20];
 char data_4[20];
 int readingkey;
+int noalarm;
 //=========================================
 
 //---------------- تعریف پین های وردی  خروجی---------------- 
@@ -223,13 +224,19 @@ void Task1(void *pvParameters) {
             digitalWrite(led4, HIGH);
             break;
         }
+
+       reading1 = digitalRead(key1);
+       reading2 = digitalRead(key2);
+       reading3 = digitalRead(key3);
+       reading4 = digitalRead(key4);
+
        readingkey = (reading1==0 || reading2==0 || reading3==0 || reading4==0 );
       //----------------تولید یک زنگ هشدار سیگنال دادن به خروجی buzzer----------------
 
         unsigned long startTime;
-        int readingkey = 0;  // فرض کنید که readingkey با یک شرط به‌روزرسانی می‌شود
+       // int readingkey = 0;  // فرض کنید که readingkey با یک شرط به‌روزرسانی می‌شود
         startTime = millis();  // ذخیره زمان شروع
-        while (millis() - startTime < 600000) {  // 10 دقیقه یا 600,000 میلی‌ثانیه
+        while (millis() - startTime < 20000) {  // 10 دقیقه یا 600,000 میلی‌ثانیه
           
           digitalWrite(buzzerPin,HIGH);
           delay(100); // مدت زمان پخش صدا به میلی‌ثانیه
@@ -257,7 +264,7 @@ void Task1(void *pvParameters) {
 
         // اگر از حلقه خارج شده‌ایم و readingkey هنوز 1 نیست
         if (readingkey != 1) {
-          Serial.println("ده دقیقه گذشت و readingkey برابر 1 نشد.");
+        noalarm = 1 ;
         }
 
    //===========================================================================================================================
@@ -724,30 +731,19 @@ void loop() {
     client.print("p1ts");
     client.print(alarmTime[0].hour()); //ارسال مقدار به شبکه
     client.print("p1te");
-    //Serial.print("p1ts");
-    //Serial.print(alarmTime[0].hour()); //ارسال مقدار به سریال
-    //Serial.println("p1te");
 
     client.print("p2ts");
     client.print(alarmTime[1].hour()); //ارسال مقدار به شبکه
     client.print("p2te");
-    //Serial.print("p2ts");
-    //Serial.print(alarmTime[1].hour()); //ارسال مقدار به سریال
-    //Serial.println("p2te");
 
     client.print("p3ts");
     client.print(alarmTime[2].hour()); //ارسال مقدار به شبکه
     client.print("p3te");
-    //Serial.print("p3ts");
-    //Serial.print(alarmTime[2].hour()); //ارسال مقدار به سریال
-    //Serial.println("p3te");
 
     client.print("p4ts");
     client.print(alarmTime[3].hour()); //ارسال مقدار به شبکه
     client.print("p4te");
-    //Serial.print("p4ts");
-    //Serial.print(alarmTime[3].hour()); //ارسال مقدار به سریال
-    //Serial.println("p4te");
+
 //******************************************************************************
 
        std::string count_1 = data_1;  // داده‌ای که می‌خواهید اضافه کنید
@@ -769,6 +765,12 @@ void loop() {
        std::string dataout_4;
        dataout_4 = "p4cs" + count_4 + "p4ce";    // ترکیب پیشوند، داده و پسوند
        client.print(dataout_4.c_str()); //ارسال مقدار به شبکه
+
+      if (noalarm == 1 ){
+       client.print("als0ale");
+       noalarm = 0 ;
+      }
+      
 
     Serial.println(alarmTime[0].timestamp());
     Serial.println(alarmTime[1].timestamp());

@@ -1,19 +1,20 @@
 ﻿Build1=Default,b4a.example
-File1=Layout.bal
-File10=pill_3.bal
-File11=pill_3.bas
-File12=pill_4.bal
-File13=pill_4.bas
-File14=switch-off.png
-File15=switch-on.png
-File2=pill (1).png
-File3=pill (2).png
-File4=pill (4).png
-File5=pill.png
-File6=pill_1.bal
-File7=pill_1.bas
-File8=pill_2.bal
-File9=pill_2.bas
+File1=alarm.mp3
+File10=pill_2.bas
+File11=pill_3.bal
+File12=pill_3.bas
+File13=pill_4.bal
+File14=pill_4.bas
+File15=switch-off.png
+File16=switch-on.png
+File2=Layout.bal
+File3=pill (1).png
+File4=pill (2).png
+File5=pill (4).png
+File6=pill.png
+File7=pill_1.bal
+File8=pill_1.bas
+File9=pill_2.bal
 FileGroup1=Default Group
 FileGroup10=Default Group
 FileGroup11=Default Group
@@ -21,6 +22,7 @@ FileGroup12=Default Group
 FileGroup13=Default Group
 FileGroup14=Default Group
 FileGroup15=Default Group
+FileGroup16=Default Group
 FileGroup2=Default Group
 FileGroup3=Default Group
 FileGroup4=Default Group
@@ -43,7 +45,7 @@ Module3=pill_2
 Module4=pill_3
 Module5=pill_4
 Module6=Starter
-NumberOfFiles=15
+NumberOfFiles=16
 NumberOfLibraries=6
 NumberOfModules=6
 Version=12.8
@@ -156,6 +158,8 @@ Sub Globals
 	Private pattern6 As String = "p2ts(\d+)p2te"  ' برای data2
 	Private pattern7 As String = "p3ts(\d+)p3te"  ' برای data3
 	Private pattern8 As String = "p4ts(\d+)p4te"  ' برای data4
+	
+	Private pattern9 As String = "als(\d+)ale"  ' برای data4
 	'---------------------------------------------------------------
 	
 	'***************متغیرها برای ذخیره داده‌های استخراج شده*****************
@@ -168,6 +172,8 @@ Sub Globals
 	Private data6 As Int 
 	Private data7 As Int 
 	Private data8 As Int 
+	
+	Private data9 As Int = 1
 	'---------------------------------------------------------------
 	
 	'*********************استخراج داده برای data1***********************
@@ -519,14 +525,23 @@ Sub AStreams_NewData (Buffer() As Byte)
 	If Matcher.Find Then
 		data8 = Matcher.Group(1)
 	End If
-
+	
+	' استخراج داده برای data8
+	Matcher = Regex.Matcher(pattern9, input)
+	If Matcher.Find Then
+		data9 = Matcher.Group(1)
+	End If
+    
+	Log(data9)
+	
 	'-------------------------------------------------------------------------------------
 Try
 	'**********************************ذخیره و نمایش دیتا 1*************************************
 	File.WriteString(File.DirInternal, "pill_count_Data1.txt",data1)
 	pill_count_box1 = File.ReadString(File.DirInternal, "pill_count_box1.txt").As (Int)
 '	data1 = File.ReadString(File.DirInternal, "pill_count_Data1.txt")
-		Label4.Text = (pill_count_box1&"/"&data1)
+	Label4.Text = (pill_count_box1&"/"&data1)
+	Label18.Text=(pill_naim1)
 
 
 	File.WriteString(File.DirInternal, "box1_alarm.txt",data5)
@@ -538,7 +553,8 @@ Try
 	File.WriteString(File.DirInternal, "pill_count_Data2.txt",data2)
 	pill_count_box2 = File.ReadString(File.DirInternal, "pill_count_box2.txt").As (Int)
 '	data2 = File.ReadString(File.DirInternal, "pill_count_Data2.txt")
-		Label8.Text = (pill_count_box2&"/"&data2)
+	Label8.Text = (pill_count_box2&"/"&data2)
+	Label19.Text=(pill_naim2)
 	
 	File.WriteString(File.DirInternal, "box2_alarm.txt",data6)
 	box2_alarm = File.ReadString(File.DirInternal, "box2_alarm.txt")
@@ -549,7 +565,8 @@ Try
 	File.WriteString(File.DirInternal, "pill_count_Data3.txt",data3)
 	pill_count_box3 = File.ReadString(File.DirInternal, "pill_count_box3.txt").As (Int)
 '	data3 = File.ReadString(File.DirInternal, "pill_count_Data3.txt")
-		Label13.Text = (pill_count_box3&"/"&data3)
+	Label13.Text = (pill_count_box3&"/"&data3)
+	Label20.Text=(pill_naim3)
 	
 	File.WriteString(File.DirInternal, "box3_alarm.txt",data7)
 	box3_alarm = File.ReadString(File.DirInternal, "box3_alarm.txt")
@@ -560,12 +577,27 @@ Try
 	File.WriteString(File.DirInternal, "pill_count_Data4.txt",data4)
 	pill_count_box4 = File.ReadString(File.DirInternal, "pill_count_box4.txt").As (Int)
 '	data4 = File.ReadString(File.DirInternal, "pill_count_Data4.txt")
-		Label17.Text = (pill_count_box4&"/"&data4)
+	Label17.Text = (pill_count_box4&"/"&data4)
+	Label21.Text=(pill_naim4)
 	
 	File.WriteString(File.DirInternal, "box4_alarm.txt",data8)
 	box4_alarm = File.ReadString(File.DirInternal, "box4_alarm.txt")
 '	Label12.Text = (box4_alarm)
-		'------------------------------------------------------------------------------
+	'------------------------------------------------------------------------------
+		
+	'**********************************هشدار مصرف نشدن قرص*************************************
+	If (data9==0) Then
+
+			Dim mp As MediaPlayer
+			mp.Initialize()
+			mp.Load(File.DirAssets, "alarm.mp3") 'فایلی که می‌خواهید پخش شود
+			mp.Play
+			data9 = 1
+			
+			Msgbox("بیمار قرص را مصرف نکرد", "توجه")	
+	End If
+	'------------------------------------------------------------------------------
+	
 	Catch
 	End Try
 	
@@ -584,6 +616,8 @@ Try
 	SetupProgressBar(Label7, 0xFF5DD700 , 50)
 	SetupProgressBar(Label12, 0xFF5DD700 , 50)
 	SetupProgressBar(Label16, 0xFF5DD700 , 50)
+	
+	Try
 		
 	label_size1 = ( 100 / pill_count_box1 )* data1
 	label_size2 = ( 100 / pill_count_box2 )* data2
@@ -595,6 +629,9 @@ Try
 	UpdateProgressBar(Label7,label_size2)
 	UpdateProgressBar(Label12,label_size3)
 	UpdateProgressBar(Label16,label_size4)
+	
+		Catch
+	End Try
 	
 End Sub
 '-------------------------------------------------------------------------------------
