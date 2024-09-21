@@ -1,12 +1,13 @@
-﻿Build1=Default,b4a.example
+﻿Build1=Default,Pill_Box.v1
 File1=alarm.mp3
 File10=pill_2.bas
 File11=pill_3.bal
 File12=pill_3.bas
 File13=pill_4.bal
 File14=pill_4.bas
-File15=switch-off.png
-File16=switch-on.png
+File15=pills.png
+File16=switch-off.png
+File17=switch-on.png
 File2=Layout.bal
 File3=pill (1).png
 File4=pill (2).png
@@ -23,6 +24,7 @@ FileGroup13=Default Group
 FileGroup14=Default Group
 FileGroup15=Default Group
 FileGroup16=Default Group
+FileGroup17=Default Group
 FileGroup2=Default Group
 FileGroup3=Default Group
 FileGroup4=Default Group
@@ -38,22 +40,24 @@ Library3=phone
 Library4=randomaccessfile
 Library5=xui
 Library6=xui views
-ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
-Module1=naseri_func
-Module2=pill_1
-Module3=pill_2
-Module4=pill_3
-Module5=pill_4
-Module6=Starter
-NumberOfFiles=16
-NumberOfLibraries=6
-NumberOfModules=6
+Library7=runtimepermissions
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~AddPermission(android.permission.READ_EXTERNAL_STORAGE)~\n~AddPermission(android.permission.WRITE_EXTERNAL_STORAGE)~\n~'End of default text.~\n~
+Module1=imgView
+Module2=naseri_func
+Module3=pill_1
+Module4=pill_2
+Module5=pill_3
+Module6=pill_4
+Module7=Starter
+NumberOfFiles=17
+NumberOfLibraries=7
+NumberOfModules=7
 Version=12.8
 @EndOfDesignText@
 #Region  Project Attributes 
-    #ApplicationLabel: Progress Bar Example
+    #ApplicationLabel: Pill_Box
     #VersionCode: 1
-    #VersionName: 1.0
+    #VersionName: 1.9
     #SupportedOrientations: unspecified
     #CanInstallToExternalStorage: False
 #End Region
@@ -80,7 +84,7 @@ Sub Process_Globals
 	Dim box2_alarm As String
 	'---------------------------------------------------------------
 	
-	'********************متغییر های قرص 3****************************
+	'********************متغییر های قرص 3********************
 	Dim pill_naim3 As String
 	Dim pill_count_box3 As Int = 0
 	Dim start_time_3 As String
@@ -105,6 +109,8 @@ Sub Process_Globals
 	Dim input As String
 	'---------------------------------------------------------------
 	
+	Dim timer1 As Timer
+	
 End Sub
 Sub Globals
 	' تعریف تمام ویوهای استفاده شده
@@ -117,7 +123,10 @@ Sub Globals
 	Private Label4 As Label
 	Private Label11 As Label
 	Private Panel5 As Panel
+	
 	Private ListView1 As ListView
+	Dim historyFile As String = "history.txt" 'نام فایل ذخیره‌سازی تاریخچه
+	
 	Private Panel2 As Panel
 	Private Label5 As Label
 	Private Label6 As Label
@@ -168,10 +177,10 @@ Sub Globals
 	Private data3 As Int = 0
 	Private data4 As Int = 0
 	
-	Private data5 As Int 
-	Private data6 As Int 
-	Private data7 As Int 
-	Private data8 As Int 
+	Private data5 As Int
+	Private data6 As Int
+	Private data7 As Int
+	Private data8 As Int
 	
 	Private data9 As Int = 1
 	'---------------------------------------------------------------
@@ -185,10 +194,30 @@ Sub Globals
 	Dim label_size3 As Int
 	Dim label_size4 As Int
 	
+	'--------------------------------------------------
+	Dim initialData1 As Int 'ذخیره مقدار اولیه data1
+	Dim initialData2 As Int 'ذخیره مقدار اولیه data2
+	Dim initialData3 As Int 'ذخیره مقدار اولیه data3
+	Dim initialData4 As Int 'ذخیره مقدار اولیه data4
+	'--------------------------------------------------
+	
+	Dim currentTime As String
+
+	Dim rp As RuntimePermissions
+	
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 	Activity.LoadLayout("Layout")
+	
+	' تنظیم تصویرهای داخل ImageView ها
+	Imagepill1.Bitmap = LoadBitmap(File.DirAssets, "pill (2).png")
+	Imagepill2.Bitmap = LoadBitmap(File.DirAssets, "pill (4).png")
+	Imagepill3.Bitmap = LoadBitmap(File.DirAssets, "pill (1).png")
+	Imagepill4.Bitmap = LoadBitmap(File.DirAssets, "Pill.png")
+	
+
+
 	
 	If FirstTime Then
 		' Initialize the socket only if it has not been initialized yet
@@ -198,12 +227,15 @@ Sub Activity_Create(FirstTime As Boolean)
 		End If
 	End If
 	
+
+	
 	disconnectWIFI(setconnect1)
+	
+	LoadHistory
 	
 	'*************************************باکس شماره 1***************************************
 	Try
 
-		pill_naim1 = File.ReadString(File.DirInternal, "pill_naim1.txt")
 		pill_count_box1 = File.ReadString(File.DirInternal, "pill_count_box1.txt").As (Int)
 		start_time_1 = File.ReadString(File.DirInternal, "start_time_1.txt")
 		interval_1 = File.ReadString(File.DirInternal, "interval_1.txt")
@@ -216,7 +248,6 @@ Sub Activity_Create(FirstTime As Boolean)
 		 
 	End Try
 	
-    Label18.Text=(pill_naim1)
 	Label4.Text = (pill_count_box1&"/"&data1)
 '	Label6.Text = ("   "&"ساعت مصرف:"&"("&box1_alarm&")")
 	'---------------------------------------------------------------------------------------
@@ -224,7 +255,6 @@ Sub Activity_Create(FirstTime As Boolean)
 	'*************************************باکس شماره 2***************************************
 	Try
 		
-		pill_naim2 = File.ReadString(File.DirInternal, "pill_naim2.txt")
 		pill_count_box2 = File.ReadString(File.DirInternal, "pill_count_box2.txt").As (Int)
 		start_time_2 = File.ReadString(File.DirInternal, "start_time_2.txt")
 		interval_2 = File.ReadString(File.DirInternal, "interval_2.txt")
@@ -236,8 +266,7 @@ Sub Activity_Create(FirstTime As Boolean)
 		'Msgbox("هنوز هیچ تنظیماتی برای قرص شماره دو ذخیره نشده است", "توجه")
 		 
 	End Try
-	
-	Label19.Text=(pill_naim2)
+
 	Label8.Text = (pill_count_box2&"/"&data2)
 '	Label8.Text = (&box2_alarm)
 	'---------------------------------------------------------------------------------------
@@ -245,7 +274,6 @@ Sub Activity_Create(FirstTime As Boolean)
 	'*************************************باکس شماره 3***************************************
 	Try
 		
-		pill_naim3 = File.ReadString(File.DirInternal, "pill_naim3.txt")
 		pill_count_box3 = File.ReadString(File.DirInternal, "pill_count_box3.txt").As (Int)
 		start_time_3 = File.ReadString(File.DirInternal, "start_time_3.txt")
 		interval_3 = File.ReadString(File.DirInternal, "interval_3.txt")
@@ -258,8 +286,7 @@ Sub Activity_Create(FirstTime As Boolean)
 		'Msgbox("هنوز هیچ تنظیماتی برای قرص شماره سه ذخیره نشده است", "توجه")
 		 
 	End Try
-	
-	Label20.Text=(pill_naim3)
+
 	Label13.Text = (pill_count_box3&"/"&data3)
 '	Label10.Text = (box3_alarm)
 	'---------------------------------------------------------------------------------------
@@ -267,7 +294,6 @@ Sub Activity_Create(FirstTime As Boolean)
 	'*************************************باکس شماره 4***************************************
 	Try
 		
-		pill_naim4 = File.ReadString(File.DirInternal, "pill_naim4.txt")
 		pill_count_box4 = File.ReadString(File.DirInternal, "pill_count_box4.txt").As (Int)
 		start_time_4 = File.ReadString(File.DirInternal, "start_time_4.txt")
 		interval_4 = File.ReadString(File.DirInternal, "interval_4.txt")
@@ -280,25 +306,24 @@ Sub Activity_Create(FirstTime As Boolean)
 		 
 	End Try
 
-	Label21.Text=(pill_naim4)
 	Label17.Text = (pill_count_box4&"/"&data4)
 '	Label12.Text = (box4_alarm)
 	'---------------------------------------------------------------------------------------
 	
 	Label4.TextColor = 0xFFFFFFFF
-    Label4.TextSize = 25
+	Label4.TextSize = 25
 	Label4.Text = "!"
 	
 	Label8.TextColor = 0xFFFFFFFF
-    Label8.TextSize = 25
+	Label8.TextSize = 25
 	Label8.Text = "!"
 	
 	Label13.TextColor = 0xFFFFFFFF
-    Label13.TextSize = 25
+	Label13.TextSize = 25
 	Label13.Text = "!"
 	
 	Label17.TextColor = 0xFFFFFFFF
-    Label17.TextSize = 25
+	Label17.TextSize = 25
 	Label17.Text = "!"
 	
 	histori(Label11)
@@ -309,11 +334,9 @@ Sub Activity_Create(FirstTime As Boolean)
 	SetupEditLabel(Label9)
 	SetupEditLabel(Label14)
     
-	' تنظیم تصویرهای داخل ImageView ها
-	Imagepill1.Bitmap = LoadBitmap(File.DirAssets, "pill.png")
-	Imagepill2.Bitmap = LoadBitmap(File.DirAssets, "pill (1).png")
-	Imagepill3.Bitmap = LoadBitmap(File.DirAssets, "pill (2).png")
-	Imagepill4.Bitmap = LoadBitmap(File.DirAssets, "pill (4).png")
+	Timer1.Initialize("timer1",1000)
+	Timer1.Enabled=True
+
 End Sub
 
 
@@ -376,7 +399,7 @@ End Sub
 
 Sub histori(lb As Label)
 	Dim gd As GradientDrawable
-	gd.Initialize("TOP_BOTTOM", Array As Int( 0x8BECD1B2 , 0x55ECD1B2 , 0x1FECD1B2 ))
+	gd.Initialize("TOP_BOTTOM", Array As Int( 0x00000000 , 0x9B000000 , 0xCA000000 , 0xCA000000 , 0xFF000000 ))
 	gd.CornerRadius = 0dip ' تنظیم گوشه‌های گرد
 	lb.Background = gd
 	lb.Text = "تاریخچه مصرف دارو"
@@ -474,6 +497,7 @@ End Sub
 
 '*************************************تابع دریافت دیتا*************************************		
 Sub AStreams_NewData (Buffer() As Byte)
+
  
 	input = BytesToString(Buffer, 0, Buffer.Length, "UTF-8")
 '	Log(input)
@@ -535,58 +559,65 @@ Sub AStreams_NewData (Buffer() As Byte)
 	Log(data9)
 	
 	'-------------------------------------------------------------------------------------
-Try
-	'**********************************ذخیره و نمایش دیتا 1*************************************
-	File.WriteString(File.DirInternal, "pill_count_Data1.txt",data1)
-	pill_count_box1 = File.ReadString(File.DirInternal, "pill_count_box1.txt").As (Int)
-'	data1 = File.ReadString(File.DirInternal, "pill_count_Data1.txt")
-	Label4.Text = (pill_count_box1&"/"&data1)
-	Label18.Text=(pill_naim1)
+	
+	currentTime = DateTime.Time(DateTime.Now)
+	
+	Try
+		'**********************************ذخیره و نمایش دیتا 1*************************************
+		File.WriteString(File.DirInternal, "pill_count_Data1.txt",data1)
+		pill_count_box1 = File.ReadString(File.DirInternal, "pill_count_box1.txt").As (Int)
+		Label4.Text = (pill_count_box1&"/"&data1)
+	
+		CheckPillCount1
 
-
-	File.WriteString(File.DirInternal, "box1_alarm.txt",data5)
-	box1_alarm = File.ReadString(File.DirInternal, "box1_alarm.txt")
+		File.WriteString(File.DirInternal, "box1_alarm.txt",data5)
+		box1_alarm = File.ReadString(File.DirInternal, "box1_alarm.txt")
 '	Label6.Text = (box1_alarm)
-	'------------------------------------------------------------------------------
+		'------------------------------------------------------------------------------
 
-	'**********************************ذخیره و نمایش دیتا 2*************************************
-	File.WriteString(File.DirInternal, "pill_count_Data2.txt",data2)
-	pill_count_box2 = File.ReadString(File.DirInternal, "pill_count_box2.txt").As (Int)
-'	data2 = File.ReadString(File.DirInternal, "pill_count_Data2.txt")
-	Label8.Text = (pill_count_box2&"/"&data2)
-	Label19.Text=(pill_naim2)
+		'**********************************ذخیره و نمایش دیتا 2*************************************
+		File.WriteString(File.DirInternal, "pill_count_Data2.txt",data2)
+		pill_count_box2 = File.ReadString(File.DirInternal, "pill_count_box2.txt").As (Int)
+		Label8.Text = (pill_count_box2&"/"&data2)
 	
-	File.WriteString(File.DirInternal, "box2_alarm.txt",data6)
-	box2_alarm = File.ReadString(File.DirInternal, "box2_alarm.txt")
+		CheckPillCount2
+	
+		File.WriteString(File.DirInternal, "box2_alarm.txt",data6)
+		box2_alarm = File.ReadString(File.DirInternal, "box2_alarm.txt")
 '	Label8.Text = (box2_alarm)
-	'------------------------------------------------------------------------------
+		'------------------------------------------------------------------------------
 
-	'**********************************ذخیره و نمایش دیتا 3*************************************
-	File.WriteString(File.DirInternal, "pill_count_Data3.txt",data3)
-	pill_count_box3 = File.ReadString(File.DirInternal, "pill_count_box3.txt").As (Int)
-'	data3 = File.ReadString(File.DirInternal, "pill_count_Data3.txt")
-	Label13.Text = (pill_count_box3&"/"&data3)
-	Label20.Text=(pill_naim3)
+		'**********************************ذخیره و نمایش دیتا 3*************************************
+		File.WriteString(File.DirInternal, "pill_count_Data3.txt",data3)
+		pill_count_box3 = File.ReadString(File.DirInternal, "pill_count_box3.txt").As (Int)
+		Label13.Text = (pill_count_box3&"/"&data3)
 	
-	File.WriteString(File.DirInternal, "box3_alarm.txt",data7)
-	box3_alarm = File.ReadString(File.DirInternal, "box3_alarm.txt")
+		CheckPillCount3
+	
+		File.WriteString(File.DirInternal, "box3_alarm.txt",data7)
+		box3_alarm = File.ReadString(File.DirInternal, "box3_alarm.txt")
 '	Label10.Text = (box3_alarm)
-	'------------------------------------------------------------------------------
+		'------------------------------------------------------------------------------
 
-	'**********************************ذخیره و نمایش دیتا 4*************************************
-	File.WriteString(File.DirInternal, "pill_count_Data4.txt",data4)
-	pill_count_box4 = File.ReadString(File.DirInternal, "pill_count_box4.txt").As (Int)
-'	data4 = File.ReadString(File.DirInternal, "pill_count_Data4.txt")
-	Label17.Text = (pill_count_box4&"/"&data4)
-	Label21.Text=(pill_naim4)
+		'**********************************ذخیره و نمایش دیتا 4*************************************
+		File.WriteString(File.DirInternal, "pill_count_Data4.txt",data4)
+		pill_count_box4 = File.ReadString(File.DirInternal, "pill_count_box4.txt").As (Int)
+		Label17.Text = (pill_count_box4&"/"&data4)
 	
-	File.WriteString(File.DirInternal, "box4_alarm.txt",data8)
-	box4_alarm = File.ReadString(File.DirInternal, "box4_alarm.txt")
+		CheckPillCount4
+	
+		File.WriteString(File.DirInternal, "box4_alarm.txt",data8)
+		box4_alarm = File.ReadString(File.DirInternal, "box4_alarm.txt")
 '	Label12.Text = (box4_alarm)
-	'------------------------------------------------------------------------------
+		'------------------------------------------------------------------------------
 		
-	'**********************************هشدار مصرف نشدن قرص*************************************
-	If (data9==0) Then
+		initialData1 = data1 'مقدار اولیه را ذخیره کنید
+		initialData2 = data2 'مقدار اولیه را ذخیره کنید
+		initialData3 = data3 'مقدار اولیه را ذخیره کنید
+		initialData4 = data4 'مقدار اولیه را ذخیره کنید
+		
+		'**********************************هشدار مصرف نشدن قرص*************************************
+		If (data9==0) Then
 
 			Dim mp As MediaPlayer
 			mp.Initialize()
@@ -594,9 +625,9 @@ Try
 			mp.Play
 			data9 = 1
 			
-			Msgbox("بیمار قرص را مصرف نکرد", "توجه")	
-	End If
-	'------------------------------------------------------------------------------
+			Msgbox("بیمار قرص را مصرف نکرد", "توجه")
+		End If
+		'------------------------------------------------------------------------------
 	
 	Catch
 	End Try
@@ -619,19 +650,21 @@ Try
 	
 	Try
 		
-	label_size1 = ( 100 / pill_count_box1 )* data1
-	label_size2 = ( 100 / pill_count_box2 )* data2
-	label_size3 = ( 100 / pill_count_box3 )* data3
-	label_size4 = ( 100 / pill_count_box4 )* data4
+		label_size1 = ( 100 / pill_count_box1 )* data1
+		label_size2 = ( 100 / pill_count_box2 )* data2
+		label_size3 = ( 100 / pill_count_box3 )* data3
+		label_size4 = ( 100 / pill_count_box4 )* data4
 
-	' تنظیم پیش‌فرض مقدار پروگرس بارها
-	UpdateProgressBar(Label1,label_size1)
-	UpdateProgressBar(Label7,label_size2)
-	UpdateProgressBar(Label12,label_size3)
-	UpdateProgressBar(Label16,label_size4)
+		' تنظیم پیش‌فرض مقدار پروگرس بارها
+		UpdateProgressBar(Label1,label_size1)
+		UpdateProgressBar(Label7,label_size2)
+		UpdateProgressBar(Label12,label_size3)
+		UpdateProgressBar(Label16,label_size4)
 	
-		Catch
+	Catch
 	End Try
+	
+
 	
 End Sub
 '-------------------------------------------------------------------------------------
@@ -652,4 +685,151 @@ Sub disconnectSocket(socket11 As Socket)
 		Log("خطا در قطع اتصال")
 	End Try
 	
+End Sub
+
+
+Sub CheckPillCount1
+	If data1 < initialData1 Then
+		' ثبت تغییر در تعداد قرص‌ها
+
+		AddToHistory(pill_naim1,currentTime)
+        
+		' به روزرسانی مقدار اولیه
+		initialData1 = data1
+	End If
+End Sub
+
+Sub CheckPillCount2
+	If data2 < initialData2 Then
+		' ثبت تغییر در تعداد قرص‌ها
+
+		AddToHistory(pill_naim2,currentTime)
+        
+		' به روزرسانی مقدار اولیه
+		initialData2 = data2
+	End If
+End Sub
+
+Sub CheckPillCount3
+	If data3 < initialData3 Then
+		' ثبت تغییر در تعداد قرص‌ها
+
+		AddToHistory(pill_naim3,currentTime)
+        
+		' به روزرسانی مقدار اولیه
+		initialData3 = data3
+	End If
+End Sub
+
+Sub CheckPillCount4
+	If data4 < initialData4 Then
+		' ثبت تغییر در تعداد قرص‌ها
+
+		AddToHistory(pill_naim4,currentTime)
+        
+		' به روزرسانی مقدار اولیه
+		initialData4 = data4
+	End If
+End Sub
+
+Sub AddToHistory(pillName As String, timeTaken As String)
+	Dim historyItem As String = "  نام قرص:" & pillName & "زمان مصرف: " & timeTaken
+
+	' ایجاد یک لیست برای ذخیره آیتم‌های فعلی ListView
+	Dim historyList As List
+	historyList.Initialize
+    
+	' اضافه کردن آیتم‌های فعلی ListView به لیست
+	For i = 0 To ListView1.Size - 1
+		historyList.Add(ListView1.GetItem(i))
+	Next
+    
+	' اضافه کردن آیتم جدید به ابتدای لیست
+	historyList.InsertAt(0, historyItem)
+
+	' پاک کردن ListView
+	ListView1.Clear
+    
+	' اضافه کردن آیتم‌های جدید به ListView
+	For i = 0 To historyList.Size - 1
+		ListView1.AddSingleLine(historyList.Get(i))
+	Next
+
+	' ذخیره اطلاعات تاریخچه در فایل
+	SaveToFile(historyItem)
+End Sub
+
+Sub SaveToFile(historyItem As String)
+	Dim writer As TextWriter
+	writer.Initialize(File.OpenOutput(File.DirInternal, historyFile, True)) 'باز کردن فایل برای نوشتن
+	writer.WriteLine(historyItem) 'نوشتن هر آیتم در فایل
+	writer.Close
+End Sub
+
+Sub LoadHistory
+	If File.Exists(File.DirInternal, historyFile) Then
+		Dim reader As TextReader
+		reader.Initialize(File.OpenInput(File.DirInternal, historyFile)) 'باز کردن فایل برای خواندن
+        
+		Dim line As String
+		line = reader.ReadLine
+		Do While line <> Null
+			ListView1.AddSingleLine(line) 'افزودن هر خط به ListView
+			line = reader.ReadLine
+		Loop
+		reader.Close
+	End If
+End Sub
+
+Sub timer1_tick
+	
+	Try
+		
+	pill_naim1 = File.ReadString(File.DirInternal, "pill_naim1.txt")
+	Label18.Text=(pill_naim1)
+	
+	pill_naim2 = File.ReadString(File.DirInternal, "pill_naim2.txt")
+	Label19.Text=(pill_naim2)
+	
+	pill_naim3 = File.ReadString(File.DirInternal, "pill_naim3.txt")
+	Label20.Text=(pill_naim3)
+	
+	pill_naim4 = File.ReadString(File.DirInternal, "pill_naim4.txt")
+	Label21.Text=(pill_naim4)
+	
+	Catch
+	End Try
+	
+	' بررسی اینکه آیا عکس ذخیره شده وجود دارد یا نه
+	If File.Exists(File.DirInternal, "Imagepill1.png") Then
+		' اگر عکس موجود باشد، آن را بارگذاری و نمایش می‌دهیم
+		Imagepill1.Bitmap = LoadBitmap(File.DirInternal, "Imagepill1.png")
+	Else
+'		ToastMessageShow("No image found.", False)
+	End If
+	
+	' بررسی اینکه آیا عکس ذخیره شده وجود دارد یا نه
+	If File.Exists(File.DirInternal, "Imagepill2.png") Then
+		' اگر عکس موجود باشد، آن را بارگذاری و نمایش می‌دهیم
+		Imagepill2.Bitmap = LoadBitmap(File.DirInternal, "Imagepill2.png")
+	Else
+'		ToastMessageShow("No image found.", False)
+	End If
+	
+	' بررسی اینکه آیا عکس ذخیره شده وجود دارد یا نه
+	If File.Exists(File.DirInternal, "Imagepill3.png") Then
+		' اگر عکس موجود باشد، آن را بارگذاری و نمایش می‌دهیم
+		Imagepill3.Bitmap = LoadBitmap(File.DirInternal, "Imagepill3.png")
+	Else
+'		ToastMessageShow("No image found.", False)
+	End If
+	
+	' بررسی اینکه آیا عکس ذخیره شده وجود دارد یا نه
+	If File.Exists(File.DirInternal, "Imagepill4.png") Then
+		' اگر عکس موجود باشد، آن را بارگذاری و نمایش می‌دهیم
+		Imagepill4.Bitmap = LoadBitmap(File.DirInternal, "Imagepill4.png")
+	Else
+'		ToastMessageShow("No image found.", False)
+	End If
+
 End Sub
