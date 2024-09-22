@@ -15,7 +15,7 @@
 #define OLED_RESET    -1//تعریف پین ریست نرم افزاری 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);//کلاس Adafruit_SSD1306 ایجاد می‌کند
 
-const char* ssid = "mmd";
+const char* ssid = "pill_Box";
 const char* password = "12345678";
 
 // تنظیم آدرس IP، گیت‌وی و ماسک زیرشبکه به صورت دستی
@@ -94,7 +94,7 @@ int reading4;
  //---------------- تعریف زمان‌های شروع و فاصله‌های زمانی---------------- 
 const int numAlarms = 4; // تعداد آلارم‌ها
 const int startHour[numAlarms] = { start_time_1 , start_time_2 , start_time_3 , start_time_4 };
-const int startMinute[numAlarms] = {24, 25, 26, 27};
+const int startMinute[numAlarms] = {0, 0, 0, 0};
  int intervalHours[numAlarms] = { interval_1 , interval_2 , interval_3 , interval_4 };
 //---------------- ---------------- ----------------
 
@@ -240,7 +240,7 @@ void Task1(void *pvParameters) {
           read3 = digitalRead(key3);
           read4 = digitalRead(key4);
 
-          if (read1==0 || read2==0 || read3==0 || read4==0 ) {
+          if (read1==1 || read2==1 || read3==1 || read4==1 ) {
 
             readingkey = 1 ;
 
@@ -265,14 +265,14 @@ void Task1(void *pvParameters) {
           delay(1000); // مدت زمان توقف صدا به میلی‌ثانیه         
 
           // بررسی readingkey
-          if (readingkey == 1) {
+          if ( readingkey == 1) {
             readingkey = 0 ;
             break;  // خروج از حلقه
 
           }
         }
         // اگر از حلقه خارج شده‌ایم و readingkey هنوز 1 نیست
-        if (readingkey != 1) {
+        if (readingkey == 1) {
 
           noalarm = 1 ;
 
