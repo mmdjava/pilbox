@@ -703,7 +703,7 @@ if (mostCurrent._matcher.Find()) {
 _data9 = (int)(Double.parseDouble(mostCurrent._matcher.Group((int) (1))));
  };
  //BA.debugLineNum = 503;BA.debugLine="Log(data9)";
-anywheresoftware.b4a.keywords.Common.LogImpl("81179708",BA.NumberToString(_data9),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("826083388",BA.NumberToString(_data9),0);
  //BA.debugLineNum = 507;BA.debugLine="currentTime = DateTime.Time(DateTime.Now)";
 mostCurrent._currenttime = anywheresoftware.b4a.keywords.Common.DateTime.Time(anywheresoftware.b4a.keywords.Common.DateTime.getNow());
  //BA.debugLineNum = 509;BA.debugLine="Try";
@@ -906,7 +906,7 @@ _socket11.Close();
  //BA.debugLineNum = 621;BA.debugLine="astreams.Close ' بستن استریم‌ها";
 _astreams.Close();
  //BA.debugLineNum = 622;BA.debugLine="Log(\"ارتباط قطع شد\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("81245190","ارتباط قطع شد",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("826148870","ارتباط قطع شد",0);
  //BA.debugLineNum = 623;BA.debugLine="disconnectWIFI(setconnect1)";
 _disconnectwifi(mostCurrent._setconnect1);
  //BA.debugLineNum = 624;BA.debugLine="ToastMessageShow(\"ارتباط قطع شد\", True)";
@@ -919,7 +919,7 @@ mostCurrent._setconnect1.setEnabled(anywheresoftware.b4a.keywords.Common.True);
  } 
        catch (Exception e12) {
 			processBA.setLastException(e12); //BA.debugLineNum = 629;BA.debugLine="Log(\"خطا در قطع اتصال\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("81245197","خطا در قطع اتصال",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("826148877","خطا در قطع اتصال",0);
  };
  //BA.debugLineNum = 632;BA.debugLine="End Sub";
 return "";
@@ -1260,23 +1260,23 @@ return "";
 public static String  _setconnect1_click() throws Exception{
  //BA.debugLineNum = 355;BA.debugLine="Private Sub setconnect1_Click";
  //BA.debugLineNum = 356;BA.debugLine="Log(  \"key presed\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("8720897","key presed",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("825624577","key presed",0);
  //BA.debugLineNum = 358;BA.debugLine="If socket1.IsInitialized = False Then";
 if (_socket1.IsInitialized()==anywheresoftware.b4a.keywords.Common.False) { 
  //BA.debugLineNum = 359;BA.debugLine="Log(\"سوکت مقداردهی شد.\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("8720900","سوکت مقداردهی شد.",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("825624580","سوکت مقداردهی شد.",0);
  //BA.debugLineNum = 360;BA.debugLine="socket1.Initialize(\"socket1\")";
 _socket1.Initialize("socket1");
  };
  //BA.debugLineNum = 363;BA.debugLine="If socket1.Connected Then";
 if (_socket1.getConnected()) { 
  //BA.debugLineNum = 364;BA.debugLine="Log(\"درحال قطع اتصال...\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("8720905","درحال قطع اتصال...",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("825624585","درحال قطع اتصال...",0);
  //BA.debugLineNum = 365;BA.debugLine="disconnectSocket(socket1)";
 _disconnectsocket(_socket1);
  }else {
  //BA.debugLineNum = 369;BA.debugLine="Log(\"درحال اتصال...\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("8720910","درحال اتصال...",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("825624590","درحال اتصال...",0);
  //BA.debugLineNum = 370;BA.debugLine="ProgressDialogShow2(\"درحال اتصال...\", False)";
 anywheresoftware.b4a.keywords.Common.ProgressDialogShow2(mostCurrent.activityBA,BA.ObjectToCharSequence("درحال اتصال..."),anywheresoftware.b4a.keywords.Common.False);
  //BA.debugLineNum = 372;BA.debugLine="socket1.Connect(\"192.168.4.1\", 8888, 5000)";

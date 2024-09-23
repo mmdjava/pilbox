@@ -55,7 +55,7 @@ NumberOfModules=7
 Version=12.8
 @EndOfDesignText@
 #Region  Project Attributes 
-    #ApplicationLabel: Pill_Box
+    #ApplicationLabel: سهند
     #VersionCode: 1
     #VersionName: 1.9
     #SupportedOrientations: unspecified

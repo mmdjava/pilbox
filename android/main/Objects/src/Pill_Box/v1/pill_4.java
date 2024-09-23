@@ -382,7 +382,7 @@ anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper _newimage = nu
 mostCurrent._activity.LoadLayout("pill_4",mostCurrent.activityBA);
  //BA.debugLineNum = 56;BA.debugLine="Try";
 try { //BA.debugLineNum = 57;BA.debugLine="Log(\"try\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("84063237","try",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("82752517","try",0);
  //BA.debugLineNum = 58;BA.debugLine="ToggleButton.Checked= File.ReadString(File.DirIn";
 mostCurrent._togglebutton.setChecked(BA.ObjectToBoolean(anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"toogle_en.txt")));
  //BA.debugLineNum = 59;BA.debugLine="Dim newImage As Bitmap";
@@ -475,7 +475,7 @@ mostCurrent._main._astreams /*anywheresoftware.b4a.randomaccessfile.AsyncStreams
  //BA.debugLineNum = 124;BA.debugLine="Main.astreams.Write(\"p4e\".GetBytes(\"UTF8\"))";
 mostCurrent._main._astreams /*anywheresoftware.b4a.randomaccessfile.AsyncStreams*/ .Write("p4e".getBytes("UTF8"));
  //BA.debugLineNum = 127;BA.debugLine="Log(ToggleButton.Checked & data_count & data_sta";
-anywheresoftware.b4a.keywords.Common.LogImpl("84259875",BA.ObjectToString(mostCurrent._togglebutton.getChecked())+mostCurrent._data_count+mostCurrent._data_starttime+mostCurrent._data_interval,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("82949155",BA.ObjectToString(mostCurrent._togglebutton.getChecked())+mostCurrent._data_count+mostCurrent._data_starttime+mostCurrent._data_interval,0);
  };
  //BA.debugLineNum = 130;BA.debugLine="StartActivity(\"Main\")";
 anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("Main"));

@@ -1,10 +1,10 @@
 
 #include <WiFi.h>
-#include <string.h>
+//#include <string.h>
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+//#include <string.h>
 #include <Wire.h>
 #include <RTClib.h>
 #include <Adafruit_GFX.h>
@@ -15,7 +15,7 @@
 #define OLED_RESET    -1//تعریف پین ریست نرم افزاری 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);//کلاس Adafruit_SSD1306 ایجاد می‌کند
 
-const char* ssid = "pill_Box";
+const char* ssid = "sahand";
 const char* password = "12345678";
 
 // تنظیم آدرس IP، گیت‌وی و ماسک زیرشبکه به صورت دستی
@@ -99,7 +99,7 @@ const int startMinute[numAlarms] = {0, 0, 0, 0};
 //---------------- ---------------- ----------------
 
 unsigned long previousMillis = 0;   // ذخیره زمان قبلی
-const long interval = 1000;         // فاصله زمانی بین ارسال داده (1۰۰۰ میلی‌ثانیه = 1 ثانیه)
+const long interval = 300000;         // فاصله زمانی بین ارسال داده (1۰۰۰ میلی‌ثانیه = 1 ثانیه)
 DateTime convert2dateTime(uint16_t year, uint8_t month, uint8_t day, uint8_t hour,uint8_t min , uint8_t sec ) {
   
 
@@ -202,25 +202,25 @@ void Task1(void *pvParameters) {
 
           case 0:
           
-            digitalWrite(led1, HIGH);
+            digitalWrite(led1, LOW);
 
           break;
 
           case 1:
           
-            digitalWrite(led2, HIGH);
+            digitalWrite(led2, LOW);
 
           break;
 
           case 2:
 
-            digitalWrite(led3, HIGH);
+            digitalWrite(led3, LOW);
 
           break;
 
           case 3:
 
-            digitalWrite(led4, HIGH);
+            digitalWrite(led4, LOW);
 
           break;
 
@@ -272,17 +272,17 @@ void Task1(void *pvParameters) {
           }
         }
         // اگر از حلقه خارج شده‌ایم و readingkey هنوز 1 نیست
-        if (readingkey == 1) {
+        if (readingkey == 0) {
 
           noalarm = 1 ;
 
         }
         //===========================================================================================================================
 
-        digitalWrite(led1,LOW);
-        digitalWrite(led2,LOW);
-        digitalWrite(led3,LOW);
-        digitalWrite(led4,LOW);
+        digitalWrite(led1,HIGH);
+        digitalWrite(led2,HIGH);
+        digitalWrite(led3,HIGH);
+        digitalWrite(led4,HIGH);
         alarmTime[i] = alarmTime[i] +TimeSpan(0, intervalHours[i], 0, 0);
 
       }
@@ -311,6 +311,11 @@ void setup() {
   pinMode(led3, OUTPUT);
   pinMode(led4, OUTPUT);
   //---------------- ---------------- ----------------
+
+    digitalWrite(led1,HIGH);
+    digitalWrite(led2,HIGH);
+    digitalWrite(led3,HIGH);
+    digitalWrite(led4,HIGH);
 
   //----------------بررسی اتصال به ماژول DS3231----------------
   if (!rtc.begin()) {
