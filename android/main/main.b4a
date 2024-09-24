@@ -1,21 +1,22 @@
 ﻿Build1=Default,Pill_Box.v1
 File1=alarm.mp3
-File10=pill_2.bas
-File11=pill_3.bal
-File12=pill_3.bas
-File13=pill_4.bal
-File14=pill_4.bas
-File15=pills.png
-File16=switch-off.png
-File17=switch-on.png
+File10=pill_2.bal
+File11=pill_2.bas
+File12=pill_3.bal
+File13=pill_3.bas
+File14=pill_4.bal
+File15=pill_4.bas
+File16=pills.png
+File17=switch-off.png
+File18=switch-on.png
 File2=Layout.bal
-File3=pill (1).png
-File4=pill (2).png
-File5=pill (4).png
-File6=pill.png
-File7=pill_1.bal
-File8=pill_1.bas
-File9=pill_2.bal
+File3=photo13777547988.png
+File4=pill (1).png
+File5=pill (2).png
+File6=pill (4).png
+File7=pill.png
+File8=pill_1.bal
+File9=pill_1.bas
 FileGroup1=Default Group
 FileGroup10=Default Group
 FileGroup11=Default Group
@@ -25,6 +26,7 @@ FileGroup14=Default Group
 FileGroup15=Default Group
 FileGroup16=Default Group
 FileGroup17=Default Group
+FileGroup18=Default Group
 FileGroup2=Default Group
 FileGroup3=Default Group
 FileGroup4=Default Group
@@ -49,7 +51,7 @@ Module4=pill_2
 Module5=pill_3
 Module6=pill_4
 Module7=Starter
-NumberOfFiles=17
+NumberOfFiles=18
 NumberOfLibraries=7
 NumberOfModules=7
 Version=12.8
@@ -109,7 +111,7 @@ Sub Process_Globals
 	Dim input As String
 	'---------------------------------------------------------------
 	
-	Dim timer1 As Timer
+	Dim Timer1 As Timer
 	
 End Sub
 Sub Globals
@@ -733,7 +735,7 @@ Sub CheckPillCount4
 End Sub
 
 Sub AddToHistory(pillName As String, timeTaken As String)
-	Dim historyItem As String = "  نام قرص:" & pillName & "زمان مصرف: " & timeTaken
+	Dim historyItem As String = "  نام قرص:" & pillName & " زمان مصرف: " & timeTaken
 
 	' ایجاد یک لیست برای ذخیره آیتم‌های فعلی ListView
 	Dim historyList As List

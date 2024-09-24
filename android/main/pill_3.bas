@@ -53,12 +53,23 @@ Sub Globals
 	
 	togeleButton_flge=False
 	Private ToggleButton As ToggleButton
+	
+	Private ImageView1 As ImageView
+	Dim rp As RuntimePermissions
 
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 	'Do not forget to load the layout file created with the visual designer. For example:
 	Activity.LoadLayout("pill_3")
+	
+	' بررسی اینکه آیا عکس ذخیره شده وجود دارد یا نه
+	If File.Exists(File.DirInternal, "Imagepill3.png") Then
+		' اگر عکس موجود باشد، آن را بارگذاری و نمایش می‌دهیم
+		ImageView1.Bitmap = LoadBitmap(File.DirInternal, "Imagepill3.png")
+	Else
+		ToastMessageShow("No image found.", False)
+	End If
 	
 	Try
 		Log("try")
@@ -176,4 +187,29 @@ Private Sub ToggleButton_CheckedChange(Checked As Boolean)
 		newImage.Initialize(File.DirAssets, "switch-off.png")  ' Load a new image from assets
 	End If
 	ToggleButton.SetBackgroundImage(newImage)
+End Sub
+
+Private Sub ImageView1_LongClick
+	
+	Dim fc As ContentChooser
+	fc.Initialize("fc")
+	fc.Show("image/*", "Select Image")
+	
+End Sub
+
+' مدیریت نتیجه انتخاب تصویر
+Sub fc_Result(Success As Boolean, Dir As String, FileName As String)
+	If Success Then
+		' نمایش عکس انتخاب شده
+		Dim bmp As Bitmap
+		bmp = LoadBitmap(Dir, FileName)
+		ImageView1.Bitmap = bmp
+        
+		' ذخیره عکس انتخاب شده در حافظه داخلی
+		File.Copy(Dir, FileName, File.DirInternal, "Imagepill3.png")
+        
+		ToastMessageShow("Image saved successfully!", False)
+	Else
+		ToastMessageShow("Failed to choose an image.", False)
+	End If
 End Sub

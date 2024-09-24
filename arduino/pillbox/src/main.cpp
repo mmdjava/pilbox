@@ -1,4 +1,3 @@
-
 #include <WiFi.h>
 //#include <string.h>
 #include <iostream>
@@ -25,7 +24,7 @@ IPAddress subnet(255, 255, 255, 0);
 
 const int port = 8888;
 WiFiServer server(port);
-//WiFiClient client;
+
 
 //----------------قرص 1---------------- 
 char pill1_en;//وضعیت قرص 1
@@ -56,8 +55,8 @@ char pill_count_box4;//تعداد قرص 4
 //---------------- ---------------- ----------------
 
 //----------------کیلید 1---------------- 
-char pill_count1 = 5;//تعداد پیشفرض قرص 1
-int keyState1 = 0;//وضعیت پیشفرض قرص 1
+char pill_count1 = 0;//تعداد پیشفرض قرص 1
+int keyState1 = 0;//وضعیت پیشفرض کلید 1
 int lastKeyState1 = HIGH; // وضعیت قبلی کلید
 unsigned long lastDebounceTime1 = 0;
 unsigned long debounceDelay1 = 50; // تأخیر برای حذف نویز
@@ -65,7 +64,7 @@ int reading1;
 //---------------- ---------------- ----------------
 
 //----------------کیلید 2---------------- 
-char pill_count2 = 5;//تعداد پیشفرض قرص 2
+char pill_count2 = 0;//تعداد پیشفرض قرص 2
 int keyState2 = 0;//وضعیت پیشفرض قرص 2
 int lastKeyState2 = HIGH; // وضعیت قبلی کلید
 unsigned long lastDebounceTime2 = 0;
@@ -74,7 +73,7 @@ int reading2;
 //---------------- ---------------- ----------------
 
 //----------------کیلید 3---------------- 
-char pill_count3 = 5;//تعداد پیشفرض قرص 3
+char pill_count3 = 0;//تعداد پیشفرض قرص 3
 int keyState3 = 0;//وضعیت پیشفرض قرص 3
 int lastKeyState3 = HIGH; // وضعیت قبلی کلید
 unsigned long lastDebounceTime3 = 0;
@@ -83,7 +82,7 @@ int reading3;
 //---------------- ---------------- ----------------
 
 //----------------کیلید 4---------------- 
-char pill_count4 = 5;//تعداد پیشفرض قرص 4
+char pill_count4 = 0;//تعداد پیشفرض قرص 4
 int keyState4 = 0;//وضعیت پیشفرض قرص 4
 int lastKeyState4 = HIGH; // وضعیت قبلی کلید
 unsigned long lastDebounceTime4 = 0;
@@ -94,12 +93,12 @@ int reading4;
  //---------------- تعریف زمان‌های شروع و فاصله‌های زمانی---------------- 
 const int numAlarms = 4; // تعداد آلارم‌ها
 const int startHour[numAlarms] = { start_time_1 , start_time_2 , start_time_3 , start_time_4 };
-const int startMinute[numAlarms] = {0, 0, 0, 0};
+const int startMinute[numAlarms] = {3, 59, 1, 4};
  int intervalHours[numAlarms] = { interval_1 , interval_2 , interval_3 , interval_4 };
 //---------------- ---------------- ----------------
 
 unsigned long previousMillis = 0;   // ذخیره زمان قبلی
-const long interval = 300000;         // فاصله زمانی بین ارسال داده (1۰۰۰ میلی‌ثانیه = 1 ثانیه)
+const long interval = 1100;         // فاصله زمانی بین ارسال داده (1۰۰۰ میلی‌ثانیه = 1 ثانیه)
 DateTime convert2dateTime(uint16_t year, uint8_t month, uint8_t day, uint8_t hour,uint8_t min , uint8_t sec ) {
   
 
@@ -230,10 +229,13 @@ void Task1(void *pvParameters) {
         //----------------تولید یک زنگ هشدار سیگنال دادن به خروجی buzzer----------------
 
         unsigned long startTime;
-        // int readingkey = 0;  // فرض کنید که readingkey با یک شرط به‌روزرسانی می‌شود
-        startTime = millis();  // ذخیره زمان شروع
+         int readingkey = 0;  // فرض کنید که readingkey با یک شرط به‌روزرسانی می‌شود
+         int w = 0;
+        startTime = millis();  
 
-        while (millis() - startTime < 20000) {  // 10 دقیقه یا 600,000 میلی‌ثانیه
+        while (millis() - startTime < 120000) {  // 10 دقیقه یا 600,000 میلی‌ثانیه
+
+          w = 0;
 
           read1 = digitalRead(key1);
           read2 = digitalRead(key2);
@@ -267,12 +269,13 @@ void Task1(void *pvParameters) {
           // بررسی readingkey
           if ( readingkey == 1) {
             readingkey = 0 ;
+            w = 1 ;
             break;  // خروج از حلقه
 
           }
-        }
+        }//end while
         // اگر از حلقه خارج شده‌ایم و readingkey هنوز 1 نیست
-        if (readingkey == 0) {
+        if (w == 0) {
 
           noalarm = 1 ;
 
@@ -283,6 +286,7 @@ void Task1(void *pvParameters) {
         digitalWrite(led2,HIGH);
         digitalWrite(led3,HIGH);
         digitalWrite(led4,HIGH);
+        
         alarmTime[i] = alarmTime[i] +TimeSpan(0, intervalHours[i], 0, 0);
 
       }
@@ -405,7 +409,7 @@ void loop() {
   if(client.available()>0){
 
     rxBufer[rxCount]= client.read();
-    Serial.write(rxBufer[rxCount]);
+   //  Serial.write(rxBufer[rxCount]);
     rxCount++;
 
   }
@@ -439,10 +443,10 @@ void loop() {
       }
      //======================  injam  =======================================================================================================
 
-     temp=convert2dateTime(now.year(), now.month(), now.day(),start_time_1+interval_1,0, 0);
+     temp=convert2dateTime(now.year(), now.month(), now.day(),start_time_1+interval_1,startMinute[0], 0);
 
       if(temp.hour()>23) {
-        temp=convert2dateTime(now.year(), now.month(), now.day()+1,start_time_1+interval_1-24,0, 0);
+        temp=convert2dateTime(now.year(), now.month(), now.day()+1,start_time_1+interval_1-24,startMinute[0], 0);
         alarmTime[0]=temp;
       }
 
@@ -482,10 +486,10 @@ void loop() {
         rtc_busy=0;
       }
       
-      temp=convert2dateTime(now.year(), now.month(), now.day(),start_time_2+interval_2,0, 0);
+      temp=convert2dateTime(now.year(), now.month(), now.day(),start_time_2+interval_2,startMinute[1], 0);
 
       if(temp.hour()>23) {
-        temp=convert2dateTime(now.year(), now.month(), now.day()+1,start_time_2+interval_2-24,0, 0);
+        temp=convert2dateTime(now.year(), now.month(), now.day()+1,start_time_2+interval_2-24,startMinute[1], 0);
         alarmTime[1]=temp;
       }
       else{
@@ -528,12 +532,12 @@ void loop() {
         rtc_busy=0;
       }
 
-      temp=convert2dateTime(now.year(), now.month(), now.day(),start_time_3+interval_3,0, 0);
+      temp=convert2dateTime(now.year(), now.month(), now.day(),start_time_3+interval_3,startMinute[2], 0);
 
     
       if(temp.hour()>23) {
 
-        temp=convert2dateTime(now.year(), now.month(), now.day()+1,start_time_3+interval_3-24,0, 0);
+        temp=convert2dateTime(now.year(), now.month(), now.day()+1,start_time_3+interval_3-24,startMinute[2], 0);
         alarmTime[2]=temp;
 
       }
@@ -576,12 +580,12 @@ void loop() {
 
       }
       
-      temp=convert2dateTime(now.year(), now.month(), now.day(),start_time_4+interval_4,0, 0);
+      temp=convert2dateTime(now.year(), now.month(), now.day(),start_time_4+interval_4,startMinute[3], 0);
 
     
       if(temp.hour()>23) {
 
-        temp=convert2dateTime(now.year(), now.month(), now.day()+1,start_time_4+interval_4-24,0, 0);
+        temp=convert2dateTime(now.year(), now.month(), now.day()+1,start_time_4+interval_4-24,startMinute[3], 0);
         alarmTime[3]=temp;
         
       }
