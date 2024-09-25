@@ -22,6 +22,6 @@ ModuleClosedNodes4=
 ModuleClosedNodes5=
 ModuleClosedNodes6=
 ModuleClosedNodes7=
-NavigationStack=pill_1,ImageView1_LongClick,193,0,pill_4,ToggleButton_CheckedChange,184,0,pill_4,fc_Result,201,0,pill_4,Activity_Create,61,0,pill_3,fc_Result,202,0,Main,Process_Globals,31,0,Main,AddToHistory,679,0,Main,CheckPillCount4,671,0,Visual Designer,Layout.bal,-100,4,Main,CheckPillCount3,659,0
+NavigationStack=pill_4,fc_Result,201,0,pill_4,Activity_Create,61,0,pill_3,fc_Result,202,0,Visual Designer,Layout.bal,-100,4,Main,CheckPillCount3,659,0,Main,Process_Globals,31,0,Main,LoadHistory,714,0,Main,SaveToFile,705,0,Main,CheckPillCount4,705,0
 SelectedBuild=0
 VisibleModules=3,4,5,6,7,2

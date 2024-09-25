@@ -93,7 +93,7 @@ int reading4;
  //---------------- تعریف زمان‌های شروع و فاصله‌های زمانی---------------- 
 const int numAlarms = 4; // تعداد آلارم‌ها
 const int startHour[numAlarms] = { start_time_1 , start_time_2 , start_time_3 , start_time_4 };
-const int startMinute[numAlarms] = {10, 20, 30, 40};
+const int startMinute[numAlarms] = {0, 0, 0, 0};
  int intervalHours[numAlarms] = { interval_1 , interval_2 , interval_3 , interval_4 };
 //---------------- ---------------- ----------------
 

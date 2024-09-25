@@ -734,30 +734,40 @@ Sub CheckPillCount4
 	End If
 End Sub
 
+'Sub AddToHistory(pillName As String, timeTaken As String)
+'	Dim historyItem As String = "  نام قرص:" & pillName & " زمان مصرف: " & timeTaken
+'
+'	' ایجاد یک لیست برای ذخیره آیتم‌های فعلی ListView
+'	Dim historyList As List
+'	historyList.Initialize
+'    
+'	' اضافه کردن آیتم‌های فعلی ListView به لیست
+'	For i = 0 To ListView1.Size - 1
+'		historyList.Add(ListView1.GetItem(i))
+'	Next
+'    
+'	' اضافه کردن آیتم جدید به ابتدای لیست
+'	historyList.InsertAt(0, historyItem)
+'
+'	' پاک کردن ListView
+'	ListView1.Clear
+'    
+'	' اضافه کردن آیتم‌های جدید به ListView
+'	For i = 0 To historyList.Size - 1
+'		ListView1.AddSingleLine(historyList.Get(i))
+'	Next
+'
+'	' ذخیره اطلاعات تاریخچه در فایل
+'	SaveToFile(historyItem)
+'End Sub
+
 Sub AddToHistory(pillName As String, timeTaken As String)
 	Dim historyItem As String = "  نام قرص:" & pillName & " زمان مصرف: " & timeTaken
 
-	' ایجاد یک لیست برای ذخیره آیتم‌های فعلی ListView
-	Dim historyList As List
-	historyList.Initialize
-    
-	' اضافه کردن آیتم‌های فعلی ListView به لیست
-	For i = 0 To ListView1.Size - 1
-		historyList.Add(ListView1.GetItem(i))
-	Next
-    
-	' اضافه کردن آیتم جدید به ابتدای لیست
-	historyList.InsertAt(0, historyItem)
+	' آیتم جدید به صورت معمولی به انتهای ListView اضافه می‌شود
+	ListView1.AddSingleLine(historyItem)
 
-	' پاک کردن ListView
-	ListView1.Clear
-    
-	' اضافه کردن آیتم‌های جدید به ListView
-	For i = 0 To historyList.Size - 1
-		ListView1.AddSingleLine(historyList.Get(i))
-	Next
-
-	' ذخیره اطلاعات تاریخچه در فایل
+	' ذخیره آیتم جدید در فایل
 	SaveToFile(historyItem)
 End Sub
 
