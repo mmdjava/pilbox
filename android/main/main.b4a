@@ -184,7 +184,7 @@ Sub Globals
 	Private data7 As Int
 	Private data8 As Int
 	
-	Private data9 As Int = 1
+	Private data9 As Int 
 	'---------------------------------------------------------------
 	
 	'*********************استخراج داده برای data1***********************
@@ -625,9 +625,42 @@ Sub AStreams_NewData (Buffer() As Byte)
 			mp.Initialize()
 			mp.Load(File.DirAssets, "alarm.mp3") 'فایلی که می‌خواهید پخش شود
 			mp.Play
-			data9 = 1
+			data9 = -1
 			
-			Msgbox("بیمار قرص را مصرف نکرد", "توجه")
+			Msgbox("بیمار قرص یک را مصرف نکرده است!!!", "توجه")
+		End If
+		
+		If (data9==1) Then
+
+			Dim mp As MediaPlayer
+			mp.Initialize()
+			mp.Load(File.DirAssets, "alarm.mp3") 'فایلی که می‌خواهید پخش شود
+			mp.Play
+			data9 = -1
+			
+			Msgbox("بیمار قرص دو را مصرف نکرده است!!!", "توجه")
+		End If
+		
+		If (data9==2) Then
+
+			Dim mp As MediaPlayer
+			mp.Initialize()
+			mp.Load(File.DirAssets, "alarm.mp3") 'فایلی که می‌خواهید پخش شود
+			mp.Play
+			data9 = -1
+			
+			Msgbox("بیمار قرص سه را مصرف نکرده است!!!", "توجه")
+		End If
+		
+		If (data9==3) Then
+
+			Dim mp As MediaPlayer
+			mp.Initialize()
+			mp.Load(File.DirAssets, "alarm.mp3") 'فایلی که می‌خواهید پخش شود
+			mp.Play
+			data9 = -1
+			
+			Msgbox("بیمار قرص چهار را مصرف نکرده است!!!", "توجه")
 		End If
 		'------------------------------------------------------------------------------
 	
@@ -762,7 +795,7 @@ End Sub
 'End Sub
 
 Sub AddToHistory(pillName As String, timeTaken As String)
-	Dim historyItem As String = "  نام قرص:" & pillName & " زمان مصرف: " & timeTaken
+	Dim historyItem As String = "  نام قرص: " & pillName & " زمان مصرف: " & timeTaken
 
 	' آیتم جدید به صورت معمولی به انتهای ListView اضافه می‌شود
 	ListView1.AddSingleLine(historyItem)
