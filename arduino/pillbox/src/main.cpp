@@ -157,6 +157,7 @@ char data_3[20];
 char data_4[20];
 int readingkey;
 int noalarm;
+int alarmbox =-1;
 int read1;
 int read2;
 int read3;
@@ -236,6 +237,7 @@ void Task1(void *pvParameters) {
         while (millis() - startTime < 120000) {  // 10 دقیقه یا 600,000 میلی‌ثانیه
 
           w = 0;
+          alarmbox = i;
 
           read1 = digitalRead(key1);
           read2 = digitalRead(key2);
@@ -782,8 +784,11 @@ void loop() {
     client.print(dataout_4.c_str()); //ارسال مقدار به شبکه
 
     if (noalarm == 1 ){
-     client.print("als0ale");
+     client.print("als");
+     client.print(alarmbox);
+     client.print("ale");
      noalarm = 0 ;
+     alarmbox =-1;
     }   
   }
 }   
