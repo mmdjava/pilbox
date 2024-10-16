@@ -34,7 +34,7 @@ public class imgview extends Activity implements B4AActivity{
 		super.onCreate(savedInstanceState);
         mostCurrent = this;
 		if (processBA == null) {
-			processBA = new BA(this.getApplicationContext(), null, null, "Pill_Box.v1", "Pill_Box.v1.imgview");
+			processBA = new anywheresoftware.b4a.ShellBA(this.getApplicationContext(), null, null, "Pill_Box.v1", "Pill_Box.v1.imgview");
 			processBA.loadHtSubs(this.getClass());
 	        float deviceScale = getApplicationContext().getResources().getDisplayMetrics().density;
 	        BALayout.setDeviceScale(deviceScale);
@@ -335,6 +335,15 @@ public class imgview extends Activity implements B4AActivity{
             
     }
 
+
+
+public static void initializeProcessGlobals() {
+             try {
+                Class.forName(BA.applicationContext.getPackageName() + ".main").getMethod("initializeProcessGlobals").invoke(null, null);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+}
 public anywheresoftware.b4a.keywords.Common __c = null;
 public anywheresoftware.b4a.objects.ImageViewWrapper _imgview = null;
 public anywheresoftware.b4a.objects.ButtonWrapper _btnchangeimage = null;
@@ -347,62 +356,64 @@ public Pill_Box.v1.pill_4 _pill_4 = null;
 public Pill_Box.v1.starter _starter = null;
 public Pill_Box.v1.naseri_func _naseri_func = null;
 public Pill_Box.v1.xuiviewsutils _xuiviewsutils = null;
-
-public static void initializeProcessGlobals() {
-             try {
-                Class.forName(BA.applicationContext.getPackageName() + ".main").getMethod("initializeProcessGlobals").invoke(null, null);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-}
 public static String  _activity_create(boolean _firsttime) throws Exception{
- //BA.debugLineNum = 16;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 18;BA.debugLine="Activity.LoadLayout(\"Main\")";
+RDebugUtils.currentModule="imgview";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_create", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_create", new Object[] {_firsttime}));}
+RDebugUtils.currentLine=6094848;
+ //BA.debugLineNum = 6094848;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+RDebugUtils.currentLine=6094850;
+ //BA.debugLineNum = 6094850;BA.debugLine="Activity.LoadLayout(\"Main\")";
 mostCurrent._activity.LoadLayout("Main",mostCurrent.activityBA);
- //BA.debugLineNum = 21;BA.debugLine="imgView.Bitmap = LoadBitmap(File.DirAssets, \"defa";
+RDebugUtils.currentLine=6094853;
+ //BA.debugLineNum = 6094853;BA.debugLine="imgView.Bitmap = LoadBitmap(File.DirAssets, \"defa";
 mostCurrent._imgview.setBitmap((android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.LoadBitmap(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"default_image.jpg").getObject()));
- //BA.debugLineNum = 24;BA.debugLine="btnChangeImage.Initialize(\"btnChangeImage\")";
+RDebugUtils.currentLine=6094856;
+ //BA.debugLineNum = 6094856;BA.debugLine="btnChangeImage.Initialize(\"btnChangeImage\")";
 mostCurrent._btnchangeimage.Initialize(mostCurrent.activityBA,"btnChangeImage");
- //BA.debugLineNum = 25;BA.debugLine="End Sub";
+RDebugUtils.currentLine=6094857;
+ //BA.debugLineNum = 6094857;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnchangeimage_click() throws Exception{
+RDebugUtils.currentModule="imgview";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "btnchangeimage_click", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnchangeimage_click", null));}
 anywheresoftware.b4a.phone.Phone.ContentChooser _fc = null;
- //BA.debugLineNum = 27;BA.debugLine="Sub btnChangeImage_Click";
- //BA.debugLineNum = 29;BA.debugLine="Dim fc As ContentChooser";
+RDebugUtils.currentLine=6160384;
+ //BA.debugLineNum = 6160384;BA.debugLine="Sub btnChangeImage_Click";
+RDebugUtils.currentLine=6160386;
+ //BA.debugLineNum = 6160386;BA.debugLine="Dim fc As ContentChooser";
 _fc = new anywheresoftware.b4a.phone.Phone.ContentChooser();
- //BA.debugLineNum = 30;BA.debugLine="fc.Initialize(\"fc\")";
+RDebugUtils.currentLine=6160387;
+ //BA.debugLineNum = 6160387;BA.debugLine="fc.Initialize(\"fc\")";
 _fc.Initialize("fc");
- //BA.debugLineNum = 31;BA.debugLine="fc.Show(\"image/*\", \"Select Image\")";
+RDebugUtils.currentLine=6160388;
+ //BA.debugLineNum = 6160388;BA.debugLine="fc.Show(\"image/*\", \"Select Image\")";
 _fc.Show(processBA,"image/*","Select Image");
- //BA.debugLineNum = 32;BA.debugLine="End Sub";
+RDebugUtils.currentLine=6160389;
+ //BA.debugLineNum = 6160389;BA.debugLine="End Sub";
 return "";
 }
 public static String  _fc_result(boolean _success,String _dir,String _filename) throws Exception{
- //BA.debugLineNum = 34;BA.debugLine="Sub fc_Result(Success As Boolean, Dir As String, F";
- //BA.debugLineNum = 35;BA.debugLine="If Success Then";
+RDebugUtils.currentModule="imgview";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "fc_result", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "fc_result", new Object[] {_success,_dir,_filename}));}
+RDebugUtils.currentLine=6225920;
+ //BA.debugLineNum = 6225920;BA.debugLine="Sub fc_Result(Success As Boolean, Dir As String, F";
+RDebugUtils.currentLine=6225921;
+ //BA.debugLineNum = 6225921;BA.debugLine="If Success Then";
 if (_success) { 
- //BA.debugLineNum = 37;BA.debugLine="imgView.Bitmap = LoadBitmap(Dir, FileName)";
+RDebugUtils.currentLine=6225923;
+ //BA.debugLineNum = 6225923;BA.debugLine="imgView.Bitmap = LoadBitmap(Dir, FileName)";
 mostCurrent._imgview.setBitmap((android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.LoadBitmap(_dir,_filename).getObject()));
  }else {
- //BA.debugLineNum = 39;BA.debugLine="ToastMessageShow(\"Failed to choose an image.\", F";
+RDebugUtils.currentLine=6225925;
+ //BA.debugLineNum = 6225925;BA.debugLine="ToastMessageShow(\"Failed to choose an image.\", F";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Failed to choose an image."),anywheresoftware.b4a.keywords.Common.False);
  };
- //BA.debugLineNum = 41;BA.debugLine="End Sub";
-return "";
-}
-public static String  _globals() throws Exception{
- //BA.debugLineNum = 10;BA.debugLine="Sub Globals";
- //BA.debugLineNum = 12;BA.debugLine="Private imgView As ImageView";
-mostCurrent._imgview = new anywheresoftware.b4a.objects.ImageViewWrapper();
- //BA.debugLineNum = 13;BA.debugLine="Private btnChangeImage As Button";
-mostCurrent._btnchangeimage = new anywheresoftware.b4a.objects.ButtonWrapper();
- //BA.debugLineNum = 14;BA.debugLine="End Sub";
-return "";
-}
-public static String  _process_globals() throws Exception{
- //BA.debugLineNum = 6;BA.debugLine="Sub Process_Globals";
- //BA.debugLineNum = 8;BA.debugLine="End Sub";
+RDebugUtils.currentLine=6225927;
+ //BA.debugLineNum = 6225927;BA.debugLine="End Sub";
 return "";
 }
 }

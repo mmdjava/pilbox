@@ -56,9 +56,32 @@ Sub Globals
 	Private ImageView1 As ImageView
 	Dim rp As RuntimePermissions
 	
+	Dim hourSpinner As Spinner
+	Dim minuteSpinner As Spinner
+	
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
+	
+	' Initialize spinners for hours and minutes
+	hourSpinner.Initialize("hourSpinner")
+	minuteSpinner.Initialize("minuteSpinner")
+
+	' Add values to hour spinner (0 to 23 for 24-hour format)
+	For i = 0 To 23
+		hourSpinner.Add(i)
+	Next
+
+	' Add values to minute spinner (0 to 59)
+	For i = 0 To 59
+		minuteSpinner.Add(i)
+	Next
+
+	' Add spinners to the activity with proper position and size
+	Activity.AddView(hourSpinner, 50%x - 75dip, 50%y - 40dip, 100dip, 60dip)
+	Activity.AddView(minuteSpinner, 50%x + 25dip, 50%y - 40dip, 100dip, 60dip)
+
+	
 	'Do not forget to load the layout file created with the visual designer. For example:
 	Activity.LoadLayout("pill_1")
 	
@@ -220,4 +243,12 @@ Sub fc_Result(Success As Boolean, Dir As String, FileName As String)
 	Else
 		ToastMessageShow("Failed to choose an image.", False)
 	End If
+End Sub
+
+Sub hourSpinner_ItemClick (Position As Int, Value As Object)
+    Log("Selected hour: " & Value)
+End Sub
+
+Sub minuteSpinner_ItemClick (Position As Int, Value As Object)
+    Log("Selected minute: " & Value)
 End Sub

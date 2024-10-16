@@ -114,6 +114,7 @@ Sub Process_Globals
 	Dim Timer1 As Timer
 	
 End Sub
+
 Sub Globals
 	' تعریف تمام ویوهای استفاده شده
 
@@ -184,7 +185,7 @@ Sub Globals
 	Private data7 As Int
 	Private data8 As Int
 	
-	Private data9 As Int 
+	Private data9 As Int =-1
 	'---------------------------------------------------------------
 	
 	'*********************استخراج داده برای data1***********************
@@ -202,11 +203,31 @@ Sub Globals
 	Dim initialData3 As Int 'ذخیره مقدار اولیه data3
 	Dim initialData4 As Int 'ذخیره مقدار اولیه data4
 	'--------------------------------------------------
-	
-	Dim currentTime As String
+
 
 	Dim rp As RuntimePermissions
 	
+	Private ScrollingLabel1 As ScrollingLabel
+	Private B4XFloatTextField1 As B4XFloatTextField
+	
+	' متغیرهای مربوط به Activity
+	Dim lblTime As Label
+	Dim lblDate As Label
+	
+	' دریافت زمان فعلی
+	Dim currentTime As Long = DateTime.Now
+	Dim hour As Int = DateTime.GetHour(currentTime) ' دریافت ساعت
+	Dim minute As Int = DateTime.GetMinute(currentTime) ' دریافت دقیقه
+    
+	' دریافت تاریخ فعلی
+	Dim currentDate As Long = DateTime.Now
+	Dim day As Int = DateTime.GetDayOfMonth(currentDate) ' دریافت روز
+	Dim month As Int = DateTime.GetMonth(currentDate) ' دریافت ماه
+    
+	' تنظیمات برای نمایش در Label ها
+	Dim time As String = hour & ":" & NumberFormat(minute, 2, 0) ' اضافه کردن 0 در صورت تک رقمی بودن دقیقه
+	Dim date As String = day & "/" & month
+
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -341,14 +362,12 @@ Sub Activity_Create(FirstTime As Boolean)
 
 End Sub
 
-
 ' تابع تنظیم پروگرس بارها
 Sub SetupProgressBar(lbl As Label, color As Int, progress As Int)
 	lbl.Color = Colors.Red
 	SetBackgroundDrawable(lbl, color, 10dip)
 	UpdateProgressBar(lbl, progress)
 End Sub
-
 
 ' تابع تنظیم لیبل‌های "ویرایش"
 Sub SetupEditLabel(lbl As Label)
@@ -562,8 +581,6 @@ Sub AStreams_NewData (Buffer() As Byte)
 	
 	'-------------------------------------------------------------------------------------
 	
-	currentTime = DateTime.Time(DateTime.Now)
-	
 	Try
 		'**********************************ذخیره و نمایش دیتا 1*************************************
 		File.WriteString(File.DirInternal, "pill_count_Data1.txt",data1)
@@ -627,7 +644,10 @@ Sub AStreams_NewData (Buffer() As Byte)
 			mp.Play
 			data9 = -1
 			
-			Msgbox("بیمار قرص یک را مصرف نکرده است!!!", "توجه")
+			Msgbox("بیمار قرص" &" "&pill_naim1&" "& "مصرف نکرده است!!!", "توجه")
+			
+			AddToHistory(pill_naim1,"مصرف نشد"&date&"  "&time)
+			
 		End If
 		
 		If (data9==1) Then
@@ -638,7 +658,10 @@ Sub AStreams_NewData (Buffer() As Byte)
 			mp.Play
 			data9 = -1
 			
-			Msgbox("بیمار قرص دو را مصرف نکرده است!!!", "توجه")
+			Msgbox("بیمار قرص" &" "&pill_naim2&" "& "را مصرف نکرده است!!!", "توجه")
+			
+			AddToHistory(pill_naim2,"مصرف نشد"&date&"  "&time)
+			
 		End If
 		
 		If (data9==2) Then
@@ -649,7 +672,10 @@ Sub AStreams_NewData (Buffer() As Byte)
 			mp.Play
 			data9 = -1
 			
-			Msgbox("بیمار قرص سه را مصرف نکرده است!!!", "توجه")
+			Msgbox("بیمار قرص" &" "&pill_naim3&" "& "را مصرف نکرده است!!!", "توجه")
+			
+			AddToHistory(pill_naim3,"مصرف نشد"&date&"  "&time)
+			
 		End If
 		
 		If (data9==3) Then
@@ -660,7 +686,10 @@ Sub AStreams_NewData (Buffer() As Byte)
 			mp.Play
 			data9 = -1
 			
-			Msgbox("بیمار قرص چهار را مصرف نکرده است!!!", "توجه")
+			Msgbox("بیمار قرص" &" "&pill_naim4&" "& "را مصرف نکرده است!!!", "توجه")
+			
+			AddToHistory(pill_naim4,"مصرف نشد"&date&"  "&time)
+			
 		End If
 		'------------------------------------------------------------------------------
 	
@@ -727,7 +756,7 @@ Sub CheckPillCount1
 	If data1 < initialData1 Then
 		' ثبت تغییر در تعداد قرص‌ها
 
-		AddToHistory(pill_naim1,currentTime)
+		AddToHistory(pill_naim1,date&"  "&time)
         
 		' به روزرسانی مقدار اولیه
 		initialData1 = data1
@@ -738,7 +767,7 @@ Sub CheckPillCount2
 	If data2 < initialData2 Then
 		' ثبت تغییر در تعداد قرص‌ها
 
-		AddToHistory(pill_naim2,currentTime)
+		AddToHistory(pill_naim2,date&"  "&time)
         
 		' به روزرسانی مقدار اولیه
 		initialData2 = data2
@@ -749,7 +778,7 @@ Sub CheckPillCount3
 	If data3 < initialData3 Then
 		' ثبت تغییر در تعداد قرص‌ها
 
-		AddToHistory(pill_naim3,currentTime)
+		AddToHistory(pill_naim3,date&"  "&time)
         
 		' به روزرسانی مقدار اولیه
 		initialData3 = data3
@@ -760,42 +789,15 @@ Sub CheckPillCount4
 	If data4 < initialData4 Then
 		' ثبت تغییر در تعداد قرص‌ها
 
-		AddToHistory(pill_naim4,currentTime)
+		AddToHistory(pill_naim4,date&"  "&time)
         
 		' به روزرسانی مقدار اولیه
 		initialData4 = data4
 	End If
 End Sub
-
-'Sub AddToHistory(pillName As String, timeTaken As String)
-'	Dim historyItem As String = "  نام قرص:" & pillName & " زمان مصرف: " & timeTaken
-'
-'	' ایجاد یک لیست برای ذخیره آیتم‌های فعلی ListView
-'	Dim historyList As List
-'	historyList.Initialize
-'    
-'	' اضافه کردن آیتم‌های فعلی ListView به لیست
-'	For i = 0 To ListView1.Size - 1
-'		historyList.Add(ListView1.GetItem(i))
-'	Next
-'    
-'	' اضافه کردن آیتم جدید به ابتدای لیست
-'	historyList.InsertAt(0, historyItem)
-'
-'	' پاک کردن ListView
-'	ListView1.Clear
-'    
-'	' اضافه کردن آیتم‌های جدید به ListView
-'	For i = 0 To historyList.Size - 1
-'		ListView1.AddSingleLine(historyList.Get(i))
-'	Next
-'
-'	' ذخیره اطلاعات تاریخچه در فایل
-'	SaveToFile(historyItem)
-'End Sub
-
+'====================================================
 Sub AddToHistory(pillName As String, timeTaken As String)
-	Dim historyItem As String = "  نام قرص: " & pillName & " زمان مصرف: " & timeTaken
+	Dim historyItem As String = " " & pillName & " زمان مصرف: " & timeTaken
 
 	' آیتم جدید به صورت معمولی به انتهای ListView اضافه می‌شود
 	ListView1.AddSingleLine(historyItem)
@@ -820,6 +822,8 @@ Sub LoadHistory
 		line = reader.ReadLine
 		Do While line <> Null
 			ListView1.AddSingleLine(line) 'افزودن هر خط به ListView
+			ListView1.FastScrollEnabled=True
+		
 			line = reader.ReadLine
 		Loop
 		reader.Close
@@ -877,4 +881,36 @@ Sub timer1_tick
 '		ToastMessageShow("No image found.", False)
 	End If
 
+End Sub
+
+'============================================================================
+Sub AddCustomItem(lv As ListView, Text As String, TextColor As Int)
+	' ایجاد یک پنل به عنوان آیتم سفارشی
+	Dim pnl As Panel
+	pnl.Initialize("")
+    
+	' ایجاد یک Label برای نمایش متن
+	Dim lbl As Label
+	lbl.Initialize("")
+	lbl.Text = Text
+	lbl.TextColor = TextColor ' تنظیم رنگ متن
+	lbl.TextSize = 18 ' تنظیم اندازه فونت
+	lbl.Gravity = Gravity.CENTER_VERTICAL ' تنظیم متن به صورت عمودی در مرکز قرار گیرد
+    
+	' اضافه کردن Label به Panel
+	pnl.AddView(lbl, 0, 0, 100%x, 50dip) ' تنظیم اندازه Label در داخل Panel
+    
+	' اضافه کردن Panel به ListView
+	
+End Sub
+
+' افزودن این رویداد برای حذف آیتم
+Sub ListView1_ItemLongClick(Position As Int, Value As Object)
+	Dim res As Int
+	res = Msgbox2("آیا می‌خواهید این آیتم حذف شود؟", "حذف آیتم", "بله", "", "خیر", Null)
+    
+	If res = DialogResponse.POSITIVE Then
+		ListView1.RemoveAt(Position) ' حذف آیتم از ListView
+		Log("آیتم حذف شد: " & Value)
+	End If
 End Sub

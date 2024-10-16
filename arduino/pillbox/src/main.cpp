@@ -1,3 +1,5 @@
+#define my_time "09:59:14"
+#define time_ch 1
 #include <WiFi.h>
 //#include <string.h>
 #include <iostream>
@@ -8,6 +10,10 @@
 #include <RTClib.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+#include <Preferences.h>
+
+// ایجاد یک شیء از کلاس Preferences
+Preferences preferences;
 
 #define SCREEN_WIDTH 128//تعریف طول نمایشگر 
 #define SCREEN_HEIGHT 32//تعریف عرض نمایشگر
@@ -92,7 +98,7 @@ int reading4;
 
  //---------------- تعریف زمان‌های شروع و فاصله‌های زمانی---------------- 
 const int numAlarms = 4; // تعداد آلارم‌ها
-const int startHour[numAlarms] = { start_time_1 , start_time_2 , start_time_3 , start_time_4 };
+ int startHour[numAlarms] = { start_time_1 , start_time_2 , start_time_3 , start_time_4 };
 const int startMinute[numAlarms] = {0, 0, 0, 0};
  int intervalHours[numAlarms] = { interval_1 , interval_2 , interval_3 , interval_4 };
 //---------------- ---------------- ----------------
@@ -305,6 +311,12 @@ void setup() {
   Serial.begin(115200);
   Wire.begin(13,14);// نرم افزاری i2c راه اندازی
 
+    // شروع Serial1 با سرعت 115200 بیت بر ثانیه
+  Serial1.begin(115200, SERIAL_8N1, 2, 1);  // پایه 2 برای TX و پایه 1 برای RX
+
+  // شروع NVS با نام فضای ذخیره‌سازی 'storage'
+  preferences.begin("storage", false);  // 'false' به معنی خواندن و نوشتن است
+
  //---------------- تعریف پین های وردی  خروجی---------------- 
   pinMode(buzzerPin,OUTPUT);
   pinMode(key1, INPUT_PULLUP);
@@ -336,11 +348,44 @@ void setup() {
     for (;;);
   }
   //---------------- ---------------- ----------------
-  //rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));// فقط یک بار
+  if(time_ch)
+  rtc.adjust(DateTime(F(__DATE__), F(my_time)));// فقط یک بار
+//"14:14:14"
+ //----------------بارگزاری مقادیر اولیه از حافظه----------------
+
+  pill1_en = (preferences.getInt("pill1_en", 0));
+  pill_count1 = (preferences.getInt("pill_count1", 0));
+  start_time_1 = (preferences.getInt("start_time_1", 0));
+  interval_1 = (preferences.getInt("interval_1", 0));
+  
+  pill2_en =  (preferences.getInt("pill2_en", 0));
+  pill_count2 = (preferences.getInt("pill_count2", 0));
+  start_time_2 = (preferences.getInt("start_time_2", 0));
+  interval_2 = (preferences.getInt("interval_2", 0));
+
+  pill3_en = (preferences.getInt("pill3_en", 0));
+  pill_count3 = (preferences.getInt("pill_count3", 0));
+  start_time_3 = (preferences.getInt("start_time_3", 0));
+  interval_3 = (preferences.getInt("interval_3", 0));
+  
+  pill4_en = (preferences.getInt("pill4_en", 0));
+  pill_count4 = (preferences.getInt("pill_count4", 0));
+  start_time_4 = (preferences.getInt("start_time_4", 0));
+  interval_4 = (preferences.getInt("interval_4", 0));
+
+  //---------------- ---------------- ----------------
 
   now = rtc.now();//دریافت زمان کنونی از ماژول
 
     //----------------محاسبه زمان‌های آلارم اولیه----------------
+    startHour[0]=start_time_1;
+    intervalHours[0]=interval_1;
+    startHour[1]=start_time_2;
+    intervalHours[1]=interval_2;
+    startHour[2]=start_time_3;
+    intervalHours[2]=interval_3;
+    startHour[3]=start_time_3;
+    intervalHours[3]=interval_3;  
   for (int i = 0; i < numAlarms; i++) {
 
     DateTime startTime(now.year(), now.month(), now.day(), startHour[i], startMinute[i], 0);
@@ -437,6 +482,11 @@ void loop() {
       pill_count1 =pill_count_box1;
       intervalHours[0]=interval_1;
 
+      // به روز رسانی NVS با مقادیر جدید
+      preferences.putInt("pill1_en", pill1_en);
+      preferences.putInt("pill_count1", pill_count1);
+      preferences.putInt("start_time_1", start_time_1);
+      preferences.putInt("interval_1", interval_1);
 
       if(!rtc_busy) {
         rtc_busy=1;
@@ -478,9 +528,13 @@ void loop() {
      start_time_2=output[2];
      interval_2=output[3];
      intervalHours[1]=interval_2;
-
      pill_count2 =pill_count_box2;
      
+           // به روز رسانی NVS با مقادیر جدید
+      preferences.putInt("pill2_en", pill2_en);
+      preferences.putInt("pill_count2", pill_count2);
+      preferences.putInt("start_time_2", start_time_2);
+      preferences.putInt("interval_2", interval_2);
 
       if(!rtc_busy) {
         rtc_busy=1;
@@ -524,9 +578,13 @@ void loop() {
      start_time_3=output[2];
      interval_3=output[3];
      intervalHours[3]=interval_3;
-
      pill_count3 =pill_count_box3;
      
+           // به روز رسانی NVS با مقادیر جدید
+      preferences.putInt("pill3_en", pill3_en);
+      preferences.putInt("pill_count3", pill_count3);
+      preferences.putInt("start_time_3", start_time_3);
+      preferences.putInt("interval_3", interval_3);
 
       if(!rtc_busy) {
         rtc_busy=1;
@@ -573,6 +631,11 @@ void loop() {
       intervalHours[3]=interval_4;
       pill_count4 =pill_count_box4;
     
+          // به روز رسانی NVS با مقادیر جدید
+      preferences.putInt("pill4_en", pill4_en);
+      preferences.putInt("pill_count4", pill_count4);
+      preferences.putInt("start_time_4", start_time_4);
+      preferences.putInt("interval_4", interval_4);
      
       if(!rtc_busy) {
 
@@ -637,6 +700,9 @@ void loop() {
    keyState1 = reading1;
   }
  lastKeyState1 = reading1;
+
+ // به‌روز رسانی مقدار جدید در NVS
+  preferences.putInt("pill_count1", pill_count1);
  //---------------- ---------------- ----------------
 
  //--------------------------------بخش عملکرد کیلید 2--------------------------------
@@ -667,6 +733,10 @@ void loop() {
    keyState2 = reading2;
   }
  lastKeyState2 = reading2;
+
+ // به‌روز رسانی مقدار جدید در NVS
+  preferences.putInt("pill_count2", pill_count2);
+
  //---------------- ---------------- ----------------
  
  //--------------------------------بخش عملکرد کیلید 3--------------------------------
@@ -697,6 +767,9 @@ void loop() {
    keyState3 = reading3;
   }
  lastKeyState3 = reading3;
+
+ // به‌روز رسانی مقدار جدید در NVS
+  preferences.putInt("pill_count3", pill_count3);
  //---------------- ---------------- ----------------
  
  //--------------------------------بخش عملکرد کیلید 4--------------------------------
@@ -727,6 +800,9 @@ void loop() {
    keyState4 = reading4;
   }
  lastKeyState4 = reading4;
+
+  // به‌روز رسانی مقدار جدید در NVS
+  preferences.putInt("pill_count4", pill_count4);
  //---------------- ---------------- ----------------  
 
  //******************************************************
@@ -791,4 +867,4 @@ void loop() {
      alarmbox =-1;
     }   
   }
-}   
+} 
